@@ -724,7 +724,7 @@
 
                 <!-- form -->
                 <div class="contact_form content-box">
-                    <form id="" method="post" action="{% url 'contact' %}">
+                    <form id="contact" method="post" action="{% url 'contact' %}">
                         {% csrf_token %}
                         <div class="group-val">
                             <input type="text" name="name" placeholder="Name" />

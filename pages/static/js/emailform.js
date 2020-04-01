@@ -11,6 +11,7 @@ function sendMessage() {
         },
         success: function (response) {
             $("#response").text(response.msg);
+            $("#contact")[0].reset();
         }
     });
 }
