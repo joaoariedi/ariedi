@@ -1,8 +1,10 @@
-from django.conf import settings
+import json
+
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import redirect
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView, View
 
 from category.models import Category
 from projects.models import Project
@@ -21,7 +23,6 @@ class Home(TemplateView):
         return context
 
 
-# FIXME: Change to FormView template and place the alert msgs on top of the page
 # TODO: Jquery to post message
 def contact(request):
     if request.method == 'POST':
@@ -38,3 +39,25 @@ def contact(request):
         messages.success(request, 'Thanks, your message is sent successfully.')
 
     return redirect('home')
+
+
+class SendMessage(View):
+    def post(self, *args, **kwargs):
+        name = self.request.POST['name']
+        email = self.request.POST['email']
+        message = self.request.POST['message']
+        subject = f"Msg from {name}, form in ariedi.com.br"
+
+        send_mail(subject,
+                  message,
+                  email,
+                  ['joaoariedi@gmail.com'],
+                  fail_silently=False)
+
+        response = {'msg': 'Thanks, your message was sent successfully.'}
+
+        return JsonResponse(response)
+
+
+
+

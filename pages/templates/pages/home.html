@@ -736,21 +736,15 @@
                             <textarea name="message" placeholder="Message"></textarea>
                         </div>
                         <div class="group-bts">
-                            <button type="submit" class="btn hover-animated">
+                            <button type="button" class="btn hover-animated" onclick="sendMessage()">
                                 <span class="circle"></span>
                                 <span class="lnk">Send Message</span>
                             </button>
+                            <p id="response"></p>
                         </div>
                     </form>
-                    {% if messages %}
-                    <div class="alert-{{ message.tags }}">
-                        {% for message in messages %}
-                            <p>{{ message }}</p>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
 
+                </div>
             </div>
             <div class="clear"></div>
         </div>
