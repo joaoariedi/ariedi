@@ -1,9 +1,7 @@
 import json
 
-from django.contrib import messages
 from django.core.mail import send_mail
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import redirect
 from django.views.generic.base import TemplateView, View
 
 from category.models import Category
