@@ -13,7 +13,7 @@ Personal portfolio website showcasing projects, workshops, and professional expe
 ## Project Structure
 
 ```
-ariedi-v2/
+ariedi/
 ├── core/           # Django project settings and configuration
 ├── pages/          # Main pages and contact form
 ├── projects/       # Portfolio projects management
@@ -35,8 +35,8 @@ ariedi-v2/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/ariedi-v2.git
-cd ariedi-v2
+git clone https://github.com/joaoariedi/ariedi.git
+cd ariedi
 ```
 
 2. Install dependencies:
