@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "ariedi"
+version = "0.1.0"
+description = "Personal portfolio website - Engineering Leader & Cybersecurity Expert"
+authors = ["John Ariedi <joaoariedi@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.2.8"
+gunicorn = "^23.0.0"
+whitenoise = "^6.11.0"
+dj-database-url = "^3.0.1"
+psycopg2-binary = "^2.9.11"
+boto3 = "^1.41.2"
+django-storages = "^1.14.6"
+pillow = "^12.0.0"
+django-heroku = "^0.3.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

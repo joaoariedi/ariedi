@@ -7,8 +7,8 @@ getting-started/*
 *.idea
 .env
 
-Pipfile
-Pipfile.lock
+# Tool version managers (local config)
+.tool-versions
 
 
 # Created by https://www.gitignore.io/api/django,pycharm
