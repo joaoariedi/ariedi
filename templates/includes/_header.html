@@ -1,18 +1,135 @@
 {% load static %}
 
 <head>
-	<!-- Meta -->
+	<!-- Basic Meta -->
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<meta name="description" content="John Ariedi, Engineering Leader and Cybersecurity Expert. 15+ years in tech, specializing in Python, Go, AWS, Kubernetes, and secure software architecture." />
-	<meta name="keywords" content="engineering leader, cybersecurity, Python, Go, Kubernetes, AWS, GCP, software architecture, team building, FastAPI, Django" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- SEO Meta Tags -->
+	<title>John Ariedi - Engineering Leader | Cybersecurity Expert</title>
+	<meta name="description" content="John Ariedi - Engineering Leader and Cybersecurity Expert with 15+ years in tech. Specializing in Python, Go, AWS, Kubernetes, and secure software architecture. Available for remote opportunities." />
+	<meta name="keywords" content="engineering leader, cybersecurity expert, principal software engineer, Python, Go, Kubernetes, AWS, GCP, software architecture, team building, FastAPI, Django, remote engineer, Brazil" />
 	<meta name="author" content="John Ariedi" />
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+	<link rel="canonical" href="https://ariedi.com/" />
 
-	<!-- Title -->
-	<title>Ariedi - Engineering Leader | Cybersecurity Expert</title>
+	<!-- Language & Locale -->
+	<meta name="language" content="English" />
+	<meta name="geo.region" content="BR-SP" />
+	<meta name="geo.placename" content="São Paulo, Brazil" />
 
-    {% include "includes/_styles.html" %}
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://ariedi.com/" />
+	<meta property="og:title" content="John Ariedi - Engineering Leader | Cybersecurity Expert" />
+	<meta property="og:description" content="Engineering Leader and Cybersecurity Expert with 15+ years in tech. Specializing in Python, Go, AWS, Kubernetes, and secure software architecture." />
+	<meta property="og:image" content="{% static 'images/profile.jpeg' %}" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:site_name" content="John Ariedi" />
 
-    <link rel="shortcut icon" href={% static "images/favicons/fav2.png" %}>
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://ariedi.com/" />
+	<meta name="twitter:title" content="John Ariedi - Engineering Leader | Cybersecurity Expert" />
+	<meta name="twitter:description" content="Engineering Leader and Cybersecurity Expert with 15+ years in tech. Specializing in Python, Go, AWS, Kubernetes, and secure software architecture." />
+	<meta name="twitter:image" content="{% static 'images/profile.jpeg' %}" />
 
+	<!-- LinkedIn specific -->
+	<meta property="og:image:alt" content="John Ariedi - Engineering Leader" />
+	<meta name="linkedin:owner" content="joaoariedi" />
+
+	<!-- Structured Data - Person Schema -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "ProfilePage",
+		"mainEntity": {
+			"@type": "Person",
+			"@id": "https://ariedi.com/#person",
+			"name": "John Ariedi",
+			"alternateName": "João Ariedi",
+			"description": "Engineering Leader and Cybersecurity Expert with 15+ years in tech, specializing in Python, Go, AWS, Kubernetes, and secure software architecture.",
+			"image": "https://ariedi.com/static/images/profile.jpeg",
+			"url": "https://ariedi.com",
+			"jobTitle": "Principal Software Engineer",
+			"worksFor": {
+				"@type": "Organization",
+				"name": "Batuta",
+				"url": "https://batuta.com"
+			},
+			"alumniOf": [
+				{
+					"@type": "EducationalOrganization",
+					"name": "FIAP",
+					"description": "Cybersecurity, Ethical Hacking, Forensics and DevOps"
+				},
+				{
+					"@type": "EducationalOrganization",
+					"name": "São Paulo State University (UNESP)",
+					"description": "Industrial Engineering"
+				}
+			],
+			"knowsAbout": [
+				"Software Architecture",
+				"Engineering Leadership",
+				"Cybersecurity",
+				"Python",
+				"Go",
+				"Kubernetes",
+				"AWS",
+				"Google Cloud Platform",
+				"FastAPI",
+				"Django",
+				"Docker",
+				"Terraform",
+				"PostgreSQL",
+				"Microservices",
+				"CI/CD",
+				"Team Building"
+			],
+			"sameAs": [
+				"https://www.linkedin.com/in/joaoariedi/",
+				"https://github.com/joaoariedi"
+			],
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "São Paulo",
+				"addressRegion": "SP",
+				"addressCountry": "BR"
+			},
+			"email": "joaoariedi@gmail.com",
+			"knowsLanguage": ["Portuguese", "English"]
+		}
+	}
+	</script>
+
+	<!-- Structured Data - WebSite Schema -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"@id": "https://ariedi.com/#website",
+		"url": "https://ariedi.com",
+		"name": "John Ariedi - Engineering Leader",
+		"description": "Personal website and portfolio of John Ariedi, Engineering Leader and Cybersecurity Expert",
+		"publisher": {
+			"@id": "https://ariedi.com/#person"
+		},
+		"inLanguage": "en-US"
+	}
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{% static 'images/favicons/fav2.png' %}" type="image/png">
+	<link rel="apple-touch-icon" href="{% static 'images/favicons/fav2.png' %}">
+
+	<!-- Preconnect for performance -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<!-- Styles -->
+	{% include "includes/_styles.html" %}
 </head>

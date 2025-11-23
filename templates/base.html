@@ -9,7 +9,7 @@
 <body class="home">
 
 	<!-- Preloader -->
-	<div class="preloader">
+	<div class="preloader" aria-hidden="true">
 		<div class="centrize full-width">
 			<div class="vertical-center">
 				<div class="spinner">
@@ -21,24 +21,30 @@
 	</div>
 
 	<!-- Container -->
-	<div class="container">
+	<div class="container" role="document">
 
 		<!-- Cursor -->
-		<div class="cursor-follower"></div>
+		<div class="cursor-follower" aria-hidden="true"></div>
 
         <!-- Navbar -->
-        {% include 'includes/_navbar.html' %}
+        <header role="banner">
+            {% include 'includes/_navbar.html' %}
+        </header>
 
-        <!--Main Content Start -->
-        {% block content %}
-        {% endblock content %}
+        <!-- Main Content Start -->
+        <main role="main" id="main-content">
+            {% block content %}
+            {% endblock content %}
+        </main>
         <!-- Main Content Ends -->
 
         <!-- Footer -->
-        {% include 'includes/_footer.html' %}
+        <footer role="contentinfo">
+            {% include 'includes/_footer.html' %}
+        </footer>
 
-        <!-- Lines -->
-		<div class="lines">
+        <!-- Lines (decorative) -->
+		<div class="lines" aria-hidden="true">
 			<div class="line-col"></div>
 			<div class="line-col"></div>
 			<div class="line-col"></div>
