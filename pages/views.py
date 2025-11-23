@@ -1,11 +1,14 @@
-import json
+import logging
 
+from django.conf import settings
 from django.core.mail import send_mail
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.views.generic.base import TemplateView, View
 
 from category.models import Category
 from projects.models import Project
+
+logger = logging.getLogger(__name__)
 
 
 class Home(TemplateView):
@@ -22,20 +25,41 @@ class Home(TemplateView):
 
 class SendMessage(View):
     def post(self, *args, **kwargs):
-        name = self.request.POST['name']
-        email = self.request.POST['email']
-        message = self.request.POST['message']
-        subject = f"Msg from {name}, form in ariedi.com.br"
+        try:
+            name = self.request.POST.get('name', '')
+            email = self.request.POST.get('email', '')
+            message = self.request.POST.get('message', '')
 
-        send_mail(subject,
-                  message,
-                  email,
-                  ['joaoariedi@gmail.com'],
-                  fail_silently=False)
+            if not all([name, email, message]):
+                return JsonResponse(
+                    {'msg': 'Please fill in all fields.'},
+                    status=400
+                )
 
-        response = {'msg': 'Thanks, your message was sent successfully.'}
+            subject = f"Msg from {name}, form in ariedi.com"
+            full_message = f"From: {name} <{email}>\n\n{message}"
 
-        return JsonResponse(response)
+            # Check if email is configured
+            if settings.EMAIL_HOST:
+                send_mail(
+                    subject,
+                    full_message,
+                    settings.EMAIL_HOST_USER or 'noreply@ariedi.com',
+                    ['joaoariedi@gmail.com'],
+                    fail_silently=False
+                )
+                return JsonResponse({'msg': 'Thanks! Your message was sent successfully.'})
+            else:
+                # Log the message if email is not configured
+                logger.info(f"Contact form submission: {subject}\n{full_message}")
+                return JsonResponse({'msg': 'Thanks! Your message was received.'})
+
+        except Exception as e:
+            logger.error(f"Error sending contact form: {e}")
+            return JsonResponse(
+                {'msg': 'Sorry, there was an error. Please try again or email me directly.'},
+                status=500
+            )
 
 
 
