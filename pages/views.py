@@ -1,14 +1,21 @@
 import logging
+import os
 
 from django.conf import settings
 from django.core.mail import send_mail
-from django.http import JsonResponse
+from django.http import FileResponse, Http404, JsonResponse
+from django.views.decorators.clickjacking import xframe_options_sameorigin
+from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateView, View
 
 from category.models import Category
 from projects.models import Project
 
 logger = logging.getLogger(__name__)
+
+PRESENTATIONS_DIR = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), 'static', 'presentations'
+)
 
 
 class Home(TemplateView):
@@ -21,6 +28,19 @@ class Home(TemplateView):
         context['projects'] = Project.objects.filter(active=True)
         context['categories'] = Category.objects.all()
         return context
+
+
+class Presentations(TemplateView):
+
+    template_name = "pages/presentations.html"
+
+
+@xframe_options_sameorigin
+def serve_presentation(request, filename):
+    filepath = os.path.join(PRESENTATIONS_DIR, filename)
+    if not os.path.isfile(filepath) or '..' in filename:
+        raise Http404
+    return FileResponse(open(filepath, 'rb'), content_type='application/pdf')
 
 
 class SendMessage(View):

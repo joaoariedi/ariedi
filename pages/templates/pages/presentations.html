@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- Wrapper -->
+    <div class="wrapper">
+
+        <!-- Section Started -->
+        <div class="section started layout-creative" id="section-started">
+
+            <!-- background -->
+            <div class="video-bg">
+                <div class="video-bg-mask"></div>
+                <div class="video-bg-texture" id="grained_container"></div>
+            </div>
+
+            <!-- started content -->
+            <div class="centrize full-width">
+                <div class="vertical-center">
+                    <div class="started-content">
+                        <h1 class="h-title">Presentations</h1>
+                        <div class="h-subtitles">
+                            <div class="h-subtitle typing-bread">
+                                <p class="breadcrumbs">
+                                    <a href={% url 'home' %}>Home</a> / Presentations
+                                </p>
+                            </div>
+                            <span class="typed-bread"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- mouse button -->
+            <a href="#" class="mouse_btn" style="display: none;"><span class="icon fas fa-chevron-down"></span></a>
+
+        </div>
+
+        <!-- Presentation Content -->
+        <div class="section blog">
+            <div class="content content-box">
+                <div class="single-post-text">
+
+                    <!-- title -->
+                    <div class="title">
+                        <div class="title_inner">Modern Engineering</div>
+                    </div>
+
+                    <!-- PDF Viewer -->
+                    <div class="pdf-viewer" style="width: 100%; margin-top: 20px;">
+                        <iframe
+                            id="pdf-frame"
+                            src="{% url 'serve_presentation' 'modern-engineering.pdf' %}"
+                            width="100%"
+                            height="800px"
+                            style="border: none; border-radius: 5px;"
+                            title="Modern Engineering Presentation"
+                            allowfullscreen
+                        ></iframe>
+                        <div style="margin-top: 15px; display: flex; gap: 15px; align-items: center;">
+                            <a class="btn hover-animated" href="javascript:void(0)" onclick="document.getElementById('pdf-frame').requestFullscreen()">
+                                <span class="circle"></span>
+                                <span class="lnk">Fullscreen</span>
+                            </a>
+                            <a class="btn hover-animated" href="{% url 'serve_presentation' 'modern-engineering.pdf' %}" download>
+                                <span class="circle"></span>
+                                <span class="lnk">Download PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock content %}
