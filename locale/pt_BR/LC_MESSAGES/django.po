@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 20:15+0000\n"
+"POT-Creation-Date: 2026-11-03 22:37+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -98,11 +98,11 @@ msgid "San Francisco, cybersecurity (Remote)"
 msgstr "San Francisco, cibersegurança (remoto)"
 
 #, python-format
-msgid "Leads the team behind an endpoint detection and response platform managing 1M+ devices per enterprise customer; event-driven architecture in Go on AWS; mTLS and certificate-based device authentication; post-quantum readiness. 90%%+ team retention by growing engineers into leaders on a test-first culture."
-msgstr "Lidera a equipe por trás de uma plataforma de detecção e resposta em endpoints (EDR) que gerencia 1M+ dispositivos por cliente corporativo; arquitetura orientada a eventos em Go na AWS; mTLS e autenticação de dispositivos por certificado; prontidão pós-quântica. Retenção da equipe acima de 90%%, formando engenheiros em líderes numa cultura test-first."
+msgid "Leads the team behind Batuta's next-generation endpoint management platform, a distributed system that securely manages 1M+ devices per enterprise customer. Led the ground-up redesign of the endpoint agent platform, replacing a monolithic legacy system with an event-driven microservices architecture in Go on AWS; security-first design with certificate-based device authentication (mTLS), short-lived tokens and post-quantum readiness. Owns engineering operations end to end on an Extreme Programming, test-first discipline; 90%%+ team retention by growing engineers into leaders."
+msgstr "Lidera a equipe por trás da plataforma de gestão de endpoints de nova geração da Batuta, um sistema distribuído que gerencia com segurança 1M+ dispositivos por cliente corporativo. Liderou o redesenho completo da plataforma de agentes de endpoint, substituindo um sistema legado monolítico por uma arquitetura de microsserviços orientada a eventos em Go na AWS; desenho security-first com autenticação de dispositivos por certificado (mTLS), tokens de curta duração e prontidão pós-quântica. Responsável pelas operações de engenharia de ponta a ponta, com disciplina de Extreme Programming e test-first; retenção da equipe acima de 90%%, formando engenheiros em líderes."
 
-msgid "Technical architecture of the EDR solution (Go, Python, React, PostgreSQL, Kafka, Kubernetes); critical incident diagnosis; architecture standards."
-msgstr "Arquitetura técnica da solução de EDR (Go, Python, React, PostgreSQL, Kafka, Kubernetes); diagnóstico de incidentes críticos; padrões de arquitetura."
+msgid "Technical architecture of the EDR solution (Go, Python/FastAPI, React, PostgreSQL, RabbitMQ, Kafka, Redis, Kubernetes on AWS); high-throughput asynchronous backends; CI/CD with Terraform, GitHub Actions, Kubernetes, ArgoCD and Helm; diagnosis of critical production incidents; architecture standards; Vectra security appliances deployed across enterprise datacenters."
+msgstr "Arquitetura técnica da solução de EDR (Go, Python/FastAPI, React, PostgreSQL, RabbitMQ, Kafka, Redis, Kubernetes na AWS); backends assíncronos de alto throughput; CI/CD com Terraform, GitHub Actions, Kubernetes, ArgoCD e Helm; diagnóstico de incidentes críticos em produção; padrões de arquitetura; appliances de segurança Vectra implantados em datacenters corporativos."
 
 msgid "Advisory and consulting"
 msgstr "Conselho e consultoria"
@@ -110,23 +110,30 @@ msgstr "Conselho e consultoria"
 msgid "Brazil"
 msgstr "Brasil"
 
-msgid "Fractional CTO at IEV: architecture governance, technology strategy, engineering org design. Engineering consultant at Lecom and Ikatec: AI harnesses for legacy modernization, productivity metrics, infrastructure cost efficiency. Consultant to AltynLabs, an AI-first lab; partner and advisor to Brazilian technology companies."
-msgstr "CTO fracionado na IEV: governança de arquitetura, estratégia de tecnologia, desenho da organização de engenharia. Consultor de engenharia na Lecom e na Ikatec: harnesses de IA para modernização de legados, métricas de produtividade, eficiência de custos de infraestrutura. Consultor da AltynLabs, um laboratório AI-first; sócio e conselheiro de empresas brasileiras de tecnologia."
+msgid "Software Engineering Advisor at Lecom and Ikatec (since Feb 2026): engineering modernization, AI harnesses to refactor legacy codebases, an Agile adaptation to the AI moment, engineering productivity metrics, architectural validation and cloud cost efficiency. Fractional CTO at IEV (since Jun 2026): AI engineering harnesses, architecture governance, engineering org design and hiring. Consultant to AltynLabs, an AI-first lab; partner and advisor to Brazilian technology companies."
+msgstr "Software Engineering Advisor na Lecom e na Ikatec (desde fev. 2026): modernização de engenharia, harnesses de IA para refatorar bases de código legadas, uma adaptação do Agile ao momento da IA, métricas de produtividade de engenharia, validação arquitetural e eficiência de custos de nuvem. CTO fracionado na IEV (desde jun. 2026): harnesses de engenharia de IA, governança de arquitetura, desenho da organização de engenharia e contratação. Consultor da AltynLabs, um laboratório AI-first; sócio e conselheiro de empresas brasileiras de tecnologia."
 
-msgid "Led the full rebuild of Cloudways (DigitalOcean), which runs 2M+ WordPress and WooCommerce installations, migrated with zero downtime; service-oriented Python backend (Django, FastAPI, PostgreSQL) on Google Cloud; Kubernetes orchestration."
-msgstr "Liderou a reconstrução completa do Cloudways (DigitalOcean), que roda 2M+ instalações de WordPress e WooCommerce, migradas sem indisponibilidade; backend orientado a serviços em Python (Django, FastAPI, PostgreSQL) no Google Cloud; orquestração com Kubernetes."
+msgid "Board member and technology advisor"
+msgstr "Membro do conselho e conselheiro de tecnologia"
+
+msgid "xCube is a proprietary quantitative research and execution firm that selects algorithmic trading strategies by real broker execution rather than backtests. On the board since May 2023: the technology roadmap from a proprietary desk to a go-to-market company, the capabilities that build investor trust (reproducible and auditable scoring, data protection, observability, access controls), architecture and stack review, and the first engineering hires."
+msgstr "A xCube é uma empresa proprietária de pesquisa e execução quantitativa que seleciona estratégias algorítmicas de trading pela execução real na corretora, e não por backtests. No conselho desde maio de 2023: o roadmap de tecnologia da mesa proprietária para uma empresa de go-to-market, as capacidades que constroem a confiança do investidor (scoring reproduzível e auditável, proteção de dados, observabilidade, controles de acesso), revisão de arquitetura e stack e as primeiras contratações de engenharia."
+
+#, python-format
+msgid "Led the full rebuild of Cloudways (DigitalOcean), which runs 2M+ WordPress and WooCommerce installations, migrated with zero downtime; service-oriented Python backend (Django, FastAPI, PostgreSQL) on Google Cloud (Cloud Run, Cloud Functions, Pub/Sub); microservices for WordPress orchestration on Kubernetes. Hired and retained the team (90%%+ retention) and mentored 3+ engineers into leadership roles."
+msgstr "Liderou a reconstrução completa do Cloudways (DigitalOcean), que roda 2M+ instalações de WordPress e WooCommerce, migradas sem indisponibilidade; backend orientado a serviços em Python (Django, FastAPI, PostgreSQL) no Google Cloud (Cloud Run, Cloud Functions, Pub/Sub); microsserviços para orquestração de WordPress em Kubernetes. Contratou e reteve a equipe (retenção acima de 90%%) e foi mentor de 3+ engenheiros até cargos de liderança."
 
 msgid "Intelligence Manager · Senior Market Intelligence Analyst · IT consultant"
 msgstr "Gerente de Inteligência · Analista Sênior de Inteligência de Mercado · Consultor de TI"
 
-msgid "Built and led the data intelligence team: pipelines, business and market intelligence, OKR-based performance management; later advisory in BI and data engineering. Organizational intelligence: turning information into decision."
-msgstr "Montou e liderou a equipe de inteligência de dados: pipelines, inteligência de negócios e de mercado, gestão de desempenho por OKRs; depois, assessoria em BI e engenharia de dados. Inteligência organizacional: transformar informação em decisão."
+msgid "Built and led the data intelligence team from zero: end-to-end collection and integration pipelines across the transactional systems, business and market intelligence, performance management with OKRs, KPIs and KRIs, weekly competitive-intelligence reporting to leadership; later advisory in BI and data engineering. Organizational intelligence: turning information into decision."
+msgstr "Montou e liderou do zero a equipe de inteligência de dados: pipelines de coleta e integração de ponta a ponta sobre os sistemas transacionais, inteligência de negócios e de mercado, gestão de desempenho com OKRs, KPIs e KRIs, relatórios semanais de inteligência competitiva para a liderança; depois, assessoria em BI e engenharia de dados. Inteligência organizacional: transformar informação em decisão."
 
-msgid "Guest professor, MBA"
-msgstr "Professor convidado, MBA"
+msgid "Professor, MBA and undergraduate technology programs"
+msgstr "Professor, MBA e cursos superiores de tecnologia"
 
-msgid "Data analytics for strategic decision: BI, data engineering, agile project management; 50+ students per class. Mentored data science and engineering teams at Kodus (2021 - 2023)."
-msgstr "Análise de dados para a decisão estratégica: BI, engenharia de dados, gestão ágil de projetos; turmas de 50+ alunos. Mentor de equipes de ciência de dados e engenharia na Kodus (2021 - 2023)."
+msgid "MBA in Strategic Management, Operational Excellence and Agile Methods: Data Analysis and AI for Strategic Decisions, each student applying it to a case from their own job. Undergraduate technology degree: Computer Architecture and Operating Systems; MLOps, Edge and Model Deployment. 50+ students per class. Mentored data science and engineering teams at Kodus (2021 - 2023)."
+msgstr "MBA em Gestão Estratégica, Excelência Operacional e Métodos Ágeis: Análise de Dados e IA para Decisões Estratégicas, com cada aluno aplicando o conteúdo a um caso do próprio trabalho. Curso superior de tecnologia: Arquitetura de Computadores e Sistemas Operacionais; MLOps, Edge e Implantação de Modelos. Turmas de 50+ alunos. Mentor de equipes de ciência de dados e engenharia na Kodus (2021 - 2023)."
 
 msgid "Co-founder"
 msgstr "Cofundador"
@@ -134,11 +141,20 @@ msgstr "Cofundador"
 msgid "Digital fabrication lab founded by ten people from programming, physics, design, carpentry and biology; Fab Charter member. BruHack 2017 workshop. The experience that became the research question."
 msgstr "Laboratório de fabricação digital fundado por dez pessoas vindas de programação, física, design, marcenaria e biologia; membro do Fab Charter. Oficina no BruHack 2017. A experiência que virou a pergunta de pesquisa."
 
+msgid "São Paulo Research Foundation (FAPESP)"
+msgstr "Fundação de Amparo à Pesquisa do Estado de São Paulo (FAPESP)"
+
+msgid "Technology and Innovation Researcher"
+msgstr "Pesquisador de Tecnologia e Inovação"
+
+msgid "Led a FAPESP-funded (PIPE) innovation research project: a distributed network of environmental data-collection probes deployed in 10+ hard-to-reach locations, built with rapid prototyping (3D printing) and embedded systems (Arduino, sensors), delivered as a production-ready IoT solution and documented with university researchers."
+msgstr "Liderou um projeto de pesquisa e inovação financiado pela FAPESP (PIPE): uma rede distribuída de sondas de coleta de dados ambientais instaladas em 10+ locais de difícil acesso, construída com prototipagem rápida (impressão 3D) e sistemas embarcados (Arduino, sensores), entregue como solução IoT pronta para produção e documentada com pesquisadores universitários."
+
 msgid "Co-founder and COO"
 msgstr "Cofundador e COO"
 
-msgid "Edtech with an adaptive learning platform on item response theory, serving Pearson Brasil. Team member of a FAPESP PIPE research project on a distributed network of environmental data probes."
-msgstr "Edtech com uma plataforma de aprendizagem adaptativa baseada na teoria de resposta ao item, atendendo a Pearson Brasil. Integrante de um projeto de pesquisa FAPESP PIPE sobre uma rede distribuída de sondas de dados ambientais."
+msgid "Co-founded an edtech serving 5,000+ students: an adaptive learning platform on item response theory, with gamification, for college-entrance preparation; statistical models powering the adaptive engine; learning-object migration delivered to Pearson Brasil on time and under budget. Led strategy, product roadmap and operations from inception to growth stage."
+msgstr "Cofundou uma edtech que atendeu 5.000+ alunos: uma plataforma de aprendizagem adaptativa baseada na teoria de resposta ao item, com gamificação, para a preparação ao vestibular; modelos estatísticos por trás do motor adaptativo; migração de objetos de aprendizagem entregue à Pearson Brasil no prazo e abaixo do orçamento. Liderou estratégia, roadmap de produto e operações da fundação à fase de crescimento."
 
 msgid "Education"
 msgstr "Formação"
@@ -232,8 +248,8 @@ msgstr "Harness Software Engineering, a apresentação"
 msgid "Digital-security service for families, bringing the discipline of enterprise cyber defense to the household: devices, accounts and the people who use them. Advisor and builder."
 msgstr "Serviço de segurança digital para famílias, levando a disciplina da defesa cibernética corporativa para dentro de casa: dispositivos, contas e as pessoas que os usam. Conselheiro e construtor."
 
-msgid "Quantitative Forex research and execution framework: strategies developed on data and validated on real broker execution, not on backtests alone. Advisor and builder."
-msgstr "Framework quantitativo de pesquisa e execução em Forex: estratégias desenvolvidas sobre dados e validadas em execução real na corretora, não só em backtests. Conselheiro e construtor."
+msgid "Proprietary quantitative research and execution firm: algorithmic trading strategies selected by real broker execution rather than backtests. Board member and technology advisor since 2023."
+msgstr "Empresa proprietária de pesquisa e execução quantitativa: estratégias algorítmicas de trading selecionadas pela execução real na corretora, e não por backtests. Membro do conselho e conselheiro de tecnologia desde 2023."
 
 msgid "Presentations"
 msgstr "Apresentações"

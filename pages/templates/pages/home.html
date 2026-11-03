@@ -151,10 +151,10 @@
                                 </div>
                                 <div class="text">
                                     <strong>Software Engineering Manager</strong> (2026 - {% trans "Present" %})<br>
-                                    {% blocktrans trimmed %}Leads the team behind an endpoint detection and response platform managing 1M+ devices per enterprise customer; event-driven architecture in Go on AWS; mTLS and certificate-based device authentication; post-quantum readiness. 90%+ team retention by growing engineers into leaders on a test-first culture.{% endblocktrans %}
+                                    {% blocktrans trimmed %}Leads the team behind Batuta's next-generation endpoint management platform, a distributed system that securely manages 1M+ devices per enterprise customer. Led the ground-up redesign of the endpoint agent platform, replacing a monolithic legacy system with an event-driven microservices architecture in Go on AWS; security-first design with certificate-based device authentication (mTLS), short-lived tokens and post-quantum readiness. Owns engineering operations end to end on an Extreme Programming, test-first discipline; 90%+ team retention by growing engineers into leaders.{% endblocktrans %}
                                     <br><br>
                                     <strong>Principal Software Engineer</strong> (2021 - 2025)<br>
-                                    {% blocktrans trimmed %}Technical architecture of the EDR solution (Go, Python, React, PostgreSQL, Kafka, Kubernetes); critical incident diagnosis; architecture standards.{% endblocktrans %}
+                                    {% blocktrans trimmed %}Technical architecture of the EDR solution (Go, Python/FastAPI, React, PostgreSQL, RabbitMQ, Kafka, Redis, Kubernetes on AWS); high-throughput asynchronous backends; CI/CD with Terraform, GitHub Actions, Kubernetes, ArgoCD and Helm; diagnosis of critical production incidents; architecture standards; Vectra security appliances deployed across enterprise datacenters.{% endblocktrans %}
                                 </div>
                             </div>
 
@@ -164,7 +164,16 @@
                                     {% trans "Advisory and consulting" %}<br>
                                     <small>{% trans "Brazil" %}</small>
                                 </div>
-                                <div class="text">{% blocktrans trimmed %}Fractional CTO at IEV: architecture governance, technology strategy, engineering org design. Engineering consultant at Lecom and Ikatec: AI harnesses for legacy modernization, productivity metrics, infrastructure cost efficiency. Consultant to AltynLabs, an AI-first lab; partner and advisor to Brazilian technology companies.{% endblocktrans %}</div>
+                                <div class="text">{% blocktrans trimmed %}Software Engineering Advisor at Lecom and Ikatec (since Feb 2026): engineering modernization, AI harnesses to refactor legacy codebases, an Agile adaptation to the AI moment, engineering productivity metrics, architectural validation and cloud cost efficiency. Fractional CTO at IEV (since Jun 2026): AI engineering harnesses, architecture governance, engineering org design and hiring. Consultant to AltynLabs, an AI-first lab; partner and advisor to Brazilian technology companies.{% endblocktrans %}</div>
+                            </div>
+
+                            <div class="resume-item content-box">
+                                <div class="date">2023 - {% trans "Present" %}</div>
+                                <div class="name">
+                                    xCube<br>
+                                    <small>{% trans "Board member and technology advisor" %}</small>
+                                </div>
+                                <div class="text">{% blocktrans trimmed %}xCube is a proprietary quantitative research and execution firm that selects algorithmic trading strategies by real broker execution rather than backtests. On the board since May 2023: the technology roadmap from a proprietary desk to a go-to-market company, the capabilities that build investor trust (reproducible and auditable scoring, data protection, observability, access controls), architecture and stack review, and the first engineering hires.{% endblocktrans %}</div>
                             </div>
 
                             <div class="resume-item content-box">
@@ -173,7 +182,7 @@
                                     flugel.it<br>
                                     <small>Principal Software Engineer · Senior Software Engineer</small>
                                 </div>
-                                <div class="text">{% blocktrans trimmed %}Led the full rebuild of Cloudways (DigitalOcean), which runs 2M+ WordPress and WooCommerce installations, migrated with zero downtime; service-oriented Python backend (Django, FastAPI, PostgreSQL) on Google Cloud; Kubernetes orchestration.{% endblocktrans %}</div>
+                                <div class="text">{% blocktrans trimmed %}Led the full rebuild of Cloudways (DigitalOcean), which runs 2M+ WordPress and WooCommerce installations, migrated with zero downtime; service-oriented Python backend (Django, FastAPI, PostgreSQL) on Google Cloud (Cloud Run, Cloud Functions, Pub/Sub); microservices for WordPress orchestration on Kubernetes. Hired and retained the team (90%+ retention) and mentored 3+ engineers into leadership roles.{% endblocktrans %}</div>
                             </div>
 
                             <div class="resume-item content-box">
@@ -182,16 +191,16 @@
                                     Scaffold Education<br>
                                     <small>{% trans "Intelligence Manager · Senior Market Intelligence Analyst · IT consultant" %}</small>
                                 </div>
-                                <div class="text">{% blocktrans trimmed %}Built and led the data intelligence team: pipelines, business and market intelligence, OKR-based performance management; later advisory in BI and data engineering. Organizational intelligence: turning information into decision.{% endblocktrans %}</div>
+                                <div class="text">{% blocktrans trimmed %}Built and led the data intelligence team from zero: end-to-end collection and integration pipelines across the transactional systems, business and market intelligence, performance management with OKRs, KPIs and KRIs, weekly competitive-intelligence reporting to leadership; later advisory in BI and data engineering. Organizational intelligence: turning information into decision.{% endblocktrans %}</div>
                             </div>
 
                             <div class="resume-item content-box">
                                 <div class="date">2024 - {% trans "Present" %}</div>
                                 <div class="name">
                                     Frons Educação<br>
-                                    <small>{% trans "Guest professor, MBA" %}</small>
+                                    <small>{% trans "Professor, MBA and undergraduate technology programs" %}</small>
                                 </div>
-                                <div class="text">{% blocktrans trimmed %}Data analytics for strategic decision: BI, data engineering, agile project management; 50+ students per class. Mentored data science and engineering teams at Kodus (2021 - 2023).{% endblocktrans %}</div>
+                                <div class="text">{% blocktrans trimmed %}MBA in Strategic Management, Operational Excellence and Agile Methods: Data Analysis and AI for Strategic Decisions, each student applying it to a case from their own job. Undergraduate technology degree: Computer Architecture and Operating Systems; MLOps, Edge and Model Deployment. 50+ students per class. Mentored data science and engineering teams at Kodus (2021 - 2023).{% endblocktrans %}</div>
                             </div>
 
                             <div class="resume-item content-box">
@@ -204,12 +213,21 @@
                             </div>
 
                             <div class="resume-item content-box">
+                                <div class="date">2016</div>
+                                <div class="name">
+                                    {% trans "São Paulo Research Foundation (FAPESP)" %}<br>
+                                    <small>{% trans "Technology and Innovation Researcher" %}</small>
+                                </div>
+                                <div class="text">{% blocktrans trimmed %}Led a FAPESP-funded (PIPE) innovation research project: a distributed network of environmental data-collection probes deployed in 10+ hard-to-reach locations, built with rapid prototyping (3D printing) and embedded systems (Arduino, sensors), delivered as a production-ready IoT solution and documented with university researchers.{% endblocktrans %}</div>
+                            </div>
+
+                            <div class="resume-item content-box">
                                 <div class="date">2013 - 2017</div>
                                 <div class="name">
                                     Eletrize<br>
                                     <small>{% trans "Co-founder and COO" %}</small>
                                 </div>
-                                <div class="text">{% blocktrans trimmed %}Edtech with an adaptive learning platform on item response theory, serving Pearson Brasil. Team member of a FAPESP PIPE research project on a distributed network of environmental data probes.{% endblocktrans %}</div>
+                                <div class="text">{% blocktrans trimmed %}Co-founded an edtech serving 5,000+ students: an adaptive learning platform on item response theory, with gamification, for college-entrance preparation; statistical models powering the adaptive engine; learning-object migration delivered to Pearson Brasil on time and under budget. Led strategy, product roadmap and operations from inception to growth stage.{% endblocktrans %}</div>
                             </div>
 
                         </div>
@@ -377,7 +395,7 @@
                             <div class="icon"><span class="fas fa-chart-line"></span></div>
                             <div class="name">xCube</div>
                             <div class="text">
-                                {% blocktrans trimmed %}Quantitative Forex research and execution framework: strategies developed on data and validated on real broker execution, not on backtests alone. Advisor and builder.{% endblocktrans %}
+                                {% blocktrans trimmed %}Proprietary quantitative research and execution firm: algorithmic trading strategies selected by real broker execution rather than backtests. Board member and technology advisor since 2023.{% endblocktrans %}
                                 <br><br>
                                 <a href="https://xcube.finance" target="_blank" rel="noopener">xcube.finance</a>
                             </div>
