@@ -1,5 +1,5 @@
 # robots.txt for ariedi.com
-# Engineering Leader & Cybersecurity Expert Portfolio
+# João Ariedi - engineering leader, AI agent harnesses, research
 
 User-agent: *
 Allow: /

@@ -35,6 +35,11 @@ class Presentations(TemplateView):
     template_name = "pages/presentations.html"
 
 
+class Research(TemplateView):
+
+    template_name = "pages/research.html"
+
+
 @xframe_options_sameorigin
 def serve_presentation(request, filename):
     filepath = os.path.join(PRESENTATIONS_DIR, filename)
@@ -80,7 +85,3 @@ class SendMessage(View):
                 {'msg': 'Sorry, there was an error. Please try again or email me directly.'},
                 status=500
             )
-
-
-
-
