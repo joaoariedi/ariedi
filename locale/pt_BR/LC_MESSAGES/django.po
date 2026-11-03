@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 23:01+0000\n"
+"POT-Creation-Date: 2026-11-03 23:13+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -203,9 +203,6 @@ msgstr "Technical, Cloud Economics Essentials, Sales."
 
 msgid "Languages"
 msgstr "Idiomas"
-
-msgid "Remote from Brazil"
-msgstr "Remoto, a partir do Brasil"
 
 msgid "Portuguese (native)"
 msgstr "Português (nativo)"
