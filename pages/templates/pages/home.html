@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load static i18n %}
 
 {% block content %}
+{% url 'research' as research_url %}
+{% url 'presentations' as presentations_url %}
 
     <!-- Wrapper -->
     <!--suppress ALL -->
@@ -22,15 +24,15 @@
                 <div class="vertical-center">
                     <div class="started-content">
                         <h1 class="h-title">
-                            Hello, I'm <strong>João Ariedi</strong>.<br>
-                            Engineering leader · Builder of AI agent harnesses ·<br>
-                            Researcher on AI and the competences of technical work.<br>
-                            <small>Based in Brazil, remote.</small>
+                            {% blocktrans trimmed %}Hello, I'm <strong>João Ariedi</strong>.{% endblocktrans %}<br>
+                            {% blocktrans trimmed %}Engineering leader · Builder of AI agent harnesses ·<br>
+                            Researcher on AI and the competences of technical work.{% endblocktrans %}<br>
+                            <small>{% trans "Based in Brazil, remote." %}</small>
                         </h1>
                         <div class="h-subtitle typing-subtitle">
-                            <p>I lead <strong>engineering at scale</strong></p>
-                            <p>I build <strong>the harnesses that let AI agents build software</strong></p>
-                            <p>I research <strong>what AI does to the people who use it</strong></p>
+                            <p>{% blocktrans trimmed %}I lead <strong>engineering at scale</strong>{% endblocktrans %}</p>
+                            <p>{% blocktrans trimmed %}I build <strong>the harnesses that let AI agents build software</strong>{% endblocktrans %}</p>
+                            <p>{% blocktrans trimmed %}I research <strong>what AI does to the people who use it</strong>{% endblocktrans %}</p>
                         </div>
                         <span class="typed-subtitle"></span>
                     </div>
@@ -47,27 +49,27 @@
 
             <!-- title -->
             <div class="title">
-                <h2 class="title_inner">About</h2>
+                <h2 class="title_inner">{% trans "About" %}</h2>
             </div>
 
             <div class="content content-box">
 
                 <!-- image -->
                 <div class="image">
-                    <img src={% static "images/profile.jpeg" %} alt="João Ariedi - Engineering leader, builder of AI agent harnesses, researcher" loading="lazy" width="300" height="300" />
+                    <img src={% static "images/profile.jpeg" %} alt="{% trans 'João Ariedi - Engineering leader, builder of AI agent harnesses, researcher' %}" loading="lazy" width="300" height="300" />
                 </div>
 
                 <!-- desc -->
                 <div class="desc">
-                    <p>I lead engineering where scale, security and AI meet: turning business intent into systems that hold under load, and building the teams behind them.</p>
-                    <p>16 years in technology, 9+ leading engineering teams, the last decade spanning organizational intelligence and cyber defense. Today I lead engineering for a US cybersecurity company, advise technology companies as a partner and fractional CTO, and teach in MBA programs.</p>
-                    <p>How I see the shift: AI moves the bottleneck from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds it: the harness and orchestration that develop, improve and maintain the product 24/7. As in Turing's morphogenesis, AI is the activator and the engineer the inhibitor; the value lives in the tension.</p>
-                    <p>Technologist in Cyber Defense (FIAP) with five professional qualifications. Security by design: mTLS, certificate-based device authentication, post-quantum readiness.</p>
+                    <p>{% blocktrans trimmed %}I lead engineering where scale, security and AI meet: turning business intent into systems that hold under load, and building the teams behind them.{% endblocktrans %}</p>
+                    <p>{% blocktrans trimmed %}16 years in technology, 9+ leading engineering teams, the last decade spanning organizational intelligence and cyber defense. Today I lead engineering for a US cybersecurity company, advise technology companies as a partner and fractional CTO, and teach in MBA programs.{% endblocktrans %}</p>
+                    <p>{% blocktrans trimmed %}How I see the shift: AI moves the bottleneck from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds it: the harness and orchestration that develop, improve and maintain the product 24/7. As in Turing's morphogenesis, AI is the activator and the engineer the inhibitor; the value lives in the tension.{% endblocktrans %}</p>
+                    <p>{% blocktrans trimmed %}Technologist in Cyber Defense (FIAP) with five professional qualifications. Security by design: mTLS, certificate-based device authentication, post-quantum readiness.{% endblocktrans %}</p>
                     <div class="info-list">
                         <ul>
-                            <li><strong>Experience:</strong> 16 years in technology, 9+ leading engineering teams</li>
-                            <li><strong>E-mail:</strong> joaoariedi@gmail.com</li>
-                            <li><strong>Location:</strong> Remote from Brazil · PT/EN</li>
+                            <li>{% blocktrans trimmed %}<strong>Experience:</strong> 16 years in technology, 9+ leading engineering teams{% endblocktrans %}</li>
+                            <li><strong>{% trans "E-mail:" %}</strong> joaoariedi@gmail.com</li>
+                            <li>{% blocktrans trimmed %}<strong>Location:</strong> Remote from Brazil · PT/EN{% endblocktrans %}</li>
                         </ul>
                     </div>
                 </div>
@@ -82,7 +84,7 @@
 
                 <!-- title -->
                 <div class="title">
-                    <h2 class="title_inner">Services</h2>
+                    <h2 class="title_inner">{% trans "Services" %}</h2>
                 </div>
 
                 <!-- service items -->
@@ -91,32 +93,32 @@
                     <div class="service-col">
                         <div class="service-item content-box">
                             <div class="icon"><span class="fas fa-users-cog"></span></div>
-                            <div class="name">Engineering leadership</div>
-                            <div class="text">Teams at scale, 90%+ retention, engineers grown into leaders on a test-first culture. Security by design in every architectural decision.</div>
+                            <div class="name">{% trans "Engineering leadership" %}</div>
+                            <div class="text">{% blocktrans trimmed %}Teams at scale, 90%+ retention, engineers grown into leaders on a test-first culture. Security by design in every architectural decision.{% endblocktrans %}</div>
                         </div>
                     </div>
 
                     <div class="service-col">
                         <div class="service-item content-box">
                             <div class="icon"><span class="fas fa-handshake"></span></div>
-                            <div class="name">Advisory and board work</div>
-                            <div class="text">Partner and advisor to Brazilian technology companies on strategy, architecture governance and AI adoption. Co-founder and former COO of an edtech.</div>
+                            <div class="name">{% trans "Advisory and board work" %}</div>
+                            <div class="text">{% blocktrans trimmed %}Partner and advisor to Brazilian technology companies on strategy, architecture governance and AI adoption. Co-founder and former COO of an edtech.{% endblocktrans %}</div>
                         </div>
                     </div>
 
                     <div class="service-col">
                         <div class="service-item content-box">
                             <div class="icon"><span class="fas fa-user-tie"></span></div>
-                            <div class="name">Consulting and fractional CTO</div>
-                            <div class="text">Architecture governance, engineering org design, AI harnesses for legacy modernization, productivity metrics, infrastructure cost efficiency.</div>
+                            <div class="name">{% trans "Consulting and fractional CTO" %}</div>
+                            <div class="text">{% blocktrans trimmed %}Architecture governance, engineering org design, AI harnesses for legacy modernization, productivity metrics, infrastructure cost efficiency.{% endblocktrans %}</div>
                         </div>
                     </div>
 
                     <div class="service-col">
                         <div class="service-item content-box">
                             <div class="icon"><span class="fas fa-chalkboard-teacher"></span></div>
-                            <div class="name">Teaching and research</div>
-                            <div class="text">MBA guest professor. Research on AI agents and engineering competence; paper accepted at MEISTUDIES 2026.</div>
+                            <div class="name">{% trans "Teaching and research" %}</div>
+                            <div class="text">{% blocktrans trimmed %}MBA guest professor. Research on AI agents and engineering competence; paper accepted at MEISTUDIES 2026.{% endblocktrans %}</div>
                         </div>
                     </div>
 
@@ -135,34 +137,34 @@
 
                         <!-- title -->
                         <div class="title">
-                            <h2 class="title_inner">Experience</h2>
+                            <h2 class="title_inner">{% trans "Experience" %}</h2>
                         </div>
 
                         <!-- resume items -->
                         <div class="resume-items">
 
                             <div class="resume-item content-box active">
-                                <div class="date">2021 - Present</div>
+                                <div class="date">2021 - {% trans "Present" %}</div>
                                 <div class="name">
                                     Batuta<br>
-                                    <small>San Francisco, cybersecurity (Remote)</small>
+                                    <small>{% trans "San Francisco, cybersecurity (Remote)" %}</small>
                                 </div>
                                 <div class="text">
-                                    <strong>Software Engineering Manager</strong> (2026 - Present)<br>
-                                    Leads the team behind an endpoint detection and response platform managing 1M+ devices per enterprise customer; event-driven architecture in Go on AWS; mTLS and certificate-based device authentication; post-quantum readiness. 90%+ team retention by growing engineers into leaders on a test-first culture.
+                                    <strong>Software Engineering Manager</strong> (2026 - {% trans "Present" %})<br>
+                                    {% blocktrans trimmed %}Leads the team behind an endpoint detection and response platform managing 1M+ devices per enterprise customer; event-driven architecture in Go on AWS; mTLS and certificate-based device authentication; post-quantum readiness. 90%+ team retention by growing engineers into leaders on a test-first culture.{% endblocktrans %}
                                     <br><br>
                                     <strong>Principal Software Engineer</strong> (2021 - 2025)<br>
-                                    Technical architecture of the EDR solution (Go, Python, React, PostgreSQL, Kafka, Kubernetes); critical incident diagnosis; architecture standards.
+                                    {% blocktrans trimmed %}Technical architecture of the EDR solution (Go, Python, React, PostgreSQL, Kafka, Kubernetes); critical incident diagnosis; architecture standards.{% endblocktrans %}
                                 </div>
                             </div>
 
                             <div class="resume-item content-box">
-                                <div class="date">2026 - Present</div>
+                                <div class="date">2026 - {% trans "Present" %}</div>
                                 <div class="name">
-                                    Advisory and consulting<br>
-                                    <small>Brazil</small>
+                                    {% trans "Advisory and consulting" %}<br>
+                                    <small>{% trans "Brazil" %}</small>
                                 </div>
-                                <div class="text">Fractional CTO at IEV: architecture governance, technology strategy, engineering org design. Engineering consultant at Lecom and Ikatec: AI harnesses for legacy modernization, productivity metrics, infrastructure cost efficiency. Consultant to AltynLabs, an AI-first lab; partner and advisor to Brazilian technology companies.</div>
+                                <div class="text">{% blocktrans trimmed %}Fractional CTO at IEV: architecture governance, technology strategy, engineering org design. Engineering consultant at Lecom and Ikatec: AI harnesses for legacy modernization, productivity metrics, infrastructure cost efficiency. Consultant to AltynLabs, an AI-first lab; partner and advisor to Brazilian technology companies.{% endblocktrans %}</div>
                             </div>
 
                             <div class="resume-item content-box">
@@ -171,43 +173,43 @@
                                     flugel.it<br>
                                     <small>Principal Software Engineer · Senior Software Engineer</small>
                                 </div>
-                                <div class="text">Led the full rebuild of Cloudways (DigitalOcean), which runs 2M+ WordPress and WooCommerce installations, migrated with zero downtime; service-oriented Python backend (Django, FastAPI, PostgreSQL) on Google Cloud; Kubernetes orchestration.</div>
+                                <div class="text">{% blocktrans trimmed %}Led the full rebuild of Cloudways (DigitalOcean), which runs 2M+ WordPress and WooCommerce installations, migrated with zero downtime; service-oriented Python backend (Django, FastAPI, PostgreSQL) on Google Cloud; Kubernetes orchestration.{% endblocktrans %}</div>
                             </div>
 
                             <div class="resume-item content-box">
                                 <div class="date">2018 - 2024</div>
                                 <div class="name">
                                     Scaffold Education<br>
-                                    <small>Intelligence Manager · Senior Market Intelligence Analyst · IT consultant</small>
+                                    <small>{% trans "Intelligence Manager · Senior Market Intelligence Analyst · IT consultant" %}</small>
                                 </div>
-                                <div class="text">Built and led the data intelligence team: pipelines, business and market intelligence, OKR-based performance management; later advisory in BI and data engineering. Organizational intelligence: turning information into decision.</div>
+                                <div class="text">{% blocktrans trimmed %}Built and led the data intelligence team: pipelines, business and market intelligence, OKR-based performance management; later advisory in BI and data engineering. Organizational intelligence: turning information into decision.{% endblocktrans %}</div>
                             </div>
 
                             <div class="resume-item content-box">
-                                <div class="date">2024 - Present</div>
+                                <div class="date">2024 - {% trans "Present" %}</div>
                                 <div class="name">
                                     Frons Educação<br>
-                                    <small>Guest professor, MBA</small>
+                                    <small>{% trans "Guest professor, MBA" %}</small>
                                 </div>
-                                <div class="text">Data analytics for strategic decision: BI, data engineering, agile project management; 50+ students per class. Mentored data science and engineering teams at Kodus (2021 - 2023).</div>
+                                <div class="text">{% blocktrans trimmed %}Data analytics for strategic decision: BI, data engineering, agile project management; 50+ students per class. Mentored data science and engineering teams at Kodus (2021 - 2023).{% endblocktrans %}</div>
                             </div>
 
                             <div class="resume-item content-box">
                                 <div class="date">2016 - 2018</div>
                                 <div class="name">
                                     AEON Fablab, Bauru<br>
-                                    <small>Co-founder</small>
+                                    <small>{% trans "Co-founder" %}</small>
                                 </div>
-                                <div class="text">Digital fabrication lab founded by ten people from programming, physics, design, carpentry and biology; Fab Charter member. BruHack 2017 workshop. The experience that became the research question.</div>
+                                <div class="text">{% blocktrans trimmed %}Digital fabrication lab founded by ten people from programming, physics, design, carpentry and biology; Fab Charter member. BruHack 2017 workshop. The experience that became the research question.{% endblocktrans %}</div>
                             </div>
 
                             <div class="resume-item content-box">
                                 <div class="date">2013 - 2017</div>
                                 <div class="name">
                                     Eletrize<br>
-                                    <small>Co-founder and COO</small>
+                                    <small>{% trans "Co-founder and COO" %}</small>
                                 </div>
-                                <div class="text">Edtech with an adaptive learning platform on item response theory, serving Pearson Brasil. Team member of a FAPESP PIPE research project on a distributed network of environmental data probes.</div>
+                                <div class="text">{% blocktrans trimmed %}Edtech with an adaptive learning platform on item response theory, serving Pearson Brasil. Team member of a FAPESP PIPE research project on a distributed network of environmental data probes.{% endblocktrans %}</div>
                             </div>
 
                         </div>
@@ -218,7 +220,7 @@
 
                         <!-- title -->
                         <div class="title">
-                            <h2 class="title_inner">Education</h2>
+                            <h2 class="title_inner">{% trans "Education" %}</h2>
                         </div>
 
                         <!-- resume items -->
@@ -227,48 +229,48 @@
                             <div class="resume-item content-box">
                                 <div class="date">2024 - 2025</div>
                                 <div class="name">
-                                    Tecnólogo em Defesa Cibernética (Cyber Defense)<br>
+                                    {% trans "Technologist in Cyber Defense (Tecnólogo em Defesa Cibernética)" %}<br>
                                     <small>FIAP</small>
                                 </div>
-                                <div class="text">2,000 h, MEC-recognised, concluded.</div>
+                                <div class="text">{% trans "2,000 h, MEC-recognised, concluded." %}</div>
                             </div>
 
                             <div class="resume-item content-box">
                                 <div class="date">2026 - </div>
                                 <div class="name">
-                                    PPGMIT, Media and Technology<br>
-                                    <small>São Paulo State University, UNESP Bauru</small>
+                                    {% trans "PPGMIT, Media and Technology" %}<br>
+                                    <small>{% trans "São Paulo State University, UNESP Bauru" %}</small>
                                 </div>
-                                <div class="text">Master's application, in selection.</div>
+                                <div class="text">{% trans "Master's application, in selection." %}</div>
                             </div>
 
                             <div class="resume-item content-box">
                                 <div class="date">2018 - 2022</div>
                                 <div class="name">
-                                    Production Engineering<br>
-                                    <small>São Paulo State University, UNESP</small>
+                                    {% trans "Production Engineering" %}<br>
+                                    <small>{% trans "São Paulo State University, UNESP" %}</small>
                                 </div>
-                                <div class="text">Coursework. Organizational intelligence, business strategy, competitive intelligence and knowledge management.</div>
+                                <div class="text">{% blocktrans trimmed %}Coursework. Organizational intelligence, business strategy, competitive intelligence and knowledge management.{% endblocktrans %}</div>
                             </div>
 
                             <div class="resume-item content-box">
                                 <div class="date">2010 - 2014</div>
                                 <div class="name">
-                                    Physics teaching degree<br>
-                                    <small>São Paulo State University, UNESP</small>
+                                    {% trans "Physics teaching degree" %}<br>
+                                    <small>{% trans "São Paulo State University, UNESP" %}</small>
                                 </div>
-                                <div class="text">Coursework. Left the course to co-found my first learning technology startup.</div>
+                                <div class="text">{% blocktrans trimmed %}Coursework. Left the course to co-found my first learning technology startup.{% endblocktrans %}</div>
                             </div>
 
                             <div class="resume-item content-box">
                                 <div class="date">2023 - 2025</div>
                                 <div class="name">
-                                    Certifications<br>
+                                    {% trans "Certifications" %}<br>
                                     <small>FIAP · AWS</small>
                                 </div>
                                 <div class="text">
-                                    FIAP (2024 and 2025): Certified Cybersecurity Professional, Information Security Officer, Certified Information Security Manager, Penetration Testing, Certified Forensics Professional.<br>
-                                    AWS Partner accreditations (2023): Technical, Cloud Economics Essentials, Sales.
+                                    {% blocktrans trimmed %}FIAP (2024 and 2025): Certified Cybersecurity Professional, Information Security Officer, Certified Information Security Manager, Penetration Testing, Certified Forensics Professional.{% endblocktrans %}<br>
+                                    {% blocktrans trimmed %}AWS Partner accreditations (2023): Technical, Cloud Economics Essentials, Sales.{% endblocktrans %}
                                 </div>
                             </div>
 
@@ -285,37 +287,37 @@
 
                 <!-- title -->
                 <div class="title">
-                    <h2 class="title_inner">Research and publications</h2>
+                    <h2 class="title_inner">{% trans "Research and publications" %}</h2>
                 </div>
 
                 <!-- resume items -->
                 <div class="resume-items">
 
                     <div class="resume-item content-box active">
-                        <div class="date">2026 · article</div>
+                        <div class="date">2026 · {% trans "article" %}</div>
                         <div class="name">
                             Democratizando a fabricação digital em Fab Labs: efeitos cognitivos das interfaces agênticas no projeto<br>
-                            <small>with Dorival Campos Rossi (UNESP) · 9th International Congress Media Ecology and Image Studies (MEISTUDIES)</small>
+                            <small>{% blocktrans trimmed %}with Dorival Campos Rossi (UNESP) · 9th International Congress Media Ecology and Image Studies (MEISTUDIES){% endblocktrans %}</small>
                         </div>
-                        <div class="text">Accepted Aug 2026, full text submitted Oct 2026, presented Nov 2026. Argues the <em>syntagm transition</em>: agentic interfaces absorb whole links of the design chain. <a href="{% url 'research' %}#meistudies-2026">Abstract and extended summary in English</a>.</div>
+                        <div class="text">{% blocktrans trimmed with url=research_url %}Accepted Aug 2026, full text submitted Oct 2026, presented Nov 2026. Argues the <em>syntagm transition</em>: agentic interfaces absorb whole links of the design chain. <a href="{{ url }}#meistudies-2026">Abstract and extended summary</a>.{% endblocktrans %}</div>
                     </div>
 
                     <div class="resume-item content-box">
-                        <div class="date">2026 · paper</div>
+                        <div class="date">2026 · {% trans "paper" %}</div>
                         <div class="name">
                             A cultura organizacional na transformação de organizações tradicionais em organizações AI first<br>
-                            <small>second author of four · XXXIII SIMPEP, Bauru, Nov 2026</small>
+                            <small>{% blocktrans trimmed %}second author of four · XXXIII SIMPEP, Bauru, Nov 2026{% endblocktrans %}</small>
                         </div>
-                        <div class="text">Um estudo de caso em um laboratório corporativo de inteligência artificial. <a href="{% url 'research' %}#simpep-2026">Abstract and extended summary in English</a>.</div>
+                        <div class="text">{% blocktrans trimmed with url=research_url %}A case study of a corporate artificial intelligence laboratory. <a href="{{ url }}#simpep-2026">Abstract and extended summary</a>.{% endblocktrans %}</div>
                     </div>
 
                     <div class="resume-item content-box">
-                        <div class="date">2026 - · master's pre-research</div>
+                        <div class="date">2026 - · {% trans "master's pre-research" %}</div>
                         <div class="name">
-                            An agentic interface for a university Fab Lab<br>
+                            {% trans "An agentic interface for a university Fab Lab" %}<br>
                             <small>PPGMIT, UNESP Bauru</small>
                         </div>
-                        <div class="text">An LLM-based agentic interface for a university Fab Lab's laser cutter, measuring access, artifact quality, knowledge retention and which competence profiles become productive.</div>
+                        <div class="text">{% blocktrans trimmed %}An LLM-based agentic interface for a university Fab Lab's laser cutter, measuring access, artifact quality, knowledge retention and which competence profiles become productive.{% endblocktrans %}</div>
                     </div>
 
                 </div>
@@ -339,7 +341,7 @@
 
                 <!-- title -->
                 <div class="title">
-                    <h2 class="title_inner">Work</h2>
+                    <h2 class="title_inner">{% trans "Work" %}</h2>
                 </div>
 
                 <!-- work items -->
@@ -348,12 +350,12 @@
                     <div class="service-col">
                         <div class="service-item content-box">
                             <div class="icon"><img src={% static "images/hefesto-icon.svg" %} alt="Hefesto" width="40" height="40" loading="lazy" /></div>
-                            <div class="name">Hefesto, a development harness for Claude Code</div>
+                            <div class="name">{% trans "Hefesto, a development harness for Claude Code" %}</div>
                             <div class="text">
-                                A spec-driven workflow, specialist agents and quality gates enforced by hooks rather than by good intentions: the agent cannot skip tests, weaken assertions, commit secrets or run a destructive command, because a hook exits non-zero. 27 commands, 7 specialist agents, 16 hooks, deterministic workflows with adversarial verification, multi-session orchestration over a shared ledger. MIT, v9.1.3.
+                                {% blocktrans trimmed %}Spec-driven workflow, specialist agents and quality gates enforced by hooks rather than good intentions: the agent cannot skip tests, weaken assertions or commit secrets, because a hook exits non-zero. 27 commands, 7 agents, 16 hooks. Open source, MIT, v9.1.3.{% endblocktrans %}
                                 <br><br>
-                                <a href="https://github.com/joaoariedi/hefesto" target="_blank" rel="noopener">Repository</a> ·
-                                <a href="https://github.com/joaoariedi/hefesto/blob/main/hefesto-sdlc.html" target="_blank" rel="noopener">Harness Software Engineering, the presentation</a>
+                                <a href="https://github.com/joaoariedi/hefesto" target="_blank" rel="noopener">{% trans "Repository" %}</a> ·
+                                <a href="https://github.com/joaoariedi/hefesto/blob/main/hefesto-sdlc.html" target="_blank" rel="noopener">{% trans "Harness Software Engineering, the presentation" %}</a>
                             </div>
                         </div>
                     </div>
@@ -363,7 +365,7 @@
                             <div class="icon"><span class="fas fa-shield-alt"></span></div>
                             <div class="name">Safesphere</div>
                             <div class="text">
-                                Digital-security service for families. Advisor and builder.
+                                {% blocktrans trimmed %}Digital-security service for families, bringing the discipline of enterprise cyber defense to the household: devices, accounts and the people who use them. Advisor and builder.{% endblocktrans %}
                                 <br><br>
                                 <a href="https://www.safesphere.com.br" target="_blank" rel="noopener">safesphere.com.br</a>
                             </div>
@@ -375,7 +377,7 @@
                             <div class="icon"><span class="fas fa-chart-line"></span></div>
                             <div class="name">xCube</div>
                             <div class="text">
-                                Quantitative Forex research and execution framework, validated on real broker execution. Advisor and builder.
+                                {% blocktrans trimmed %}Quantitative Forex research and execution framework: strategies developed on data and validated on real broker execution, not on backtests alone. Advisor and builder.{% endblocktrans %}
                                 <br><br>
                                 <a href="https://xcube.finance" target="_blank" rel="noopener">xcube.finance</a>
                             </div>
@@ -385,11 +387,11 @@
                     <div class="service-col">
                         <div class="service-item content-box">
                             <div class="icon"><span class="fas fa-chalkboard-teacher"></span></div>
-                            <div class="name">Presentations</div>
+                            <div class="name">{% trans "Presentations" %}</div>
                             <div class="text">
-                                Modern Engineering, the deck on how engineering teams work now.
+                                {% blocktrans trimmed %}Modern Engineering, the deck on how engineering teams work now that AI writes much of the code: embedded viewer, fullscreen and PDF download.{% endblocktrans %}
                                 <br><br>
-                                <a href={% url 'presentations' %}>View presentations</a>
+                                <a href="{{ presentations_url }}">{% trans "View presentations" %}</a>
                             </div>
                         </div>
                     </div>
@@ -406,22 +408,22 @@
 
                 <!-- title -->
                 <div class="title">
-                    <h2 class="title_inner">Skills</h2>
+                    <h2 class="title_inner">{% trans "Skills" %}</h2>
                 </div>
 
                 <!-- skills groups -->
                 <div class="content-box">
                     <div class="single-post-text">
-                        <h4>Engineering</h4>
-                        <p>Go, Python (Django, FastAPI), JavaScript/Node, React · PostgreSQL, Redis · Kafka, RabbitMQ · Kubernetes, AWS, Google Cloud, Terraform · event-driven and service-oriented architecture, CI/CD, test-first.</p>
-                        <h4>Security</h4>
-                        <p>EDR architecture, mTLS and PKI, certificate-based device authentication, post-quantum readiness, penetration testing, forensics.</p>
-                        <h4>AI engineering</h4>
-                        <p>Claude Code harness design, spec-driven development, multi-agent orchestration, hook-enforced quality gates, agent evaluation.</p>
-                        <h4>Intelligence</h4>
-                        <p>Business and market intelligence, data pipelines, BI, knowledge management, OKRs.</p>
-                        <h4>Fabrication</h4>
-                        <p>Laser cutting, 3D printing, Fab Lab operation.</p>
+                        <h4>{% trans "Engineering" %}</h4>
+                        <p>{% blocktrans trimmed %}Go, Python (Django, FastAPI), JavaScript/Node, React · PostgreSQL, Redis · Kafka, RabbitMQ · Kubernetes, AWS, Google Cloud, Terraform · event-driven and service-oriented architecture, CI/CD, test-first.{% endblocktrans %}</p>
+                        <h4>{% trans "Security" %}</h4>
+                        <p>{% blocktrans trimmed %}EDR architecture, mTLS and PKI, certificate-based device authentication, post-quantum readiness, penetration testing, forensics.{% endblocktrans %}</p>
+                        <h4>{% trans "AI engineering" %}</h4>
+                        <p>{% blocktrans trimmed %}Claude Code harness design, spec-driven development, multi-agent orchestration, hook-enforced quality gates, agent evaluation.{% endblocktrans %}</p>
+                        <h4>{% trans "Intelligence" %}</h4>
+                        <p>{% blocktrans trimmed %}Business and market intelligence, data pipelines, BI, knowledge management, OKRs.{% endblocktrans %}</p>
+                        <h4>{% trans "Fabrication" %}</h4>
+                        <p>{% trans "Laser cutting, 3D printing, Fab Lab operation." %}</p>
                     </div>
                 </div>
 
@@ -434,20 +436,20 @@
 
                 <!-- title -->
                 <div class="title">
-                    <h2 class="title_inner">Languages</h2>
+                    <h2 class="title_inner">{% trans "Languages" %}</h2>
                 </div>
 
                 <!-- languages -->
                 <div class="skills list content-box">
                     <ul>
                         <li>
-                            <div class="name">Portuguese (native)</div>
+                            <div class="name">{% trans "Portuguese (native)" %}</div>
                         </li>
                         <li>
-                            <div class="name">English (bilingual at work)</div>
+                            <div class="name">{% trans "English (bilingual at work)" %}</div>
                         </li>
                         <li>
-                            <div class="name">Spanish (reading)</div>
+                            <div class="name">{% trans "Spanish (reading)" %}</div>
                         </li>
                     </ul>
                 </div>
@@ -461,7 +463,7 @@
 
                 <!-- title -->
                 <div class="title">
-                    <h2 class="title_inner">Interests</h2>
+                    <h2 class="title_inner">{% trans "Interests" %}</h2>
                 </div>
 
                 <!-- interests items -->
@@ -470,32 +472,32 @@
                     <div class="service-col">
                         <div class="service-item content-box">
                             <div class="icon"><span class="fas fa-server"></span></div>
-                            <div class="name">Home Lab</div>
-                            <div class="text">Running 2 Proxmox nodes that host most of my daily apps. Continuous hands-on learning with infrastructure.</div>
+                            <div class="name">{% trans "Home Lab" %}</div>
+                            <div class="text">{% blocktrans trimmed %}Running 2 Proxmox nodes that host most of my daily apps. Continuous hands-on learning with infrastructure.{% endblocktrans %}</div>
                         </div>
                     </div>
 
                     <div class="service-col">
                         <div class="service-item content-box">
                             <div class="icon"><span class="fas fa-cubes"></span></div>
-                            <div class="name">Digital fabrication</div>
-                            <div class="text">Laser cutting and 3D printing. Co-founded a Fab Lab; now researching how agentic interfaces change who gets to make things.</div>
+                            <div class="name">{% trans "Digital fabrication" %}</div>
+                            <div class="text">{% blocktrans trimmed %}Laser cutting and 3D printing. Co-founded a Fab Lab; now researching how agentic interfaces change who gets to make things.{% endblocktrans %}</div>
                         </div>
                     </div>
 
                     <div class="service-col">
                         <div class="service-item content-box">
                             <div class="icon"><span class="fas fa-gamepad"></span></div>
-                            <div class="name">Games</div>
-                            <div class="text">Real-time strategy enthusiast. Problem-solving mindset extends to gaming and creative challenges.</div>
+                            <div class="name">{% trans "Games" %}</div>
+                            <div class="text">{% blocktrans trimmed %}Real-time strategy enthusiast. Problem-solving mindset extends to gaming and creative challenges.{% endblocktrans %}</div>
                         </div>
                     </div>
 
                     <div class="service-col">
                         <div class="service-item content-box">
                             <div class="icon"><span class="fas fa-guitar"></span></div>
-                            <div class="name">Music</div>
-                            <div class="text">Classical guitar student. Creative outlet that complements analytical work.</div>
+                            <div class="name">{% trans "Music" %}</div>
+                            <div class="text">{% blocktrans trimmed %}Classical guitar student. Creative outlet that complements analytical work.{% endblocktrans %}</div>
                         </div>
                     </div>
 
@@ -511,13 +513,13 @@
 
                 <!-- title -->
                 <div class="title">
-                    <h2 class="title_inner">Motivation</h2>
+                    <h2 class="title_inner">{% trans "Motivation" %}</h2>
                 </div>
 
                 <div class="content-box">
                     <div class="single-post-text">
                         <p>
-                            AI moves the bottleneck of engineering from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds, improves and maintains it.
+                            {% blocktrans trimmed %}AI moves the bottleneck of engineering from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds, improves and maintains it.{% endblocktrans %}
                         </p>
                     </div>
                 </div>
@@ -532,7 +534,7 @@
 
                 <!-- title -->
                 <div class="title">
-                    <h2 class="title_inner">Contacts</h2>
+                    <h2 class="title_inner">{% trans "Contacts" %}</h2>
                 </div>
 
                 <!-- contacts items -->
@@ -541,7 +543,7 @@
                     <div class="service-col">
                         <div class="service-item content-box">
                             <div class="icon"><span class="fas fa-envelope"></span></div>
-                            <div class="name">Email</div>
+                            <div class="name">{% trans "Email" %}</div>
                             <div class="text"><a href="mailto:joaoariedi@gmail.com">joaoariedi@gmail.com</a></div>
                         </div>
                     </div>

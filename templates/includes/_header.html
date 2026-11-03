@@ -1,5 +1,5 @@
-{% load static %}
-
+{% load static i18n i18n_extras %}
+{% get_current_language as LANGUAGE_CODE %}
 <head>
 	<!-- Basic Meta -->
 	<meta charset="UTF-8">
@@ -7,38 +7,41 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<!-- SEO Meta Tags -->
-	<title>João Ariedi - Engineering Leader | AI Agent Harnesses | Research on AI and Competence</title>
-	<meta name="description" content="João Ariedi - Engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work. 16 years in technology, 9+ leading engineering teams. Leads engineering for a US cybersecurity company; author of Hefesto, an open-source development harness for Claude Code." />
-	<meta name="keywords" content="engineering leader, software engineering manager, AI agent harness, Claude Code, spec-driven development, fractional CTO, board advisory, cyber defense, EDR, Go, Python, Kubernetes, AWS, research, digital fabrication, Fab Lab, remote, Brazil" />
+	<title>{% trans "João Ariedi - Engineering Leader | AI Agent Harnesses | Research on AI and Competence" %}</title>
+	<meta name="description" content="{% trans 'João Ariedi - Engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work. 16 years in technology, 9+ leading engineering teams. Leads engineering for a US cybersecurity company; author of Hefesto, an open-source development harness for Claude Code.' %}" />
+	<meta name="keywords" content="{% trans 'engineering leader, software engineering manager, AI agent harness, Claude Code, spec-driven development, fractional CTO, board advisory, cyber defense, EDR, Go, Python, Kubernetes, AWS, research, digital fabrication, Fab Lab, remote, Brazil' %}" />
 	<meta name="author" content="João Ariedi" />
 	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-	<link rel="canonical" href="https://ariedi.com/" />
+	<link rel="canonical" href="https://ariedi.com{{ request.path }}" />
+	<link rel="alternate" hreflang="en" href="https://ariedi.com{% switch_lang_url 'en' %}" />
+	<link rel="alternate" hreflang="pt-BR" href="https://ariedi.com{% switch_lang_url 'pt-br' %}" />
+	<link rel="alternate" hreflang="x-default" href="https://ariedi.com{% switch_lang_url 'en' %}" />
 
 	<!-- Language & Locale -->
-	<meta name="language" content="English" />
+	<meta name="language" content="{% if LANGUAGE_CODE == 'pt-br' %}Portuguese{% else %}English{% endif %}" />
 	<meta name="geo.region" content="BR-SP" />
 	<meta name="geo.placename" content="Bauru, Brazil" />
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://ariedi.com/" />
-	<meta property="og:title" content="João Ariedi - Engineering Leader | AI Agent Harnesses | Research" />
-	<meta property="og:description" content="Engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work. 16 years in technology, 9+ leading engineering teams." />
+	<meta property="og:url" content="https://ariedi.com{{ request.path }}" />
+	<meta property="og:title" content="{% trans 'João Ariedi - Engineering Leader | AI Agent Harnesses | Research' %}" />
+	<meta property="og:description" content="{% trans 'Engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work. 16 years in technology, 9+ leading engineering teams.' %}" />
 	<meta property="og:image" content="{% static 'images/profile.jpeg' %}" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
-	<meta property="og:locale" content="en_US" />
+	<meta property="og:locale" content="{% if LANGUAGE_CODE == 'pt-br' %}pt_BR{% else %}en_US{% endif %}" />
 	<meta property="og:site_name" content="João Ariedi" />
 
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:url" content="https://ariedi.com/" />
-	<meta name="twitter:title" content="João Ariedi - Engineering Leader | AI Agent Harnesses | Research" />
-	<meta name="twitter:description" content="Engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work. 16 years in technology, 9+ leading engineering teams." />
+	<meta name="twitter:url" content="https://ariedi.com{{ request.path }}" />
+	<meta name="twitter:title" content="{% trans 'João Ariedi - Engineering Leader | AI Agent Harnesses | Research' %}" />
+	<meta name="twitter:description" content="{% trans 'Engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work. 16 years in technology, 9+ leading engineering teams.' %}" />
 	<meta name="twitter:image" content="{% static 'images/profile.jpeg' %}" />
 
 	<!-- LinkedIn specific -->
-	<meta property="og:image:alt" content="João Ariedi - Engineering Leader" />
+	<meta property="og:image:alt" content="{% trans 'João Ariedi - Engineering Leader' %}" />
 	<meta name="linkedin:owner" content="joaoariedi" />
 
 	<!-- Structured Data - Person Schema -->
@@ -50,7 +53,7 @@
 			"@type": "Person",
 			"@id": "https://ariedi.com/#person",
 			"name": "João Ariedi",
-			"description": "Engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work. 16 years in technology, 9+ leading engineering teams, the last decade spanning organizational intelligence and cyber defense.",
+			"description": "{% trans 'Engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work. 16 years in technology, 9+ leading engineering teams, the last decade spanning organizational intelligence and cyber defense.' %}",
 			"image": "https://ariedi.com/static/images/profile.jpeg",
 			"url": "https://ariedi.com",
 			"jobTitle": "Software Engineering Manager",
@@ -122,12 +125,12 @@
 		"@type": "WebSite",
 		"@id": "https://ariedi.com/#website",
 		"url": "https://ariedi.com",
-		"name": "João Ariedi - Engineering Leader",
-		"description": "Personal website and portfolio of João Ariedi: engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work",
+		"name": "{% trans 'João Ariedi - Engineering Leader' %}",
+		"description": "{% trans 'Personal website and portfolio of João Ariedi: engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work' %}",
 		"publisher": {
 			"@id": "https://ariedi.com/#person"
 		},
-		"inLanguage": "en-US"
+		"inLanguage": "{% if LANGUAGE_CODE == 'pt-br' %}pt-BR{% else %}en-US{% endif %}"
 	}
 	</script>
 

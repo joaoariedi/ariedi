@@ -26,6 +26,28 @@
         <priority>0.7</priority>
     </url>
 
+    <!-- Portuguese versions -->
+    <url>
+        <loc>https://ariedi.com/pt-br/</loc>
+        <lastmod>2026-11-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://ariedi.com/pt-br/research</loc>
+        <lastmod>2026-11-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ariedi.com/pt-br/presentations</loc>
+        <lastmod>2026-11-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
     <!-- Section anchors for better indexing -->
     <url>
         <loc>https://ariedi.com/#section-about</loc>

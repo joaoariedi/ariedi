@@ -24,6 +24,22 @@ ariedi/
 └── staticfiles/    # Collected static files
 ```
 
+## Languages
+
+English is the default and lives at `/`; Portuguese (Brazil) lives at `/pt-br/` (Django `i18n_patterns`
+with `prefix_default_language=False`). The `EN · PT` switcher in the header links to the same page in the
+other language. Names of people, organisations and works, and the bibliographies, are not translated.
+
+After changing any text in a template:
+
+```bash
+poetry run python manage.py makemessages -l pt_BR --no-location --no-wrap
+# fill the new msgstr entries in locale/pt_BR/LC_MESSAGES/django.po
+poetry run python manage.py compilemessages -l pt_BR
+```
+
+Commit the compiled `django.mo` as well: the Heroku Python buildpack does not run `compilemessages`.
+
 ## Local Development
 
 ### Prerequisites

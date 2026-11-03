@@ -1,0 +1,28 @@
+/* Site-specific additions on top of the theme. Keep small; the theme's look is unchanged. */
+
+/* Language switcher: mirrors .header .logo (absolute, vertically centred) on the right edge. */
+.header .lang-switch {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 13px;
+	line-height: 2.5;
+	font-weight: 600;
+	letter-spacing: 1px;
+	white-space: nowrap;
+	z-index: 2;
+}
+.header .lang-switch a {
+	color: rgba(255, 255, 255, 0.5);
+	text-decoration: none;
+	padding: 0 2px;
+}
+.header .lang-switch a:hover,
+.header .lang-switch a.active {
+	color: #FFF;
+}
+.header .lang-switch .sep {
+	color: rgba(255, 255, 255, 0.3);
+	padding: 0 4px;
+}

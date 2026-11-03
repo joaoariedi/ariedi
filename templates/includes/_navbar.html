@@ -1,3 +1,5 @@
+{% load i18n i18n_extras %}
+{% get_current_language as LANGUAGE_CODE %}
 <!-- Header -->
 <header class="header">
     <div class="head-top">
@@ -13,32 +15,39 @@
             </a>
         </div>
 
+        <!-- language switcher -->
+        <nav class="lang-switch" aria-label="{% trans 'Language' %}">
+            <a href="{% switch_lang_url 'en' %}" hreflang="en" lang="en"{% if LANGUAGE_CODE == 'en' %} class="active" aria-current="true"{% endif %}>EN</a>
+            <span class="sep" aria-hidden="true">·</span>
+            <a href="{% switch_lang_url 'pt-br' %}" hreflang="pt-BR" lang="pt-BR"{% if LANGUAGE_CODE == 'pt-br' %} class="active" aria-current="true"{% endif %}>PT</a>
+        </nav>
+
         <!-- top menu -->
         <div class="top-menu hover-masks">
             <div class="top-menu-nav">
                 <div class="menu-topmenu-container">
                     <ul class="menu">
-                        {% if request.path == '/' %}
+                        {% if request.resolver_match.url_name == 'home' %}
                         <li class="menu-item current-menu-item">
-                            <a href="#section-started">Home</a>
+                            <a href="#section-started">{% trans "Home" %}</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#section-services">Services</a>
+                            <a href="#section-services">{% trans "Services" %}</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#section-history">Resume</a>
+                            <a href="#section-history">{% trans "Resume" %}</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#section-research">Research</a>
+                            <a href="#section-research">{% trans "Research" %}</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#section-work">Work</a>
+                            <a href="#section-work">{% trans "Work" %}</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#section-skills">Skills</a>
+                            <a href="#section-skills">{% trans "Skills" %}</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#section-contacts">Contact</a>
+                            <a href="#section-contacts">{% trans "Contact" %}</a>
                         </li>
                         {% endif %}
                     </ul>

@@ -80,8 +80,9 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# Translations
+# Translations: compiled catalogues ARE committed, the Heroku Python buildpack does not run compilemessages
 *.mo
+!locale/**/*.mo
 
 # Scrapy stuff:
 .scrapy
