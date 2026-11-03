@@ -47,6 +47,29 @@
 		padding-right: 170px;
 	}
 }
+/* Below the theme's desktop breakpoint the hamburger (.menu-btn, 30px wide) is pinned to the
+   right edge of the header, so the switcher moves left of it. */
+@media (max-width: 1199px) {
+	.header .lang-switch {
+		right: 50px;
+	}
+}
+/* Narrow phones: drop the separator and tighten spacing so logo, switcher and hamburger fit. */
+@media (max-width: 360px) {
+	.header .lang-switch {
+		letter-spacing: 0;
+		font-size: 12px;
+	}
+	.header .lang-switch .sep {
+		display: none;
+	}
+	.header .lang-switch a {
+		padding: 0 3px;
+	}
+	.header .lang-switch a .flag {
+		margin-right: 4px;
+	}
+}
 
 /* Skills: one icon-led row per group. The icon colour matches the theme accent that
    theme-colors/blue.css gives .service-items .service-item .icon (#4fcbe9). */
