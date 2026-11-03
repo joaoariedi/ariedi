@@ -26,3 +26,34 @@
 	color: rgba(255, 255, 255, 0.3);
 	padding: 0 4px;
 }
+
+/* Skills: one icon-led row per group. The icon colour matches the theme accent that
+   theme-colors/blue.css gives .service-items .service-item .icon (#4fcbe9). */
+.skills-groups .skills-group {
+	display: flex;
+	align-items: flex-start;
+	gap: 22px;
+	padding: 18px 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.skills-groups .skills-group:first-child {
+	padding-top: 0;
+}
+.skills-groups .skills-group:last-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+.skills-groups .skills-icon {
+	flex: 0 0 44px;
+	font-size: 30px;
+	line-height: 1;
+	color: #4fcbe9;
+	text-align: center;
+	padding-top: 2px;
+}
+.skills-groups .skills-body h4 {
+	margin: 0 0 6px;
+}
+.skills-groups .skills-body p {
+	margin: 0;
+}
