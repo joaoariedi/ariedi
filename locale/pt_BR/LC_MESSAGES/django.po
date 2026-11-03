@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 22:37+0000\n"
+"POT-Creation-Date: 2026-11-03 23:01+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -15,23 +15,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-msgid "Hello, I'm <strong>João Ariedi</strong>."
-msgstr "Olá, eu sou <strong>João Ariedi</strong>."
-
-msgid "Engineering leader · Builder of AI agent harnesses ·<br> Researcher on AI and the competences of technical work."
-msgstr "Líder de engenharia · Construtor de harnesses para agentes de IA ·<br> Pesquisador sobre IA e as competências do trabalho técnico."
-
-msgid "Based in Brazil, remote."
-msgstr "No Brasil, em trabalho remoto."
+msgid "Hello, I'm <strong>João Ariedi</strong>, engineering leader and builder of AI agent harnesses, working remotely from Brazil."
+msgstr "Olá, eu sou <strong>João Ariedi</strong>, líder de engenharia e construtor de harnesses para agentes de IA, trabalhando remoto do Brasil."
 
 msgid "I lead <strong>engineering at scale</strong>"
-msgstr "Eu lidero <strong>engenharia em escala</strong>"
+msgstr "Lidero <strong>engenharia em escala</strong>"
 
-msgid "I build <strong>the harnesses that let AI agents build software</strong>"
-msgstr "Eu construo <strong>os harnesses que permitem a agentes de IA construir software</strong>"
+msgid "I build <strong>AI agent harnesses</strong>"
+msgstr "Construo <strong>harnesses de IA</strong>"
 
-msgid "I research <strong>what AI does to the people who use it</strong>"
-msgstr "Eu pesquiso <strong>o que a IA faz com as pessoas que a usam</strong>"
+msgid "I research <strong>AI and competence</strong>"
+msgstr "Pesquiso <strong>IA e competência</strong>"
 
 msgid "About"
 msgstr "Sobre"
@@ -88,8 +82,8 @@ msgstr "Ensino e pesquisa"
 msgid "MBA guest professor. Research on AI agents and engineering competence; paper accepted at MEISTUDIES 2026."
 msgstr "Professor convidado em MBA. Pesquisa sobre agentes de IA e competência em engenharia; artigo aceito no MEISTUDIES 2026."
 
-msgid "Experience"
-msgstr "Experiência"
+msgid "Leadership, advisory and teaching"
+msgstr "Liderança, conselho e ensino"
 
 msgid "Present"
 msgstr "atual"
@@ -119,6 +113,15 @@ msgstr "Membro do conselho e conselheiro de tecnologia"
 msgid "xCube is a proprietary quantitative research and execution firm that selects algorithmic trading strategies by real broker execution rather than backtests. On the board since May 2023: the technology roadmap from a proprietary desk to a go-to-market company, the capabilities that build investor trust (reproducible and auditable scoring, data protection, observability, access controls), architecture and stack review, and the first engineering hires."
 msgstr "A xCube é uma empresa proprietária de pesquisa e execução quantitativa que seleciona estratégias algorítmicas de trading pela execução real na corretora, e não por backtests. No conselho desde maio de 2023: o roadmap de tecnologia da mesa proprietária para uma empresa de go-to-market, as capacidades que constroem a confiança do investidor (scoring reproduzível e auditável, proteção de dados, observabilidade, controles de acesso), revisão de arquitetura e stack e as primeiras contratações de engenharia."
 
+msgid "Professor, MBA and undergraduate technology programs"
+msgstr "Professor, MBA e cursos superiores de tecnologia"
+
+msgid "MBA in Strategic Management, Operational Excellence and Agile Methods: Data Analysis and AI for Strategic Decisions, each student applying it to a case from their own job. Undergraduate technology degree: Computer Architecture and Operating Systems; MLOps, Edge and Model Deployment. 50+ students per class. Mentored data science and engineering teams at Kodus (2021 - 2023)."
+msgstr "MBA em Gestão Estratégica, Excelência Operacional e Métodos Ágeis: Análise de Dados e IA para Decisões Estratégicas, com cada aluno aplicando o conteúdo a um caso do próprio trabalho. Curso superior de tecnologia: Arquitetura de Computadores e Sistemas Operacionais; MLOps, Edge e Implantação de Modelos. Turmas de 50+ alunos. Mentor de equipes de ciência de dados e engenharia na Kodus (2021 - 2023)."
+
+msgid "Engineering, intelligence and founding"
+msgstr "Engenharia, inteligência e empreendedorismo"
+
 #, python-format
 msgid "Led the full rebuild of Cloudways (DigitalOcean), which runs 2M+ WordPress and WooCommerce installations, migrated with zero downtime; service-oriented Python backend (Django, FastAPI, PostgreSQL) on Google Cloud (Cloud Run, Cloud Functions, Pub/Sub); microservices for WordPress orchestration on Kubernetes. Hired and retained the team (90%%+ retention) and mentored 3+ engineers into leadership roles."
 msgstr "Liderou a reconstrução completa do Cloudways (DigitalOcean), que roda 2M+ instalações de WordPress e WooCommerce, migradas sem indisponibilidade; backend orientado a serviços em Python (Django, FastAPI, PostgreSQL) no Google Cloud (Cloud Run, Cloud Functions, Pub/Sub); microsserviços para orquestração de WordPress em Kubernetes. Contratou e reteve a equipe (retenção acima de 90%%) e foi mentor de 3+ engenheiros até cargos de liderança."
@@ -128,12 +131,6 @@ msgstr "Gerente de Inteligência · Analista Sênior de Inteligência de Mercado
 
 msgid "Built and led the data intelligence team from zero: end-to-end collection and integration pipelines across the transactional systems, business and market intelligence, performance management with OKRs, KPIs and KRIs, weekly competitive-intelligence reporting to leadership; later advisory in BI and data engineering. Organizational intelligence: turning information into decision."
 msgstr "Montou e liderou do zero a equipe de inteligência de dados: pipelines de coleta e integração de ponta a ponta sobre os sistemas transacionais, inteligência de negócios e de mercado, gestão de desempenho com OKRs, KPIs e KRIs, relatórios semanais de inteligência competitiva para a liderança; depois, assessoria em BI e engenharia de dados. Inteligência organizacional: transformar informação em decisão."
-
-msgid "Professor, MBA and undergraduate technology programs"
-msgstr "Professor, MBA e cursos superiores de tecnologia"
-
-msgid "MBA in Strategic Management, Operational Excellence and Agile Methods: Data Analysis and AI for Strategic Decisions, each student applying it to a case from their own job. Undergraduate technology degree: Computer Architecture and Operating Systems; MLOps, Edge and Model Deployment. 50+ students per class. Mentored data science and engineering teams at Kodus (2021 - 2023)."
-msgstr "MBA em Gestão Estratégica, Excelência Operacional e Métodos Ágeis: Análise de Dados e IA para Decisões Estratégicas, com cada aluno aplicando o conteúdo a um caso do próprio trabalho. Curso superior de tecnologia: Arquitetura de Computadores e Sistemas Operacionais; MLOps, Edge e Implantação de Modelos. Turmas de 50+ alunos. Mentor de equipes de ciência de dados e engenharia na Kodus (2021 - 2023)."
 
 msgid "Co-founder"
 msgstr "Cofundador"
@@ -189,14 +186,35 @@ msgstr "Licenciatura em Física"
 msgid "Coursework. Left the course to co-found my first learning technology startup."
 msgstr "Disciplinas cursadas. Deixei o curso para cofundar minha primeira startup de tecnologia educacional."
 
-msgid "Certifications"
-msgstr "Certificações"
+msgid "Certifications and languages"
+msgstr "Certificações e idiomas"
 
-msgid "FIAP (2024 and 2025): Certified Cybersecurity Professional, Information Security Officer, Certified Information Security Manager, Penetration Testing, Certified Forensics Professional."
-msgstr "FIAP (2024 e 2025): Certified Cybersecurity Professional, Information Security Officer, Certified Information Security Manager, Penetration Testing, Certified Forensics Professional."
+msgid "FIAP professional qualifications"
+msgstr "Qualificações profissionais FIAP"
 
-msgid "AWS Partner accreditations (2023): Technical, Cloud Economics Essentials, Sales."
-msgstr "Acreditações AWS Partner (2023): Technical, Cloud Economics Essentials, Sales."
+msgid "Certified Cybersecurity Professional, Information Security Officer, Certified Information Security Manager, Penetration Testing, Certified Forensics Professional."
+msgstr "Certified Cybersecurity Professional, Information Security Officer, Certified Information Security Manager, Penetration Testing, Certified Forensics Professional."
+
+msgid "AWS Partner accreditations"
+msgstr "Acreditações AWS Partner"
+
+msgid "Technical, Cloud Economics Essentials, Sales."
+msgstr "Technical, Cloud Economics Essentials, Sales."
+
+msgid "Languages"
+msgstr "Idiomas"
+
+msgid "Remote from Brazil"
+msgstr "Remoto, a partir do Brasil"
+
+msgid "Portuguese (native)"
+msgstr "Português (nativo)"
+
+msgid "English (bilingual at work)"
+msgstr "Inglês (bilíngue no trabalho)"
+
+msgid "Spanish (reading)"
+msgstr "Espanhol (leitura)"
 
 msgid "Research and publications"
 msgstr "Pesquisa e publicações"
@@ -292,18 +310,6 @@ msgstr "Fabricação"
 
 msgid "Laser cutting, 3D printing, Fab Lab operation."
 msgstr "Corte a laser, impressão 3D, operação de Fab Lab."
-
-msgid "Languages"
-msgstr "Idiomas"
-
-msgid "Portuguese (native)"
-msgstr "Português (nativo)"
-
-msgid "English (bilingual at work)"
-msgstr "Inglês (bilíngue no trabalho)"
-
-msgid "Spanish (reading)"
-msgstr "Espanhol (leitura)"
 
 msgid "Interests"
 msgstr "Interesses"

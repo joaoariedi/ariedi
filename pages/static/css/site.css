@@ -50,8 +50,13 @@
 /* Below the theme's desktop breakpoint the hamburger (.menu-btn, 30px wide) is pinned to the
    right edge of the header, so the switcher moves left of it. */
 @media (max-width: 1199px) {
+	/* The logo is in flow at the top here and the menu opens below inside .head-top, so a
+	   50%-centred switcher would drift into the open menu: pin it to the logo's 40px line. */
 	.header .lang-switch {
 		right: 50px;
+		top: 0;
+		transform: none;
+		line-height: 40px;
 	}
 }
 /* Narrow phones: drop the separator and tighten spacing so logo, switcher and hamburger fit. */
@@ -89,15 +94,23 @@
 }
 .skills-groups .skills-icon {
 	flex: 0 0 44px;
-	font-size: 30px;
-	line-height: 1;
+	font-size: 26px;
+	line-height: 28px;
 	color: #4fcbe9;
 	text-align: center;
-	padding-top: 2px;
 }
+/* The theme's base h4 is #141414 (for its light panels); on the dark panel the headings vanished. */
 .skills-groups .skills-body h4 {
 	margin: 0 0 6px;
+	font-size: 20px;
+	line-height: 28px;
+	color: #FFF;
 }
 .skills-groups .skills-body p {
 	margin: 0;
+}
+
+/* Resume: two rows of two columns; space between the rows. */
+.section.resume .cols + .cols {
+	margin-top: 70px;
 }
