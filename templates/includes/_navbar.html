@@ -1,4 +1,4 @@
-{% load i18n i18n_extras %}
+{% load static i18n i18n_extras %}
 {% get_current_language as LANGUAGE_CODE %}
 <!-- Header -->
 <header class="header">
@@ -17,9 +17,9 @@
 
         <!-- language switcher -->
         <nav class="lang-switch" aria-label="{% trans 'Language' %}">
-            <a href="{% switch_lang_url 'en' %}" hreflang="en" lang="en"{% if LANGUAGE_CODE == 'en' %} class="active" aria-current="true"{% endif %}>EN</a>
+            <a href="{% switch_lang_url 'en' %}" hreflang="en" lang="en"{% if LANGUAGE_CODE == 'en' %} class="active" aria-current="true"{% endif %}><img class="flag" src="{% static 'images/flags/us.svg' %}" alt="" width="20" height="15" />EN</a>
             <span class="sep" aria-hidden="true">·</span>
-            <a href="{% switch_lang_url 'pt-br' %}" hreflang="pt-BR" lang="pt-BR"{% if LANGUAGE_CODE == 'pt-br' %} class="active" aria-current="true"{% endif %}>PT</a>
+            <a href="{% switch_lang_url 'pt-br' %}" hreflang="pt-BR" lang="pt-BR"{% if LANGUAGE_CODE == 'pt-br' %} class="active" aria-current="true"{% endif %}><img class="flag" src="{% static 'images/flags/br.svg' %}" alt="" width="20" height="15" />PT</a>
         </nav>
 
         <!-- top menu -->
