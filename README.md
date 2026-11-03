@@ -1,6 +1,6 @@
 # Ariedi Portfolio
 
-Personal portfolio website showcasing projects, workshops, and professional experience as an Engineering Leader & Cybersecurity Expert.
+Personal portfolio website of João Ariedi: engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work.
 
 ## Tech Stack
 

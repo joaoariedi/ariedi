@@ -2,11 +2,20 @@
   "name": "ariedi-portfolio",
   "description": "Personal portfolio website - Engineering Leader & Cybersecurity Expert",
   "image": "heroku/python",
-  "keywords": ["python", "django", "portfolio"],
-  "buildpacks": [
-    { "url": "heroku/python" }
+  "stack": "heroku-26",
+  "keywords": [
+    "python",
+    "django",
+    "portfolio"
   ],
-  "addons": ["heroku-postgresql"],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "addons": [
+    "heroku-postgresql"
+  ],
   "env": {
     "SECRET_KEY": {
       "description": "The secret key for the Django application.",
