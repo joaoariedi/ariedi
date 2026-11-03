@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load static i18n %}
 
 {% block content %}
 
@@ -20,11 +20,11 @@
             <div class="centrize full-width">
                 <div class="vertical-center">
                     <div class="started-content">
-                        <h1 class="h-title">Presentations</h1>
+                        <h1 class="h-title">{% trans "Presentations" %}</h1>
                         <div class="h-subtitles">
                             <div class="h-subtitle typing-bread">
                                 <p class="breadcrumbs">
-                                    <a href={% url 'home' %}>Home</a> / Presentations
+                                    <a href={% url 'home' %}>{% trans "Home" %}</a> / {% trans "Presentations" %}
                                 </p>
                             </div>
                             <span class="typed-bread"></span>
@@ -45,7 +45,7 @@
 
                     <!-- title -->
                     <div class="title">
-                        <div class="title_inner">Modern Engineering</div>
+                        <div class="title_inner">{% trans "Modern Engineering" %}</div>
                     </div>
 
                     <!-- PDF Viewer -->
@@ -56,17 +56,17 @@
                             width="100%"
                             height="800px"
                             style="border: none; border-radius: 5px;"
-                            title="Modern Engineering Presentation"
+                            title="{% trans 'Modern Engineering Presentation' %}"
                             allowfullscreen
                         ></iframe>
                         <div style="margin-top: 15px; display: flex; gap: 15px; align-items: center;">
                             <a class="btn hover-animated" href="javascript:void(0)" onclick="document.getElementById('pdf-frame').requestFullscreen()">
                                 <span class="circle"></span>
-                                <span class="lnk">Fullscreen</span>
+                                <span class="lnk">{% trans "Fullscreen" %}</span>
                             </a>
                             <a class="btn hover-animated" href="{% url 'serve_presentation' 'modern-engineering.pdf' %}" download>
                                 <span class="circle"></span>
-                                <span class="lnk">Download PDF</span>
+                                <span class="lnk">{% trans "Download PDF" %}</span>
                             </a>
                         </div>
                     </div>
