@@ -177,3 +177,7 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
+
+# Keep 32-bit integer primary keys, as every existing migration was written with them. Django 6
+# changed the default to BigAutoField, which would otherwise demand migrations altering every id.
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
