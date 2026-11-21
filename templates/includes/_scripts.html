@@ -5,10 +5,12 @@
     {% comment %}Scripts: jQuery for the theme's menu and scroll behaviour, the contact-form helper and
     the theme script. The theme's other plugins (Swiper, Isotope, jarallax, Magnific Popup, jQuery
     Validate, simpleParallax, grained) have no markup on these pages and are not loaded; scripts.js
-    checks for each one before calling it. A template comment, so it never ships to visitors.{% endcomment %}
+    checks for each one before calling it. brand-motion.js drives the hero field and the grid depth
+    (it does nothing under prefers-reduced-motion or Save-Data). A template comment, so it never ships to visitors.{% endcomment %}
 	<script src={% static "js/emailform.js" %}></script>
 	<script src={% static "js/jquery.min.js" %}></script>
 
 	<script src={% static "js/scripts.js" %}></script>
+	<script src={% static "js/brand-motion.js" %}></script>
 
 {% endblock scripts %}

@@ -292,6 +292,17 @@
 	opacity: 0.55;
 }
 
+/* Depth layers of the incoming lines (tools/gen_field.py interleaves them): back, middle,
+   front. The spread averages the guide's 55 %; brand-motion.js moves each layer at its own rate. */
+.field .field-depth[data-depth="0"] path {
+	opacity: 0.32;
+}
+
+.field .field-depth[data-depth="2"] path {
+	stroke-width: 1.25px;
+	opacity: 0.75;
+}
+
 .field .field-out path {
 	stroke-width: 1.25px;
 }

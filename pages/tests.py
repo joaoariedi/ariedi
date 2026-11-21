@@ -104,6 +104,18 @@ class PublicPagesSmokeTest(TestCase):
             for asset in unused:
                 self.assertNotIn(asset, body, f"{asset!r} still loaded on {path}")
 
+    def test_hero_field_carries_the_motion_parameters(self):
+        """The static drawing is frame zero of brand-motion.js; it needs each line's parameters."""
+        body = self.client.get("/").content.decode()
+        self.assertIn("js/brand-motion", body)
+        for attr in ('data-cx="', 'data-cy="', 'data-xc="', 'data-ymin="', 'data-ymax="'):
+            self.assertIn(attr, body)
+        self.assertEqual(body.count('class="field-depth"'), 3)
+        self.assertEqual(body.count("data-w="), 20)
+        # rings, decision line and output lines carry no motion data: they stay still
+        self.assertEqual(body.count('class="field-out"'), 1)
+        self.assertEqual(body.count('class="decision"'), 1)
+
     def test_night_sheet_only_no_switcher(self):
         """The brand ships one sheet (night); the experiment's switcher and its ?sheet= script are gone."""
         for path in ("/", "/pt-br/", "/research", "/presentations"):
