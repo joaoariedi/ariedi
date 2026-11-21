@@ -134,8 +134,24 @@
 	}
 	</script>
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="{% static 'images/favicons/fav2.png' %}" type="image/png">
+	<!-- Sheet (brand experiment): ?sheet=night|light|blueprint sets it and remembers it;
+	     applied here, before the stylesheets, so the page never flashes the wrong sheet. -->
+	<script>
+	(function () {
+		var sheets = ['night', 'light', 'blueprint'], wanted = null;
+		try { wanted = new URLSearchParams(window.location.search).get('sheet'); } catch (e) { wanted = null; }
+		if (sheets.indexOf(wanted) !== -1) {
+			try { window.localStorage.setItem('brand-sheet', wanted); } catch (e) { /* storage blocked */ }
+		} else {
+			try { wanted = window.localStorage.getItem('brand-sheet'); } catch (e) { wanted = null; }
+		}
+		if (sheets.indexOf(wanted) !== -1) { document.documentElement.setAttribute('data-sheet', wanted); }
+	})();
+	</script>
+
+	<!-- Favicon: the four rings with the orange dot; the PNG stays as the fallback -->
+	<link rel="icon" href="{% static 'images/favicons/fav2.png' %}" type="image/png">
+	<link rel="icon" href="{% static 'images/favicons/rings.svg' %}" type="image/svg+xml">
 	<link rel="apple-touch-icon" href="{% static 'images/favicons/fav2.png' %}">
 
 	<!-- Preconnect for performance -->

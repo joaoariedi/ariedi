@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 17:03+0000\n"
+"POT-Creation-Date: 2026-11-21 17:31+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -15,17 +15,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-msgid "Hello, I'm <strong>João Ariedi</strong>, engineering leader and builder of AI agent harnesses, working remotely from Brazil."
-msgstr "Olá, eu sou <strong>João Ariedi</strong>, líder de engenharia e construtor de harnesses para agentes de IA, trabalhando remoto do Brasil."
+msgid "I build the machine that turns vision into revenue"
+msgstr "Construo a máquina que transforma visão em receita"
 
-msgid "I lead <strong>engineering at scale</strong>"
-msgstr "Lidero <strong>engenharia em escala</strong>"
+msgid "Business opportunities in"
+msgstr "Oportunidades de negócio entram"
 
-msgid "I build <strong>AI agent harnesses</strong>"
-msgstr "Construo <strong>harnesses de IA</strong>"
-
-msgid "I research <strong>AI and competence</strong>"
-msgstr "Pesquiso <strong>IA e competência</strong>"
+msgid "products and services out"
+msgstr "produtos e serviços saem"
 
 msgid "About"
 msgstr "Sobre"
@@ -387,14 +384,17 @@ msgstr "Estudante de violão clássico. Uma saída criativa que complementa o tr
 msgid "Motivation"
 msgstr "Motivação"
 
+msgid "AI is the activator."
+msgstr "A IA é o ativador."
+
+msgid "The engineer is the inhibitor."
+msgstr "O engenheiro é o inibidor."
+
 msgid "AI moves the bottleneck of engineering from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds, improves and maintains it."
 msgstr "A IA desloca o gargalo da engenharia da execução para o julgamento. A engenharia deixa de construir o produto diretamente e passa a construir a máquina que o constrói, melhora e mantém."
 
 msgid "Contacts"
 msgstr "Contatos"
-
-msgid "Email"
-msgstr "E-mail"
 
 msgid "Home"
 msgstr "Início"
@@ -546,9 +546,6 @@ msgstr "Um estudo de caso único, aplicado e qualitativo, de um laboratório cor
 msgid "<strong>Where it sits in this research line.</strong> The organizational side of the same question the MEISTUDIES article asks on the engineering side."
 msgstr "<strong>Onde se encaixa nesta linha de pesquisa.</strong> O lado organizacional da mesma pergunta que o artigo do MEISTUDIES faz do lado da engenharia."
 
-msgid "Follow Me"
-msgstr "Siga-me"
-
 msgid "João Ariedi - Engineering Leader | AI Agent Harnesses | Research on AI and Competence"
 msgstr "João Ariedi - Líder de Engenharia | Harnesses para Agentes de IA | Pesquisa sobre IA e Competência"
 
@@ -573,11 +570,38 @@ msgstr "Líder de engenharia, construtor de harnesses para agentes de IA, pesqui
 msgid "Personal website and portfolio of João Ariedi: engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work"
 msgstr "Site pessoal e portfólio de João Ariedi: líder de engenharia, construtor de harnesses para agentes de IA, pesquisador sobre IA e as competências do trabalho técnico"
 
-msgid "Language"
-msgstr "Idioma"
+msgid "Stakeholder inputs"
+msgstr "Entradas dos stakeholders"
+
+msgid "Vision"
+msgstr "Visão"
+
+msgid "The machine"
+msgstr "A máquina"
+
+msgid "Products · Services"
+msgstr "Produtos · Serviços"
 
 msgid "Resume"
 msgstr "Currículo"
 
 msgid "Contact"
 msgstr "Contato"
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Sheet"
+msgstr "Folha"
+
+msgid "Night"
+msgstr "Noite"
+
+msgid "Light"
+msgstr "Clara"
+
+msgid "Blueprint"
+msgstr "Planta"
+
+msgid "Engineering advisory · Ventures"
+msgstr "Assessoria de engenharia · Ventures"

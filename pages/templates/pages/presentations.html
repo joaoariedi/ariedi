@@ -7,35 +7,11 @@
     <!-- Wrapper -->
     <div class="wrapper">
 
-        <!-- Section Started -->
-        <div class="section started layout-creative" id="section-started">
-
-            <!-- background -->
-            <div class="video-bg">
-                <div class="video-bg-mask"></div>
-                <div class="video-bg-texture" id="grained_container"></div>
-            </div>
-
-            <!-- started content -->
-            <div class="centrize full-width">
-                <div class="vertical-center">
-                    <div class="started-content">
-                        <h1 class="h-title">{% trans "Presentations" %}</h1>
-                        <div class="h-subtitles">
-                            <div class="h-subtitle typing-bread">
-                                <p class="breadcrumbs">
-                                    <a href={% url 'home' %}>{% trans "Home" %}</a> / {% trans "Presentations" %}
-                                </p>
-                            </div>
-                            <span class="typed-bread"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- mouse button -->
-            <a href="#" class="mouse_btn" style="display: none;"><span class="icon fas fa-chevron-down"></span></a>
-
+        <!-- Section Started: headline, hazard stripe, breadcrumbs as the mono subline -->
+        <div class="section started brand-hero-page" id="section-started">
+            <h1 class="hero-title">{% trans "Presentations" %}</h1>
+            <span class="hazard" aria-hidden="true"></span>
+            <p class="hero-subline"><a href="{% url 'home' %}">{% trans "Home" %}</a> / {% trans "Presentations" %}</p>
         </div>
 
         <!-- Presentation Content -->

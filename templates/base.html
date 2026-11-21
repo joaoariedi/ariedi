@@ -1,12 +1,12 @@
 {% load static i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 <!doctype html>
-<html lang="{% if LANGUAGE_CODE == 'pt-br' %}pt-BR{% else %}en{% endif %}">
+<html lang="{% if LANGUAGE_CODE == 'pt-br' %}pt-BR{% else %}en{% endif %}" data-sheet="night">
 
 <!-- Head -->
 {% include 'includes/_header.html' %}
 
-<body class="home">
+<body class="home grained-off">
 
 	<!-- Preloader -->
 	<div class="preloader" aria-hidden="true">

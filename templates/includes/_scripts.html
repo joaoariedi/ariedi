@@ -8,7 +8,6 @@
 	<script src={% static "js/jquery.validate.js" %}></script>
 	<script src={% static "js/magnific-popup.js" %}></script>
 	<script src={% static "js/simpleParallax.js" %}></script>
-	<script src={% static "js/typed.js" %}></script>
 	<script src={% static "js/jarallax.js" %}></script>
 	<script src={% static "js/jarallax-video.js" %}></script>
 	<script src={% static "js/jarallax-element.js" %}></script>
@@ -18,5 +17,34 @@
 	<script src={% static "js/grained.js" %}></script>
 
 	<script src={% static "js/scripts.js" %}></script>
+
+	<!-- Sheet switcher (brand experiment): switch in place, remember the choice, keep
+	     ?sheet= in the address so a link reproduces the view. -->
+	<script>
+	(function () {
+		var root = document.documentElement;
+		var buttons = document.querySelectorAll('[data-sheet-set]');
+		function sync() {
+			var current = root.getAttribute('data-sheet');
+			for (var i = 0; i < buttons.length; i++) {
+				buttons[i].setAttribute('aria-pressed', buttons[i].getAttribute('data-sheet-set') === current ? 'true' : 'false');
+			}
+		}
+		for (var i = 0; i < buttons.length; i++) {
+			buttons[i].addEventListener('click', function () {
+				var sheet = this.getAttribute('data-sheet-set');
+				root.setAttribute('data-sheet', sheet);
+				try { window.localStorage.setItem('brand-sheet', sheet); } catch (e) { /* storage blocked */ }
+				try {
+					var url = new URL(window.location.href);
+					url.searchParams.set('sheet', sheet);
+					window.history.replaceState(null, '', url);
+				} catch (e) { /* old browser: the sheet still applies */ }
+				sync();
+			});
+		}
+		sync();
+	})();
+	</script>
 
 {% endblock scripts %}
