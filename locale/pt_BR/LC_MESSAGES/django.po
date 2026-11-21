@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 23:13+0000\n"
+"POT-Creation-Date: 2026-11-21 17:03+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -113,11 +113,11 @@ msgstr "Membro do conselho e conselheiro de tecnologia"
 msgid "xCube is a proprietary quantitative research and execution firm that selects algorithmic trading strategies by real broker execution rather than backtests. On the board since May 2023: the technology roadmap from a proprietary desk to a go-to-market company, the capabilities that build investor trust (reproducible and auditable scoring, data protection, observability, access controls), architecture and stack review, and the first engineering hires."
 msgstr "A xCube é uma empresa proprietária de pesquisa e execução quantitativa que seleciona estratégias algorítmicas de trading pela execução real na corretora, e não por backtests. No conselho desde maio de 2023: o roadmap de tecnologia da mesa proprietária para uma empresa de go-to-market, as capacidades que constroem a confiança do investidor (scoring reproduzível e auditável, proteção de dados, observabilidade, controles de acesso), revisão de arquitetura e stack e as primeiras contratações de engenharia."
 
-msgid "Professor, MBA and undergraduate technology programs"
-msgstr "Professor, MBA e cursos superiores de tecnologia"
+msgid "Professor, MBA"
+msgstr "Professor, MBA"
 
-msgid "MBA in Strategic Management, Operational Excellence and Agile Methods: Data Analysis and AI for Strategic Decisions, each student applying it to a case from their own job. Undergraduate technology degree: Computer Architecture and Operating Systems; MLOps, Edge and Model Deployment. 50+ students per class. Mentored data science and engineering teams at Kodus (2021 - 2023)."
-msgstr "MBA em Gestão Estratégica, Excelência Operacional e Métodos Ágeis: Análise de Dados e IA para Decisões Estratégicas, com cada aluno aplicando o conteúdo a um caso do próprio trabalho. Curso superior de tecnologia: Arquitetura de Computadores e Sistemas Operacionais; MLOps, Edge e Implantação de Modelos. Turmas de 50+ alunos. Mentor de equipes de ciência de dados e engenharia na Kodus (2021 - 2023)."
+msgid "MBA in Strategic Management, Operational Excellence and Agile Methods: Data Analysis and AI for Strategic Decisions, each student applying it to a case from their own job; 50+ students per class. Designated faculty for Frons's new Technology degree in Artificial Intelligence (Computer Architecture and Operating Systems; MLOps, Edge and Model Deployment), currently in its authorization process. Mentored data science and engineering teams at Kodus (2021 - 2023)."
+msgstr "MBA em Gestão Estratégica, Excelência Operacional e Métodos Ágeis: Análise de Dados e IA para Decisões Estratégicas, com cada aluno aplicando o conteúdo a um caso do próprio trabalho; turmas de 50+ alunos. Docente indicado para o novo Curso Superior de Tecnologia em Inteligência Artificial da Frons (Arquiteturas Computacionais e Sistemas Operacionais; MLOps, Edge e Deploy de Modelos), em processo de autorização. Mentor de equipes de ciência de dados e engenharia na Kodus (2021 - 2023)."
 
 msgid "Engineering, intelligence and founding"
 msgstr "Engenharia, inteligência e empreendedorismo"
@@ -144,8 +144,8 @@ msgstr "Fundação de Amparo à Pesquisa do Estado de São Paulo (FAPESP)"
 msgid "Technology and Innovation Researcher"
 msgstr "Pesquisador de Tecnologia e Inovação"
 
-msgid "Led a FAPESP-funded (PIPE) innovation research project: a distributed network of environmental data-collection probes deployed in 10+ hard-to-reach locations, built with rapid prototyping (3D printing) and embedded systems (Arduino, sensors), delivered as a production-ready IoT solution and documented with university researchers."
-msgstr "Liderou um projeto de pesquisa e inovação financiado pela FAPESP (PIPE): uma rede distribuída de sondas de coleta de dados ambientais instaladas em 10+ locais de difícil acesso, construída com prototipagem rápida (impressão 3D) e sistemas embarcados (Arduino, sensores), entregue como solução IoT pronta para produção e documentada com pesquisadores universitários."
+msgid "Member of the research team of a FAPESP-funded (PIPE) innovation project: a distributed network of environmental data-collection probes."
+msgstr "Integrante da equipe de um projeto de inovação financiado pela FAPESP (PIPE): uma rede distribuída de sondas de coleta de dados ambientais."
 
 msgid "Co-founder and COO"
 msgstr "Cofundador e COO"
@@ -223,8 +223,8 @@ msgid "with Dorival Campos Rossi (UNESP) · 9th International Congress Media Eco
 msgstr "com Dorival Campos Rossi (UNESP) · 9º Congresso Internacional Media Ecology and Image Studies (MEISTUDIES)"
 
 #, python-format
-msgid "Accepted Aug 2026, full text submitted Oct 2026, presented Nov 2026. Argues the <em>syntagm transition</em>: agentic interfaces absorb whole links of the design chain. <a href=\"%(url)s#meistudies-2026\">Abstract and extended summary</a>."
-msgstr "Aceito em ago. 2026, texto completo submetido em out. 2026, apresentado em nov. 2026. Defende a <em>transição de sintagma</em>: interfaces agênticas absorvem elos inteiros da cadeia do projeto. <a href=\"%(url)s#meistudies-2026\">Resumo e síntese estendida</a>."
+msgid "Accepted Aug 2026, full text submitted Oct 2026, presented in Mesa 6 at the 9th MEISTUDIES, Nov 2026. Argues the <em>syntagm transition</em>: agentic interfaces absorb whole links of the design chain. <a href=\"%(url)s#meistudies-2026\">Abstract and extended summary</a>."
+msgstr "Aceito em ago. 2026, texto completo submetido em out. 2026, apresentado na Mesa 6 do 9º MEISTUDIES, nov. 2026. Defende a <em>transição de sintagma</em>: interfaces agênticas absorvem elos inteiros da cadeia do projeto. <a href=\"%(url)s#meistudies-2026\">Resumo e síntese estendida</a>."
 
 msgid "paper"
 msgstr "artigo"
@@ -233,8 +233,18 @@ msgid "second author of four · XXXIII SIMPEP, Bauru, Nov 2026"
 msgstr "segundo autor de quatro · XXXIII SIMPEP, Bauru, nov. 2026"
 
 #, python-format
-msgid "A case study of a corporate artificial intelligence laboratory. <a href=\"%(url)s#simpep-2026\">Abstract and extended summary</a>."
-msgstr "Um estudo de caso em um laboratório corporativo de inteligência artificial. <a href=\"%(url)s#simpep-2026\">Resumo e síntese estendida</a>."
+msgid "A case study of a corporate artificial intelligence laboratory; presented at the symposium. <a href=\"%(url)s#simpep-2026\">Abstract and extended summary</a>."
+msgstr "Um estudo de caso em um laboratório corporativo de inteligência artificial; apresentado no simpósio. <a href=\"%(url)s#simpep-2026\">Resumo e síntese estendida</a>."
+
+msgid "research project"
+msgstr "projeto de pesquisa"
+
+msgid "fourth author of four · 7th AI Congress of PUC-SP, São Paulo, Nov 2026"
+msgstr "quarto autor de quatro · 7º Congresso de Inteligência Artificial da PUC-SP, São Paulo, nov. 2026"
+
+#, python-format
+msgid "Research project, presented orally. <a href=\"%(url)s#pucsp-2026\">Summary</a>."
+msgstr "Projeto de pesquisa, apresentado oralmente. <a href=\"%(url)s#pucsp-2026\">Resumo</a>."
 
 msgid "master's pre-research"
 msgstr "pré-pesquisa de mestrado"
@@ -245,14 +255,53 @@ msgstr "Uma interface agêntica para um Fab Lab universitário"
 msgid "An LLM-based agentic interface for a university Fab Lab's laser cutter, measuring access, artifact quality, knowledge retention and which competence profiles become productive."
 msgstr "Uma interface agêntica baseada em LLM para a cortadora a laser de um Fab Lab universitário, medindo acesso, qualidade dos artefatos, retenção de conhecimento e quais perfis de competência se tornam produtivos."
 
+msgid "Talks and panels"
+msgstr "Palestras e painéis"
+
+msgid "virtual"
+msgstr "virtual"
+
+msgid "International Congress Media Ecology and Image Studies"
+msgstr "Congresso Internacional Media Ecology and Image Studies"
+
+msgid "Presentation of the article in Mesa 6, \"Technology, innovation and markets\"."
+msgstr "Apresentação do artigo na Mesa 6, \"Tecnologia, inovação e mercados\"."
+
+msgid "Panel host"
+msgstr "Mediação de painel"
+
+msgid "Hosted the panel \"High-impact engineering with AI\", with Camilla Penteado Farid (Ikatec), Fabio Baratela (FB Labs) and Caio Ariedi (Clai): how to evaluate engineers, keep accountability and quality, and develop seniors when AI writes much of the code."
+msgstr "Mediou o painel 'Engenharia de alto impacto com AI', com Camilla Penteado Farid (Ikatec), Fabio Baratela (FB Labs) e Caio Ariedi (Clai): como avaliar engenheiros, manter responsabilidade e qualidade e desenvolver seniores quando a IA escreve boa parte do código."
+
+msgid "7th AI Congress of PUC-SP"
+msgstr "7º Congresso de Inteligência Artificial da PUC-SP"
+
+msgid "Oral presentation"
+msgstr "Apresentação oral"
+
+msgid "Oral presentation of the research project on organizational culture and the institutionalization of AI."
+msgstr "Apresentação oral do projeto de pesquisa sobre cultura organizacional e institucionalização da IA."
+
+msgid "Production Engineering Symposium"
+msgstr "Simpósio de Engenharia de Produção"
+
+msgid "Presentation of the co-authored paper on organizational culture in AI-first transformation."
+msgstr "Apresentação do artigo em coautoria sobre cultura organizacional na transformação AI first."
+
+msgid "Workshop"
+msgstr "Oficina"
+
+msgid "Workshop \"Reaproveitando Paletes para Multiplicar Possibilidades\", with the AEON Fablab team."
+msgstr "Oficina \"Reaproveitando Paletes para Multiplicar Possibilidades\", com a equipe do AEON Fablab."
+
 msgid "Work"
 msgstr "Trabalhos"
 
 msgid "Hefesto, a development harness for Claude Code"
 msgstr "Hefesto, um harness de desenvolvimento para o Claude Code"
 
-msgid "Spec-driven workflow, specialist agents and quality gates enforced by hooks rather than good intentions: the agent cannot skip tests, weaken assertions or commit secrets, because a hook exits non-zero. 27 commands, 7 agents, 16 hooks. Open source, MIT, v9.1.3."
-msgstr "Fluxo orientado por especificação, agentes especialistas e portões de qualidade impostos por hooks, e não por boas intenções: o agente não consegue pular testes, enfraquecer asserções nem commitar segredos, porque um hook sai com erro. 27 comandos, 7 agentes, 16 hooks. Código aberto, MIT, v9.1.3."
+msgid "Spec-driven workflow and quality gates enforced by hooks: the agent cannot skip tests, weaken assertions or commit secrets. /hef.ship takes an idea through RFC, plan and approval to a pull request; lanes run planner, builder and deployer sessions under an orchestrator. 27 commands, 7 agents, 16 hooks. MIT, v9.4.3."
+msgstr "Fluxo orientado por especificação e portões de qualidade impostos por hooks: o agente não consegue pular testes, enfraquecer asserções nem commitar segredos. O /hef.ship leva uma ideia por RFC, plano e aprovação até um pull request; as lanes rodam sessões de planejamento, construção e deploy sob um orquestrador. 27 comandos, 7 agentes, 16 hooks. MIT, v9.4.3."
 
 msgid "Repository"
 msgstr "Repositório"
@@ -365,8 +414,8 @@ msgstr "Baixar PDF"
 msgid "Research"
 msgstr "Pesquisa"
 
-msgid "How AI agents redistribute the competences of technical work. One line of research, two venues in 2026, and a master's project about to begin at PPGMIT, UNESP Bauru. Each entry below carries the English abstract and an extended summary of the argument; full texts are linked as they are published."
-msgstr "Como os agentes de IA redistribuem as competências do trabalho técnico. Uma linha de pesquisa, dois eventos em 2026 e um projeto de mestrado prestes a começar no PPGMIT, UNESP Bauru. Cada entrada abaixo traz o resumo e uma síntese estendida do argumento; os textos completos são vinculados à medida que são publicados."
+msgid "How AI agents redistribute the competences of technical work. One line of research, three venues in 2026, and a master's project about to begin at PPGMIT, UNESP Bauru. Each entry below carries the English abstract and an extended summary of the argument; full texts are linked as they are published."
+msgstr "Como os agentes de IA redistribuem as competências do trabalho técnico. Uma linha de pesquisa, três eventos em 2026 e um projeto de mestrado prestes a começar no PPGMIT, UNESP Bauru. Cada entrada abaixo traz o resumo e uma síntese estendida do argumento; os textos completos são vinculados à medida que são publicados."
 
 msgid "Democratizing digital fabrication in Fab Labs: cognitive effects of agentic interfaces on design work"
 msgstr "Democratizando a fabricação digital em Fab Labs: efeitos cognitivos das interfaces agênticas no projeto"
@@ -374,8 +423,8 @@ msgstr "Democratizando a fabricação digital em Fab Labs: efeitos cognitivos da
 msgid "<em>Democratizando a fabricação digital em Fab Labs: efeitos cognitivos das interfaces agênticas no projeto</em><br> <strong>João Ariedi</strong> (João Carlos Ariedi Filho), Frons Educação, Brazil · <strong>Dorival Campos Rossi</strong>, São Paulo State University (UNESP), Faculty of Architecture, Arts, Communication and Design, Bauru, Brazil"
 msgstr "<em>Democratizing digital fabrication in Fab Labs: cognitive effects of agentic interfaces on design work</em><br> <strong>João Ariedi</strong> (João Carlos Ariedi Filho), Frons Educação, Brasil · <strong>Dorival Campos Rossi</strong>, Universidade Estadual Paulista (UNESP), Faculdade de Arquitetura, Artes, Comunicação e Design, Bauru, Brasil"
 
-msgid "9th International Congress Media Ecology and Image Studies (MEISTUDIES), 16–19 November 2026, Mesa 06. Expanded abstract accepted 20 August 2026; full text (5,600 words, 17 references, in Portuguese) submitted 7 October 2026; asynchronous presentation delivered 31 October 2026."
-msgstr "9º Congresso Internacional Media Ecology and Image Studies (MEISTUDIES), 16 a 19 de novembro de 2026, Mesa 06. Resumo expandido aceito em 20 de agosto de 2026; texto completo (5.600 palavras, 17 referências, em português) submetido em 7 de outubro de 2026; apresentação assíncrona enviada em 31 de outubro de 2026."
+msgid "9th International Congress Media Ecology and Image Studies (MEISTUDIES), \"Mediatized minds\", 16–19 November 2026. Expanded abstract accepted 20 August 2026; full text (5,600 words, 18 references, in Portuguese) submitted 7 October 2026; presented in Mesa 6, \"Technology, innovation and markets\" (certificate, 5 hours)."
+msgstr "9º Congresso Internacional Media Ecology and Image Studies (MEISTUDIES), \"Mentes midiatizadas\", 16 a 19 de novembro de 2026. Resumo expandido aceito em 20 de agosto de 2026; texto completo (5.600 palavras, 18 referências, em português) submetido em 7 de outubro de 2026; apresentado na Mesa 6, \"Tecnologia, inovação e mercados\" (certificado, 5 horas)."
 
 msgid "Why the full text is not published here yet"
 msgstr "Por que o texto completo ainda não está publicado aqui"
@@ -440,8 +489,8 @@ msgstr "A cultura organizacional na transformação de organizações tradiciona
 msgid "<em>A cultura organizacional na transformação de organizações tradicionais em organizações AI first: um estudo de caso em um laboratório corporativo de inteligência artificial</em><br> <strong>Juliana Santos Egea</strong> (lead author) · <strong>João Ariedi</strong> (João Carlos Ariedi Filho, printed as \"Joao Carlos Ariedi\") · <strong>Ricardo Amaral Silva</strong> · <strong>Ailton Donizetti Fabri</strong> — all São Paulo State University (UNESP), Bauru School of Engineering (FEB), Brazil"
 msgstr "<em>Organizational culture in the transformation of traditional organizations into AI-first organizations: a case study of a corporate artificial intelligence laboratory</em><br> <strong>Juliana Santos Egea</strong> (primeira autora) · <strong>João Ariedi</strong> (João Carlos Ariedi Filho, impresso como \"Joao Carlos Ariedi\") · <strong>Ricardo Amaral Silva</strong> · <strong>Ailton Donizetti Fabri</strong> — todos da Universidade Estadual Paulista (UNESP), Faculdade de Engenharia de Bauru (FEB), Brasil"
 
-msgid "XXXIII SIMPEP, Simpósio de Engenharia de Produção, Bauru, 3–6 November 2026. Area 6, Organizational management; sub-area 6.1, Organizational behavior. Expanded abstract (six pages, in Portuguese) accepted 10 August 2026 and presented at the symposium. Second author of four."
-msgstr "XXXIII SIMPEP, Simpósio de Engenharia de Produção, Bauru, 3 a 6 de novembro de 2026. Área 6, Gestão organizacional; subárea 6.1, Comportamento organizacional. Resumo expandido (seis páginas, em português) aceito em 10 de agosto de 2026 e apresentado no simpósio. Segundo autor de quatro."
+msgid "XXXIII SIMPEP, Simpósio de Engenharia de Produção, Bauru, 3–6 November 2026. Area 6, Organizational management; sub-area 6.1, Organizational behavior. Expanded abstract (six pages, in Portuguese) accepted 10 August 2026; presented at the symposium, 3 to 6 November 2026. Second author of four."
+msgstr "XXXIII SIMPEP, Simpósio de Engenharia de Produção, Bauru, 3 a 6 de novembro de 2026. Área 6, Gestão organizacional; subárea 6.1, Comportamento organizacional. Resumo expandido (seis páginas, em português) aceito em 10 de agosto de 2026; apresentado no simpósio, 3 a 6 de novembro de 2026. Segundo autor de quatro."
 
 msgid "The research belongs to the lead author, and the paper's citable form is the SIMPEP proceedings (anais), expected after the event. Until the proceedings appear with ISBN and page range, this page carries an English abstract and extended summary written for it; the proceedings entry will be linked here when it is published."
 msgstr "A pesquisa pertence à primeira autora, e a forma citável do trabalho são os anais do SIMPEP, previstos para depois do evento. Até que os anais saiam com ISBN e intervalo de páginas, esta página traz um resumo e uma síntese estendida escritos para ela; a entrada dos anais será vinculada aqui quando for publicada."
@@ -478,6 +527,24 @@ msgstr "<strong>Onde se encaixa nesta linha de pesquisa.</strong> O caso é a tr
 
 msgid "Bardin, L. (2016). <em>Análise de conteúdo</em>. Edições 70.<br> Davenport, T. H., &amp; Mittal, N. (2022). <em>All-in on AI: How smart companies win big with artificial intelligence</em>. Harvard Business Review Press.<br> Jaiswal, A., Arun, C. J., &amp; Varma, A. (2022). Rebooting employees: Upskilling for artificial intelligence in organizations. <em>International Journal of Information Management, 64</em>.<br> Kane, G. C., Phillips, A. N., Copulsky, J. R., &amp; Andrus, G. R. (2019). <em>The technology fallacy: How people are the real key to digital transformation</em>. MIT Press.<br> Schein, E. H., &amp; Schein, P. (2022). <em>Organizational culture and leadership</em> (6th ed.). Wiley.<br> Tarafdar, M., Beath, C., &amp; Ross, J. (2023). Building organizational capabilities for artificial intelligence. <em>MIT Sloan Management Review</em>.<br> Vial, G. (2019). Understanding digital transformation: A review and a research agenda. <em>The Journal of Strategic Information Systems, 28</em>(2), 118–144.<br> Westerman, G., Bonnet, D., &amp; McAfee, A. (2014). <em>Leading digital: Turning technology into business transformation</em>. Harvard Business Review Press.<br> Yin, R. K. (2015). <em>Estudo de caso: Planejamento e métodos</em> (5th ed.). Bookman."
 msgstr "Bardin, L. (2016). <em>Análise de conteúdo</em>. Edições 70.<br> Davenport, T. H., &amp; Mittal, N. (2022). <em>All-in on AI: How smart companies win big with artificial intelligence</em>. Harvard Business Review Press.<br> Jaiswal, A., Arun, C. J., &amp; Varma, A. (2022). Rebooting employees: Upskilling for artificial intelligence in organizations. <em>International Journal of Information Management, 64</em>.<br> Kane, G. C., Phillips, A. N., Copulsky, J. R., &amp; Andrus, G. R. (2019). <em>The technology fallacy: How people are the real key to digital transformation</em>. MIT Press.<br> Schein, E. H., &amp; Schein, P. (2022). <em>Organizational culture and leadership</em> (6th ed.). Wiley.<br> Tarafdar, M., Beath, C., &amp; Ross, J. (2023). Building organizational capabilities for artificial intelligence. <em>MIT Sloan Management Review</em>.<br> Vial, G. (2019). Understanding digital transformation: A review and a research agenda. <em>The Journal of Strategic Information Systems, 28</em>(2), 118–144.<br> Westerman, G., Bonnet, D., &amp; McAfee, A. (2014). <em>Leading digital: Turning technology into business transformation</em>. Harvard Business Review Press.<br> Yin, R. K. (2015). <em>Estudo de caso: Planejamento e métodos</em> (5th ed.). Bookman."
+
+msgid "Organizational culture and the institutionalization of artificial intelligence"
+msgstr "Cultura organizacional e institucionalização da Inteligência Artificial"
+
+msgid "<em>Cultura organizacional e institucionalização da Inteligência Artificial</em><br> <strong>Juliana Santos Egea</strong> · <strong>Ricardo Amaral Silva</strong> · <strong>Ailton Donizetti Fabri</strong> · <strong>João Ariedi</strong> (João Carlos Ariedi Filho), fourth author"
+msgstr "<em>Organizational culture and the institutionalization of artificial intelligence</em><br> <strong>Juliana Santos Egea</strong> · <strong>Ricardo Amaral Silva</strong> · <strong>Ailton Donizetti Fabri</strong> · <strong>João Ariedi</strong> (João Carlos Ariedi Filho), quarto autor"
+
+msgid "7th Artificial Intelligence Congress of PUC-SP, organized by the Faculty of Exact Sciences and Technology (FCET) and the Graduate Program in Intelligence Technologies and Digital Design (TIDD), São Paulo, 10 and 11 November 2026. Research-project track. Approved 30 October 2026; presented orally by João Ariedi (certificate, 2 hours). A research project: no results yet."
+msgstr "7º Congresso de Inteligência Artificial da PUC-SP, organizado pela Faculdade de Ciências Exatas e Tecnologia (FCET) e pelo Programa de Pós-Graduação em Tecnologias da Inteligência e Design Digital (TIDD), São Paulo, 10 e 11 de novembro de 2026. Trilha de projetos de pesquisa. Aprovado em 30 de outubro de 2026; apresentado oralmente por João Ariedi (certificado, 2 horas). Um projeto de pesquisa: ainda sem resultados."
+
+msgid "Summary"
+msgstr "Resumo"
+
+msgid "An applied, qualitative single-case study of a corporate AI laboratory inside a Brazilian technology ecosystem. The question is how the laboratory's actions connect with the cultural and organizational mechanisms through which AI becomes institutionalized and mature. Seven initial analytic categories (leadership, organizational learning, trust, collaboration, experimentation, governance and standardization, incorporation into routines), document analysis and 15 to 20 semi-structured interviews, and a multidimensional maturity matrix as the main product. Planned November 2026 to October 2027. It continues the SIMPEP paper's line, with the same team and case."
+msgstr "Um estudo de caso único, aplicado e qualitativo, de um laboratório corporativo de IA em um ecossistema brasileiro de tecnologia. A pergunta é como as ações do laboratório se articulam com os mecanismos culturais e organizacionais pelos quais a IA se institucionaliza e amadurece. Sete categorias analíticas iniciais (liderança, aprendizagem organizacional, confiança, colaboração, experimentação, governança e padronização, incorporação às rotinas), análise documental e 15 a 20 entrevistas semiestruturadas, e uma matriz multidimensional de maturidade como produto principal. Previsto de novembro de 2026 a outubro de 2027. Dá continuidade à linha do artigo do SIMPEP, com a mesma equipe e o mesmo caso."
+
+msgid "<strong>Where it sits in this research line.</strong> The organizational side of the same question the MEISTUDIES article asks on the engineering side."
+msgstr "<strong>Onde se encaixa nesta linha de pesquisa.</strong> O lado organizacional da mesma pergunta que o artigo do MEISTUDIES faz do lado da engenharia."
 
 msgid "Follow Me"
 msgstr "Siga-me"

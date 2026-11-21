@@ -221,3 +221,5 @@ fabric.properties
 .idea/**/markdown-navigator/
 
 # End of https://www.gitignore.io/api/django,pycharm
+# Private working briefs (contain unpublished facts); never commit
+UPDATES-*.md

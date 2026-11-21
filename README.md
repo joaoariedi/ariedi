@@ -2,12 +2,14 @@
 
 Personal portfolio website of João Ariedi: engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work.
 
+Live at **https://ariedi.com** (English) and **https://ariedi.com/pt-br/** (Portuguese).
+
 ## Tech Stack
 
 - **Framework:** Django 5.2
 - **Database:** PostgreSQL (Heroku) / SQLite (local)
 - **Storage:** AWS S3 (media files)
-- **Deployment:** Heroku
+- **Deployment:** Heroku (app `ariedi`), custom domain `ariedi.com` via Cloudflare DNS; `www` and `ariedi.herokuapp.com` 301 to the apex (`CANONICAL_HOST`)
 - **Package Manager:** Poetry
 
 ## Project Structure

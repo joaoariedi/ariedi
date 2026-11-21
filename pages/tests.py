@@ -23,7 +23,7 @@ class PublicPagesSmokeTest(TestCase):
     def tearDown(self):
         translation.deactivate()
 
-    REMOVED_FROM_HOME = ["John Ariedi", "15+ years", "CISSP", "CISO", "9107", "paradigm shift"]
+    REMOVED_FROM_HOME = ["John Ariedi", "15+ years", "CISSP", "CISO", "9107", "paradigm shift", "Led a FAPESP", "v9.1.3"]
 
     def test_home_renders_with_current_identity(self):
         response = self.client.get("/")
@@ -32,6 +32,7 @@ class PublicPagesSmokeTest(TestCase):
         self.assertIn("João Ariedi", body)
         self.assertIn('id="section-research"', body)
         self.assertIn('id="section-work"', body)
+        self.assertIn('id="section-talks"', body)
         for removed in self.REMOVED_FROM_HOME:
             self.assertNotIn(removed, body, f"{removed!r} must not appear on the home page")
 
@@ -43,6 +44,7 @@ class PublicPagesSmokeTest(TestCase):
         self.assertIn("syntagm transition", body)
         self.assertIn("Why the full text is not published here yet", body)
         self.assertIn('id="simpep-2026"', body)
+        self.assertIn('id="pucsp-2026"', body)
         self.assertIn("Organizational Maturity Framework", body)
 
     def test_presentations_page_renders(self):
@@ -62,6 +64,7 @@ class PublicPagesSmokeTest(TestCase):
         self.assertIn('<html lang="pt-BR">', body)
         self.assertIn("Olá, eu sou", body)
         self.assertIn("Pesquisa e publicações", body)
+        self.assertIn("Palestras e painéis", body)
         self.assertNotIn("Hello, I'm", body)
         # names are never translated
         self.assertIn("João Ariedi", body)
