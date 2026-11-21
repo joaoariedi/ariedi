@@ -5,6 +5,8 @@ from functools import lru_cache
 from django.conf import settings
 from django.core.mail import send_mail
 from django.http import FileResponse, Http404, HttpResponse, JsonResponse
+from django.urls import reverse
+from django.utils import translation
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.gzip import gzip_page
 from django.utils.decorators import method_decorator
@@ -28,6 +30,7 @@ DECKS = {
     'agentic-work-transition': 'agentic-work-transition.html',
 }
 DECK_LANGUAGE = {'pt-br': 'pt'}   # site language -> the decks' own code; anything else is 'en'
+SITE_ORIGIN = 'https://ariedi.com'
 
 
 class Home(TemplateView):
@@ -65,8 +68,24 @@ def open_deck_in(html, deck_language):
     '<body><script>function setLang(l){}</script><script>if (typeof setLang === "function") setLang("pt");</script></body>'
     """
     opener = '<script>if (typeof setLang === "function") setLang("%s");</script>' % deck_language
-    end = html.rfind('</body>')
-    return html + opener if end == -1 else html[:end] + opener + html[end:]
+    return insert_before(html, '</body>', opener)
+
+
+def deck_links(slug, path):
+    """The <head> links the site's other pages carry (_header.html): canonical, en, pt-BR, x-default."""
+    def url_in(language):
+        with translation.override(language):
+            return SITE_ORIGIN + reverse('presentation_deck', args=[slug])
+    return ('<link rel="canonical" href="%s%s">' % (SITE_ORIGIN, path)
+            + '<link rel="alternate" hreflang="en" href="%s">' % url_in('en')
+            + '<link rel="alternate" hreflang="pt-BR" href="%s">' % url_in('pt-br')
+            + '<link rel="alternate" hreflang="x-default" href="%s">' % url_in('en'))
+
+
+def insert_before(html, closing_tag, snippet):
+    """Puts snippet just before the last closing_tag, or at the end when the tag is missing."""
+    end = html.rfind(closing_tag)
+    return html + snippet if end == -1 else html[:end] + snippet + html[end:]
 
 
 @gzip_page   # a deck is 150-270 KB of HTML and holds no secrets, so compression is safe (no BREACH)
@@ -75,7 +94,9 @@ def serve_deck(request, slug):
     if filename is None:
         raise Http404
     deck_language = DECK_LANGUAGE.get(request.LANGUAGE_CODE, 'en')
-    return HttpResponse(open_deck_in(read_deck(filename), deck_language))
+    # request.path is one of the allow-listed deck URLs, so it is safe to echo into the canonical
+    html = insert_before(read_deck(filename), '</head>', deck_links(slug, request.path))
+    return HttpResponse(open_deck_in(html, deck_language))
 
 
 @xframe_options_sameorigin
