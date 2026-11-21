@@ -1,0 +1,244 @@
+/* Brand tokens and base layer (brand-sheets experiment).
+   Loaded after the theme and site.css; overrides the vendor theme without editing it.
+   Three sheets on <html data-sheet="...">: night (default), light, blueprint.
+   Values for night and light come from the brand style guide; blueprint is the earlier
+   navy direction, kept for comparison. Only tokens differ between sheets. */
+
+:root,
+html[data-sheet="night"] {
+	color-scheme: dark;
+	--ground: #150826;
+	--panel: #21103A;
+	--line: #B56BE8;
+	--link: #B56BE8;
+	--focus: #B56BE8;
+	--construction: #4A2A6B;
+	--label: #CDB4F0;
+	--text: #F1E9FB;
+	--accent: #FF6A2A;
+	--grid: rgba(181, 107, 232, 0.07);
+	--scan: rgba(241, 233, 251, 0.03);
+}
+
+html[data-sheet="light"] {
+	color-scheme: light;
+	--ground: #F3EEF9;
+	--panel: #FAF7FD;
+	--line: #3A1463;
+	--link: #3A1463;
+	--focus: #3A1463;
+	--construction: #C9B8DE;
+	--label: #6B5A8C;
+	--text: #3A1463;
+	--grid: rgba(58, 20, 99, 0.07);
+	--scan: rgba(58, 20, 99, 0.03);
+}
+
+html[data-sheet="blueprint"] {
+	color-scheme: dark;
+	--ground: #0A1324;
+	--panel: #101C36;
+	--line: #3B82C4;
+	--link: #7FB0FF;
+	--focus: #7FB0FF;
+	--construction: #243B66;
+	--label: #9DB8F0;
+	--text: #E6EDF8;
+	--grid: rgba(59, 130, 196, 0.07);
+	--scan: rgba(230, 237, 248, 0.03);
+}
+
+:root {
+	--accent: #FF6A2A;
+	--glow: drop-shadow(0 0 3px rgba(255, 106, 42, 0.55));
+	--font-display: 'Chakra Petch', sans-serif;
+	--font-mono: 'IBM Plex Mono', monospace;
+	--font-body: 'IBM Plex Sans', sans-serif;
+	--unit: 18px;
+	--radius: 2px;
+	/* Content column: 1152 px at most (64 grid squares), 36 px margins; 18 px on a phone. */
+	--side: max(36px, calc((100% - 1152px) / 2));
+}
+
+@media (max-width: 720px) {
+	:root {
+		--side: 18px;
+	}
+}
+
+/* - Ground: 18 px grid plus scanlines, never pure black or white */
+html {
+	background: var(--ground);
+}
+
+body {
+	background-color: var(--ground);
+	background-image:
+		repeating-linear-gradient(0deg, var(--scan) 0 1px, transparent 1px 2px),
+		linear-gradient(var(--grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+	background-size: auto, var(--unit) var(--unit), var(--unit) var(--unit);
+	color: var(--text);
+	font-family: var(--font-body);
+	font-size: 17px;
+	line-height: 28px;
+}
+
+::selection {
+	background: var(--construction);
+	color: var(--text);
+}
+
+/* - Type: the theme sets Roboto and #141414 headings (for its light panels) */
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-display);
+	font-weight: 600;
+	color: var(--text);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+p {
+	font-size: inherit;
+	margin: 18px 0;
+}
+
+strong {
+	font-weight: 600;
+	color: var(--text);
+}
+
+input, textarea, button {
+	font-family: var(--font-body);
+}
+
+/* Links: line colour, underlined on hover, visited keeps the colour. Inside running text a
+   construction-colour underline stays at rest so links do not rely on colour alone. */
+a,
+a:visited {
+	color: var(--link);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--link);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.single-post-text a,
+.resume-item .text a,
+.service-item .text a {
+	text-decoration: underline;
+	text-decoration-color: var(--construction);
+	text-underline-offset: 3px;
+}
+
+.single-post-text a:hover,
+.resume-item .text a:hover,
+.service-item .text a:hover {
+	text-decoration-color: currentColor;
+}
+
+/* The theme's blue.css accent rules, neutralised (no cyan anywhere). */
+.single-post-text p a,
+.comment-text p a {
+	color: var(--link);
+}
+
+.started-content .date,
+.service-items .service-item .icon,
+.resume-items .resume-item.active .date,
+.info-list ul li strong,
+.section.started .mouse_btn {
+	color: inherit;
+}
+
+.single-post-text ul > li:before {
+	background: var(--line);
+}
+
+blockquote {
+	border-left-color: var(--line);
+}
+
+/* - Focus ring: 2 px in the line colour, 2 px offset, on every interactive element */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+iframe:focus-visible,
+[tabindex]:focus-visible {
+	outline: 2px solid var(--focus) !important;
+	outline-offset: 2px;
+}
+
+/* - Buttons: the secondary style (transparent, 1 px line border, label colour). The page
+   carries no orange button, so the hero keeps the only orange in its view. */
+a.btn,
+.btn {
+	height: 42px;
+	padding: 0;
+	border: 1px solid var(--line);
+	border-radius: 0;
+	background: transparent;
+	color: var(--label);
+	font: 500 12px/40px var(--font-mono);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+a.btn:hover,
+.btn:hover {
+	color: var(--text);
+	border-color: var(--text);
+	text-decoration: none;
+}
+
+a.btn .lnk,
+.btn .lnk {
+	padding: 0 18px;
+}
+
+.btn .circle,
+.ink {
+	display: none !important;
+}
+
+/* - Theme decorations the drawing sheet replaces: the five column lines, the cursor
+   follower and the grain. The preloader keeps its thin bar, in sheet colours. */
+.lines,
+.cursor-follower {
+	display: none !important;
+}
+
+.preloader .spinner .double-bounce1 {
+	background: var(--construction);
+}
+
+.preloader .spinner .double-bounce2 {
+	background: var(--line);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	.preloader {
+		display: none !important;
+	}
+}
+
+@media (max-width: 720px) {
+	body {
+		font-size: 16px;
+		line-height: 26px;
+	}
+}
