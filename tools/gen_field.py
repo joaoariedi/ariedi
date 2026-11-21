@@ -34,14 +34,14 @@ STEP = 8                      # svg units between path points (brand-motion.js u
 
 # Each wave is ((amplitude range), (wavelength range)); its phase is drawn from 0..2 pi.
 WIDE = {
-    "name": "wide", "W": 1584, "H": 300,      # cropped to ~a third of a view
-    "CX": 1251, "CY": 165,                    # ring centre at 79% of the width
+    "name": "wide", "W": 1584, "H": 400,      # the phone's proportions: ring ~0.36 of the height
+    "CX": 1251, "CY": 214,                    # ring centre at 79% of the width
     "RINGS": [(72, 1.25), (54, 1), (36, 1), (18, 1)],
-    "N_IN": 20, "Y0": (96, 280), "BAND": (60, 290),    # incoming lines stay inside the band
-    "WAVES": [((30, 46), (280, 440)), ((10, 18), (120, 180)), ((3, 6), (50, 75))],
-    "N_OUT": 7, "OUT_GAP": 13, "OUT_FAN": 7, "OUT_RUN": 92, "OUT_HANDLES": (40, 46),
-    "ARC": 84, "OUT_SPREAD": 3,               # arrival arc (deg either side), output divergence (deg per line)
-    "FADE": 0.6, "PULL": 4.0,                 # full turbulence for 60% of the way; a late pull
+    "N_IN": 20, "Y0": (74, 384), "BAND": (60, 392),    # a high, tall start; the top strip is the label's
+    "WAVES": [((38, 56), (280, 440)), ((12, 22), (120, 180)), ((4, 7), (50, 75))],
+    "N_OUT": 7, "OUT_GAP": 15, "OUT_FAN": 7, "OUT_RUN": 92, "OUT_HANDLES": (40, 46),
+    "ARC": 84, "OUT_SPREAD": 4,               # arrival arc (deg either side), output divergence (deg per line)
+    "FADE": 0.7, "PULL": 5.5,                 # turbulence for 70% of the way; a late, steep funnel
     "SEED": 20261121, "LABELS": True,
 }
 NARROW = {
@@ -228,7 +228,9 @@ def labels(c):
     def pct(v, total):
         return f"{v / total * 100:.2f}%"
     in_right = xc(c) - 30                          # the label's right edge; long phrases run ~500 units left
-    in_top = highest_reach(c, incoming_paths(c), in_right - 500, in_right) - 10 - 22
+    # Above the highest the lines can reach, and never inside the band's soft edge (20 units).
+    in_top = min(highest_reach(c, incoming_paths(c), in_right - 500, in_right) - 10 - 22,
+                 c["BAND"][0] - 20 - 8 - 22)
     bottom = output_line(c, c["N_OUT"] - 1)[4][1]  # the lowest output line at the right edge
     spans = [
         ("field-label-in", f"right:{pct(W - in_right, W)};top:{pct(in_top, H)}", '{% trans "Stakeholder inputs" %}'),
