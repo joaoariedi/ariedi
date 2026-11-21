@@ -79,6 +79,11 @@
 		var next = shownField();
 		if (next === svg) return;
 		lines.forEach(function (L) { L.el.setAttribute('d', L.d0); });
+		// A canvas that was display:none starts its CSS entrance when shown; on a resize or a
+		// rotation the decision line has already landed, so land it again without the replay.
+		if (svg && next && next.getAnimations) {
+			next.getAnimations({ subtree: true }).forEach(function (a) { a.finish(); });
+		}
 		svg = next;
 		lines = []; xs = []; fade = []; pull = []; nfade = [];
 		if (svg) readField();

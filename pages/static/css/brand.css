@@ -414,7 +414,9 @@
 	}
 
 	.hero-field {
+		width: 100%;          /* with the cap below, keep the full width and let the drawing crop */
 		aspect-ratio: 440 / 248;
+		max-height: 260px;    /* small tablets in portrait: crop from the left, don't grow */
 		margin-top: 36px;
 	}
 
