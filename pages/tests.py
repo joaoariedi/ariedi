@@ -25,6 +25,10 @@ class PublicPagesSmokeTest(TestCase):
 
     REMOVED_FROM_HOME = ["John Ariedi", "15+ years", "CISSP", "CISO", "9107", "paradigm shift", "Led a FAPESP", "v9.1.3"]
 
+    # The hero headline of the brand design, in both languages.
+    HEADLINE_EN = "I build the machine that turns vision into revenue"
+    HEADLINE_PT = "Construo a máquina que transforma visão em receita"
+
     def test_home_renders_with_current_identity(self):
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)
@@ -62,10 +66,10 @@ class PublicPagesSmokeTest(TestCase):
         self.assertEqual(response.status_code, 200)
         body = response.content.decode()
         self.assertIn('<html lang="pt-BR">', body)
-        self.assertIn("Olá, eu sou", body)
+        self.assertIn(self.HEADLINE_PT, body)
         self.assertIn("Pesquisa e publicações", body)
         self.assertIn("Palestras e painéis", body)
-        self.assertNotIn("Hello, I'm", body)
+        self.assertNotIn(self.HEADLINE_EN, body)
         # names are never translated
         self.assertIn("João Ariedi", body)
         self.assertIn("Frons Educação", body)
@@ -73,8 +77,8 @@ class PublicPagesSmokeTest(TestCase):
     def test_english_is_default_and_unprefixed(self):
         body = self.client.get("/").content.decode()
         self.assertIn('<html lang="en">', body)
-        self.assertIn("Hello, I'm", body)
-        self.assertNotIn("Olá, eu sou", body)
+        self.assertIn(self.HEADLINE_EN, body)
+        self.assertNotIn(self.HEADLINE_PT, body)
         # the English page must not leak Portuguese prose (names and work titles excepted)
         self.assertNotIn("Um estudo de caso em um", body)
 
@@ -86,6 +90,14 @@ class PublicPagesSmokeTest(TestCase):
         self.assertIn('hreflang="x-default" href="https://ariedi.com/research"', en)
         self.assertIn("Síntese estendida", pt)
         self.assertIn('id="simpep-2026"', pt)
+
+    def test_night_sheet_only_no_switcher(self):
+        """The brand ships one sheet (night); the experiment's switcher and its ?sheet= script are gone."""
+        for path in ("/", "/pt-br/", "/research", "/presentations"):
+            body = self.client.get(path).content.decode()
+            self.assertIn("brand-tokens.css", body, path)
+            for leftover in ("data-sheet", "sheet-switch", "brand-sheet", "localStorage"):
+                self.assertNotIn(leftover, body, f"{leftover!r} on {path}")
 
 
 

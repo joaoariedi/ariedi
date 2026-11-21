@@ -11,33 +11,17 @@
     <div class="wrapper">
 
         <!-- Section Started -->
-        <div class="section started" id="section-started">
+        <div class="section started brand-hero" id="section-started">
 
-            <!-- background -->
-            <div class="video-bg jarallax" style="background-image: url({% static 'images/retro3.jpg' %});">
-                <div class="video-bg-mask"></div>
-                <div class="video-bg-texture" id="grained_container"></div>
-            </div>
-
-            <!-- started content -->
-            <div class="centrize full-width">
-                <div class="vertical-center">
-                    <div class="started-content">
-                        <h1 class="h-title">
-                            {% blocktrans trimmed %}Hello, I'm <strong>João Ariedi</strong>, engineering leader and builder of AI agent harnesses, working remotely from Brazil.{% endblocktrans %}
-                        </h1>
-                        <div class="h-subtitle typing-subtitle">
-                            <p>{% blocktrans trimmed %}I lead <strong>engineering at scale</strong>{% endblocktrans %}</p>
-                            <p>{% blocktrans trimmed %}I build <strong>AI agent harnesses</strong>{% endblocktrans %}</p>
-                            <p>{% blocktrans trimmed %}I research <strong>AI and competence</strong>{% endblocktrans %}</p>
-                        </div>
-                        <span class="typed-subtitle"></span>
-                    </div>
+            <!-- the sheet: headline, hazard stripe, subline, then the field drawing -->
+            <div class="hero-sheet">
+                <div class="hero-copy">
+                    <h1 class="hero-title">{% trans "I build the machine that turns vision into revenue" %}</h1>
+                    <span class="hazard" aria-hidden="true"></span>
+                    <p class="hero-subline"><span class="nowrap">{% trans "Business opportunities in" %}</span><span class="sub-dot"> · </span><span class="nowrap">{% trans "products and services out" %}</span></p>
                 </div>
+                {% include 'includes/_hero_field.html' %}
             </div>
-
-            <!-- mouse button -->
-            <a href="#" class="mouse_btn" style="display: none;"><span class="icon fas fa-chevron-down"></span></a>
 
         </div>
 
@@ -49,12 +33,12 @@
                 <h2 class="title_inner">{% trans "About" %}</h2>
             </div>
 
-            <div class="content content-box">
+            <div class="content about-sheet">
 
-                <!-- image -->
-                <div class="image">
-                    <img src={% static "images/profile.jpeg" %} alt="{% trans 'João Ariedi - Engineering leader, builder of AI agent harnesses, researcher' %}" loading="lazy" width="300" height="300" />
-                </div>
+                <!-- portrait: cut out on the violet ground -->
+                <figure class="portrait">
+                    <img src={% static "images/brand/joao-ariedi-portrait-600.jpg" %} alt="{% trans 'João Ariedi - Engineering leader, builder of AI agent harnesses, researcher' %}" loading="lazy" width="600" height="600" />
+                </figure>
 
                 <!-- desc -->
                 <div class="desc">
@@ -62,7 +46,7 @@
                     <p>{% blocktrans trimmed %}16 years in technology, 9+ leading engineering teams, the last decade spanning organizational intelligence and cyber defense. Today I lead engineering for a US cybersecurity company, advise technology companies as a partner and fractional CTO, and teach in MBA programs.{% endblocktrans %}</p>
                     <p>{% blocktrans trimmed %}How I see the shift: AI moves the bottleneck from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds it: the harness and orchestration that develop, improve and maintain the product 24/7. As in Turing's morphogenesis, AI is the activator and the engineer the inhibitor; the value lives in the tension.{% endblocktrans %}</p>
                     <p>{% blocktrans trimmed %}Technologist in Cyber Defense (FIAP) with five professional qualifications. Security by design: mTLS, certificate-based device authentication, post-quantum readiness.{% endblocktrans %}</p>
-                    <div class="info-list">
+                    <div class="info-list title-block">
                         <ul>
                             <li>{% blocktrans trimmed %}<strong>Experience:</strong> 16 years in technology, 9+ leading engineering teams{% endblocktrans %}</li>
                             <li><strong>{% trans "E-mail:" %}</strong> joaoariedi@gmail.com</li>
@@ -71,7 +55,6 @@
                     </div>
                 </div>
 
-                <div class="clear"></div>
             </div>
         </div>
 
@@ -89,7 +72,11 @@
 
                     <div class="service-col">
                         <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-users-cog"></span></div>
+                            <div class="fig-head">
+                                <span class="fig">FIG. 01</span>
+                                <!-- rings: the system kept running -->
+                                <svg class="icon-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="17"/><circle cx="20" cy="20" r="12"/><circle cx="20" cy="20" r="7"/><circle cx="20" cy="20" r="2.5"/></svg>
+                            </div>
                             <div class="name">{% trans "Engineering leadership" %}</div>
                             <div class="text">{% blocktrans trimmed %}Teams at scale, 90%+ retention, engineers grown into leaders on a test-first culture. Security by design in every architectural decision.{% endblocktrans %}</div>
                         </div>
@@ -97,7 +84,11 @@
 
                     <div class="service-col">
                         <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-handshake"></span></div>
+                            <div class="fig-head">
+                                <span class="fig">FIG. 02</span>
+                                <!-- registration cross in a circle: alignment -->
+                                <svg class="icon-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="11"/><path d="M20 2v36M2 20h36"/></svg>
+                            </div>
                             <div class="name">{% trans "Advisory and board work" %}</div>
                             <div class="text">{% blocktrans trimmed %}Partner and advisor to Brazilian technology companies on strategy, architecture governance and AI adoption. Co-founder and former COO of an edtech.{% endblocktrans %}</div>
                         </div>
@@ -105,7 +96,11 @@
 
                     <div class="service-col">
                         <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-user-tie"></span></div>
+                            <div class="fig-head">
+                                <span class="fig">FIG. 03</span>
+                                <!-- leader line with a dot: pointing at the part that matters -->
+                                <svg class="icon-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="7" cy="33" r="3"/><path d="M9.2 30.8L23 15h15M23 9h15"/></svg>
+                            </div>
                             <div class="name">{% trans "Consulting and fractional CTO" %}</div>
                             <div class="text">{% blocktrans trimmed %}Architecture governance, engineering org design, AI harnesses for legacy modernization, productivity metrics, infrastructure cost efficiency.{% endblocktrans %}</div>
                         </div>
@@ -113,7 +108,11 @@
 
                     <div class="service-col">
                         <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-chalkboard-teacher"></span></div>
+                            <div class="fig-head">
+                                <span class="fig">FIG. 04</span>
+                                <!-- dimension line with ticks: measuring -->
+                                <svg class="icon-svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M3 12v22M37 12v22M3 24h34M3 24l5-3M3 24l5 3M37 24l-5-3M37 24l-5 3M12 8v4M20 8v4M28 8v4"/></svg>
+                            </div>
                             <div class="name">{% trans "Teaching and research" %}</div>
                             <div class="text">{% blocktrans trimmed %}MBA guest professor. Research on AI agents and engineering competence; paper accepted at MEISTUDIES 2026.{% endblocktrans %}</div>
                         </div>
@@ -480,12 +479,13 @@
                 <div class="service-items">
 
                     <div class="service-col">
-                        <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-hammer"></span></div>
+                        <div class="service-item content-box featured">
+                            <div class="fig-head"><span class="fig">FIG. 05</span></div>
                             <div class="name">{% trans "Hefesto, a development harness for Claude Code" %}</div>
                             <div class="text">
                                 {% blocktrans trimmed %}Spec-driven workflow and quality gates enforced by hooks: the agent cannot skip tests, weaken assertions or commit secrets. /hef.ship takes an idea through RFC, plan and approval to a pull request; lanes run planner, builder and deployer sessions under an orchestrator. 27 commands, 7 agents, 16 hooks. MIT, v9.4.3.{% endblocktrans %}
-                                <br><br>
+                            </div>
+                            <div class="links">
                                 <a href="https://github.com/joaoariedi/hefesto" target="_blank" rel="noopener">{% trans "Repository" %}</a> ·
                                 <a href="https://github.com/joaoariedi/hefesto/blob/main/hefesto-sdlc.html" target="_blank" rel="noopener">{% trans "Harness Software Engineering, the presentation" %}</a>
                             </div>
@@ -494,11 +494,12 @@
 
                     <div class="service-col">
                         <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-shield-alt"></span></div>
+                            <div class="fig-head"><span class="fig">FIG. 06</span></div>
                             <div class="name">Safesphere</div>
                             <div class="text">
                                 {% blocktrans trimmed %}Digital-security service for families, bringing the discipline of enterprise cyber defense to the household: devices, accounts and the people who use them. Advisor and builder.{% endblocktrans %}
-                                <br><br>
+                            </div>
+                            <div class="links">
                                 <a href="https://www.safesphere.com.br" target="_blank" rel="noopener">safesphere.com.br</a>
                             </div>
                         </div>
@@ -506,11 +507,12 @@
 
                     <div class="service-col">
                         <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-chart-line"></span></div>
+                            <div class="fig-head"><span class="fig">FIG. 07</span></div>
                             <div class="name">xCube</div>
                             <div class="text">
                                 {% blocktrans trimmed %}Proprietary quantitative research and execution firm: algorithmic trading strategies selected by real broker execution rather than backtests. Board member and technology advisor since 2023.{% endblocktrans %}
-                                <br><br>
+                            </div>
+                            <div class="links">
                                 <a href="https://xcube.finance" target="_blank" rel="noopener">xcube.finance</a>
                             </div>
                         </div>
@@ -518,11 +520,12 @@
 
                     <div class="service-col">
                         <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-chalkboard-teacher"></span></div>
+                            <div class="fig-head"><span class="fig">FIG. 08</span></div>
                             <div class="name">{% trans "Presentations" %}</div>
                             <div class="text">
                                 {% blocktrans trimmed %}Modern Engineering, the deck on how engineering teams work now that AI writes much of the code: embedded viewer, fullscreen and PDF download.{% endblocktrans %}
-                                <br><br>
+                            </div>
+                            <div class="links">
                                 <a href="{{ presentations_url }}">{% trans "View presentations" %}</a>
                             </div>
                         </div>
@@ -543,46 +546,31 @@
                     <h2 class="title_inner">{% trans "Skills" %}</h2>
                 </div>
 
-                <!-- skills groups: one icon-led row per group -->
-                <div class="skills-groups content-box">
-                    <div class="skills-group">
-                        <div class="skills-icon" aria-hidden="true"><span class="fas fa-code"></span></div>
-                        <div class="skills-body single-post-text">
-                            <h4>{% trans "Engineering" %}</h4>
-                            <p>{% blocktrans trimmed %}Go, Python (Django, FastAPI), JavaScript/Node, React · PostgreSQL, Redis · Kafka, RabbitMQ · Kubernetes, AWS, Google Cloud, Terraform · event-driven and service-oriented architecture, CI/CD, test-first.{% endblocktrans %}</p>
-                        </div>
+                <!-- skills: a spec table, mono labels at the left -->
+                <div class="spec-table content-box">
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "Engineering" %}</h4>
+                        <p class="spec-text">{% blocktrans trimmed %}Go, Python (Django, FastAPI), JavaScript/Node, React · PostgreSQL, Redis · Kafka, RabbitMQ · Kubernetes, AWS, Google Cloud, Terraform · event-driven and service-oriented architecture, CI/CD, test-first.{% endblocktrans %}</p>
                     </div>
 
-                    <div class="skills-group">
-                        <div class="skills-icon" aria-hidden="true"><span class="fas fa-shield-alt"></span></div>
-                        <div class="skills-body single-post-text">
-                            <h4>{% trans "Security" %}</h4>
-                            <p>{% blocktrans trimmed %}EDR architecture, mTLS and PKI, certificate-based device authentication, post-quantum readiness, penetration testing, forensics.{% endblocktrans %}</p>
-                        </div>
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "Security" %}</h4>
+                        <p class="spec-text">{% blocktrans trimmed %}EDR architecture, mTLS and PKI, certificate-based device authentication, post-quantum readiness, penetration testing, forensics.{% endblocktrans %}</p>
                     </div>
 
-                    <div class="skills-group">
-                        <div class="skills-icon" aria-hidden="true"><span class="fas fa-robot"></span></div>
-                        <div class="skills-body single-post-text">
-                            <h4>{% trans "AI engineering" %}</h4>
-                            <p>{% blocktrans trimmed %}Claude Code harness design, spec-driven development, multi-agent orchestration, hook-enforced quality gates, agent evaluation.{% endblocktrans %}</p>
-                        </div>
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "AI engineering" %}</h4>
+                        <p class="spec-text">{% blocktrans trimmed %}Claude Code harness design, spec-driven development, multi-agent orchestration, hook-enforced quality gates, agent evaluation.{% endblocktrans %}</p>
                     </div>
 
-                    <div class="skills-group">
-                        <div class="skills-icon" aria-hidden="true"><span class="fas fa-brain"></span></div>
-                        <div class="skills-body single-post-text">
-                            <h4>{% trans "Intelligence" %}</h4>
-                            <p>{% blocktrans trimmed %}Business and market intelligence, data pipelines, BI, knowledge management, OKRs.{% endblocktrans %}</p>
-                        </div>
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "Intelligence" %}</h4>
+                        <p class="spec-text">{% blocktrans trimmed %}Business and market intelligence, data pipelines, BI, knowledge management, OKRs.{% endblocktrans %}</p>
                     </div>
 
-                    <div class="skills-group">
-                        <div class="skills-icon" aria-hidden="true"><span class="fas fa-drafting-compass"></span></div>
-                        <div class="skills-body single-post-text">
-                            <h4>{% trans "Fabrication" %}</h4>
-                            <p>{% trans "Laser cutting, 3D printing, Fab Lab operation." %}</p>
-                        </div>
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "Fabrication" %}</h4>
+                        <p class="spec-text">{% trans "Laser cutting, 3D printing, Fab Lab operation." %}</p>
                     </div>
                 </div>
 
@@ -590,7 +578,7 @@
         </div>
 
         <!-- Section Interests -->
-        <div class="section service" id="section-interests">
+        <div class="section skills" id="section-interests">
             <div class="content">
 
                 <!-- title -->
@@ -598,44 +586,29 @@
                     <h2 class="title_inner">{% trans "Interests" %}</h2>
                 </div>
 
-                <!-- interests items -->
-                <div class="service-items">
-
-                    <div class="service-col">
-                        <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-server"></span></div>
-                            <div class="name">{% trans "Home Lab" %}</div>
-                            <div class="text">{% blocktrans trimmed %}Running 2 Proxmox nodes that host most of my daily apps. Continuous hands-on learning with infrastructure.{% endblocktrans %}</div>
-                        </div>
+                <!-- interests: same spec table, no icons -->
+                <div class="spec-table content-box">
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "Home Lab" %}</h4>
+                        <p class="spec-text">{% blocktrans trimmed %}Running 2 Proxmox nodes that host most of my daily apps. Continuous hands-on learning with infrastructure.{% endblocktrans %}</p>
                     </div>
 
-                    <div class="service-col">
-                        <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-cubes"></span></div>
-                            <div class="name">{% trans "Digital fabrication" %}</div>
-                            <div class="text">{% blocktrans trimmed %}Laser cutting and 3D printing. Co-founded a Fab Lab; now researching how agentic interfaces change who gets to make things.{% endblocktrans %}</div>
-                        </div>
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "Digital fabrication" %}</h4>
+                        <p class="spec-text">{% blocktrans trimmed %}Laser cutting and 3D printing. Co-founded a Fab Lab; now researching how agentic interfaces change who gets to make things.{% endblocktrans %}</p>
                     </div>
 
-                    <div class="service-col">
-                        <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-gamepad"></span></div>
-                            <div class="name">{% trans "Games" %}</div>
-                            <div class="text">{% blocktrans trimmed %}Real-time strategy enthusiast. Problem-solving mindset extends to gaming and creative challenges.{% endblocktrans %}</div>
-                        </div>
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "Games" %}</h4>
+                        <p class="spec-text">{% blocktrans trimmed %}Real-time strategy enthusiast. Problem-solving mindset extends to gaming and creative challenges.{% endblocktrans %}</p>
                     </div>
 
-                    <div class="service-col">
-                        <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-guitar"></span></div>
-                            <div class="name">{% trans "Music" %}</div>
-                            <div class="text">{% blocktrans trimmed %}Classical guitar student. Creative outlet that complements analytical work.{% endblocktrans %}</div>
-                        </div>
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "Music" %}</h4>
+                        <p class="spec-text">{% blocktrans trimmed %}Classical guitar student. Creative outlet that complements analytical work.{% endblocktrans %}</p>
                     </div>
-
                 </div>
 
-                <div class="clear"></div>
             </div>
         </div>
 
@@ -648,15 +621,11 @@
                     <h2 class="title_inner">{% trans "Motivation" %}</h2>
                 </div>
 
-                <div class="content-box">
-                    <div class="single-post-text">
-                        <p>
-                            {% blocktrans trimmed %}AI moves the bottleneck of engineering from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds, improves and maintains it.{% endblocktrans %}
-                        </p>
-                    </div>
-                </div>
+                <p class="motivation-line"><span>{% trans "AI is the activator." %}</span> <span>{% trans "The engineer is the inhibitor." %}</span></p>
+                <p class="motivation-text">
+                    {% blocktrans trimmed %}AI moves the bottleneck of engineering from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds, improves and maintains it.{% endblocktrans %}
+                </p>
 
-                <div class="clear"></div>
             </div>
         </div>
 
@@ -669,44 +638,8 @@
                     <h2 class="title_inner">{% trans "Contacts" %}</h2>
                 </div>
 
-                <!-- contacts items -->
-                <div class="service-items">
+                {% include 'includes/_title_block.html' %}
 
-                    <div class="service-col">
-                        <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-envelope"></span></div>
-                            <div class="name">{% trans "Email" %}</div>
-                            <div class="text"><a href="mailto:joaoariedi@gmail.com">joaoariedi@gmail.com</a></div>
-                        </div>
-                    </div>
-
-                    <div class="service-col">
-                        <div class="service-item content-box">
-                            <div class="icon"><span class="fab fa-linkedin"></span></div>
-                            <div class="name">LinkedIn</div>
-                            <div class="text"><a href="https://www.linkedin.com/in/joaoariedi/" target="_blank" rel="noopener">linkedin.com/in/joaoariedi</a></div>
-                        </div>
-                    </div>
-
-                    <div class="service-col">
-                        <div class="service-item content-box">
-                            <div class="icon"><span class="fab fa-github"></span></div>
-                            <div class="name">GitHub</div>
-                            <div class="text"><a href="https://github.com/joaoariedi" target="_blank" rel="noopener">github.com/joaoariedi</a></div>
-                        </div>
-                    </div>
-
-                    <div class="service-col">
-                        <div class="service-item content-box">
-                            <div class="icon"><span class="fas fa-globe"></span></div>
-                            <div class="name">ORCID</div>
-                            <div class="text"><a href="https://orcid.org/0009-0002-1761-065X" target="_blank" rel="noopener">0009-0002-1761-065X</a></div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="clear"></div>
             </div>
         </div>
 

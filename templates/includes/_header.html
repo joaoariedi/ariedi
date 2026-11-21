@@ -134,8 +134,9 @@
 	}
 	</script>
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="{% static 'images/favicons/fav2.png' %}" type="image/png">
+	<!-- Favicon: the four rings with the orange dot; the PNG stays as the fallback -->
+	<link rel="icon" href="{% static 'images/favicons/fav2.png' %}" type="image/png">
+	<link rel="icon" href="{% static 'images/favicons/rings.svg' %}" type="image/svg+xml">
 	<link rel="apple-touch-icon" href="{% static 'images/favicons/fav2.png' %}">
 
 	<!-- Preconnect for performance -->

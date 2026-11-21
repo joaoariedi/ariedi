@@ -1,23 +1,11 @@
 {% load i18n %}
-<!-- Footer -->
-<footer class="footer">
-    <div class="copy">
-        <p>E: joaoariedi@gmail.com</p>
-        <p>ORCID: <a href="https://orcid.org/0009-0002-1761-065X" target="_blank" rel="noopener">0009-0002-1761-065X</a></p>
-    </div>
-    <div class="soc-box">
-        <div class="follow-label">{% trans "Follow Me" %}</div>
-        <div class="soc">
-            <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/joaoariedi/">
-                <span class="icon fab fa-linkedin"></span>
-            </a>
-            <a target="_blank" rel="noopener" href="https://github.com/joaoariedi">
-                <span class="icon fab fa-github"></span>
-            </a>
-        </div>
-    </div>
-    <div class="clear"></div>
-</footer>
+<!-- Footer: the title block as the sheet's signature, in flow at the end of the page.
+     The home page carries it in its contacts section instead. -->
+{% if request.resolver_match.url_name != 'home' %}
+<div class="footer brand-footer">
+    {% include 'includes/_title_block.html' %}
+</div>
+{% endif %}
 
 {% include 'includes/_scripts.html' %}
 {% block extrascripts %}{% endblock extrascripts %}
