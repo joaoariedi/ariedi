@@ -13,6 +13,8 @@ Crawl-delay: 1
 # Block admin and private areas
 Disallow: /admin/
 Disallow: /static/admin/
+# The decks live at /presentations/<name>; their raw static copies are not pages to index
+Disallow: /static/presentations/
 
 # Allow important resources
 Allow: /static/css/

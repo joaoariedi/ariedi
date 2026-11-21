@@ -528,7 +528,7 @@
                             </div>
                             <div class="links">
                                 <a href="https://github.com/joaoariedi/hefesto" target="_blank" rel="noopener">{% trans "Repository" %}</a> ·
-                                <a href="https://github.com/joaoariedi/hefesto/blob/main/hefesto-sdlc.html" target="_blank" rel="noopener">{% trans "Harness Software Engineering, the presentation" %}</a>
+                                <a href="{% url 'presentation_deck' 'harness-software-engineering' %}">{% trans "Harness Software Engineering, the presentation" %}</a>
                             </div>
                         </div>
                     </div>
@@ -564,7 +564,7 @@
                             <div class="fig-head"><span class="fig">FIG. 08</span></div>
                             <div class="name">{% trans "Presentations" %}</div>
                             <div class="text">
-                                {% blocktrans trimmed %}Modern Engineering, the deck on how engineering teams work now that AI writes much of the code: embedded viewer, fullscreen and PDF download.{% endblocktrans %}
+                                {% blocktrans trimmed %}Four decks: Harness Software Engineering, Organizational Intelligence, AI Agentic Work Transition and Modern Engineering. Software engineering, data and organizations in the age of AI agents.{% endblocktrans %}
                             </div>
                             <div class="links">
                                 <a href="{{ presentations_url }}">{% trans "View presentations" %}</a>

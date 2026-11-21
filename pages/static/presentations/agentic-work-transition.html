@@ -1,0 +1,954 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>AI Agentic Work Transition</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  /* Single-theme dark design, derived from the reference deck (theme color #0b0e0c). */
+  :root{
+    --bg:#0B0E0C; --bg-soft:#111712; --bg-card:#151C16; --bg-deep:#0E1410;
+    --ink:#EDF4EE; --sub:#ABB9AF; --mut:#75857A;
+    --accent:#3BDD8F; --accent-dim:#2AA96C; --accent-soft:#12251A;
+    --line:#243027; --line-strong:#37493D;
+    --display:"Sora","Segoe UI",Arial,sans-serif;
+    --body:"Manrope",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    --mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--body); font-size:16px; line-height:1.65;
+  }
+  a{color:inherit}
+  ::selection{background:var(--accent); color:#06130C}
+
+  /* language switching: default = pt; body.en shows EN */
+  body.en [data-lang="pt"]{display:none !important}
+  body:not(.en) [data-lang="en"]{display:none !important}
+
+  .wrap{display:flex; min-height:100vh}
+
+  /* ---------- sidebar ---------- */
+  nav.side{
+    width:252px; flex:0 0 252px; position:sticky; top:0; align-self:flex-start;
+    height:100vh; overflow-y:auto; padding:1.6rem 1.1rem 3rem 1.4rem;
+    border-right:1px solid var(--line); background:var(--bg);
+  }
+  .langsw{display:flex; gap:.4rem; margin:0 0 1.2rem}
+  .langsw button{
+    font-family:var(--mono); font-size:.66rem; font-weight:600; letter-spacing:.12em;
+    padding:.3rem .7rem; border-radius:99px; cursor:pointer;
+    border:1px solid var(--line-strong); background:transparent; color:var(--sub);
+  }
+  .langsw button[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:#06130C}
+  .langsw button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  nav.side .brand{
+    font-family:var(--display); font-weight:700; font-size:.98rem; line-height:1.3;
+    margin:0 0 1.2rem; letter-spacing:.01em;
+  }
+  nav.side .brand span{color:var(--accent)}
+  .navgroup{margin:0 0 1.05rem}
+  .navgroup>b{
+    display:block; font-family:var(--mono); font-weight:600; font-size:.6rem;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--mut); margin:0 0 .35rem;
+  }
+  .navgroup a{
+    display:block; text-decoration:none; color:var(--sub); font-size:.8rem;
+    padding:.17rem .5rem; border-left:2px solid transparent; border-radius:0 6px 6px 0;
+  }
+  .navgroup a:hover{color:var(--ink); background:var(--bg-soft)}
+  .navgroup a.on{color:var(--ink); border-left-color:var(--accent); background:var(--bg-soft); font-weight:600}
+  .navgroup a:focus-visible{outline:2px solid var(--accent); outline-offset:1px}
+
+  /* ---------- main ---------- */
+  main{flex:1; min-width:0; padding:0 clamp(1.2rem,4vw,4rem) 5rem; background:var(--bg)}
+  .col{max-width:46rem; margin:0 auto}
+
+  .eyebrow{
+    font-family:var(--mono); font-weight:600; font-size:.66rem; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--accent); margin:0 0 .55rem;
+  }
+  section{padding:2.6rem 0 .4rem; scroll-margin-top:1.2rem}
+  section.part{border-top:1px solid var(--line); margin-top:2.2rem}
+  h2{
+    font-family:var(--display); font-weight:700; font-size:clamp(1.4rem,2.5vw,1.8rem);
+    line-height:1.22; margin:0 0 .9rem; text-wrap:balance; letter-spacing:-.01em;
+  }
+  h3{font-family:var(--display); font-weight:600; font-size:1.05rem; margin:1.6rem 0 .5rem}
+  p{margin:.55rem 0; color:var(--sub); max-width:66ch}
+  p.lead{font-size:1.05rem; color:var(--ink)}
+  strong,b{color:var(--ink)}
+  em,i{color:var(--sub)}
+  .note{
+    border:1px solid var(--line); border-left:3px solid var(--accent);
+    background:var(--bg-soft); border-radius:0 10px 10px 0;
+    padding:.8rem 1rem; margin:1.1rem 0; font-size:.92rem; color:var(--sub);
+  }
+  .note b{color:var(--ink)}
+
+  /* ---------- hero ---------- */
+  header.hero{padding:3.8rem 0 1.5rem; border-bottom:1px solid var(--line)}
+  header.hero .kick{
+    font-family:var(--mono); font-weight:600; font-size:.68rem; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--accent); margin:0 0 1rem;
+  }
+  h1{
+    font-family:var(--display); font-weight:700; font-size:clamp(2.1rem,5vw,3.3rem);
+    line-height:1.06; margin:0 0 1.1rem; letter-spacing:-.02em; text-wrap:balance;
+  }
+  header.hero .sub{font-size:1.1rem; color:var(--sub); max-width:60ch}
+  .thesis{
+    margin:1.6rem 0 0; padding:1rem 1.2rem; border:1px solid var(--accent-dim);
+    border-radius:12px; background:var(--accent-soft);
+    font-family:var(--display); font-weight:600; font-size:1.06rem; color:var(--ink);
+  }
+  .thesis em{color:var(--accent); font-style:normal; font-weight:700}
+  .heroimg{margin:1.5rem 0 0; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#050705}
+  .heroimg img{display:block; width:100%; height:auto}
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:.5rem 1.4rem; margin-top:1.2rem;
+    font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; color:var(--mut);
+  }
+
+  /* ---------- cards & grids ---------- */
+  .grid{display:grid; gap:.7rem; margin:1.1rem 0}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{
+    border:1px solid var(--line); border-radius:12px; background:var(--bg-card);
+    padding:.95rem 1.05rem;
+  }
+  .card h4{margin:0 0 .3rem; font-family:var(--display); font-weight:600; font-size:.95rem; color:var(--ink)}
+  .card p{font-size:.88rem; margin:0; max-width:none}
+  .card.hot{background:var(--accent-soft); border-color:var(--accent-dim)}
+  .card.hot h4{color:var(--accent)}
+  .card .tag{
+    display:inline-block; margin-top:.6rem; font-family:var(--mono); font-weight:600;
+    font-size:.6rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--accent); border:1px solid var(--line-strong); border-radius:99px; padding:.14rem .55rem;
+  }
+  .num{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:1.55rem; height:1.55rem; border-radius:50%; background:var(--accent-soft);
+    border:1px solid var(--accent-dim); color:var(--accent);
+    font-family:var(--display); font-weight:700; font-size:.8rem;
+    margin-right:.5rem; flex:0 0 auto;
+  }
+  .row{display:flex; align-items:flex-start; gap:.65rem; padding:.62rem .75rem;
+    border:1px solid var(--line); border-radius:10px; background:var(--bg-card); margin:.45rem 0}
+  .row div{font-size:.9rem; color:var(--sub)}
+  .row b{color:var(--ink)}
+
+  ol.steps{list-style:none; counter-reset:st; margin:1.1rem 0; padding:0; display:grid; gap:.5rem}
+  ol.steps li{
+    counter-increment:st; position:relative; padding:.7rem .9rem .7rem 2.9rem;
+    border:1px solid var(--line); border-radius:10px; background:var(--bg-card);
+    font-size:.9rem; color:var(--sub);
+  }
+  ol.steps li::before{
+    content:counter(st); position:absolute; left:.8rem; top:.72rem;
+    width:1.5rem; height:1.5rem; border-radius:50%;
+    background:var(--accent-soft); border:1px solid var(--accent-dim); color:var(--accent);
+    font-family:var(--display); font-weight:700; font-size:.78rem;
+    display:flex; align-items:center; justify-content:center;
+  }
+  ol.steps b{color:var(--ink)}
+  ol.steps.alpha li::before{content:counter(st, lower-alpha)}
+
+  /* ---------- diagrams ---------- */
+  .diagram{margin:1.3rem 0; border:1px solid var(--line); border-radius:12px;
+    background:var(--bg-soft); padding:1.1rem 1.1rem .9rem; overflow-x:auto}
+  .diagram figcaption{
+    font-family:var(--mono); font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--mut); margin-top:.7rem;
+  }
+  .layers{display:grid; gap:.45rem; justify-items:center}
+  .layer{
+    border-radius:9px; padding:.5rem .9rem; text-align:center;
+    border:1px solid var(--line-strong); background:var(--bg-card); width:100%;
+  }
+  .layer b{display:block; font-family:var(--display); font-size:.92rem; color:var(--ink)}
+  .layer span{font-size:.76rem; color:var(--sub)}
+  .layer.hot{background:var(--accent-soft); border-color:var(--accent-dim)}
+  .layer.hot b{color:var(--accent)}
+  .l1{max-width:15rem}.l2{max-width:21rem}.l3{max-width:27rem}.l4{max-width:33rem}
+  .lrow{display:flex; gap:.45rem; width:100%; justify-content:center; align-items:stretch; flex-wrap:wrap}
+  .lrow .layer{width:auto; flex:0 1 auto}
+  .layer.trans{border-style:dashed; border-color:var(--accent-dim); background:var(--bg-soft); max-width:14rem}
+  .layer.trans b{color:var(--accent)}
+  .pool{
+    border:1px dashed var(--accent-dim); border-radius:10px; padding:.7rem .9rem; margin-top:.6rem;
+    background:var(--bg-card); font-size:.82rem; color:var(--sub); text-align:center;
+  }
+  .pool b{color:var(--ink); font-family:var(--display)}
+
+  .cycle{display:grid; grid-template-columns:repeat(5,minmax(8.2rem,1fr)); gap:.5rem; min-width:46rem}
+  .cyc{border:1px solid var(--line-strong); border-radius:10px; background:var(--bg-card); padding:.6rem .7rem}
+  .cyc.pair{border-color:var(--accent-dim); background:var(--accent-soft)}
+  .cyc b{display:block; font-family:var(--display); font-size:.82rem; color:var(--ink); margin-bottom:.2rem}
+  .cyc span{font-size:.74rem; color:var(--sub); display:block}
+  .cyc .pairtag{
+    display:inline-block; margin-top:.45rem; font-family:var(--mono); font-weight:600;
+    font-size:.54rem; letter-spacing:.12em; color:var(--accent);
+  }
+  svg.mshape{width:100%; max-width:30rem; height:auto; display:block}
+
+  /* ---------- tables ---------- */
+  .tblwrap{overflow-x:auto; border:1px solid var(--line); border-radius:12px; margin:1.1rem 0}
+  table{border-collapse:collapse; width:100%; min-width:40rem; font-size:.85rem}
+  th{
+    text-align:left; font-family:var(--mono); font-weight:600; font-size:.62rem;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--mut);
+    padding:.6rem .8rem; border-bottom:1px solid var(--line); background:var(--bg-soft);
+  }
+  td{padding:.55rem .8rem; border-bottom:1px solid var(--line); color:var(--sub); vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  td.y{font-family:var(--mono); font-size:.72rem; font-weight:600; color:var(--accent); white-space:nowrap}
+  td b{color:var(--ink)}
+
+  /* ---------- closing ---------- */
+  .ask{
+    margin:1.4rem 0 0; padding:1.5rem 1.4rem; border-radius:14px;
+    background:var(--bg-deep); border:1px solid var(--accent-dim);
+  }
+  .ask h3{color:var(--ink); margin-top:0; font-size:1.3rem}
+  .ask li{color:var(--sub); margin:.3rem 0; font-size:.95rem}
+  .ask li::marker{color:var(--accent)}
+  .ask .fim{font-family:var(--display); font-weight:600; color:var(--accent); margin:.9rem 0 0}
+  footer.end{
+    margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--line);
+    font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; color:var(--mut);
+    display:flex; flex-wrap:wrap; gap:.4rem 1.4rem;
+  }
+
+  @media (max-width: 900px){
+    .wrap{display:block}
+    nav.side{
+      position:static; width:auto; height:auto; border-right:none;
+      border-bottom:1px solid var(--line); display:flex; gap:1.2rem; overflow-x:auto;
+      padding:1rem 1.2rem; align-items:flex-start;
+    }
+    nav.side .brand{flex:0 0 auto; margin:0 .6rem 0 0; font-size:.9rem}
+    .langsw{flex:0 0 auto; margin:0 .6rem 0 0}
+    .navgroup{flex:0 0 auto; margin:0}
+    .g2,.g3{grid-template-columns:1fr}
+  }
+</style>
+
+<div class="wrap">
+<nav class="side" aria-label="Índice / Index">
+  <div class="langsw" role="group" aria-label="Idioma / Language">
+    <button id="btn-pt" aria-pressed="true" onclick="setLang('pt')">PT-BR</button>
+    <button id="btn-en" aria-pressed="false" onclick="setLang('en')">EN</button>
+  </div>
+  <p class="brand">AI Agentic<br>Work <span>Transition</span></p>
+
+  <div class="navgroup">
+    <b><span data-lang="pt">Parte I · Diagnóstico</span><span data-lang="en">Part I · Diagnosis</span></b>
+    <a href="#tese"><span data-lang="pt">O problema estratégico</span><span data-lang="en">The strategic problem</span></a>
+    <a href="#atividades"><span data-lang="pt">As três atividades</span><span data-lang="en">The three activities</span></a>
+    <a href="#tabuleiro"><span data-lang="pt">O tabuleiro e o mundo aberto</span><span data-lang="en">The board and the open world</span></a>
+    <a href="#agentico"><span data-lang="pt">Trabalho agêntico</span><span data-lang="en">Agentic work</span></a>
+    <a href="#lacunas"><span data-lang="pt">As cinco lacunas</span><span data-lang="en">The five gaps</span></a>
+  </div>
+  <div class="navgroup">
+    <b><span data-lang="pt">Parte II · Fundamentos</span><span data-lang="en">Part II · Fundamentals</span></b>
+    <a href="#premissas"><span data-lang="pt">Sete premissas</span><span data-lang="en">Seven premises</span></a>
+    <a href="#perfil"><span data-lang="pt">HIC e DRI</span><span data-lang="en">HIC and DRI</span></a>
+  </div>
+  <div class="navgroup">
+    <b><span data-lang="pt">Parte III · O modelo</span><span data-lang="en">Part III · The model</span></b>
+    <a href="#mapear"><span data-lang="pt">Mapear antes de desenhar</span><span data-lang="en">Map before you draw</span></a>
+    <a href="#camadas"><span data-lang="pt">A empresa em cinco camadas</span><span data-lang="en">The five-layer company</span></a>
+    <a href="#especialistas"><span data-lang="pt">Especialistas: núcleo ou rede</span><span data-lang="en">Specialists: core or network</span></a>
+    <a href="#ciclo"><span data-lang="pt">Pares de decisão</span><span data-lang="en">Decision pairs</span></a>
+    <a href="#governanca"><span data-lang="pt">Governança</span><span data-lang="en">Governance</span></a>
+  </div>
+  <div class="navgroup">
+    <b><span data-lang="pt">Parte IV · Pessoas</span><span data-lang="en">Part IV · People</span></b>
+    <a href="#carreira"><span data-lang="pt">Carreira</span><span data-lang="en">Career</span></a>
+    <a href="#formacao"><span data-lang="pt">Formação de HICs</span><span data-lang="en">Growing HICs</span></a>
+    <a href="#remuneracao"><span data-lang="pt">Remuneração</span><span data-lang="en">Compensation</span></a>
+    <a href="#liberdade"><span data-lang="pt">Liberdade financeira</span><span data-lang="en">Financial freedom</span></a>
+    <a href="#contratacao"><span data-lang="pt">Contratação</span><span data-lang="en">Hiring</span></a>
+    <a href="#valve"><span data-lang="pt">A referência Valve</span><span data-lang="en">The Valve reference</span></a>
+  </div>
+  <div class="navgroup">
+    <b><span data-lang="pt">Parte V · Execução</span><span data-lang="en">Part V · Execution</span></b>
+    <a href="#baseline"><span data-lang="pt">O baseline</span><span data-lang="en">The baseline</span></a>
+    <a href="#pilotos"><span data-lang="pt">O menu de pilotos</span><span data-lang="en">The pilot menu</span></a>
+    <a href="#fases"><span data-lang="pt">O plano faseado</span><span data-lang="en">The phased plan</span></a>
+    <a href="#placar"><span data-lang="pt">Economia e placar</span><span data-lang="en">Economics and scorecard</span></a>
+    <a href="#pedido"><span data-lang="pt">O pedido</span><span data-lang="en">The ask</span></a>
+  </div>
+  <div class="navgroup">
+    <b><span data-lang="pt">Apêndice</span><span data-lang="en">Appendix</span></b>
+    <a href="#evidencias"><span data-lang="pt">A base de evidências</span><span data-lang="en">The evidence base</span></a>
+  </div>
+</nav>
+
+<main><div class="col">
+
+<header class="hero">
+  <p class="kick"><span data-lang="pt">Um plano de transformação cultural e operacional</span><span data-lang="en">A cultural and operational transformation plan</span></p>
+  <h1>AI Agentic Work Transition</h1>
+  <p class="sub" data-lang="pt">Como reorganizar uma empresa em torno do julgamento: estrutura,
+  carreiras, remuneração e contratação para a era em que agentes de IA absorvem a síntese e a
+  produção.</p>
+  <p class="sub" data-lang="en">How to reorganize a company around judgment: structure, careers,
+  compensation and hiring for the era in which AI agents absorb synthesis and production.</p>
+  <p class="thesis"><span data-lang="pt">De uma pirâmide de produtores <em>para uma rede de
+  decisores.</em></span><span data-lang="en">From a pyramid of producers <em>to a network of
+  decision-makers.</em></span></p>
+  <figure class="heroimg">
+    <img src="data:image/webp;base64,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" alt="Chiasma verde: pensamento divergente cruzando em um ponto de foco e saindo como execução convergente / Green chiasm: divergent thinking crossing at a focal point and leaving as convergent execution">
+  </figure>
+  <div class="hero-meta">
+    <span data-lang="pt">DIAGNÓSTICO → FUNDAMENTOS → MODELO → PESSOAS → EXECUÇÃO</span>
+    <span data-lang="en">DIAGNOSIS → FUNDAMENTALS → MODEL → PEOPLE → EXECUTION</span>
+  </div>
+</header>
+
+<!-- ================= PARTE I ================= -->
+<section id="tese">
+  <p class="eyebrow"><span data-lang="pt">Parte I · Diagnóstico</span><span data-lang="en">Part I · Diagnosis</span></p>
+  <h2><span data-lang="pt">O problema estratégico</span><span data-lang="en">The strategic problem</span></h2>
+  <p class="lead" data-lang="pt"><strong>Nossas empresas são estruturadas como pirâmides de
+  produtores no momento em que o mercado recompensa redes de decisores.</strong></p>
+  <p class="lead" data-lang="en"><strong>Our companies are structured as pyramids of producers
+  at the moment the market rewards networks of decision-makers.</strong></p>
+  <p data-lang="pt">Os LLMs colapsaram as duas atividades que a pirâmide foi criada para escalar:
+  leitura/análise e produção de conteúdo. O que permanece escasso, e agora limita toda a empresa,
+  é o <strong>julgamento</strong>: decidir o que fazer e assumir o resultado.</p>
+  <p data-lang="en">LLMs collapsed the two activities the pyramid was built to scale:
+  reading/analysis and content production. What remains scarce, and now constrains the whole
+  company, is <strong>judgment</strong>: deciding what to do and owning the outcome.</p>
+  <div class="grid g3">
+    <div class="card"><p><b><span data-lang="pt">O julgamento agora é a restrição</span><span data-lang="en">Judgment is now the constraint</span></b></p></div>
+    <div class="card"><p><b><span data-lang="pt">O valor migrou para a decisão</span><span data-lang="en">Value moved to the decision layer</span></b></p></div>
+    <div class="card"><p><b><span data-lang="pt">A forma da organização deve seguir</span><span data-lang="en">The org's shape must follow</span></b></p></div>
+  </div>
+</section>
+
+<section id="atividades">
+  <h2><span data-lang="pt">Três atividades. A IA colapsou duas delas</span><span data-lang="en">Three activities. AI collapsed two of them</span></h2>
+  <p data-lang="pt">Quase todo trabalho de conhecimento se resolve em três categorias:</p>
+  <p data-lang="en">Almost all knowledge work resolves into three categories:</p>
+  <div class="grid g3">
+    <div class="card">
+      <h4><span class="num">1</span><span data-lang="pt">Síntese</span><span data-lang="en">Synthesis</span></h4>
+      <p data-lang="pt">Ler e analisar entradas: e-mails, propostas, apresentações, transcrições, dashboards.</p>
+      <p data-lang="en">Reading and analyzing inputs: emails, proposals, decks, transcripts, dashboards.</p>
+      <span class="tag"><span data-lang="pt">agora quase grátis</span><span data-lang="en">now near-free</span></span>
+    </div>
+    <div class="card hot">
+      <h4><span class="num">2</span><span data-lang="pt">Tomada de decisão</span><span data-lang="en">Decision-making</span></h4>
+      <p data-lang="pt">Julgar se a informação é suficiente, ou especificar os testes para obtê-la.</p>
+      <p data-lang="en">Judging whether information is sufficient, or specifying the tests to get there.</p>
+      <span class="tag"><span data-lang="pt">o gargalo restante</span><span data-lang="en">the residual bottleneck</span></span>
+    </div>
+    <div class="card">
+      <h4><span class="num">3</span><span data-lang="pt">Produção de conteúdo</span><span data-lang="en">Content production</span></h4>
+      <p data-lang="pt">Escrever documentos, contratos, código; produzir imagens e designs.</p>
+      <p data-lang="en">Writing documents, contracts, code; producing images and designs.</p>
+      <span class="tag"><span data-lang="pt">agora quase grátis</span><span data-lang="en">now near-free</span></span>
+    </div>
+  </div>
+  <p data-lang="pt">Antes dos LLMs, as três eram gargalos, então o RH contratava sobretudo
+  capacidade de <em>produção</em>. Essa capacidade agora é a coisa errada para se ter em excesso.</p>
+  <p data-lang="en">Before LLMs, all three were bottlenecks, so HR hired mostly for
+  <em>production</em> capacity. That capacity is now the wrong thing to be full of.</p>
+</section>
+
+<section id="tabuleiro">
+  <h2><span data-lang="pt">A IA vence dentro do tabuleiro. A vida acontece fora dele</span><span data-lang="en">AI wins inside the board. Life happens outside it</span></h2>
+  <p data-lang="pt">Gamão (1979), xadrez (1997), Go (2016), três jogos ao mesmo tempo e sem
+  professor (2018), finais mundiais de programação (2025). Território após território, a máquina
+  venceu o especialista humano. Mas em <strong>todas</strong> essas quedas algo já tinha
+  acontecido antes: <strong>alguém havia delimitado o problema</strong>. Regras dadas, objetivo
+  dado.</p>
+  <p data-lang="en">Backgammon (1979), chess (1997), Go (2016), three games at once with no
+  teacher (2018), world programming finals (2025). Territory after territory, the machine beat
+  the human expert. But in <strong>every</strong> one of those falls something had already
+  happened first: <strong>someone had delimited the problem</strong>. Rules given, objective
+  given.</p>
+  <div class="grid g2">
+    <div class="card">
+      <h4><span data-lang="pt">Ambiente “kind”: o tabuleiro</span><span data-lang="en">“Kind” environment: the board</span></h4>
+      <p data-lang="pt">Regras claras, padrões que se repetem, feedback rápido. Aqui a IA, e a prática repetida, é imbatível.</p>
+      <p data-lang="en">Clear rules, repeating patterns, fast feedback. Here AI, and repeated practice, is unbeatable.</p>
+    </div>
+    <div class="card hot">
+      <h4><span data-lang="pt">Ambiente “wicked”: o mundo aberto</span><span data-lang="en">“Wicked” environment: the open world</span></h4>
+      <p data-lang="pt">O problema não chega definido; o feedback é lento ou enganoso. É onde vivem as decisões de negócio, e onde o julgamento humano segue escasso.</p>
+      <p data-lang="en">The problem doesn't arrive defined; feedback is slow or misleading. It is where business decisions live, and where human judgment stays scarce.</p>
+    </div>
+  </div>
+  <div class="note"><span data-lang="pt"><b>Decidir qual tabuleiro construir</b>, qual problema
+  vale, quais campos devem conversar: isso continua sendo trabalho humano. (Hogarth; Epstein,
+  <i>Range</i>)</span><span data-lang="en"><b>Deciding which board to build</b>, which problem is
+  worth it, which fields should talk to each other: that remains human work. (Hogarth; Epstein,
+  <i>Range</i>)</span></div>
+</section>
+
+<section id="agentico">
+  <h2><span data-lang="pt">Trabalho agêntico: agentes que agem, não só respondem</span><span data-lang="en">Agentic work: agents that act, not just answer</span></h2>
+  <ol class="steps">
+    <li><span data-lang="pt"><b>Assistente</b>: responde perguntas quando acionado.</span><span data-lang="en"><b>Assistant</b>: answers questions when asked.</span></li>
+    <li><span data-lang="pt"><b>Agente</b>: executa tarefas; lê, escreve, codifica, monitora, critica.</span><span data-lang="en"><b>Agent</b>: executes tasks; reads, writes, codes, monitors, critiques.</span></li>
+    <li><span data-lang="pt"><b>Frota</b>: dezenas de agentes rodando um processo ponta a ponta, supervisionados por uma pessoa.</span><span data-lang="en"><b>Fleet</b>: dozens of agents running a process end to end, supervised by one person.</span></li>
+  </ol>
+  <p data-lang="pt">Na prática: triagem e atendimento ao cliente, automação de rotinas
+  administrativas, síntese e monitoramento contínuo do negócio, desenvolvimento de software.
+  Sempre com um humano dirigindo.</p>
+  <p data-lang="en">In practice: customer triage and support, back-office automation, continuous
+  business synthesis and monitoring, software development. Always with a human directing.</p>
+  <div class="note"><span data-lang="pt"><b>O limite:</b> agentes propõem, produzem e monitoram.
+  A responsabilidade nunca é delegada: um humano nomeado decide e responde pelo
+  resultado.</span><span data-lang="en"><b>The boundary:</b> agents propose, produce and monitor.
+  Accountability is never delegated: a named human decides and answers for the
+  outcome.</span></div>
+</section>
+
+<section id="lacunas">
+  <h2><span data-lang="pt">Cinco lacunas anteriores à IA, e que agora custam mais</span><span data-lang="en">Five gaps that predate AI, and now cost more</span></h2>
+  <p data-lang="pt">Nenhuma destas foi causada pela IA. Todas eram reais antes, absorvidas por
+  uma ampla base humana que compensava a fricção. Remova essa base e cada uma vira restrição
+  dura.</p>
+  <p data-lang="en">None of these was caused by AI. All were real before, absorbed by a wide
+  human base that compensated for the friction. Remove that base and each one becomes a hard
+  constraint.</p>
+  <ol class="steps alpha">
+    <li><span data-lang="pt"><b>Gestão do conhecimento.</b> Processos, decisões e os dados por trás delas vivem na cabeça das pessoas, não no papel.</span><span data-lang="en"><b>Knowledge management.</b> Processes, decisions and the data behind them live in people's heads, not on paper.</span></li>
+    <li><span data-lang="pt"><b>Business intelligence.</b> Fatores de sucesso, metas e a infraestrutura de dados a dashboards são parciais e inconsistentes.</span><span data-lang="en"><b>Business intelligence.</b> Success factors, goals and the data-to-dashboard plumbing are partial and inconsistent.</span></li>
+    <li><span data-lang="pt"><b>Automação.</b> A informação se move na velocidade dos repasses humanos; a latência entre etapas é a norma.</span><span data-lang="en"><b>Automation.</b> Information moves at the speed of human hand-offs; latency between steps is the norm.</span></li>
+    <li><span data-lang="pt"><b>Responsabilização.</b> Autoridade e propriedade são difusas; a prestação de contas é cultural, não estrutural.</span><span data-lang="en"><b>Accountability.</b> Authority and ownership are diffuse; accountability is cultural, not structural.</span></li>
+    <li><span data-lang="pt"><b>Recursos humanos.</b> O motor de carreira, cultura e treinamento foi ajustado para suprir produtores para o mundo antigo.</span><span data-lang="en"><b>Human resources.</b> The career, culture and training engine was tuned to supply producers for the old world.</span></li>
+  </ol>
+  <div class="note"><span data-lang="pt">A IA remove a folga humana que ocultava essas lacunas.
+  Uma rede de poucos donos não consegue absorvê-las. Por isso elas são a <b>fundação</b> do
+  modelo, não um projeto paralelo.</span><span data-lang="en">AI removes the human slack that hid
+  these gaps. A network of few owners cannot absorb them. That is why they are the model's
+  <b>foundation</b>, not a side project.</span></div>
+</section>
+
+<!-- ================= PARTE II ================= -->
+<section id="premissas" class="part">
+  <p class="eyebrow"><span data-lang="pt">Parte II · Fundamentos</span><span data-lang="en">Part II · Fundamentals</span></p>
+  <h2><span data-lang="pt">Sete premissas que a liderança ratifica primeiro</span><span data-lang="en">Seven premises leadership ratifies first</span></h2>
+  <ol class="steps">
+    <li><span data-lang="pt"><b>O julgamento é o recurso escasso.</b> Maximizar boas decisões por unidade de tempo e capital.</span><span data-lang="en"><b>Judgment is the scarce resource.</b> Maximize good decisions per unit of time and capital.</span></li>
+    <li><span data-lang="pt"><b>A IA carrega síntese e produção.</b> Projete como se cada humano tivesse uma força de agentes competentes.</span><span data-lang="en"><b>AI carries synthesis and production.</b> Design as if every human had a competent agent workforce.</span></li>
+    <li><span data-lang="pt"><b>Menos pessoas, mais bem pagas, com mais propriedade.</b> O valor se concentra em indivíduos de alta alavancagem: remunere e dê participação.</span><span data-lang="en"><b>Fewer people, better paid, owning more.</b> Value concentrates in high-leverage individuals: pay accordingly and grant equity.</span></li>
+    <li><span data-lang="pt"><b>Propriedade ponta a ponta supera o repasse.</b> Um dono responsável + IA supera uma cadeia de especialistas entre silos.</span><span data-lang="en"><b>End-to-end ownership beats the hand-off.</b> One accountable owner + AI beats a chain of specialists across silos.</span></li>
+    <li><span data-lang="pt"><b>A responsabilização é estrutural.</b> Orçada e medida pela cascata conselho → C-level → DRI de cada assunto.</span><span data-lang="en"><b>Accountability is structural.</b> Budgeted and measured through the cascade board → C-level → the DRI of each subject.</span></li>
+    <li><span data-lang="pt"><b>As cinco fundações estão no escopo.</b> Conhecimento, BI e automação são o substrato operacional: financiados, não adjacentes.</span><span data-lang="en"><b>The five foundations are in scope.</b> Knowledge, BI and automation are the operating substrate: funded, not adjacent.</span></li>
+    <li><span data-lang="pt"><b>Os humanos permanecem responsáveis.</b> A IA propõe, redige, critica; um humano nomeado decide e assume o resultado.</span><span data-lang="en"><b>Humans stay accountable.</b> AI proposes, drafts, critiques; a named human decides and owns the outcome.</span></li>
+  </ol>
+  <p><em><span data-lang="pt">Tudo que vem depois decorre delas.</span><span data-lang="en">Everything downstream follows from these.</span></em></p>
+</section>
+
+<section id="perfil">
+  <h2><span data-lang="pt">Dois conceitos que se encaixam: HIC e DRI</span><span data-lang="en">Two concepts that snap together: HIC and DRI</span></h2>
+  <div class="grid g2">
+    <div class="card hot">
+      <h4><span data-lang="pt">HIC · High Impact Contributor</span><span data-lang="en">HIC · High Impact Contributor</span></h4>
+      <p data-lang="pt"><b>O perfil.</b> Conhecimento que cruza áreas e capacidade de conduzir
+      múltiplas frentes ao mesmo tempo. O nexialista: o generalista integrador como núcleo da
+      empresa.</p>
+      <p data-lang="en"><b>The profile.</b> Knowledge that crosses areas and the ability to run
+      multiple fronts at the same time. The nexialist: the generalist-integrator as the core of
+      the company.</p>
+    </div>
+    <div class="card">
+      <h4><span data-lang="pt">DRI · Directly Responsible Individual</span><span data-lang="en">DRI · Directly Responsible Individual</span></h4>
+      <p data-lang="pt"><b>A distribuição do trabalho.</b> Todo assunto que importa tem um único
+      responsável nomeado, que resolve os problemas e dá suporte quando correções ou melhorias
+      são necessárias.</p>
+      <p data-lang="en"><b>How work is distributed.</b> Every subject that matters has a single
+      named accountable person, who solves the issues and supports fixes and improvements when
+      needed.</p>
+    </div>
+  </div>
+  <div class="note"><span data-lang="pt"><b>Como se combinam:</b> o HIC é quem; o DRI é como.
+  HICs assumem assuntos como DRIs, um responsável único por assunto, com orçamento, poder de
+  decisão e uma métrica.</span><span data-lang="en"><b>How they combine:</b> HIC is the who; DRI
+  is the how. HICs take on subjects as DRIs, one single owner per subject, with budget, decision
+  rights and a metric.</span></div>
+
+  <h3><span data-lang="pt">O HIC em formato M</span><span data-lang="en">The M-shaped HIC</span></h3>
+  <figure class="diagram">
+    <svg class="mshape" viewBox="0 0 480 150" role="img" aria-label="M-shaped profile">
+      <polyline points="10,140 90,30 170,95 250,30 330,95 410,30 470,140"
+        fill="none" stroke="#3BDD8F" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="90" cy="30" r="7" fill="#7FE8B8"/><circle cx="250" cy="30" r="7" fill="#7FE8B8"/>
+      <circle cx="410" cy="30" r="7" fill="#7FE8B8"/>
+      <g data-lang="pt">
+        <text x="90" y="16" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="1.5" fill="currentColor">NEGÓCIOS</text>
+        <text x="250" y="16" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="1.5" fill="currentColor">TECNOLOGIA</text>
+        <text x="410" y="16" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="1.5" fill="currentColor">PESSOAS</text>
+      </g>
+      <g data-lang="en">
+        <text x="90" y="16" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="1.5" fill="currentColor">BUSINESS</text>
+        <text x="250" y="16" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="1.5" fill="currentColor">TECHNOLOGY</text>
+        <text x="410" y="16" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="1.5" fill="currentColor">PEOPLE</text>
+      </g>
+    </svg>
+    <figcaption><span data-lang="pt">Múltiplos picos de competência real, conectados por julgamento interdisciplinar</span><span data-lang="en">Multiple peaks of real competence, connected by cross-disciplinary judgment</span></figcaption>
+  </figure>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt">É <b>dono de processos inteiros</b>, ponta a ponta.</span><span data-lang="en"><b>Owns whole processes</b>, end to end.</span></div></div>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt"><b>Resolutivo</b>: fecha problemas, não os repassa.</span><span data-lang="en"><b>Resolutive</b>: closes problems, doesn't route them.</span></div></div>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt">Conduz <b>várias frentes em paralelo</b>, priorizando pelo impacto.</span><span data-lang="en">Runs <b>several fronts in parallel</b>, prioritizing by impact.</span></div></div>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt"><b>Dirige a camada de agentes</b>; aplica o julgamento.</span><span data-lang="en"><b>Directs the agent layer</b>; applies the judgment.</span></div></div>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt"><b>Aciona especialistas rapidamente</b> quando a profundidade exige.</span><span data-lang="en"><b>Pulls in specialists quickly</b> when depth demands it.</span></div></div>
+  <p data-lang="pt">É a <em>raposa</em> que troca de lente, não o <em>ouriço</em> de ideia única
+  (Tetlock). E o herdeiro do “nexialista” de Van Vogt: quem conecta saberes que, sozinhos, não
+  conversam.</p>
+  <p data-lang="en">It is the <em>fox</em> that switches lenses, not the single-idea
+  <em>hedgehog</em> (Tetlock). And the heir of Van Vogt's "nexialist": the one who connects
+  bodies of knowledge that never talk to each other on their own.</p>
+  <div class="note"><span data-lang="pt"><b>O paradoxo:</b> quanto mais especialistas o mundo
+  produz, mais valioso quem os conecta (Jones; Uzzi). A Valve contratava perfis em T; as
+  ferramentas agênticas transformam o T em M.</span><span data-lang="en"><b>The paradox:</b> the
+  more specialists the world produces, the more valuable the one who connects them (Jones; Uzzi).
+  Valve hired T-shaped people; agentic tools turn the T into an M.</span></div>
+</section>
+
+<!-- ================= PARTE III ================= -->
+<section id="mapear" class="part">
+  <p class="eyebrow"><span data-lang="pt">Parte III · O modelo</span><span data-lang="en">Part III · The model</span></p>
+  <h2><span data-lang="pt">Mapear antes de desenhar</span><span data-lang="en">Map before you draw</span></h2>
+  <p data-lang="pt">O mapa de domínios não precisa existir no dia um. O novo desenho nasce de um
+  mapeamento formal do que a empresa realmente faz hoje:</p>
+  <p data-lang="en">The domain map doesn't need to exist on day one. The new design comes from a
+  formal mapping of what the company actually does today:</p>
+  <ol class="steps">
+    <li><span data-lang="pt"><b>Inventariar</b>: todos os departamentos; estrutura, times, sistemas.</span><span data-lang="en"><b>Inventory</b>: every department; structure, teams, systems.</span></li>
+    <li><span data-lang="pt"><b>Explicitar</b>: as responsabilidades e as decisões que cada um carrega hoje.</span><span data-lang="en"><b>Make explicit</b>: the responsibilities and decisions each one carries today.</span></li>
+    <li><span data-lang="pt"><b>Classificar</b>: cada responsabilidade em síntese, decisão ou produção; o que a IA absorve e o que exige um DRI.</span><span data-lang="en"><b>Classify</b>: each responsibility as synthesis, decision or production; what AI absorbs and what demands a DRI.</span></li>
+    <li><span data-lang="pt"><b>Desenhar</b>: o novo mapa nasce das responsabilidades e decisões, não dos cargos nem das caixas atuais.</span><span data-lang="en"><b>Draw</b>: the new map comes from responsibilities and decisions, not from job titles or today's boxes.</span></li>
+  </ol>
+  <div class="note"><span data-lang="pt"><b>Enquanto o mapeamento roda, a migração já começa:</b>
+  fundações, agentes e HICs-piloto não esperam o desenho final.</span><span data-lang="en">
+  <b>While the mapping runs, the migration already starts:</b> foundations, agents and pilot HICs
+  don't wait for the final design.</span></div>
+</section>
+
+<section id="camadas">
+  <h2><span data-lang="pt">A empresa em cinco camadas</span><span data-lang="en">The five-layer company</span></h2>
+  <figure class="diagram">
+    <div class="layers">
+      <div class="layer l1"><b><span data-lang="pt">Conselho</span><span data-lang="en">Board</span></b>
+        <span><span data-lang="pt">vota as teses de estratégia e aconselha</span><span data-lang="en">votes on strategy theses and advises</span></span></div>
+      <div class="lrow">
+        <div class="layer l2"><b>C-levels</b>
+          <span><span data-lang="pt">definem o porquê: estratégia e recursos; contratam HICs (antes: contratavam gerentes)</span><span data-lang="en">define the why: strategy and resources; hire HICs (before: hired managers)</span></span></div>
+        <div class="layer trans"><b><span data-lang="pt">HIC Mentor · transição</span><span data-lang="en">HIC Mentor · transition</span></b>
+          <span><span data-lang="pt">ao lado dos C-levels, apenas durante a transição</span><span data-lang="en">alongside the C-levels, during the transition only</span></span></div>
+      </div>
+      <div class="layer l3 hot"><b>HICs</b>
+        <span><span data-lang="pt">definem o como; DRIs dos assuntos que importam; contratam HICs em formação (antes: a média gerência)</span><span data-lang="en">define the how; DRIs of the subjects that matter; hire HICs in training (before: middle management)</span></span></div>
+      <div class="layer l4"><b><span data-lang="pt">HICs em formação</span><span data-lang="en">HICs in training</span></b>
+        <span><span data-lang="pt">com seus HICs, executam o necessário usando agentes ao máximo (antes: o time de operação)</span><span data-lang="en">with their HICs, execute what's needed using agents as much as possible (before: the operations team)</span></span></div>
+      <div class="pool"><span data-lang="pt"><b>Especialistas: recurso geral da empresa.</b><br>
+        Não reportam à linha: qualquer camada aciona seu tempo para resolver problemas complexos.
+        Profundidade sob demanda, humana e artificial.</span>
+        <span data-lang="en"><b>Specialists: a general resource of the company.</b><br>
+        They report to no one in the line: any layer draws on their time to solve complex
+        problems. Depth on demand, human and artificial.</span></div>
+    </div>
+    <figcaption><span data-lang="pt">O organograma-alvo</span><span data-lang="en">The target org chart</span></figcaption>
+  </figure>
+  <p data-lang="pt"><strong>A inversão:</strong> na pirâmide, os especialistas eram a massa e o
+  generalista era suspeito. Aqui, os nexialistas são o núcleo, e os especialistas são a rede.</p>
+  <p data-lang="en"><strong>The inversion:</strong> in the pyramid, specialists were the mass and
+  the generalist was suspect. Here, nexialists are the core, and specialists are the network.</p>
+  <div class="note"><span data-lang="pt"><b>O HIC Mentor não é uma camada permanente.</b> Atua ao
+  lado dos C-levels apenas durante a transição, mantendo o conselho sozinho no topo. Assume como
+  C-level quando não há um com perfil HIC, e segue mentorando os HICs de tempos em
+  tempos.</span><span data-lang="en"><b>The HIC Mentor is not a permanent layer.</b> They act
+  alongside the C-levels only during the transition, keeping the board alone at the top. They
+  step in as the C-level when there is no C-level with an HIC profile, and keep mentoring the
+  HICs from time to time.</span></div>
+</section>
+
+<section id="especialistas">
+  <h2><span data-lang="pt">Especialistas: núcleo quando constante, rede quando pontual</span><span data-lang="en">Specialists: core when constant, network when punctual</span></h2>
+  <div class="grid g2">
+    <div class="card"><h4><span data-lang="pt">Núcleo · contratado</span><span data-lang="en">Core · hired</span></h4>
+      <p data-lang="pt">Demanda constante e recorrente: o especialista entra para o time como funcionário, com a mesma barra de contratação.</p>
+      <p data-lang="en">Constant, recurring demand: the specialist joins the team as an employee, through the same hiring bar.</p></div>
+    <div class="card"><h4><span data-lang="pt">Rede · advisor / consultor</span><span data-lang="en">Network · advisor / consultant</span></h4>
+      <p data-lang="pt">Demanda pontual: retainer, office hours e SLAs. Profundidade sob demanda, sem peso fixo na folha.</p>
+      <p data-lang="en">Punctual demand: retainer, office hours and SLAs. Depth on demand, without fixed payroll weight.</p></div>
+  </div>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt"><b>Recurso geral, não subordinado.</b> Especialistas não reportam à linha: qualquer HIC, HIC em formação ou C-level aciona seu tempo.</span><span data-lang="en"><b>General resource, not subordinate.</b> Specialists report to no one in the line: any HIC, HIC in training or C-level draws on their time.</span></div></div>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt"><b>O princípio que decide.</b> A intensidade real de uso, medida em piloto, decide quem é núcleo e quem é rede. Dados, não estimativa.</span><span data-lang="en"><b>The principle that decides.</b> Real usage intensity, measured in a pilot, decides who is core and who is network. Data, not guesswork.</span></div></div>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt"><b>Honestidade na fronteira da IA.</b> Especialistas mantêm os HICs honestos: confiar demais na máquina fora da fronteira dela piora os resultados (Harvard × BCG).</span><span data-lang="en"><b>Honesty at the AI frontier.</b> Specialists keep HICs honest: over-trusting the machine outside its frontier makes results worse (Harvard × BCG).</span></div></div>
+</section>
+
+<section id="ciclo">
+  <h2><span data-lang="pt">Pares de decisão substituem repasses</span><span data-lang="en">Decision pairs replace hand-offs</span></h2>
+  <p data-lang="pt">Exemplo com o ciclo de uma feature de produto; o mesmo padrão vale para
+  qualquer processo. Cada repasse entre áreas vira um <strong>par de decisão</strong>: dois DRIs
+  sentam, decidem e coassumem o resultado.</p>
+  <p data-lang="en">Example with a product feature cycle; the same pattern applies to any
+  process. Each hand-off between areas becomes a <strong>decision pair</strong>: two DRIs sit
+  down, decide and co-own the result.</p>
+  <figure class="diagram">
+    <div class="cycle">
+      <div class="cyc"><b><span data-lang="pt">1 · Sinal do cliente</span><span data-lang="en">1 · Customer signal</span></b>
+        <span data-lang="pt">o DRI de experiência capta a necessidade no uso e no suporte</span>
+        <span data-lang="en">the experience DRI captures the need from usage and support</span></div>
+      <div class="cyc pair"><b><span data-lang="pt">2 · Sessão de spec</span><span data-lang="en">2 · Spec session</span></b>
+        <span data-lang="pt">experiência + engenheiro documentam e aprovam no roadmap</span>
+        <span data-lang="en">experience + engineer document and approve on the roadmap</span>
+        <span class="pairtag"><span data-lang="pt">PAR DE DECISÃO</span><span data-lang="en">DECISION PAIR</span></span></div>
+      <div class="cyc"><b><span data-lang="pt">3 · Construção</span><span data-lang="en">3 · Build</span></b>
+        <span data-lang="pt">o engenheiro desenvolve a feature inteira com a camada de agentes</span>
+        <span data-lang="en">the engineer builds the whole feature with the agent layer</span></div>
+      <div class="cyc pair"><b><span data-lang="pt">4 · Portão de qualidade</span><span data-lang="en">4 · Quality gate</span></b>
+        <span data-lang="pt">engenheiro + DRI de SQA: performática, segura, sem bugs</span>
+        <span data-lang="en">engineer + SQA DRI: performant, secure, bug-free</span>
+        <span class="pairtag"><span data-lang="pt">PAR DE DECISÃO</span><span data-lang="en">DECISION PAIR</span></span></div>
+      <div class="cyc pair"><b>5 · Release</b>
+        <span data-lang="pt">engenheiro + DRI de DevSecOps publicam, e o ciclo recomeça</span>
+        <span data-lang="en">engineer + DevSecOps DRI ship it, and the cycle restarts</span>
+        <span class="pairtag"><span data-lang="pt">PAR DE DECISÃO</span><span data-lang="en">DECISION PAIR</span></span></div>
+    </div>
+    <figcaption><span data-lang="pt">SQA e DevSecOps são guardrails humanos, o espelho dos agentes críticos e de guardrail</span><span data-lang="en">SQA and DevSecOps are human guardrails, mirroring the critic and guardrail agents</span></figcaption>
+  </figure>
+</section>
+
+<section id="governanca">
+  <h2><span data-lang="pt">Responsabilização: orçada, medida, assumida</span><span data-lang="en">Accountability: budgeted, measured, owned</span></h2>
+  <ol class="steps">
+    <li><span data-lang="pt"><b>Conselho</b>: vota as teses de estratégia e aconselha; aprova a margem-alvo e o envelope de capital e participação.</span><span data-lang="en"><b>Board</b>: votes on strategy theses and advises; approves the target margin and the capital and equity envelope.</span></li>
+    <li><span data-lang="pt"><b>C-level</b>: define o porquê; a estratégia e os recursos necessários; contrata HICs e é dono de um envelope de capital.</span><span data-lang="en"><b>C-level</b>: defines the why; the strategy and the resources needed; hires HICs and owns a capital envelope.</span></li>
+    <li><span data-lang="pt"><b>HIC, DRI do assunto</b>: define o como; recebe orçamento, poder de decisão e uma métrica; contrata HICs em formação.</span><span data-lang="en"><b>HIC, the subject's DRI</b>: defines the how; gets budget, decision rights and a metric; hires HICs in training.</span></li>
+    <li><span data-lang="pt"><b>Execução</b>: HICs e seus HICs em formação executam usando agentes ao máximo. Todos medidos pelo resultado.</span><span data-lang="en"><b>Execution</b>: HICs and their HICs in training execute using agents as much as possible. Everyone measured by the outcome.</span></li>
+  </ol>
+  <div class="grid g2">
+    <div class="card"><h4><span data-lang="pt">Governança nativa de IA</span><span data-lang="en">AI-native governance</span></h4>
+      <p data-lang="pt"><b>Orçamento agêntico</b>: agentes propõem orçamentos e rodam previsões;
+      agentes críticos, de guardrail e de conformidade instrumentam cada decisão. O DRI ainda
+      decide e é dono do número.</p>
+      <p data-lang="en"><b>Agentic budgeting</b>: agents propose budgets and run forecasts;
+      critic, guardrail and compliance agents instrument every decision. The DRI still decides
+      and owns the number.</p></div>
+    <div class="card hot"><h4><span data-lang="pt">Normas Valve que adotamos</span><span data-lang="en">Valve norms we adopt</span></h4>
+      <p data-lang="pt"><i>“Nunca opere por suposição: meça, preveja, analise.”</i> E liberdade
+      para errar: ninguém é demitido por um erro; falha ruim é repetir o erro ou ignorar a
+      evidência.</p>
+      <p data-lang="en"><i>“Never operate on assumptions: measure, predict, analyze.”</i> And
+      freedom to fail: nobody is fired for a mistake; bad failure is repeating it or ignoring the
+      evidence.</p></div>
+  </div>
+</section>
+
+<!-- ================= PARTE IV ================= -->
+<section id="carreira" class="part">
+  <p class="eyebrow"><span data-lang="pt">Parte IV · Pessoas</span><span data-lang="en">Part IV · People</span></p>
+  <h2><span data-lang="pt">A escada de propriedade</span><span data-lang="en">The ownership ladder</span></h2>
+  <ol class="steps">
+    <li><span data-lang="pt"><b>HIC em formação</b>: pareado com um HIC; currículo intercalado; co-assume sub-assuntos desde o dia um.</span><span data-lang="en"><b>HIC in training</b>: paired with an HIC; interleaved curriculum; co-owns sub-subjects from day one.</span></li>
+    <li><span data-lang="pt"><b>HIC</b>: DRI de assuntos inteiros, com orçamento e métrica; define o como e contrata HICs em formação. Um destino, não uma parada.</span><span data-lang="en"><b>HIC</b>: DRI of whole subjects, with budget and metric; defines the how and hires HICs in training. A destination, not a way-station.</span></li>
+    <li><span data-lang="pt"><b>C-level / dono de capital</b>: define o porquê; a estratégia e os recursos; contrata HICs; dono de um envelope de capital e de uma fatia da estratégia.</span><span data-lang="en"><b>C-level / capital owner</b>: defines the why; the strategy and the resources; hires HICs; owns a capital envelope and a slice of strategy.</span></li>
+  </ol>
+  <div class="note"><span data-lang="pt"><b>HIC Mentor: um papel de transição, não um degrau
+  permanente.</b> HIC comprovado, interno ou contratado, que atua ao lado dos C-levels durante a
+  transição, assume como C-level quando não há um com perfil HIC, e segue mentorando os HICs de
+  tempos em tempos.</span><span data-lang="en"><b>HIC Mentor: a transition role, not a permanent
+  rung.</b> A proven HIC, internal or hired, who acts alongside the C-levels during the
+  transition, steps in as the C-level when there is none with an HIC profile, and keeps mentoring
+  the HICs from time to time.</span></div>
+  <div class="note"><span data-lang="pt"><b>Crescimento ≠ promoção.</b> Papéis fluidos e escada
+  de crescimento sob medida (Valve). Menos pessoas, mais bem pagas, com caminho real à sociedade
+  via aquisição de opções.</span><span data-lang="en"><b>Growth ≠ promotion.</b> Fluid roles and
+  a growth ladder tailored to the person (Valve). Fewer people, better paid, with a real path to
+  partnership through options.</span></div>
+</section>
+
+<section id="formacao">
+  <h2><span data-lang="pt">Formar HICs: o currículo de quem cruza campos</span><span data-lang="en">Growing HICs: the curriculum of field-crossers</span></h2>
+  <div class="grid g2">
+    <div class="card"><h4><span data-lang="pt">Rotação intercalada</span><span data-lang="en">Interleaved rotation</span></h4>
+      <p data-lang="pt">Alternar domínios e tipos de problema ensina a <b>escolher</b> a ferramenta, não só a usá-la. A prática intercalada dobra o desempenho (Taylor &amp; Rohrer).</p>
+      <p data-lang="en">Alternating domains and problem types teaches <b>choosing</b> the tool, not just using it. Interleaved practice doubles performance (Taylor &amp; Rohrer).</p></div>
+    <div class="card"><h4><span data-lang="pt">Um endereço por pessoa</span><span data-lang="en">One address per person</span></h4>
+      <p data-lang="pt">Curiosidade ampla, convergência obrigatória: cada HIC em formação co-assume um sub-assunto onde os interesses desembocam. O antídoto do “cassino intelectual”.</p>
+      <p data-lang="en">Broad curiosity, mandatory convergence: each HIC in training co-owns a sub-subject where their interests drain into. The antidote to the "intellectual casino".</p></div>
+    <div class="card"><h4><span data-lang="pt">Office hours com especialistas</span><span data-lang="en">Office hours with specialists</span></h4>
+      <p data-lang="pt">Acesso rápido à profundidade humana é parte do currículo: o HIC aprende quando chamar o especialista, e quando não precisa.</p>
+      <p data-lang="en">Fast access to human depth is part of the curriculum: the HIC learns when to call the specialist, and when not to.</p></div>
+    <div class="card"><h4><span data-lang="pt">Treinar na fronteira da IA</span><span data-lang="en">Train at the AI frontier</span></h4>
+      <p data-lang="pt">A IA comprime experiência (+34% para iniciantes), mas só dentro da fronteira dela. Saber onde ela ajuda e onde atrapalha é competência central (BCG).</p>
+      <p data-lang="en">AI compresses experience (+34% for novices), but only inside its frontier. Knowing where it helps and where it hurts is a core competence (BCG).</p></div>
+  </div>
+  <p><em><span data-lang="pt">Mentoria de um HIC comprovado e avaliação por pares fecham o ciclo:
+  crescimento medido por resultados co-assumidos, não por tempo de casa.</span>
+  <span data-lang="en">Mentorship from a proven HIC and peer review close the loop: growth
+  measured by co-owned outcomes, not tenure.</span></em></p>
+</section>
+
+<section id="remuneracao">
+  <h2><span data-lang="pt">Pares avaliam, o valor define o pagamento</span><span data-lang="en">Peers evaluate, value sets the pay</span></h2>
+  <div class="grid g2">
+    <div class="card"><h4><span data-lang="pt">Peer review · crescimento</span><span data-lang="en">Peer review · growth</span></h4>
+      <p data-lang="pt">Feedback anual e contínuo entre pares, separado da remuneração. Diretivo e prescritivo: serve para a pessoa crescer.</p>
+      <p data-lang="en">Annual and continuous peer feedback, kept separate from pay. Directive and prescriptive: it exists to help the person grow.</p></div>
+    <div class="card"><h4><span data-lang="pt">Stack ranking · remuneração</span><span data-lang="en">Stack ranking · compensation</span></h4>
+      <p data-lang="pt">Cada grupo ranqueia seus pares; o resultado ajusta o pagamento ao valor efetivamente criado (“pagar correto”).</p>
+      <p data-lang="en">Each group ranks its peers; the result adjusts pay to the value actually created ("paying correctly").</p></div>
+  </div>
+  <h3><span data-lang="pt">As métricas do ranking (Valve) + a nossa extensão</span><span data-lang="en">The ranking metrics (Valve) + our extension</span></h3>
+  <ol class="steps">
+    <li><b><span data-lang="pt">Habilidade e nível técnico</span><span data-lang="en">Skill level and technical ability</span></b></li>
+    <li><b><span data-lang="pt">Produtividade e entrega</span><span data-lang="en">Productivity and output</span></b></li>
+    <li><b><span data-lang="pt">Contribuição ao grupo</span><span data-lang="en">Group contribution</span></b></li>
+    <li><b><span data-lang="pt">Contribuição ao produto</span><span data-lang="en">Product contribution</span></b></li>
+    <li><span data-lang="pt"><b>Qualidade de decisão nos assuntos em que é DRI</b>: a extensão para o modelo.</span><span data-lang="en"><b>Decision quality on the subjects where they are DRI</b>: the extension for this model.</span></li>
+  </ol>
+  <div class="note"><span data-lang="pt"><b>Pagar “correto” é pagar o valor criado, topo do
+  mercado.</b> A Valve pagava acima da indústria com lucratividade por funcionário maior que
+  gigantes da tecnologia. No nosso modelo, soma-se o caminho à sociedade: opções por desempenho
+  como DRI.</span><span data-lang="en"><b>Paying "correctly" means paying the value created, top
+  of market.</b> Valve paid above industry with higher profit per employee than tech giants. In
+  this model, add the path to partnership: options earned by performance as a DRI.</span></div>
+</section>
+
+<section id="liberdade">
+  <h2><span data-lang="pt">O sonho da aposentadoria move o HIC</span><span data-lang="en">The retirement dream moves the HIC</span></h2>
+  <p class="lead" data-lang="pt"><strong>O contrato do sonho:</strong> <em>“se a empresa chegar
+  ao nível X, suas opções valem Y, e a sua liberdade financeira chega em Z anos.”</em> Explícito,
+  publicado, acompanhável.</p>
+  <p class="lead" data-lang="en"><strong>The dream contract:</strong> <em>"if the company reaches
+  level X, your options are worth Y, and your financial freedom arrives in Z years."</em>
+  Explicit, published, trackable.</p>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt"><b>Opções com vesting ligado a marcos</b>: receita, margem, valuation.</span><span data-lang="en"><b>Options vesting tied to milestones</b>: revenue, margin, valuation.</span></div></div>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt"><b>Painel individual no BI</b>: cada HIC acompanha a curva das próprias opções.</span><span data-lang="en"><b>Individual BI panel</b>: each HIC tracks their own options curve.</span></div></div>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt"><b>Liquidez programada</b>: janelas de recompra e venda definidas em política.</span><span data-lang="en"><b>Scheduled liquidity</b>: buyback and sale windows defined in policy.</span></div></div>
+  <div class="grid g3">
+    <div class="card"><h4><span data-lang="pt">Conservador · 2×</span><span data-lang="en">Conservative · 2×</span></h4>
+      <p data-lang="pt">opções viram um complemento sólido de patrimônio</p>
+      <p data-lang="en">options become a solid wealth complement</p></div>
+    <div class="card"><h4><span data-lang="pt">Plano · 5×</span><span data-lang="en">Plan · 5×</span></h4>
+      <p data-lang="pt">independência financeira em ~10 anos</p>
+      <p data-lang="en">financial independence in ~10 years</p></div>
+    <div class="card hot"><h4><span data-lang="pt">Acelerado · 10×</span><span data-lang="en">Accelerated · 10×</span></h4>
+      <p data-lang="pt">liberdade financeira em ~6 anos</p>
+      <p data-lang="en">financial freedom in ~6 years</p></div>
+  </div>
+  <p><em><span data-lang="pt">Cenários ilustrativos: os números reais saem do plano financeiro e
+  da política de opções. O compromisso é a transparência da curva, não uma promessa.</span>
+  <span data-lang="en">Illustrative scenarios: real numbers come from the financial plan and the
+  options policy. The commitment is transparency of the curve, not a promise.</span></em></p>
+</section>
+
+<section id="contratacao">
+  <h2><span data-lang="pt">A barra de contratação é o produto</span><span data-lang="en">The hiring bar is the product</span></h2>
+  <p><em><span data-lang="pt">“Contratar bem é a coisa mais importante do universo. Nada mais
+  chega perto.”</span><span data-lang="en">"Hiring well is the most important thing in the
+  universe. Nothing else comes close."</span></em> (Valve Handbook, 2012)</p>
+  <div class="grid g3">
+    <div class="card hot"><p><i><span data-lang="pt">“Eu gostaria que essa pessoa fosse meu chefe?”</span><span data-lang="en">"Would I want this person to be my boss?"</span></i></p></div>
+    <div class="card hot"><p><i><span data-lang="pt">“Eu aprenderia significativamente com ela?”</span><span data-lang="en">"Would I learn a significant amount from them?"</span></i></p></div>
+    <div class="card hot"><p><i><span data-lang="pt">“E se ela fosse trabalhar no concorrente?”</span><span data-lang="en">"What if they went to work for a competitor?"</span></i></p></div>
+  </div>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt"><b>Contrate gente mais forte que você.</b> “Essa pessoa poderia comandar a empresa?” Porque, no modelo, vai.</span><span data-lang="en"><b>Hire people stronger than yourself.</b> "Could this person run the company?" Because in this model, they will.</span></div></div>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt"><b>Nunca abaixe a barra.</b> Pico de demanda se resolve com temporários e contratados, não com contratação fraca.</span><span data-lang="en"><b>Never lower the bar.</b> Demand spikes are solved with temps and contractors, not weak hires.</span></div></div>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt"><b>Uma única barra.</b> As mesmas perguntas para todas as disciplinas, em toda a empresa, desde o dia um.</span><span data-lang="en"><b>One single bar.</b> The same questions for every discipline, across the whole company, from day one.</span></div></div>
+  <div class="row"><span class="num">·</span><div><span data-lang="pt"><b>Combinação atípica (Uzzi).</b> Base sólida convencional em um campo + conexões atípicas demonstradas: peça o portfólio de pontos conectados.</span><span data-lang="en"><b>Atypical combination (Uzzi).</b> A solid conventional base in one field + demonstrated atypical connections: ask for the portfolio of connected dots.</span></div></div>
+</section>
+
+<section id="valve">
+  <h2><span data-lang="pt">A referência Valve: o que adotamos, o que adaptamos</span><span data-lang="en">The Valve reference: what we adopt, what we adapt</span></h2>
+  <div class="grid g2">
+    <div class="card hot"><h4><span data-lang="pt">Adotamos</span><span data-lang="en">We adopt</span></h4>
+      <p data-lang="pt">Auto-alocação dentro dos domínios (“vote com os pés”) · avaliação e
+      remuneração dirigidas pelos pares · a barra de contratação como ativo central · liberdade
+      para errar; medir em vez de supor · estrutura temporária (“structure happens”).</p>
+      <p data-lang="en">Self-allocation within domains ("vote with your feet") · peer-driven
+      evaluation and compensation · the hiring bar as a central asset · freedom to fail;
+      measuring instead of assuming · temporary structure ("structure happens").</p></div>
+    <div class="card"><h4><span data-lang="pt">Adaptamos</span><span data-lang="en">We adapt</span></h4>
+      <p data-lang="pt"><b>Valve: self-funded, sem prazos</b> → mantemos DRIs com orçamento,
+      métrica e cascata. <b>Fraquezas confessas</b> (mentoria, disseminação de informação,
+      previsibilidade) → exatamente o que o substrato conhecimento/BI/automação corrige.
+      <b>Sem gerentes formais</b> → orquestradores emergem pelo assunto que carregam, não pelo
+      cargo.</p>
+      <p data-lang="en"><b>Valve: self-funded, no deadlines</b> → we keep DRIs with budget,
+      metric and cascade. <b>Confessed weaknesses</b> (mentoring, information flow,
+      predictability) → exactly what the knowledge/BI/automation substrate fixes.
+      <b>No formal managers</b> → orchestrators emerge from the subject they carry, not the
+      title.</p></div>
+  </div>
+  <p><em><span data-lang="pt">Uma referência externa é terreno neutro: não privilegia a cultura
+  de nenhuma área ou origem.</span><span data-lang="en">An external reference is neutral ground:
+  it privileges no area's or origin's culture.</span></em></p>
+</section>
+
+<!-- ================= PARTE V ================= -->
+<section id="baseline" class="part">
+  <p class="eyebrow"><span data-lang="pt">Parte V · Execução</span><span data-lang="en">Part V · Execution</span></p>
+  <h2><span data-lang="pt">Antes de mover: o baseline</span><span data-lang="en">Before moving: the baseline</span></h2>
+  <ol class="steps">
+    <li><span data-lang="pt"><b>Mix de atividade</b>: % do tempo em síntese, decisão e produção, por área.</span><span data-lang="en"><b>Activity mix</b>: % of time in synthesis, decision and production, per area.</span></li>
+    <li><span data-lang="pt"><b>Sobreposições</b>: inventário de funções duplicadas ou fragmentadas.</span><span data-lang="en"><b>Overlaps</b>: inventory of duplicated or fragmented functions.</span></li>
+    <li><span data-lang="pt"><b>Tempos de ciclo</b>: da pergunta à decisão; do pedido à entrega.</span><span data-lang="en"><b>Cycle times</b>: from question to decision; from request to delivery.</span></li>
+    <li><span data-lang="pt"><b>Receita por funcionário</b>: por área e por linha de produto; a métrica-mestre.</span><span data-lang="en"><b>Revenue per employee</b>: per area and product line; the master metric.</span></li>
+    <li><span data-lang="pt"><b>Mapa de repasses</b>: onde contexto e negócios se perdem entre áreas e canais.</span><span data-lang="en"><b>Hand-off map</b>: where context and deals get lost between areas and channels.</span></li>
+  </ol>
+  <div class="note"><span data-lang="pt">Esse baseline vira o <b>placar da transição</b>. A Fase
+  0 começa aqui.</span><span data-lang="en">This baseline becomes the <b>transition scoreboard</b>.
+  Phase 0 starts here.</span></div>
+</section>
+
+<section id="pilotos">
+  <h2><span data-lang="pt">O menu de pilotos, e a ordem proposta</span><span data-lang="en">The pilot menu, and the proposed order</span></h2>
+  <ol class="steps">
+    <li><span data-lang="pt"><b>D · Draft nexialista</b>: chamada interna aberta; sinais de raposa: trajetórias variadas, projetos cruzados. <em>Testa a seleção de talento.</em></span><span data-lang="en"><b>D · Nexialist draft</b>: open internal call; fox signals: varied paths, cross-cutting projects. <em>Tests talent selection.</em></span></li>
+    <li><span data-lang="pt"><b>B · Célula zero</b>: uma célula nova, criada ao lado, com as regras novas, DRI do “caso zero”: a própria transição. <em>Testa o modelo sem anticorpos.</em></span><span data-lang="en"><b>B · Cell zero</b>: a new cell, built alongside, under the new rules, DRI of "case zero": the transition itself. <em>Tests the model without antibodies.</em></span></li>
+    <li><span data-lang="pt"><b>A · Conversão de um domínio</b>: um domínio de back-office unificado no esquema novo: HIC + formação + agentes + especialistas. <em>Testa converter o existente.</em></span><span data-lang="en"><b>A · One-domain conversion</b>: one back-office domain unified under the new scheme: HIC + trainee + agents + specialists. <em>Tests converting the existing.</em></span></li>
+    <li><span data-lang="pt"><b>C · Célula-sombra</b>: uma dupla HIC roda em paralelo a um departamento real por um trimestre, contra o baseline. <em>Testa a tese com números.</em></span><span data-lang="en"><b>C · Shadow cell</b>: an HIC pair runs in parallel with a real department for one quarter, against the baseline. <em>Tests the thesis with numbers.</em></span></li>
+  </ol>
+  <div class="row"><span class="num">∥</span><div><span data-lang="pt"><b>E · Rede de especialistas (em paralelo)</b>: uma ou duas funções em modo consultoria interna: office hours, demanda medida, utilização. <em>Calibra núcleo vs. rede.</em></span><span data-lang="en"><b>E · Specialist network (in parallel)</b>: one or two functions in internal-consulting mode: office hours, measured demand, utilization. <em>Calibrates core vs. network.</em></span></div></div>
+  <div class="note"><span data-lang="pt"><b>Governança dos pilotos:</b> um <b>HIC Mentor</b>, HIC
+  comprovado, interno ou contratado, patrono da nova cultura, atua ao lado dos C-levels durante a
+  transição (o conselho permanece sozinho no topo) e conduz a conversão do primeiro
+  domínio.</span><span data-lang="en"><b>Pilot governance:</b> an <b>HIC Mentor</b>, a proven
+  HIC, internal or hired, sponsor of the new culture, acts alongside the C-levels during the
+  transition (the board stays alone at the top) and leads the first domain
+  conversion.</span></div>
+</section>
+
+<section id="fases">
+  <h2><span data-lang="pt">Uma transição faseada e reversível</span><span data-lang="en">A phased, reversible transition</span></h2>
+  <ol class="steps">
+    <li><span data-lang="pt"><b>Fase 0 · Fundações + draft</b>: ratificar premissas; fundações (conhecimento, BI, automação); baseline, mapeamento, e o draft nexialista (D). <em>Reversibilidade: alta.</em></span><span data-lang="en"><b>Phase 0 · Foundations + draft</b>: ratify premises; foundations (knowledge, BI, automation); baseline, mapping, and the nexialist draft (D). <em>Reversibility: high.</em></span></li>
+    <li><span data-lang="pt"><b>Fase 1 · Célula zero + conversão</b>: célula zero (B) e conversão do primeiro domínio (A), sob o HIC Mentor; rede de especialistas (E) em paralelo. <em>Reversibilidade: alta.</em></span><span data-lang="en"><b>Phase 1 · Cell zero + conversion</b>: cell zero (B) and the first domain conversion (A), under the HIC Mentor; specialist network (E) in parallel. <em>Reversibility: high.</em></span></li>
+    <li><span data-lang="pt"><b>Fase 2 · Sombra + escala</b>: célula-sombra (C) contra o baseline; escalar o que vence; requalificar; migrar carreira e remuneração após o modo sombra. <em>Reversibilidade: moderada.</em></span><span data-lang="en"><b>Phase 2 · Shadow + scale</b>: shadow cell (C) against the baseline; scale what wins; reskill; migrate career and compensation after shadow mode. <em>Reversibility: moderate.</em></span></li>
+    <li><span data-lang="pt"><b>Fase 3 · A empresa no novo modelo</b>: as cinco camadas são a organização; eixos e limiares decididos pelos dados dos pilotos.</span><span data-lang="en"><b>Phase 3 · The company on the new model</b>: the five layers are the organization; axes and thresholds decided by pilot data.</span></li>
+  </ol>
+  <p><em><span data-lang="pt">Cada fase gera valor por si só e cria a opção, não a obrigação, de
+  prosseguir.</span><span data-lang="en">Each phase produces value on its own and creates the
+  option, not the obligation, to proceed.</span></em></p>
+</section>
+
+<section id="placar">
+  <h2><span data-lang="pt">Horas de julgamento em margem</span><span data-lang="en">Judgment hours into margin</span></h2>
+  <div class="grid g2">
+    <div class="card"><h4><span data-lang="pt">Receita por funcionário ↑</span><span data-lang="en">Revenue per employee ↑</span></h4>
+      <p data-lang="pt">A métrica-mestre: mais valor por pessoa, ampliado pela IA.</p>
+      <p data-lang="en">The master metric: more value per person, amplified by AI.</p></div>
+    <div class="card"><h4><span data-lang="pt">Sinergia via modelo</span><span data-lang="en">Synergy via the model</span></h4>
+      <p data-lang="pt">A economia vem da forma nova, não do corte tradicional de headcount.</p>
+      <p data-lang="en">The savings come from the new shape, not from traditional headcount cuts.</p></div>
+    <div class="card"><h4><span data-lang="pt">Participação e retenção</span><span data-lang="en">Equity and retention</span></h4>
+      <p data-lang="pt">O pool de opções converte a estrutura mais leve em propriedade retida e alinhada.</p>
+      <p data-lang="en">The options pool converts the lighter structure into retained, aligned ownership.</p></div>
+    <div class="card"><h4><span data-lang="pt">Custo de transição</span><span data-lang="en">Transition cost</span></h4>
+      <p data-lang="pt">Requalificação e desligamentos: reais, de curto prazo, orçados com honestidade.</p>
+      <p data-lang="en">Reskilling and exits: real, near-term, budgeted honestly.</p></div>
+  </div>
+  <div class="note"><span data-lang="pt"><b>Placar:</b> receita/funcionário · margem vs. meta ·
+  tempo de ciclo de decisão · cobertura do substrato · responsabilização por DRI · retenção de
+  donos.</span><span data-lang="en"><b>Scoreboard:</b> revenue/employee · margin vs. target ·
+  decision cycle time · substrate coverage · DRI accountability · owner retention.</span></div>
+</section>
+
+<section id="pedido">
+  <div class="ask">
+    <h3><span data-lang="pt">Construir a empresa sobre o julgamento.</span><span data-lang="en">Build the company on judgment.</span></h3>
+    <ul>
+      <li><span data-lang="pt">Ratificar as premissas</span><span data-lang="en">Ratify the premises</span></li>
+      <li><span data-lang="pt">Financiar as fundações: conhecimento, BI e automação</span><span data-lang="en">Fund the foundations: knowledge, BI and automation</span></li>
+      <li><span data-lang="pt">Nomear o HIC Mentor e escolher os pilotos</span><span data-lang="en">Name the HIC Mentor and choose the pilots</span></li>
+      <li><span data-lang="pt">Assumir o trade-off de remuneração e participação</span><span data-lang="en">Own the compensation and equity trade-off</span></li>
+    </ul>
+    <p class="fim"><span data-lang="pt">…e então deixe os HICs serem donos.</span><span data-lang="en">…and then let the HICs own.</span></p>
+  </div>
+</section>
+
+<!-- ================= APÊNDICE ================= -->
+<section id="evidencias" class="part">
+  <p class="eyebrow"><span data-lang="pt">Apêndice</span><span data-lang="en">Appendix</span></p>
+  <h2><span data-lang="pt">A base de evidências</span><span data-lang="en">The evidence base</span></h2>
+  <div class="tblwrap"><table>
+    <thead><tr>
+      <th><span data-lang="pt">Ano / fonte</span><span data-lang="en">Year / source</span></th>
+      <th><span data-lang="pt">Estudo ou evento</span><span data-lang="en">Study or event</span></th>
+      <th><span data-lang="pt">O que sustenta</span><span data-lang="en">What it supports</span></th>
+    </tr></thead>
+    <tbody data-lang="pt">
+      <tr><td class="y">1997-2025</td><td><b>Deep Blue → AlphaGo → AlphaZero → Gemini</b> (finais de programação)</td><td>a IA vence todo problema já delimitado: o “tabuleiro”</td></tr>
+      <tr><td class="y">Hogarth · Epstein</td><td><b>Ambientes “kind” vs. “wicked”</b> (<i>Range</i>)</td><td>profundidade vence dentro do tabuleiro; amplitude vence no mundo aberto</td></tr>
+      <tr><td class="y">2009</td><td><b>Taylor &amp; Rohrer</b>: prática intercalada</td><td>misturar problemas dobra o desempenho: ensina a escolher a ferramenta</td></tr>
+      <tr><td class="y">2020</td><td><b>Güllich, Macnamara &amp; Hambrick</b>: 51 estudos, 6.000+ atletas</td><td>a elite experimenta mais e especializa mais tarde</td></tr>
+      <tr><td class="y">2009</td><td><b>Kahneman &amp; Klein</b>: colaboração adversarial</td><td>intuição só é confiável com regularidades estáveis e feedback rápido</td></tr>
+      <tr><td class="y">2007-09</td><td><b>Jones · Wuchty &amp; Uzzi</b>: 19,9 mi de artigos, 2 mi de patentes</td><td>fardo do conhecimento: quem conecta especialistas ganha valor</td></tr>
+      <tr><td class="y">1984-</td><td><b>Tetlock</b>: raposas vs. ouriços</td><td>múltiplas lentes superam a ideia única em ambientes abertos</td></tr>
+      <tr><td class="y">2013</td><td><b>Uzzi et al.</b>: 17,9 mi de artigos</td><td>maior impacto = base convencional + injeção atípica</td></tr>
+      <tr><td class="y">2023</td><td><b>5.000+ atendentes</b> com assistente de IA</td><td>a IA comprime experiência: +34% para iniciantes</td></tr>
+      <tr><td class="y">2023</td><td><b>Harvard × BCG</b>: 700+ consultores</td><td>IA ajuda dentro da fronteira; confiança demais fora dela piora resultados</td></tr>
+      <tr><td class="y">2012</td><td><b>Valve</b>: <i>Handbook for New Employees</i></td><td>a referência prática de empresa flat de alto calibre</td></tr>
+    </tbody>
+    <tbody data-lang="en">
+      <tr><td class="y">1997-2025</td><td><b>Deep Blue → AlphaGo → AlphaZero → Gemini</b> (programming finals)</td><td>AI wins every already-delimited problem: the "board"</td></tr>
+      <tr><td class="y">Hogarth · Epstein</td><td><b>"Kind" vs. "wicked" environments</b> (<i>Range</i>)</td><td>depth wins inside the board; breadth wins in the open world</td></tr>
+      <tr><td class="y">2009</td><td><b>Taylor &amp; Rohrer</b>: interleaved practice</td><td>mixing problems doubles performance: it teaches choosing the tool</td></tr>
+      <tr><td class="y">2020</td><td><b>Güllich, Macnamara &amp; Hambrick</b>: 51 studies, 6,000+ athletes</td><td>the elite sample more and specialize later</td></tr>
+      <tr><td class="y">2009</td><td><b>Kahneman &amp; Klein</b>: adversarial collaboration</td><td>intuition is only reliable with stable regularities and fast feedback</td></tr>
+      <tr><td class="y">2007-09</td><td><b>Jones · Wuchty &amp; Uzzi</b>: 19.9M papers, 2M+ patents</td><td>burden of knowledge: whoever connects specialists gains value</td></tr>
+      <tr><td class="y">1984-</td><td><b>Tetlock</b>: foxes vs. hedgehogs</td><td>multiple lenses beat the single idea in open environments</td></tr>
+      <tr><td class="y">2013</td><td><b>Uzzi et al.</b>: 17.9M papers</td><td>highest impact = conventional base + atypical injection</td></tr>
+      <tr><td class="y">2023</td><td><b>5,000+ support agents</b> with an AI assistant</td><td>AI compresses experience: +34% for novices</td></tr>
+      <tr><td class="y">2023</td><td><b>Harvard × BCG</b>: 700+ consultants</td><td>AI helps inside its frontier; over-trust outside it makes results worse</td></tr>
+      <tr><td class="y">2012</td><td><b>Valve</b>: <i>Handbook for New Employees</i></td><td>the practical reference of a high-caliber flat company</td></tr>
+    </tbody>
+  </table></div>
+  <footer class="end">
+    <span>AI AGENTIC WORK TRANSITION</span>
+    <span data-lang="pt">PLANO DE TRANSFORMAÇÃO CULTURAL E OPERACIONAL · VERSÃO GENÉRICA</span>
+    <span data-lang="en">CULTURAL AND OPERATIONAL TRANSFORMATION PLAN · GENERIC VERSION</span>
+  </footer>
+</section>
+
+</div></main>
+</div>
+
+<script>
+  function setLang(l){
+    document.body.classList.toggle('en', l === 'en');
+    var pt = document.getElementById('btn-pt'), en = document.getElementById('btn-en');
+    pt.setAttribute('aria-pressed', String(l !== 'en'));
+    en.setAttribute('aria-pressed', String(l === 'en'));
+    try { localStorage.setItem('awt-lang', l); } catch(e){}
+  }
+  (function(){
+    var saved = null;
+    try { saved = localStorage.getItem('awt-lang'); } catch(e){}
+    if (saved === 'en') setLang('en');
+  })();
+  // scroll-spy
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('nav.side a[href^="#"]'));
+    var map = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id], main header.hero'));
+    function onScroll(){
+      var pos = window.scrollY + window.innerHeight * 0.28;
+      var current = sections[0];
+      for (var i=0;i<sections.length;i++){
+        if (sections[i].offsetTop <= pos) current = sections[i];
+      }
+      links.forEach(function(a){ a.classList.remove('on'); });
+      var a = map[current.id];
+      if (a) a.classList.add('on');
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+</script>
+
+</body></html>

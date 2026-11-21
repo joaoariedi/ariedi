@@ -55,6 +55,47 @@ class PublicPagesSmokeTest(TestCase):
         response = self.client.get("/presentations")
         self.assertEqual(response.status_code, 200)
 
+    DECKS = {
+        "harness-software-engineering": "Harness Software Engineering",
+        "organizational-intelligence": "Inteligência Organizacional",
+        "agentic-work-transition": "AI Agentic Work Transition",
+    }
+
+    def test_presentations_page_links_every_deck(self):
+        for prefix in ("", "/pt-br"):
+            body = self.client.get(prefix + "/presentations").content.decode()
+            for slug in self.DECKS:
+                self.assertIn(f'href="{prefix}/presentations/{slug}"', body, prefix)
+            self.assertIn('id="modern-engineering"', body, prefix)
+
+    def test_each_deck_opens_in_the_site_language(self):
+        """The deck page is the file as written plus one setLang call in the URL's language."""
+        for slug, title in self.DECKS.items():
+            for prefix, code in (("", "en"), ("/pt-br", "pt")):
+                response = self.client.get(f"{prefix}/presentations/{slug}")
+                self.assertEqual(response.status_code, 200, slug)
+                self.assertTrue(response["Content-Type"].startswith("text/html"), slug)
+                body = response.content.decode()
+                self.assertIn(f"<title>{title}", body, slug)
+                opener = f'setLang("{code}");</script></body>'
+                self.assertIn(opener, body, f"{slug} at {prefix or '/'}")
+                self.assertEqual(body.count("typeof setLang"), 1, slug)
+
+    def test_deck_urls_name_only_known_decks(self):
+        for path in ("/presentations/unknown-deck", "/presentations/modern-engineering",
+                     "/presentations/..%2Fviews.py", "/presentations/organizational-intelligence.html"):
+            self.assertEqual(self.client.get(path).status_code, 404, path)
+
+    def test_pdf_route_serves_only_pdfs(self):
+        self.assertEqual(self.client.get("/presentations/pdf/modern-engineering.pdf").status_code, 200)
+        self.assertEqual(self.client.get("/presentations/pdf/organizational-intelligence.html").status_code, 404)
+        self.assertIn("Disallow: /static/presentations/", self.client.get("/robots.txt").content.decode())
+
+    def test_hefesto_card_links_to_the_hosted_presentation(self):
+        body = self.client.get("/").content.decode()
+        self.assertIn('href="/presentations/harness-software-engineering"', body)
+        self.assertNotIn("blob/main/hefesto-sdlc.html", body)
+
     def test_seo_files_render(self):
         self.assertEqual(self.client.get("/robots.txt").status_code, 200)
         sitemap = self.client.get("/sitemap.xml")
