@@ -135,6 +135,18 @@ class PublicPagesSmokeTest(TestCase):
             self.assertIn('href="#section-services"', home, prefix)
             self.assertIn(f'<a href="{prefix}/presentations">', home, prefix)
 
+    def test_every_deck_uses_the_site_palette_and_typefaces(self):
+        """The decks share the site's night palette (violet on #150A22) and its typefaces."""
+        for slug in self.DECKS:
+            body = self.client.get(f"/presentations/{slug}").content.decode()
+            self.assertIn("#150A22", body.upper(), slug)
+            self.assertIn("family=Chakra+Petch", body, slug)
+            self.assertIn("family=IBM+Plex+Sans", body, slug)
+            for old in ("#3BDD8F", "#0B0E0C", "59,221,143"):
+                self.assertNotIn(old, body.upper().replace(" ", ""), f"{old} left in {slug}")
+            for font in ("family=Sora", '"Sora"', "family=Manrope", '"Manrope"'):
+                self.assertNotIn(font, body, f"{font} left in {slug}")
+
     def test_deck_urls_name_only_known_decks(self):
         for path in ("/presentations/unknown-deck", "/presentations/modern-engineering",
                      "/presentations/..%2Fviews.py", "/presentations/organizational-intelligence.html"):
