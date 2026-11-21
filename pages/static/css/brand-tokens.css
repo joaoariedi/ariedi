@@ -53,6 +53,33 @@ body {
 	line-height: 28px;
 }
 
+/* With motion allowed (brand-motion.js sets .motion-ok and inserts .grid-plane), the grid and
+   scanlines move to a fixed layer that the script slides at 85 % of the scroll, in whole pixels
+   with one cell of slack below, so the drafting sheet reads as a plane behind the content.
+   Without motion the plane stays hidden and the grid scrolls with the page as before. */
+.grid-plane {
+	display: none;
+}
+
+html.motion-ok body {
+	background-color: transparent;   /* html carries the ground; an opaque body would hide the plane */
+	background-image: none;
+}
+
+html.motion-ok .grid-plane {
+	display: block;
+	position: fixed;
+	inset: 0 0 calc(var(--unit) * -1) 0;
+	z-index: -1;
+	pointer-events: none;
+	background-image:
+		repeating-linear-gradient(0deg, var(--scan) 0 1px, transparent 1px 2px),
+		linear-gradient(var(--grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+	background-size: auto, var(--unit) var(--unit), var(--unit) var(--unit);
+	will-change: transform;
+}
+
 ::selection {
 	background: var(--construction);
 	color: var(--text);
