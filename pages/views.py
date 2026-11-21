@@ -5,6 +5,7 @@ from functools import lru_cache
 from django.conf import settings
 from django.core.mail import send_mail
 from django.http import FileResponse, Http404, HttpResponse, JsonResponse
+from django.templatetags.static import static
 from django.urls import reverse
 from django.utils import translation
 from django.views.decorators.gzip import gzip_page
@@ -81,6 +82,14 @@ def deck_links(slug, path):
             + '<link rel="alternate" hreflang="x-default" href="%s">' % url_in('en'))
 
 
+def deck_icons():
+    """The site's favicon links (_header.html): the rings SVG, with the PNG as fallback and touch icon."""
+    png, svg = static('images/favicons/fav2.png'), static('images/favicons/rings.svg')
+    return ('<link rel="icon" href="%s" type="image/png">' % png
+            + '<link rel="icon" href="%s" type="image/svg+xml">' % svg
+            + '<link rel="apple-touch-icon" href="%s">' % png)
+
+
 def insert_before(html, closing_tag, snippet):
     """Puts snippet just before the last closing_tag, or at the end when the tag is missing."""
     end = html.rfind(closing_tag)
@@ -94,7 +103,7 @@ def serve_deck(request, slug):
         raise Http404
     deck_language = DECK_LANGUAGE.get(request.LANGUAGE_CODE, 'en')
     # request.path is one of the allow-listed deck URLs, so it is safe to echo into the canonical
-    html = insert_before(read_deck(filename), '</head>', deck_links(slug, request.path))
+    html = insert_before(read_deck(filename), '</head>', deck_links(slug, request.path) + deck_icons())
     return HttpResponse(open_deck_in(html, deck_language))
 
 

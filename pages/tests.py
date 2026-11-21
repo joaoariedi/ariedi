@@ -99,6 +99,13 @@ class PublicPagesSmokeTest(TestCase):
             self.assertRegex(body, r"<html[^>]*\blang=\"(en|pt-BR)\"", slug)
             self.assertIn("document.documentElement.lang", body, slug)
 
+    def test_decks_carry_the_site_favicon(self):
+        for slug in self.DECKS:
+            head = self.client.get(f"/presentations/{slug}").content.decode().split("</head>")[0]
+            self.assertIn('<link rel="icon" href="/static/images/favicons/rings.svg" type="image/svg+xml">', head, slug)
+            self.assertIn('<link rel="icon" href="/static/images/favicons/fav2.png" type="image/png">', head, slug)
+            self.assertIn('<link rel="apple-touch-icon" href="/static/images/favicons/fav2.png">', head, slug)
+
     def test_deck_urls_name_only_known_decks(self):
         for path in ("/presentations/unknown-deck", "/presentations/modern-engineering",
                      "/presentations/..%2Fviews.py", "/presentations/organizational-intelligence.html"):
