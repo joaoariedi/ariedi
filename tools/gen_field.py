@@ -2,8 +2,8 @@
 
 Follows "How the field is built" in the brand style guide:
   1. evenly spaced horizontal lines across the lower half of the canvas;
-  2. each displaced by three overlapping sines, full strength at the left,
-     fading to none by about two thirds of the way across;
+  2. each displaced by three overlapping sines, full strength at the left and still turbulent
+     close to the ring, fading to none only at the line's own point on it;
   3. every line pulled toward the ring, each to its own point on the outer ring's left arc:
      the noise is not funnelled into one point, it arrives ordered, at many points;
   4. the rings stay clean: only the orange decision line crosses them;
@@ -37,20 +37,22 @@ WIDE = {
     "name": "wide", "W": 1584, "H": 300,      # cropped to ~a third of a view
     "CX": 1251, "CY": 165,                    # ring centre at 79% of the width
     "RINGS": [(72, 1.25), (54, 1), (36, 1), (18, 1)],
-    "N_IN": 20, "Y0": (128, 272), "BAND": (60, 290),   # incoming lines stay inside the band
+    "N_IN": 20, "Y0": (96, 280), "BAND": (60, 290),    # incoming lines stay inside the band
     "WAVES": [((30, 46), (280, 440)), ((10, 18), (120, 180)), ((3, 6), (50, 75))],
     "N_OUT": 7, "OUT_GAP": 13, "OUT_FAN": 7, "OUT_RUN": 92, "OUT_HANDLES": (40, 46),
-    "ARC": 62, "OUT_SPREAD": 3,               # arrival arc (deg either side), output divergence (deg per line)
+    "ARC": 84, "OUT_SPREAD": 3,               # arrival arc (deg either side), output divergence (deg per line)
+    "FADE": 0.6, "PULL": 4.0,                 # full turbulence for 60% of the way; a late pull
     "SEED": 20261121, "LABELS": True,
 }
 NARROW = {
     "name": "narrow", "W": 440, "H": 248,     # the phone hero: ~390 x 220 CSS px
     "CX": 300, "CY": 140,                     # ring at 68%: the noise gets the left 58%
     "RINGS": [(46, 1.25), (34, 1), (23, 1), (11, 1)],
-    "N_IN": 14, "Y0": (96, 226), "BAND": (44, 240),
+    "N_IN": 14, "Y0": (78, 230), "BAND": (44, 240),
     "WAVES": [((20, 30), (95, 150)), ((7, 12), (40, 62)), ((2, 4), (17, 26))],
     "N_OUT": 5, "OUT_GAP": 11, "OUT_FAN": 9, "OUT_RUN": 34, "OUT_HANDLES": (14, 16),
-    "ARC": 62, "OUT_SPREAD": 4,
+    "ARC": 84, "OUT_SPREAD": 4,
+    "FADE": 0.6, "PULL": 4.0,
     "SEED": 20261122, "LABELS": False,
 }
 
@@ -85,6 +87,17 @@ def targets(c):
     return out
 
 
+def wave_fade(c, x, tx):
+    """Full turbulence until FADE of the way to the line's own point on the ring, then it dies
+    out over the rest, reaching none exactly at the ring."""
+    return 1 - smoothstep((x / tx - c["FADE"]) / (1 - c["FADE"]))
+
+
+def pull_at(c, x, tx):
+    """How far the line has given in to its target: late (PULL), so the noise holds until close."""
+    return (x / tx) ** c["PULL"]
+
+
 def line_xs(tx):
     xs, x = [], 0
     while x < tx:
@@ -109,15 +122,14 @@ def incoming_paths(c):
         xs = line_xs(tx)
         disp = []
         for x in xs:
-            fade = 1 - smoothstep(x / (W * 2 / 3))
-            disp.append(sum(a * math.sin(2 * math.pi * x / lam + ph) for a, lam, ph in waves) * fade)
+            disp.append(sum(a * math.sin(2 * math.pi * x / lam + ph) for a, lam, ph in waves) * wave_fade(c, x, tx))
         # Keep every line inside the band by scaling its displacement, so nothing is cut flat
         # at the band edge in the middle of the page.
         up, down = max(0.0, -min(disp)), max(0.0, max(disp))
         k = min(1.0, (y0 - y_min) / up if up else 1.0, (y_max - y0) / down if down else 1.0)
         pts = []
         for x, d in zip(xs, disp):
-            pull = (x / tx) ** 2.2
+            pull = pull_at(c, x, tx)
             pts.append((x, (y0 + d * k) * (1 - pull) + ty * pull))
         paths.append({
             "d": "M" + " L".join(f"{fmt(x)} {fmt(y)}" for x, y in pts),
@@ -134,8 +146,7 @@ def highest_reach(c, lines, x_from, x_to):
         amp = sum(a for a, _, _ in line["waves"]) * line["k"]
         for x in line_xs(line["tx"]):
             if x_from <= x <= x_to:
-                pull = (x / line["tx"]) ** 2.2
-                fade = 1 - smoothstep(x / (c["W"] * 2 / 3))
+                pull, fade = pull_at(c, x, line["tx"]), wave_fade(c, x, line["tx"])
                 y = (line["y0"] - amp * fade - 6) * (1 - pull) + line["ty"] * pull
                 lowest = min(lowest, y)
     return lowest
@@ -176,6 +187,7 @@ def canvas_svg(c):
     out = [
         f'<svg class="field field-{c["name"]}" viewBox="0 0 {W} {H}" preserveAspectRatio="xMaxYMid slice" '
         f'data-cx="{CX}" data-cy="{CY}" data-xc="{xc(c)}" data-ymin="{c["BAND"][0]}" data-ymax="{c["BAND"][1]}" '
+        f'data-fade="{c["FADE"]}" data-pull="{c["PULL"]}" '
         'aria-hidden="true" focusable="false">',
         f'<defs><clipPath id="{clip}"><rect width="{W}" height="{H}"/></clipPath>'
         f'<clipPath id="{clip}-in"><path clip-rule="evenodd" d="M0 0H{W}V{H}H0Z'

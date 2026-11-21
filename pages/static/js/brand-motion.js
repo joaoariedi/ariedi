@@ -48,7 +48,7 @@
 	var hero = fields.length ? fields[0].closest('.section') : null;
 	var svg = null;
 	var lines = [];
-	var YMIN, YMAX, W, H;
+	var YMIN, YMAX, W, H, FADE, PULL;
 
 	function smooth(t) {
 		t = t < 0 ? 0 : t > 1 ? 1 : t;
@@ -97,8 +97,8 @@
 		for (var x = 0; x < tx; x += 8) pts.xs.push(x);
 		pts.xs.push(tx);
 		pts.xs.forEach(function (x) {
-			pts.fade.push(1 - smooth(x / (W * 2 / 3)));
-			pts.pull.push(Math.pow(x / tx, 2.2));
+			pts.fade.push(1 - smooth((x / tx - FADE) / (1 - FADE)));
+			pts.pull.push(Math.pow(x / tx, PULL));
 			pts.nfade.push(1 - smooth(x / (W * NOISE_REACH)));
 		});
 		return pts;
@@ -106,7 +106,7 @@
 
 	function readField() {
 		var ds = svg.dataset, vb = svg.viewBox.baseVal;
-		YMIN = +ds.ymin; YMAX = +ds.ymax; W = vb.width; H = vb.height;
+		YMIN = +ds.ymin; YMAX = +ds.ymax; W = vb.width; H = vb.height; FADE = +ds.fade; PULL = +ds.pull;
 		Array.prototype.forEach.call(svg.querySelectorAll('.field-depth path[data-w]'), function (el) {
 			var w = el.getAttribute('data-w').split(',').map(Number);
 			lines.push({
