@@ -1,0 +1,87 @@
+/* Brand details: certification lists, stacked section titles and phone tap targets.
+ * A separate file because brand-sections.css is at the 500-line limit. */
+
+/* ============ Certifications: field, entity, then the list ============ */
+.resume-items .resume-item .cert-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.cert-list li {
+	position: relative;
+	padding-left: 20px;
+}
+
+/* a short construction tick, not a bullet */
+.cert-list li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 13px;
+	width: 10px;
+	height: 1px;
+	background: var(--label);
+}
+
+/* A second title in the same column (Languages under Certifications). The resume columns are a
+ * two-row subgrid (title, panel), so the certification panel, this title and the languages panel
+ * share the panel row inside .col-stack; the last panel grows to meet Education's bottom edge. */
+.section .title.title-follow {
+	margin-top: 48px;
+}
+
+.col-stack {
+	display: flex;
+	flex-direction: column;
+}
+
+.col-stack .lang-items {
+	flex-grow: 1;
+}
+
+/* Beside Education the three languages sit in one row, so the column keeps Education's height */
+@media (min-width: 721px) {
+	.lang-items {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		align-content: start;
+	}
+
+	.lang-items .resume-item.content-box {
+		align-content: start; /* a wrapped neighbour must not push the names down */
+		border-top: 0;
+		border-left: 1px solid var(--construction);
+	}
+
+	.lang-items .resume-item.content-box:first-child {
+		border-left: 0;
+	}
+}
+
+/* ============ Tap targets (WCAG 2.5.8: 24 px minimum, 44 px for the menu) ============ */
+
+/* The hamburger is drawn 30x20. The box is border-box here, so it becomes 44x44 with a transparent
+ * border that keeps the bars' 30x20 padding box, a negative margin that keeps its place, and the
+ * theme's translateY(50%) pinned to the 10 px it meant at 20 px tall (50% of 44 would drop it 12 px). */
+@media (max-width: 1199px) {
+	.header .menu-btn {
+		box-sizing: border-box;
+		width: 44px;
+		height: 44px;
+		border: solid transparent;
+		border-width: 12px 7px;
+		margin: -12px -7px;
+		transform: translateY(10px);
+	}
+}
+
+/* Standalone links (card footers, the signature row, ORCID/Lattes, the breadcrumb) get 24 px of height without changing the line */
+.service-item .links a,
+.signature .tb-links a,
+.id-links a,
+.hero-subline a {
+	display: inline-block;
+	padding: 4px 0;
+	margin: -4px 0;
+}

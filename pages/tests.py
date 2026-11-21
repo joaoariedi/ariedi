@@ -132,6 +132,30 @@ class PublicPagesSmokeTest(TestCase):
             for leftover in ("data-sheet", "sheet-switch", "brand-sheet", "localStorage"):
                 self.assertNotIn(leftover, body, f"{leftover!r} on {path}")
 
+    def test_certifications_are_grouped_by_field_and_languages_stand_apart(self):
+        """Certifications: field title, then the entity, then the list; Languages is its own block."""
+        cases = (("/", ("Certifications", "Cybersecurity", "Cloud", "Languages")),
+                 ("/pt-br/", ("Certificações", "Cibersegurança", "Nuvem", "Idiomas")))
+        for path, (certs, cyber, cloud, langs) in cases:
+            body = self.client.get(path).content.decode()
+            self.assertIn(f'<h2 class="title_inner">{certs}</h2>', body, path)
+            self.assertIn(f'<h2 class="title_inner">{langs}</h2>', body, path)
+            self.assertRegex(body, rf"{cyber}<br>\s*<small>FIAP</small>", path)
+            self.assertRegex(body, rf"{cloud}<br>\s*<small>Amazon Web Services</small>", path)
+            self.assertIn("<li>Penetration Testing</li>", body, path)
+            self.assertNotIn("Certifications and languages", body, path)
+            self.assertNotIn("Certificações e idiomas", body, path)
+
+    def test_each_language_shows_only_its_own_titles(self):
+        """No translation in parentheses: each language carries its own titles, not both."""
+        en = self.client.get("/").content.decode() + self.client.get("/research").content.decode()
+        for leak in ("Gerente de Engenharia", "Mesa 6", "(anais)", "Simpósio de Engenharia"):
+            self.assertNotIn(leak, en, f"Portuguese {leak!r} on the English pages")
+        pt = self.client.get("/pt-br/").content.decode() + self.client.get("/pt-br/research").content.decode()
+        for leak in ("Software Engineering Manager", "Principal Software Engineer", "Senior Software Engineer",
+                     "Technologist in Cyber Defense", "session 6", "Production Engineering Symposium"):
+            self.assertNotIn(leak, pt, f"English {leak!r} on the Portuguese pages")
+
 
 
 
