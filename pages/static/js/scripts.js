@@ -65,14 +65,14 @@
 		/*
 			Jarallax
 		*/
-		if($('.jarallax').length){
+		if($('.jarallax').length && $.fn.jarallax){
 			$('.jarallax').jarallax();
 		}
 
 		/*
 			Started Slider
 		*/
-		if($('.started-carousel').length){
+		if($('.started-carousel').length && typeof Swiper !== 'undefined'){
 			var started_slider = new Swiper ('.started-carousel .swiper-container', {
 				init: false,
 				loop: false,
@@ -112,7 +112,7 @@
 		/*
 			Testimonials Slider
 		*/
-		if($('.reviews-carousel').length){
+		if($('.reviews-carousel').length && typeof Swiper !== 'undefined'){
 			var rev_slider = new Swiper ('.reviews-carousel .swiper-container', {
 				loop: true,
 				spaceBetween: 70,
@@ -166,7 +166,7 @@
 	/*
 		Grained
 	*/
-	if(!$('.grained-off').length){
+	if(!$('.grained-off').length && typeof grained === 'function'){
 	var grained_options = {
 		'animate': true,
 		'patternWidth': 400,
@@ -349,7 +349,10 @@
 		Initialize Portfolio
 	*/
 	var $container = $('.portfolio-items');
-	$container.imagesLoaded(function() {
+	// Theme plugins are only loaded where their markup exists (see _scripts.html); every
+	// call below checks for its plugin, so a page without it never throws.
+	var has_isotope = $container.length && $.fn.imagesLoaded && $.fn.isotope;
+	if(has_isotope) $container.imagesLoaded(function() {
 		$container.isotope({
 			percentPosition: true,
 			itemSelector: '.box-item'
@@ -370,7 +373,7 @@
 	*/
 	$('.filters').on( 'click', '.btn-group', function() {
 		var filterValue = $(this).find('input').val();
-		$container.isotope({ filter: filterValue });
+		if(has_isotope) $container.isotope({ filter: filterValue });
 		$('.filters .btn-group label').removeClass('glitch-effect');
 		$(this).find('label').addClass('glitch-effect');
 	});
@@ -378,7 +381,8 @@
 	/*
 		Gallery popup
 	*/
-	if(/\.(?:jpg|jpeg|gif|png)$/i.test($('.gallery-item:first a').attr('href'))){
+	var has_mfp = !!$.fn.magnificPopup;
+	if(has_mfp && /\.(?:jpg|jpeg|gif|png)$/i.test($('.gallery-item:first a').attr('href'))){
 		$('.gallery-item a').magnificPopup({
 			gallery: {
 				enabled: true
@@ -392,7 +396,7 @@
 	/*
 		Media popup
 	*/
-	$('.has-popup-media').magnificPopup({
+	if(has_mfp) $('.has-popup-media').magnificPopup({
 		type: 'inline',
 		overflowY: 'auto',
 		closeBtnInside: true,
@@ -402,7 +406,7 @@
 	/*
 		Image popup
 	*/
-	$('.has-popup-image').magnificPopup({
+	if(has_mfp) $('.has-popup-image').magnificPopup({
 		type: 'image',
 		closeOnContentClick: true,
 		mainClass: 'mfp-fade',
@@ -414,7 +418,7 @@
 	/*
 		Video popup
 	*/
-	$('.has-popup-video').magnificPopup({
+	if(has_mfp) $('.has-popup-video').magnificPopup({
 		disableOn: 700,
 		type: 'iframe',
 		iframe: {
@@ -440,7 +444,7 @@
 	/*
 		Music popup
 	*/
-	$('.has-popup-music').magnificPopup({
+	if(has_mfp) $('.has-popup-music').magnificPopup({
 		disableOn: 700,
 		type: 'iframe',
 		removalDelay: 160,
@@ -454,6 +458,7 @@
 	*/
 	$('.has-popup-gallery').on('click', function() {
         var gallery = $(this).attr('href');
+        if(!has_mfp) return true;
     
         $(gallery).magnificPopup({
             delegate: 'a',
@@ -484,7 +489,7 @@
 	if($('.video-bg').length) {
 		$('body').addClass('background-enabled');
 		if(!isMobile) {
-			if($('.jarallax-video').length){
+			if($('.jarallax-video').length && $.fn.jarallax){
 				$('.jarallax-video').each(function(){
 					var volume = $(this).data('volume');
 					if(!is_safari) {
@@ -584,7 +589,7 @@
 	/*
 		Validate Contact Form
 	*/
-	$('#cform').validate({
+	if($('#cform').length && $.fn.validate) $('#cform').validate({
 		rules: {
 			name: {
 				required: true

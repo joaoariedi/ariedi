@@ -91,6 +91,19 @@ class PublicPagesSmokeTest(TestCase):
         self.assertIn("Síntese estendida", pt)
         self.assertIn('id="simpep-2026"', pt)
 
+    def test_unused_theme_plugins_are_not_loaded(self):
+        """The brand pages use none of the theme's jQuery plugins; loading them cost ~124 KB."""
+        # Asset paths, not bare names: "grained-off" is a body class scripts.js reads.
+        unused = ("js/swiper", "js/isotope", "js/jarallax", "js/magnific-popup",
+                  "js/jquery.validate", "js/simpleParallax", "js/imagesloaded", "js/grained",
+                  "css/magnific-popup", "css/animate", "css/jarallax", "css/swiper")
+        for path in ("/", "/pt-br/", "/research", "/presentations"):
+            body = self.client.get(path).content.decode()
+            self.assertIn("js/jquery.min", body, path)
+            self.assertIn("js/scripts", body, path)
+            for asset in unused:
+                self.assertNotIn(asset, body, f"{asset!r} still loaded on {path}")
+
     def test_night_sheet_only_no_switcher(self):
         """The brand ships one sheet (night); the experiment's switcher and its ?sheet= script are gone."""
         for path in ("/", "/pt-br/", "/research", "/presentations"):
