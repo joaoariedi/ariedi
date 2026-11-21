@@ -253,26 +253,20 @@
 	});
 	
 	/*
-		Animation Between Pages
+		Menu links: a section on this page scrolls into view; anything else (a section of the
+		home page seen from another page, the Presentations page) is a plain link and leaves at
+		once. The theme used to hold those for a 2.5 s page transition, and its body.home check
+		sent subpage section links to '/' + hash, which dropped the /pt-br/ prefix.
 	*/
 	$('header .top-menu, .typed-bread, .popup-box .bts, .animate-to-page').on('click', 'a', function(){
 		var link = $(this).attr('href');
-		if(link.indexOf('#section-') == 0){
-			if(!$('body').hasClass('home')){
-				location.href = '/'+link;
-			}
-
-			$('body, html').animate({scrollTop: $(link).offset().top - 68}, 400);
-			if($('header').hasClass('active')){
-				$('.menu-btn').trigger('click');
-			}
-		} else {
-			$('.lines').removeClass('finish');
-			$('.lines').removeClass('ready');
-			$('.lines').addClass('no-lines');
-			setTimeout(function() {
-				location.href = "" + link;
-			}, 2500);
+		var target = link.indexOf('#section-') == 0 ? $(link) : $();
+		if(!target.length){
+			return true;
+		}
+		$('body, html').animate({scrollTop: target.offset().top - 68}, 400);
+		if($('header').hasClass('active')){
+			$('.menu-btn').trigger('click');
 		}
 		return false;
 	});

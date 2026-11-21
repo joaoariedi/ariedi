@@ -8,6 +8,8 @@ from django.http import FileResponse, Http404, HttpResponse, JsonResponse
 from django.templatetags.static import static
 from django.urls import reverse
 from django.utils import translation
+from django.utils.html import escape
+from django.utils.translation import gettext
 from django.views.decorators.gzip import gzip_page
 from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateView, View
@@ -90,6 +92,31 @@ def deck_icons():
             + '<link rel="apple-touch-icon" href="%s">' % png)
 
 
+# The way back to the site from inside a deck: a small fixed pill in the brand's colours, bottom
+# right, where none of the decks keeps anything (their navigation is a left rail on desktop and a
+# sticky top bar on phones). Each link is 44 px tall.
+RETURN_PILL_STYLE = (
+    '#site-return{position:fixed;right:16px;bottom:16px;z-index:2147483000;display:flex;'
+    'align-items:center;gap:10px;padding:0 14px;background:rgba(21,8,38,.94);'
+    'border:1px solid #4A2A6B;border-radius:2px;box-shadow:0 6px 20px rgba(0,0,0,.35);'
+    "font:500 12px/1 'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;"
+    'letter-spacing:.06em;text-transform:uppercase}'
+    '#site-return a{display:inline-block;padding:16px 0;color:#F1E9FB;text-decoration:none}'
+    '#site-return a:hover,#site-return a:focus-visible{color:#B56BE8;text-decoration:underline}'
+    '#site-return span{color:#CDB4F0}'
+    '@media print{#site-return{display:none}}'
+)
+
+
+def deck_return_links():
+    """The fixed pill back to the Presentations list and the home page, in the current language."""
+    return ('<style>%s</style><nav id="site-return" aria-label="%s">'
+            '<a href="%s">&larr; %s</a><span aria-hidden="true">&middot;</span><a href="%s">%s</a></nav>'
+            % (RETURN_PILL_STYLE, 'ariedi.com',
+               reverse('presentations'), escape(gettext('Presentations')),
+               reverse('home'), escape(gettext('Home'))))
+
+
 def insert_before(html, closing_tag, snippet):
     """Puts snippet just before the last closing_tag, or at the end when the tag is missing."""
     end = html.rfind(closing_tag)
@@ -104,6 +131,7 @@ def serve_deck(request, slug):
     deck_language = DECK_LANGUAGE.get(request.LANGUAGE_CODE, 'en')
     # request.path is one of the allow-listed deck URLs, so it is safe to echo into the canonical
     html = insert_before(read_deck(filename), '</head>', deck_links(slug, request.path) + deck_icons())
+    html = insert_before(html, '</body>', deck_return_links())
     return HttpResponse(open_deck_in(html, deck_language))
 
 
