@@ -81,6 +81,16 @@ class PublicPagesSmokeTest(TestCase):
                 self.assertIn(opener, body, f"{slug} at {prefix or '/'}")
                 self.assertEqual(body.count("typeof setLang"), 1, slug)
 
+    def test_decks_carry_canonical_and_hreflang_links(self):
+        for slug in self.DECKS:
+            for prefix in ("", "/pt-br"):
+                head = self.client.get(f"{prefix}/presentations/{slug}").content.decode().split("</head>")[0]
+                self.assertIn(f'<link rel="canonical" href="https://ariedi.com{prefix}/presentations/{slug}">', head)
+                self.assertIn(f'hreflang="en" href="https://ariedi.com/presentations/{slug}"', head)
+                self.assertIn(f'hreflang="pt-BR" href="https://ariedi.com/pt-br/presentations/{slug}"', head)
+                self.assertIn(f'hreflang="x-default" href="https://ariedi.com/presentations/{slug}"', head)
+                self.assertEqual(head.count('rel="canonical"'), 1, slug)
+
     def test_deck_urls_name_only_known_decks(self):
         for path in ("/presentations/unknown-deck", "/presentations/modern-engineering",
                      "/presentations/..%2Fviews.py", "/presentations/organizational-intelligence.html"):
