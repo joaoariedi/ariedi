@@ -22,7 +22,8 @@
 	var CALM = 0.75;                       // share of the turbulence a full scroll removes
 	var SCROLL_LAG = [0.08, 0.04, 0];      // back, middle, front: fraction of the scroll each lags
 	var POINTER = [2, 4, 7];               // back, middle, front: px of pointer parallax
-	var EDGE = 20;                         // soft margin (svg units) that keeps lines in the band
+	var EDGE_TOP = 20, EDGE_BOTTOM = 10;   // soft overflow beyond the band (svg units; the clip
+	                                       // leaves 10 below YMAX), never inside it
 	var GRID = 18, GRID_RATE = 0.85;       // the page grid cell and its share of the scroll
 
 	var root = document.documentElement;
@@ -41,11 +42,12 @@
 		return t * t * (3 - 2 * t);
 	}
 
-	// Keeps a line inside the band without the flat cut a hard clamp would draw.
+	// Identity inside the band, so frame zero is exactly the generator's drawing (which already
+	// keeps every line between YMIN and YMAX); only drift or parallax that pushes a line past the
+	// band is eased back, asymptotically, instead of being cut flat by the clip.
 	function soft(y) {
-		var lo = YMIN + EDGE, hi = YMAX - EDGE;
-		if (y < lo) return lo - EDGE * (1 - Math.exp((y - lo) / EDGE));
-		if (y > hi) return hi + EDGE * (1 - Math.exp((hi - y) / EDGE));
+		if (y < YMIN) return YMIN - EDGE_TOP * (1 - Math.exp((y - YMIN) / EDGE_TOP));
+		if (y > YMAX) return YMAX + EDGE_BOTTOM * (1 - Math.exp((YMAX - y) / EDGE_BOTTOM));
 		return y;
 	}
 

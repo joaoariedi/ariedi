@@ -349,8 +349,8 @@
 		Initialize Portfolio
 	*/
 	var $container = $('.portfolio-items');
-	// Theme plugins are only loaded where their markup exists (see _scripts.html); every
-	// call below checks for its plugin, so a page without it never throws.
+	// The theme's plugins are no longer loaded (see _scripts.html); every call below checks
+	// for its plugin first, so the page never throws without it.
 	var has_isotope = $container.length && $.fn.imagesLoaded && $.fn.isotope;
 	if(has_isotope) $container.imagesLoaded(function() {
 		$container.isotope({
@@ -361,7 +361,7 @@
 		/*
 			Portfolio items parallax
 		*/
-		if($('.portfolio-items').length){
+		if($('.portfolio-items').length && typeof simpleParallax !== 'undefined'){
 			var s_parallax = document.getElementsByClassName('wp-post-image');
 			new simpleParallax(s_parallax);
 		}
