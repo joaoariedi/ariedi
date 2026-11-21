@@ -41,8 +41,11 @@
 	var finePointer = media('(hover: hover) and (pointer: fine)');
 	var saveData = !!(navigator.connection && navigator.connection.saveData);
 
-	var svg = document.querySelector('.hero-field svg.field');
-	var hero = svg && svg.closest('.section');
+	// Two canvases (tools/gen_field.py): wide for tablets and desktops, narrow for phones. CSS
+	// shows one; the field animates that one, and switches when a resize crosses the breakpoint.
+	var fields = Array.prototype.slice.call(document.querySelectorAll('.hero-field svg.field'));
+	var hero = fields.length ? fields[0].closest('.section') : null;
+	var svg = null;
 	var lines = [], xs = [], fade = [], pull = [], nfade = [];
 	var CY, XC, YMIN, YMAX, W, H;
 
@@ -62,6 +65,28 @@
 
 	function r1(v) {
 		return String(Math.round(v * 10) / 10);
+	}
+
+	function shownField() {
+		for (var i = 0; i < fields.length; i++) {
+			if (fields[i].getClientRects().length) return fields[i];
+		}
+		return null;
+	}
+
+	// Points the animation at the canvas on screen; the one it leaves goes back to its static frame.
+	function useField() {
+		var next = shownField();
+		if (next === svg) return;
+		lines.forEach(function (L) { L.el.setAttribute('d', L.d0); });
+		// A canvas that was display:none starts its CSS entrance when shown; on a resize or a
+		// rotation the decision line has already landed, so land it again without the replay.
+		if (svg && next && next.getAnimations) {
+			next.getAnimations({ subtree: true }).forEach(function (a) { a.finish(); });
+		}
+		svg = next;
+		lines = []; xs = []; fade = []; pull = []; nfade = [];
+		if (svg) readField();
 	}
 
 	function readField() {
@@ -90,8 +115,8 @@
 	}
 
 	// The generator's formula, with time, calm and the depth offsets (all in svg units).
-	// Only the visible span is computed: on a phone the drawing is cropped to the rings ("slice"),
-	// so most of each line is off-screen to the left.
+	// Only the visible span is computed: where the box is wider than the canvas's shape, the
+	// drawing is cropped from the left ("slice"), and those points are never drawn.
 	function pathFor(line, t, amp, ox, oy, noise) {
 		var w = line.w, om = line.om, sd = line.seed, out = 'M', i, x, f, p, d, y;
 		for (i = first; i < xs.length; i++) {
@@ -114,6 +139,7 @@
 	var scrollY = window.pageYOffset || 0, target = { x: 0, y: 0 }, ptr = { x: 0, y: 0 };
 
 	function measure() {
+		if (!svg) return;
 		var r = svg.getBoundingClientRect();
 		unit = Math.max(r.width / W, r.height / H) || 1;   // css px per svg unit ("slice")
 		// Anchored right (xMaxYMid): the leftmost visible svg x, less a cell of margin.
@@ -176,6 +202,11 @@
 		target.y = (e.clientY / window.innerHeight) * 2 - 1;
 	}
 
+	function onResize() {
+		useField();
+		measure();
+	}
+
 	var observer = null;
 	function enable() {
 		if (!plane) {
@@ -187,11 +218,11 @@
 		root.classList.add('motion-ok');
 		onScroll();
 		window.addEventListener('scroll', onScroll, { passive: true });
-		if (!svg || !hero) return;
-		if (!lines.length) readField();
+		if (!hero) return;
+		useField();
 		measure();
 		start = window.performance.now();
-		window.addEventListener('resize', measure);
+		window.addEventListener('resize', onResize);
 		if (finePointer && finePointer.matches) window.addEventListener('pointermove', onPointer, { passive: true });
 		if ('IntersectionObserver' in window) {
 			observer = new IntersectionObserver(function (entries) {
@@ -208,7 +239,7 @@
 		root.classList.remove('motion-ok');
 		if (plane) { plane.style.transform = ''; lastShift = null; }
 		window.removeEventListener('scroll', onScroll);
-		window.removeEventListener('resize', measure);
+		window.removeEventListener('resize', onResize);
 		window.removeEventListener('pointermove', onPointer);
 		if (observer) { observer.disconnect(); observer = null; }
 		lines.forEach(function (L) { L.el.setAttribute('d', L.d0); });   // back to the static frame

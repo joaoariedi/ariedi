@@ -280,6 +280,12 @@
 	overflow: hidden;
 }
 
+/* Two canvases (tools/gen_field.py): the wide drawing for tablets and desktops, the narrow one
+   for phones, where the wide one would crop to the rings and lose the noise. */
+.hero-field .field-narrow {
+	display: none;
+}
+
 .field path,
 .field circle {
 	fill: none;
@@ -401,16 +407,25 @@
 	}
 }
 
-/* Phone: the drawing crops to the rings and output lines, below a 32 px headline. */
+/* Phone: the narrow canvas, whole, at its own shape, below a 32 px headline. */
 @media (max-width: 720px) {
 	.section.started.brand-hero {
 		padding: 84px 0 36px;
 	}
 
 	.hero-field {
-		aspect-ratio: auto;
-		height: 220px;
+		width: 100%;          /* with the cap below, keep the full width and let the drawing crop */
+		aspect-ratio: 440 / 248;
+		max-height: 260px;    /* small tablets in portrait: crop from the left, don't grow */
 		margin-top: 36px;
+	}
+
+	.hero-field .field-wide {
+		display: none;
+	}
+
+	.hero-field .field-narrow {
+		display: block;
 	}
 }
 
