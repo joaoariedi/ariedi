@@ -5,7 +5,7 @@
 <style>:root{
   --bg:#150A22; --bg-soft:#1B0F2B; --bg-card:#221338; --bg-deep:#110819;
   --ink:#F1E9FB; --sub:#C3B3DA; --mut:#8E7BAA;
-  --accent:#A970F0; --accent-dim:#6C44A6; --accent-soft:#2A1747;
+  --accent:#A970F0; --accent-dim:#7E51BC; --accent-soft:#2A1747;
   --amber:#D9A93A; --amber-dim:#7A5F1A; --amber-soft:#241A0B;
   --red:#FF6B35; --red-dim:#8A3A1C; --red-soft:#2E160F;
   --line:#33204D; --line-strong:#4E3375;
@@ -380,7 +380,7 @@ footer.end a{color:var(--accent); text-decoration:none}
 }
 
 /* ================= v3: shapes matched to the original deck ================= */
-:root{--wire:#4E3375}
+:root{--wire:#6C44A6}
 .diagram.bare{border:none; background:none; padding:.4rem 0 .2rem; overflow-x:auto; overflow-y:visible}
 .clabel{display:block; font-family:var(--mono); font-weight:600; font-size:.64rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:.1rem}
 .clabel.w{color:var(--amber)}
@@ -991,7 +991,7 @@ function setLang(l){
     svg.innerHTML = '';
     var uid = root.id || ('w' + Math.random().toString(36).slice(2, 7));
     var defs = document.createElementNS(NS, 'defs');
-    [['n', '#6C44A6'], ['warm', '#B08A1A'], ['red', '#FF6B35'], ['cool', '#A970F0']].forEach(function(m){
+    [['n', '#7E51BC'], ['warm', '#B08A1A'], ['red', '#FF6B35'], ['cool', '#A970F0']].forEach(function(m){
       var mk = document.createElementNS(NS, 'marker');
       mk.setAttribute('id', uid + '-' + m[0]); mk.setAttribute('viewBox', '0 0 10 10'); mk.setAttribute('refX', '9'); mk.setAttribute('refY', '5');
       mk.setAttribute('markerWidth', '8'); mk.setAttribute('markerHeight', '8'); mk.setAttribute('orient', 'auto-start-reverse');
