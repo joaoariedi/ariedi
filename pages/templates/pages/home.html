@@ -146,10 +146,10 @@
                                     <small>{% trans "San Francisco, cybersecurity (Remote)" %}</small>
                                 </div>
                                 <div class="text">
-                                    <strong>Software Engineering Manager</strong> (2026 - {% trans "Present" %})<br>
+                                    <strong>{% trans "Software Engineering Manager" %}</strong> (2026 - {% trans "Present" %})<br>
                                     {% blocktrans trimmed %}Leads the team behind Batuta's next-generation endpoint management platform, a distributed system that securely manages 1M+ devices per enterprise customer. Led the ground-up redesign of the endpoint agent platform, replacing a monolithic legacy system with an event-driven microservices architecture in Go on AWS; security-first design with certificate-based device authentication (mTLS), short-lived tokens and post-quantum readiness. Owns engineering operations end to end on an Extreme Programming, test-first discipline; 90%+ team retention by growing engineers into leaders.{% endblocktrans %}
                                     <br><br>
-                                    <strong>Principal Software Engineer</strong> (2021 - 2025)<br>
+                                    <strong>{% trans "Principal Software Engineer" %}</strong> (2021 - 2025)<br>
                                     {% blocktrans trimmed %}Technical architecture of the EDR solution (Go, Python/FastAPI, React, PostgreSQL, RabbitMQ, Kafka, Redis, Kubernetes on AWS); high-throughput asynchronous backends; CI/CD with Terraform, GitHub Actions, Kubernetes, ArgoCD and Helm; diagnosis of critical production incidents; architecture standards; Vectra security appliances deployed across enterprise datacenters.{% endblocktrans %}
                                 </div>
                             </div>
@@ -199,7 +199,7 @@
                                 <div class="date">2021 - 2024</div>
                                 <div class="name">
                                     flugel.it<br>
-                                    <small>Principal Software Engineer · Senior Software Engineer</small>
+                                    <small>{% trans "Principal Software Engineer" %} · {% trans "Senior Software Engineer" %}</small>
                                 </div>
                                 <div class="text">{% blocktrans trimmed %}Led the full rebuild of Cloudways (DigitalOcean), which runs 2M+ WordPress and WooCommerce installations, migrated with zero downtime; service-oriented Python backend (Django, FastAPI, PostgreSQL) on Google Cloud (Cloud Run, Cloud Functions, Pub/Sub); microservices for WordPress orchestration on Kubernetes. Hired and retained the team (90%+ retention) and mentored 3+ engineers into leadership roles.{% endblocktrans %}</div>
                             </div>
@@ -270,7 +270,7 @@
                             <div class="resume-item content-box">
                                 <div class="date">2024 - 2025</div>
                                 <div class="name">
-                                    {% trans "Technologist in Cyber Defense (Tecnólogo em Defesa Cibernética)" %}<br>
+                                    {% trans "Technologist in Cyber Defense" %}<br>
                                     <small>FIAP</small>
                                 </div>
                                 <div class="text">{% trans "2,000 h, MEC-recognised, concluded." %}</div>
@@ -302,36 +302,77 @@
 
                         <!-- title -->
                         <div class="title">
-                            <h2 class="title_inner">{% trans "Certifications and languages" %}</h2>
+                            <h2 class="title_inner">{% trans "Certifications" %}</h2>
                         </div>
 
-                        <!-- resume items -->
+                        <!-- one grid row: the certification panel, then Languages under it -->
+                        <div class="col-stack">
+
+                        <!-- certification groups: field, entity, list -->
                         <div class="resume-items">
 
                             <div class="resume-item content-box">
                                 <div class="date">2024 - 2025</div>
                                 <div class="name">
-                                    {% trans "FIAP professional qualifications" %}
+                                    {% trans "Cybersecurity" %}<br>
+                                    <small>FIAP</small>
                                 </div>
-                                <div class="text">{% blocktrans trimmed %}Certified Cybersecurity Professional, Information Security Officer, Certified Information Security Manager, Penetration Testing, Certified Forensics Professional.{% endblocktrans %}</div>
+                                <ul class="text cert-list">
+                                    <li>Certified Cybersecurity Professional</li>
+                                    <li>Information Security Officer</li>
+                                    <li>Certified Information Security Manager</li>
+                                    <li>Penetration Testing</li>
+                                    <li>Certified Forensics Professional</li>
+                                </ul>
                             </div>
 
                             <div class="resume-item content-box">
                                 <div class="date">2023</div>
                                 <div class="name">
-                                    {% trans "AWS Partner accreditations" %}<br>
+                                    {% trans "Cloud" %}<br>
                                     <small>Amazon Web Services</small>
                                 </div>
-                                <div class="text">{% trans "Technical, Cloud Economics Essentials, Sales." %}</div>
+                                <ul class="text cert-list">
+                                    <li>AWS Partner: Technical</li>
+                                    <li>AWS Partner: Cloud Economics Essentials</li>
+                                    <li>AWS Partner: Sales</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <!-- title -->
+                        <div class="title title-follow">
+                            <h2 class="title_inner">{% trans "Languages" %}</h2>
+                        </div>
+
+                        <div class="resume-items lang-items">
+
+                            <div class="resume-item content-box">
+                                <div class="date">PT</div>
+                                <div class="name">
+                                    {% trans "Portuguese" %}<br>
+                                    <small>{% trans "Native" %}</small>
+                                </div>
                             </div>
 
                             <div class="resume-item content-box">
-                                <div class="date">PT · EN · ES</div>
+                                <div class="date">EN</div>
                                 <div class="name">
-                                    {% trans "Languages" %}
+                                    {% trans "English" %}<br>
+                                    <small>{% trans "Bilingual at work" %}</small>
                                 </div>
-                                <div class="text">{% trans "Portuguese (native)" %} · {% trans "English (bilingual at work)" %} · {% trans "Spanish (reading)" %}</div>
                             </div>
+
+                            <div class="resume-item content-box">
+                                <div class="date">ES</div>
+                                <div class="name">
+                                    {% trans "Spanish" %}<br>
+                                    <small>{% trans "Reading" %}</small>
+                                </div>
+                            </div>
+
+                        </div>
 
                         </div>
 
@@ -356,16 +397,16 @@
                     <div class="resume-item content-box active">
                         <div class="date">2026 · {% trans "article" %}</div>
                         <div class="name">
-                            Democratizando a fabricação digital em Fab Labs: efeitos cognitivos das interfaces agênticas no projeto<br>
+                            {% trans "Democratizing digital fabrication in Fab Labs: cognitive effects of agentic interfaces on design work" %}<br>
                             <small>{% blocktrans trimmed %}with Dorival Campos Rossi (UNESP) · 9th International Congress Media Ecology and Image Studies (MEISTUDIES){% endblocktrans %}</small>
                         </div>
-                        <div class="text">{% blocktrans trimmed with url=research_url %}Accepted Aug 2026, full text submitted Oct 2026, presented in Mesa 6 at the 9th MEISTUDIES, Nov 2026. Argues the <em>syntagm transition</em>: agentic interfaces absorb whole links of the design chain. <a href="{{ url }}#meistudies-2026">Abstract and extended summary</a>.{% endblocktrans %}</div>
+                        <div class="text">{% blocktrans trimmed with url=research_url %}Accepted Aug 2026, full text submitted Oct 2026, presented in session 6 at the 9th MEISTUDIES, Nov 2026. Argues the <em>syntagm transition</em>: agentic interfaces absorb whole links of the design chain. <a href="{{ url }}#meistudies-2026">Abstract and extended summary</a>.{% endblocktrans %}</div>
                     </div>
 
                     <div class="resume-item content-box">
                         <div class="date">2026 · {% trans "paper" %}</div>
                         <div class="name">
-                            A cultura organizacional na transformação de organizações tradicionais em organizações AI first<br>
+                            {% trans "Organizational culture in the transformation of traditional organizations into AI-first organizations" %}<br>
                             <small>{% blocktrans trimmed %}second author of four · XXXIII SIMPEP, Bauru, Nov 2026{% endblocktrans %}</small>
                         </div>
                         <div class="text">{% blocktrans trimmed with url=research_url %}A case study of a corporate artificial intelligence laboratory; presented at the symposium. <a href="{{ url }}#simpep-2026">Abstract and extended summary</a>.{% endblocktrans %}</div>
@@ -374,14 +415,14 @@
                     <div class="resume-item content-box">
                         <div class="date">2026 · {% trans "research project" %}</div>
                         <div class="name">
-                            Cultura organizacional e institucionalização da Inteligência Artificial<br>
+                            {% trans "Organizational culture and the institutionalization of artificial intelligence" %}<br>
                             <small>{% blocktrans trimmed %}fourth author of four · 7th AI Congress of PUC-SP, São Paulo, Nov 2026{% endblocktrans %}</small>
                         </div>
                         <div class="text">{% blocktrans trimmed with url=research_url %}Research project, presented orally. <a href="{{ url }}#pucsp-2026">Summary</a>.{% endblocktrans %}</div>
                     </div>
 
                     <div class="resume-item content-box">
-                        <div class="date">2026 - · {% trans "master's pre-research" %}</div>
+                        <div class="date">2026 - {% trans "Present" %} · {% trans "master's pre-research" %}</div>
                         <div class="name">
                             {% trans "An agentic interface for a university Fab Lab" %}<br>
                             <small>PPGMIT, UNESP Bauru</small>
@@ -393,7 +434,7 @@
 
                 <div class="content-box">
                     <div class="single-post-text">
-                        <p>
+                        <p class="id-links">
                             <a href="https://orcid.org/0009-0002-1761-065X" target="_blank" rel="noopener">ORCID 0009-0002-1761-065X</a> ·
                             <a href="http://lattes.cnpq.br/5349307117993807" target="_blank" rel="noopener">Lattes 5349307117993807</a>
                         </p>
@@ -421,7 +462,7 @@
                             9th MEISTUDIES<br>
                             <small>{% trans "International Congress Media Ecology and Image Studies" %}</small>
                         </div>
-                        <div class="text">{% blocktrans trimmed %}Presentation of the article in Mesa 6, "Technology, innovation and markets".{% endblocktrans %}</div>
+                        <div class="text">{% blocktrans trimmed %}Presentation of the article in session 6, "Technology, innovation and markets".{% endblocktrans %}</div>
                     </div>
 
                     <div class="resume-item content-box">
@@ -457,7 +498,7 @@
                             BruHack 2017<br>
                             <small>{% trans "Workshop" %}</small>
                         </div>
-                        <div class="text">{% blocktrans trimmed %}Workshop "Reaproveitando Paletes para Multiplicar Possibilidades", with the AEON Fablab team.{% endblocktrans %}</div>
+                        <div class="text">{% blocktrans trimmed %}Workshop "Reusing Pallets to Multiply Possibilities", with the AEON Fablab team.{% endblocktrans %}</div>
                     </div>
 
                 </div>
