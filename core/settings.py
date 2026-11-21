@@ -26,7 +26,23 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,.herokuapp.com').split(',')
+ALLOWED_HOSTS = os.environ.get(
+    'ALLOWED_HOSTS', 'localhost,127.0.0.1,.herokuapp.com,ariedi.com,www.ariedi.com'
+).split(',')
+
+# Behind Heroku's router (and Cloudflare in Full/Full-strict mode) the app only ever sees
+# HTTP; the original scheme arrives in X-Forwarded-Proto. Without this, request.is_secure()
+# is False, so CSRF origin checks on https:// POSTs (admin login) fail.
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_TRUSTED_ORIGINS = os.environ.get(
+    'CSRF_TRUSTED_ORIGINS', 'https://ariedi.com,https://www.ariedi.com,https://ariedi.herokuapp.com'
+).split(',')
+
+# When set (e.g. "ariedi.com"), every request for another host is 301-redirected to
+# https://<CANONICAL_HOST><path>: ariedi.herokuapp.com stays live forever (Heroku docs
+# recommend the app redirect it) and www collapses onto the apex. Empty = no redirect, so the
+# site keeps working on the herokuapp.com name until the custom domain's certificate exists.
+CANONICAL_HOST = os.environ.get('CANONICAL_HOST', '').strip()
 
 # Application definition
 
@@ -54,6 +70,7 @@ INSTALLED_APPS = DEFAULT_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "pages.middleware.CanonicalHostRedirectMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",

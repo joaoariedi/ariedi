@@ -84,3 +84,39 @@ class PublicPagesSmokeTest(TestCase):
         self.assertIn("Síntese estendida", pt)
         self.assertIn('id="simpep-2026"', pt)
 
+
+
+
+@override_settings(STORAGES=PLAIN_STATIC, ALLOWED_HOSTS=["ariedi.com", "www.ariedi.com", "ariedi.herokuapp.com", "testserver"])
+class CanonicalHostRedirectTest(TestCase):
+    """The custom-domain cut-over: other hosts 301 to https://ariedi.com, canonical host is served."""
+
+    def setUp(self):
+        translation.activate("en")
+
+    def tearDown(self):
+        translation.deactivate()
+
+    @override_settings(CANONICAL_HOST="ariedi.com")
+    def test_other_hosts_redirect_to_canonical_https_keeping_path_and_query(self):
+        for host in ("www.ariedi.com", "ariedi.herokuapp.com"):
+            response = self.client.get("/research?x=1", HTTP_HOST=host)
+            self.assertEqual(response.status_code, 301, host)
+            self.assertEqual(response["Location"], "https://ariedi.com/research?x=1")
+
+    @override_settings(CANONICAL_HOST="ariedi.com")
+    def test_canonical_host_is_served(self):
+        response = self.client.get("/", HTTP_HOST="ariedi.com")
+        self.assertEqual(response.status_code, 200)
+
+    @override_settings(CANONICAL_HOST="")
+    def test_no_redirect_while_unset(self):
+        response = self.client.get("/", HTTP_HOST="ariedi.herokuapp.com")
+        self.assertEqual(response.status_code, 200)
+
+    def test_custom_domain_is_an_allowed_host_by_default(self):
+        import core.settings as defaults
+        self.assertIn("ariedi.com", defaults.ALLOWED_HOSTS)
+        self.assertIn("www.ariedi.com", defaults.ALLOWED_HOSTS)
+        self.assertEqual(defaults.SECURE_PROXY_SSL_HEADER, ("HTTP_X_FORWARDED_PROTO", "https"))
+        self.assertIn("https://ariedi.com", defaults.CSRF_TRUSTED_ORIGINS)
