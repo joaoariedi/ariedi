@@ -5,6 +5,10 @@
  * - Scrolling through the hero calms the turbulence: the visitor is the inhibitor, imposing order.
  * - The lines sit on three depth layers that lag the scroll (and follow a fine pointer) by
  *   different amounts; the offsets fade to zero at the ring, so every line still meets the machine.
+ * - Noise to signal: a faint high-frequency jitter rides the far left of each line and fades out
+ *   long before the rings. It ramps in over the first second, so frame zero stays the static
+ *   drawing, and when the orange decision line lands (its CSS entrance, ~1.2 s) the field's
+ *   noise and turbulence drop a notch: the decision is what filters noise into signal.
  * - The page grid becomes a fixed plane that slides at 85 % of the scroll, behind the content.
  *   It is a real element whose transform is set directly: a custom property on <html> would
  *   restyle the whole document on every scroll frame (measured: 47 % main-thread on a slow phone).
@@ -25,6 +29,11 @@
 	var EDGE_TOP = 20, EDGE_BOTTOM = 10;   // soft overflow beyond the band (svg units; the clip
 	                                       // leaves 10 below YMAX), never inside it
 	var GRID = 18, GRID_RATE = 0.85;       // the page grid cell and its share of the scroll
+	var NOISE = 1.6;                       // svg units of high-frequency jitter at the far left
+	var NOISE_REACH = 0.36;                // share of the width over which the jitter fades out
+	var NOISE_RAMP = 1.0;                  // s for the jitter to fade in from frame zero
+	var LAND = 1.2, SETTLE = 0.6;          // s: the decision line lands, then the field settles
+	var FILTER_NOISE = 0.45, FILTER_TURB = 0.12;  // how much noise/turbulence the landing removes
 
 	var root = document.documentElement;
 	var media = function (q) { return window.matchMedia ? window.matchMedia(q) : null; };
@@ -34,7 +43,7 @@
 
 	var svg = document.querySelector('.hero-field svg.field');
 	var hero = svg && svg.closest('.section');
-	var lines = [], xs = [], fade = [], pull = [];
+	var lines = [], xs = [], fade = [], pull = [], nfade = [];
 	var CY, XC, YMIN, YMAX, W, H;
 
 	function smooth(t) {
@@ -63,6 +72,7 @@
 		xs.forEach(function (x) {
 			fade.push(1 - smooth(x / (W * 2 / 3)));
 			pull.push(Math.pow(x / XC, 2.2));
+			nfade.push(1 - smooth(x / (W * NOISE_REACH)));
 		});
 		Array.prototype.forEach.call(svg.querySelectorAll('.field-depth path[data-w]'), function (el) {
 			var w = el.getAttribute('data-w').split(',').map(Number);
@@ -73,6 +83,7 @@
 				k: +el.getAttribute('data-k'),
 				depth: +el.parentNode.getAttribute('data-depth'),
 				w: w,
+				seed: lines.length * 1.7,
 				om: [TAU * WAVE_SPEED[0] / w[1], TAU * WAVE_SPEED[1] / w[4], TAU * WAVE_SPEED[2] / w[7]]
 			});
 		});
@@ -81,14 +92,17 @@
 	// The generator's formula, with time, calm and the depth offsets (all in svg units).
 	// Only the visible span is computed: on a phone the drawing is cropped to the rings ("slice"),
 	// so most of each line is off-screen to the left.
-	function pathFor(line, t, amp, ox, oy) {
-		var w = line.w, om = line.om, out = 'M', i, x, f, p, d, y;
+	function pathFor(line, t, amp, ox, oy, noise) {
+		var w = line.w, om = line.om, sd = line.seed, out = 'M', i, x, f, p, d, y;
 		for (i = first; i < xs.length; i++) {
 			x = xs[i]; f = fade[i]; p = pull[i]; d = 0;
 			if (f > 0) {
 				d = (w[0] * Math.sin(TAU * x / w[1] + w[2] - om[0] * t) +
 					w[3] * Math.sin(TAU * x / w[4] + w[5] - om[1] * t) +
 					w[6] * Math.sin(TAU * x / w[7] + w[8] - om[2] * t)) * f * line.k * amp;
+			}
+			if (noise > 0 && nfade[i] > 0) {
+				d += noise * nfade[i] * Math.sin(x * 0.19 + t * 4.3 + sd) * Math.sin(x * 0.071 - t * 2.9 + sd * 1.3);
 			}
 			y = soft(line.y0 + d + oy * (1 - p)) * (1 - p) + CY * p;
 			out += (i > first ? ' L' : '') + r1(x + ox * (1 - p)) + ' ' + r1(y);
@@ -116,12 +130,15 @@
 		ptr.x += (target.x - ptr.x) * 0.1;
 		ptr.y += (target.y - ptr.y) * 0.1;
 		var t = (now - start) / 1000;
-		var amp = 1 - CALM * smooth(scrollY / (hero.offsetHeight * 0.8));
+		var calm = 1 - CALM * smooth(scrollY / (hero.offsetHeight * 0.8));
+		var landed = smooth((t - LAND) / SETTLE);
+		var amp = calm * (1 - FILTER_TURB * landed);
+		var noise = NOISE * smooth(t / NOISE_RAMP) * (1 - FILTER_NOISE * landed) * calm;
 		for (var i = 0; i < lines.length; i++) {
 			var L = lines[i], dp = L.depth;
 			var ox = ptr.x * POINTER[dp] / unit;
 			var oy = (ptr.y * POINTER[dp] * 0.6 + SCROLL_LAG[dp] * scrollY) / unit;
-			L.el.setAttribute('d', pathFor(L, t, amp, ox, oy));
+			L.el.setAttribute('d', pathFor(L, t, amp, ox, oy, noise));
 		}
 	}
 

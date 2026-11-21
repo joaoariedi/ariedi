@@ -116,6 +116,14 @@ class PublicPagesSmokeTest(TestCase):
         self.assertEqual(body.count('class="field-out"'), 1)
         self.assertEqual(body.count('class="decision"'), 1)
 
+    def test_signal_layer_is_wired(self):
+        """Noise to signal: the decoder is loaded and the hero label carries its look-away phrases."""
+        body = self.client.get("/").content.decode()
+        self.assertIn("js/brand-decode", body)
+        self.assertRegex(body, r'class="field-label field-label-in"[^>]*data-variants="[^"]+\|[^"]+\|[^"]+"')
+        pt = self.client.get("/pt-br/").content.decode()
+        self.assertIn("A eletricidade é o novo fogo", pt)
+
     def test_night_sheet_only_no_switcher(self):
         """The brand ships one sheet (night); the experiment's switcher and its ?sheet= script are gone."""
         for path in ("/", "/pt-br/", "/research", "/presentations"):
