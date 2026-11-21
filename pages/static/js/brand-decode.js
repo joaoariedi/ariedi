@@ -8,7 +8,8 @@
  *
  * The real text is never removed: it stays in the element, transparent, under an aria-hidden
  * overlay of the same box, so screen readers read the word and the layout never shifts. Nothing
- * runs with prefers-reduced-motion or Save-Data.
+ * runs with prefers-reduced-motion or Save-Data; switching reduced motion on mid-session lands every
+ * running decode on its word at once and stops the effect for the rest of the visit.
  */
 (function () {
 	'use strict';
@@ -21,6 +22,9 @@
 	var saveData = !!(navigator.connection && navigator.connection.saveData);
 	if ((reduce && reduce.matches) || saveData || !('IntersectionObserver' in window)) return;
 
+	var stopped = false;
+	var running = [];                      // finishers of the decodes in flight
+
 	function noiseFor(text, locked) {
 		var out = '';
 		for (var i = 0; i < text.length; i++) {
@@ -31,9 +35,9 @@
 	}
 
 	// Decodes el into text: a transparent copy of the final text holds the box, the overlay shows
-	// the noise. Calling it again while it runs is ignored.
+	// the noise. Returns false (and does nothing) while el is still decoding or the effect is stopped.
 	function decode(el, text) {
-		if (el.getAttribute('data-decoding')) return;
+		if (stopped || el.getAttribute('data-decoding')) return false;
 		el.setAttribute('data-decoding', '1');
 		var real = document.createElement('span');
 		var noise = document.createElement('span');
@@ -44,12 +48,20 @@
 		el.textContent = '';
 		el.appendChild(real);
 		el.appendChild(noise);
-		var start = window.performance.now(), shown = -REFRESH;
+		var start = window.performance.now(), shown = -REFRESH, done = false;
+		function finish() {
+			if (done) return;
+			done = true;
+			el.textContent = text;
+			el.removeAttribute('data-decoding');
+			running.splice(running.indexOf(finish), 1);
+		}
+		running.push(finish);
 		function tick(now) {
+			if (done) return;
 			var p = (now - start) / DURATION;
 			if (p >= 1) {
-				el.textContent = text;
-				el.removeAttribute('data-decoding');
+				finish();
 				return;
 			}
 			if (now - shown >= REFRESH) {
@@ -59,6 +71,7 @@
 			window.requestAnimationFrame(tick);
 		}
 		window.requestAnimationFrame(tick);
+		return true;
 	}
 
 	// 1. Titles and FIG labels, once each, as they come into view.
@@ -73,6 +86,20 @@
 		arrivals.observe(el);
 	});
 
+	// Reduced motion switched on mid-visit: words land now, nothing decodes again.
+	var lookAway = null;
+	function stop() {
+		stopped = true;
+		arrivals.disconnect();
+		if (lookAway) lookAway.disconnect();
+		running.slice().forEach(function (finish) { finish(); });
+	}
+	if (reduce) {
+		var onReduce = function (e) { if (e.matches) stop(); };
+		if (reduce.addEventListener) reduce.addEventListener('change', onReduce);
+		else if (reduce.addListener) reduce.addListener(onReduce);
+	}
+
 	// 2. The hero's input label, after each look-away.
 	var label = document.querySelector('.field-label[data-variants]');
 	var hero = label && label.closest('.section');
@@ -81,12 +108,13 @@
 		return v.trim();
 	}).filter(Boolean));
 	var turn = 0, away = false;
-	new IntersectionObserver(function (entries) {
+	lookAway = new IntersectionObserver(function (entries) {
 		var e = entries[0];
 		if (!e.isIntersecting) { away = true; return; }
 		if (!away) return;
 		away = false;
-		turn = (turn + 1) % phrases.length;
-		decode(label, phrases[turn]);
-	}).observe(hero);
+		var next = (turn + 1) % phrases.length;
+		if (decode(label, phrases[next])) turn = next;   // a skipped decode must not skip a phrase
+	});
+	lookAway.observe(hero);
 })();
