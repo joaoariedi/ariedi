@@ -94,7 +94,7 @@ def deck_icons():
 
 # The way back to the site from inside a deck: a small fixed pill in the brand's colours, bottom
 # right, where none of the decks keeps anything (their navigation is a left rail on desktop and a
-# sticky top bar on phones). Each link is 44 px tall.
+# top bar on phones, sticky in two of them). Each link is 44 px tall.
 RETURN_PILL_STYLE = (
     '#site-return{position:fixed;right:16px;bottom:16px;z-index:2147483000;display:flex;'
     'align-items:center;gap:10px;padding:0 14px;background:rgba(21,8,38,.94);'
@@ -111,7 +111,8 @@ RETURN_PILL_STYLE = (
 def deck_return_links():
     """The fixed pill back to the Presentations list and the home page, in the current language."""
     return ('<style>%s</style><nav id="site-return" aria-label="%s">'
-            '<a href="%s">&larr; %s</a><span aria-hidden="true">&middot;</span><a href="%s">%s</a></nav>'
+            '<a href="%s"><span aria-hidden="true">&larr; </span>%s</a><span aria-hidden="true">&middot;</span>'
+            '<a href="%s">%s</a></nav>'
             % (RETURN_PILL_STYLE, 'ariedi.com',
                reverse('presentations'), escape(gettext('Presentations')),
                reverse('home'), escape(gettext('Home'))))

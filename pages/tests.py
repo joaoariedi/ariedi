@@ -117,7 +117,7 @@ class PublicPagesSmokeTest(TestCase):
         for slug in self.DECKS:
             for prefix, presentations, home in cases:
                 body = self.client.get(f"{prefix}/presentations/{slug}").content.decode()
-                self.assertIn(f'<a href="{prefix}/presentations">&larr; {presentations}</a>', body, slug)
+                self.assertIn(f'<a href="{prefix}/presentations"><span aria-hidden="true">&larr; </span>{presentations}</a>', body, slug)
                 self.assertIn(f'<a href="{prefix}/">{home}</a></nav>', body, slug)
                 self.assertEqual(body.count('id="site-return"'), 1, slug)
 
@@ -127,7 +127,9 @@ class PublicPagesSmokeTest(TestCase):
                 body = self.client.get(prefix + path).content.decode()
                 for section in ("services", "history", "research", "work", "skills", "contacts"):
                     self.assertIn(f'href="{prefix}/#section-{section}"', body, prefix + path)
-                self.assertIn(f'<a href="{prefix}/presentations">', body, prefix + path)
+                self.assertIn(f'href="{prefix}/presentations"', body, prefix + path)
+            here = self.client.get(prefix + "/presentations").content.decode()
+            self.assertIn(f'href="{prefix}/presentations" aria-current="page"', here, prefix)
             home = self.client.get(prefix + "/").content.decode()
             self.assertIn('href="#section-services"', home, prefix)
             self.assertIn(f'<a href="{prefix}/presentations">', home, prefix)

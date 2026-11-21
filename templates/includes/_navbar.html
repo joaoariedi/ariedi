@@ -29,7 +29,7 @@
                     {% if page == 'home' %}{% firstof '' as sections %}{% else %}{% firstof home_url as sections %}{% endif %}
                     <ul class="menu">
                         <li class="menu-item{% if page == 'home' %} current-menu-item{% endif %}">
-                            <a href="{% if page == 'home' %}#section-started{% else %}{{ home_url }}{% endif %}">{% trans "Home" %}</a>
+                            <a href="{% if page == 'home' %}#section-started{% else %}{{ home_url }}{% endif %}"{% if page == 'home' %} aria-current="page"{% endif %}>{% trans "Home" %}</a>
                         </li>
                         <li class="menu-item">
                             <a href="{{ sections }}#section-services">{% trans "Services" %}</a>
@@ -40,11 +40,11 @@
                         <li class="menu-item{% if page == 'research' %} current-menu-item{% endif %}">
                             <a href="{{ sections }}#section-research">{% trans "Research" %}</a>
                         </li>
+                        <li class="menu-item{% if page == 'presentations' %} current-menu-item{% endif %}">
+                            <a href="{% url 'presentations' %}"{% if page == 'presentations' %} aria-current="page"{% endif %}>{% trans "Presentations" %}</a>
+                        </li>
                         <li class="menu-item">
                             <a href="{{ sections }}#section-work">{% trans "Work" %}</a>
-                        </li>
-                        <li class="menu-item{% if page == 'presentations' %} current-menu-item{% endif %}">
-                            <a href="{% url 'presentations' %}">{% trans "Presentations" %}</a>
                         </li>
                         <li class="menu-item">
                             <a href="{{ sections }}#section-skills">{% trans "Skills" %}</a>
