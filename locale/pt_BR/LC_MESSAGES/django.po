@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 19:39+0000\n"
+"POT-Creation-Date: 2026-11-21 20:19+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -336,8 +336,8 @@ msgstr "Empresa proprietária de pesquisa e execução quantitativa: estratégia
 msgid "Presentations"
 msgstr "Apresentações"
 
-msgid "Modern Engineering, the deck on how engineering teams work now that AI writes much of the code: embedded viewer, fullscreen and PDF download."
-msgstr "Engenharia Moderna, a apresentação sobre como as equipes de engenharia trabalham agora que a IA escreve boa parte do código: visualizador embutido, tela cheia e download em PDF."
+msgid "Four decks: Harness Software Engineering, Organizational Intelligence, AI Agentic Work Transition and Modern Engineering. Software engineering, data and organizations in the age of AI agents."
+msgstr "Quatro apresentações: Harness Software Engineering, Inteligência Organizacional, AI Agentic Work Transition e Engenharia Moderna. Engenharia de software, dados e organizações na era dos agentes de IA."
 
 msgid "View presentations"
 msgstr "Ver apresentações"
@@ -420,17 +420,38 @@ msgstr "Contatos"
 msgid "Home"
 msgstr "Início"
 
+msgid "A proposed scenario for software engineering in the AI age, and how I run it with Hefesto, my harness for Claude Code: the workflows, the governance and the lessons. September 2026."
+msgstr "Um cenário proposto para a engenharia de software na era da IA, e como eu o executo com o Hefesto, meu harness para o Claude Code: os fluxos, a governança e as lições. Setembro de 2026."
+
+msgid "Open the presentation"
+msgstr "Abrir a apresentação"
+
+msgid "Organizational Intelligence"
+msgstr "Inteligência Organizacional"
+
+msgid "From noise to signal, from signal to decision. An organization has to know what it measures, why it measures it and who decides with that measure before it can automate processes and unlock AI: an eight-step loop, in a short and an extended version."
+msgstr "Do ruído ao sinal, do sinal à decisão. A organização precisa saber o que mede, por que mede e quem decide com essa medida antes de automatizar processos e destravar o potencial da IA: um ciclo de oito passos, em versão curta e estendida."
+
+msgid "A cultural and operational transformation plan: how to reorganize a company around judgment, with structure, careers, compensation and hiring for the era in which AI agents absorb synthesis and production."
+msgstr "Um plano de transformação cultural e operacional: como reorganizar uma empresa em torno do julgamento, com estrutura, carreiras, remuneração e contratação para a era em que agentes de IA absorvem a síntese e a produção."
+
 msgid "Modern Engineering"
 msgstr "Engenharia Moderna"
+
+msgid "How engineering teams work now that AI writes much of the code. Slides in PDF, to read on this page, fullscreen or downloaded."
+msgstr "Como as equipes de engenharia trabalham agora que a IA escreve boa parte do código. Slides em PDF, para ler nesta página, em tela cheia ou baixar."
+
+msgid "Read it here"
+msgstr "Ler aqui"
+
+msgid "Download PDF"
+msgstr "Baixar PDF"
 
 msgid "Modern Engineering Presentation"
 msgstr "Apresentação Engenharia Moderna"
 
 msgid "Fullscreen"
 msgstr "Tela cheia"
-
-msgid "Download PDF"
-msgstr "Baixar PDF"
 
 msgid "Research"
 msgstr "Pesquisa"
@@ -620,4 +641,3 @@ msgstr "Idioma"
 
 msgid "Engineering advisory · Ventures"
 msgstr "Assessoria de engenharia · Ventures"
-

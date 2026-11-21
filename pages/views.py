@@ -1,10 +1,12 @@
 import logging
 import os
+from functools import lru_cache
 
 from django.conf import settings
 from django.core.mail import send_mail
-from django.http import FileResponse, Http404, JsonResponse
+from django.http import FileResponse, Http404, HttpResponse, JsonResponse
 from django.views.decorators.clickjacking import xframe_options_sameorigin
+from django.views.decorators.gzip import gzip_page
 from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateView, View
 
@@ -16,6 +18,16 @@ logger = logging.getLogger(__name__)
 PRESENTATIONS_DIR = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), 'static', 'presentations'
 )
+
+# Standalone HTML presentations, served at /presentations/<slug>. Only these slugs resolve, so a
+# request can never name another file. Each deck carries its own language toggle (setLang); the
+# page opens in the site's language: English at /presentations/..., Portuguese under /pt-br/.
+DECKS = {
+    'harness-software-engineering': 'harness-software-engineering.html',
+    'organizational-intelligence': 'organizational-intelligence.html',
+    'agentic-work-transition': 'agentic-work-transition.html',
+}
+DECK_LANGUAGE = {'pt-br': 'pt'}   # site language -> the decks' own code; anything else is 'en'
 
 
 class Home(TemplateView):
@@ -38,6 +50,32 @@ class Presentations(TemplateView):
 class Research(TemplateView):
 
     template_name = "pages/research.html"
+
+
+@lru_cache(maxsize=None)
+def read_deck(filename):
+    with open(os.path.join(PRESENTATIONS_DIR, filename), encoding='utf-8') as deck:
+        return deck.read()
+
+
+def open_deck_in(html, deck_language):
+    """Appends a call to the deck's own setLang before </body>, after the deck's script defines it.
+
+    >>> open_deck_in('<body><script>function setLang(l){}</script></body>', 'pt')
+    '<body><script>function setLang(l){}</script><script>if (typeof setLang === "function") setLang("pt");</script></body>'
+    """
+    opener = '<script>if (typeof setLang === "function") setLang("%s");</script>' % deck_language
+    end = html.rfind('</body>')
+    return html + opener if end == -1 else html[:end] + opener + html[end:]
+
+
+@gzip_page   # a deck is 150-270 KB of HTML and holds no secrets, so compression is safe (no BREACH)
+def serve_deck(request, slug):
+    filename = DECKS.get(slug)
+    if filename is None:
+        raise Http404
+    deck_language = DECK_LANGUAGE.get(request.LANGUAGE_CODE, 'en')
+    return HttpResponse(open_deck_in(read_deck(filename), deck_language))
 
 
 @xframe_options_sameorigin

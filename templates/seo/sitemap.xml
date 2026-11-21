@@ -21,7 +21,28 @@
 
     <url>
         <loc>https://ariedi.com/presentations</loc>
-        <lastmod>2026-11-03</lastmod>
+        <lastmod>2026-11-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://ariedi.com/presentations/harness-software-engineering</loc>
+        <lastmod>2026-11-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://ariedi.com/presentations/organizational-intelligence</loc>
+        <lastmod>2026-11-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://ariedi.com/presentations/agentic-work-transition</loc>
+        <lastmod>2026-11-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -43,7 +64,28 @@
 
     <url>
         <loc>https://ariedi.com/pt-br/presentations</loc>
-        <lastmod>2026-11-03</lastmod>
+        <lastmod>2026-11-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://ariedi.com/pt-br/presentations/harness-software-engineering</loc>
+        <lastmod>2026-11-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://ariedi.com/pt-br/presentations/organizational-intelligence</loc>
+        <lastmod>2026-11-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://ariedi.com/pt-br/presentations/agentic-work-transition</loc>
+        <lastmod>2026-11-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
