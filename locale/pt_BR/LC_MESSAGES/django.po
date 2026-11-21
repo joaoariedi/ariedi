@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 17:48+0000\n"
+"POT-Creation-Date: 2026-11-21 19:07+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -153,20 +153,20 @@ msgstr "Cofundou uma edtech que atendeu 5.000+ alunos: uma plataforma de aprendi
 msgid "Education"
 msgstr "Formação"
 
-msgid "Technologist in Cyber Defense (Tecnólogo em Defesa Cibernética)"
-msgstr "Tecnólogo em Defesa Cibernética"
-
-msgid "2,000 h, MEC-recognised, concluded."
-msgstr "2.000 h, curso reconhecido pelo MEC, concluído."
-
 msgid "PPGMIT, Media and Technology"
 msgstr "PPGMIT, Mídia e Tecnologia"
 
 msgid "São Paulo State University, UNESP Bauru"
 msgstr "Universidade Estadual Paulista, UNESP Bauru"
 
-msgid "Master's application, in selection."
-msgstr "Candidatura ao mestrado, em seleção."
+msgid "Master's, pre-admission process. Study on agentic AI interfaces and cognitive work."
+msgstr "Mestrado, em processo de pré-admissão. Estudo sobre interfaces agênticas de IA e o trabalho cognitivo."
+
+msgid "Technologist in Cyber Defense (Tecnólogo em Defesa Cibernética)"
+msgstr "Tecnólogo em Defesa Cibernética"
+
+msgid "2,000 h, MEC-recognised, concluded."
+msgstr "2.000 h, curso reconhecido pelo MEC, concluído."
 
 msgid "Production Engineering"
 msgstr "Engenharia de Produção"
