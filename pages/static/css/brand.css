@@ -296,6 +296,18 @@
 	white-space: nowrap;
 }
 
+/* Phone: the subline cannot hold one line, so it sets as input over output, without the
+   middle dot (a dot left at a line end reads as a stray mark). */
+@media (max-width: 720px) {
+	.hero-subline .nowrap {
+		display: block;
+	}
+
+	.hero-subline .sub-dot {
+		display: none;
+	}
+}
+
 .hero-field {
 	position: relative;
 	margin-top: 18px;
