@@ -86,6 +86,11 @@ class PublicPagesSmokeTest(TestCase):
                      "/presentations/..%2Fviews.py", "/presentations/organizational-intelligence.html"):
             self.assertEqual(self.client.get(path).status_code, 404, path)
 
+    def test_pdf_route_serves_only_pdfs(self):
+        self.assertEqual(self.client.get("/presentations/pdf/modern-engineering.pdf").status_code, 200)
+        self.assertEqual(self.client.get("/presentations/pdf/organizational-intelligence.html").status_code, 404)
+        self.assertIn("Disallow: /static/presentations/", self.client.get("/robots.txt").content.decode())
+
     def test_hefesto_card_links_to_the_hosted_presentation(self):
         body = self.client.get("/").content.decode()
         self.assertIn('href="/presentations/harness-software-engineering"', body)

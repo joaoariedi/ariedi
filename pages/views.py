@@ -81,7 +81,8 @@ def serve_deck(request, slug):
 @xframe_options_sameorigin
 def serve_presentation(request, filename):
     filepath = os.path.join(PRESENTATIONS_DIR, filename)
-    if not os.path.isfile(filepath) or '..' in filename:
+    # PDFs only: the HTML decks share the folder and have their own route (serve_deck)
+    if not filename.endswith('.pdf') or not os.path.isfile(filepath) or '..' in filename:
         raise Http404
     return FileResponse(open(filepath, 'rb'), content_type='application/pdf')
 
