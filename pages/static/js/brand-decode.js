@@ -7,7 +7,7 @@
  *   the orange decision line lands, the machine it lands on, then products and services.
  * - The hero's input label re-encodes when you look away: each time the hero leaves the view and
  *   comes back, it decodes into the next phrase in its data-variants (the brand guide's tested
- *   lines), then back to "Stakeholder inputs". Antichamber's rule: the room changes behind you.
+ *   lines), then back to "Stakeholders Vision". Antichamber's rule: the room changes behind you.
  *
  * The real text is never removed: it stays in the element, transparent, under an aria-hidden
  * overlay of the same box, so screen readers read the word and the layout never shifts. Nothing
@@ -103,6 +103,7 @@
 		glitchTimers.push(setTimeout(function () {
 			el.classList.remove('glitching');
 			el.classList.add('arrived');
+			if (el === fieldLabels[fieldLabels.length - 1]) field.classList.remove('labels-pending');
 		}, GLITCH_MS));
 	}
 
