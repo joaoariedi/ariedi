@@ -106,6 +106,12 @@ class PublicPagesSmokeTest(TestCase):
             self.assertIn('<link rel="icon" href="/static/images/favicons/fav2.png" type="image/png">', head, slug)
             self.assertIn('<link rel="apple-touch-icon" href="/static/images/favicons/fav2.png">', head, slug)
 
+    def test_every_deck_title_is_in_its_head(self):
+        for slug, title in self.DECKS.items():
+            head, body = self.client.get(f"/presentations/{slug}").content.decode().split("</head>", 1)
+            self.assertIn(f"<title>{title}", head, slug)
+            self.assertNotIn("<title", body, slug)
+
     def test_deck_urls_name_only_known_decks(self):
         for path in ("/presentations/unknown-deck", "/presentations/modern-engineering",
                      "/presentations/..%2Fviews.py", "/presentations/organizational-intelligence.html"):
