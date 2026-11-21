@@ -4,9 +4,11 @@ Follows "How the field is built" in the brand style guide:
   1. evenly spaced horizontal lines across the lower half of the canvas;
   2. each displaced by three overlapping sines, full strength at the left,
      fading to none by about two thirds of the way across;
-  3. every line pulled toward one point so all meet at the ring;
+  3. every line pulled toward the ring, each to its own point on the outer ring's left arc:
+     the noise is not funnelled into one point, it arrives ordered, at many points;
   4. the rings stay clean: only the orange decision line crosses them;
-  5. fewer lines leave than enter, evenly spaced, to the right edge.
+  5. fewer lines leave than enter, evenly spaced and gently diverging to the right edge:
+     order out of the noise, set toward several goals.
 
 Two canvases, one shown at a time by CSS: WIDE (the guide's 1584-wide base, tablet and desktop)
 and NARROW (phones, up to 720 px). A phone cannot show the wide drawing whole: cropped to its
@@ -37,7 +39,8 @@ WIDE = {
     "RINGS": [(72, 1.25), (54, 1), (36, 1), (18, 1)],
     "N_IN": 20, "Y0": (128, 272), "BAND": (60, 290),   # incoming lines stay inside the band
     "WAVES": [((30, 46), (280, 440)), ((10, 18), (120, 180)), ((3, 6), (50, 75))],
-    "N_OUT": 7, "OUT_GAP": 13, "OUT_FAN": 7, "OUT_RUN": 92,
+    "N_OUT": 7, "OUT_GAP": 13, "OUT_FAN": 7, "OUT_RUN": 92, "OUT_HANDLES": (40, 46),
+    "ARC": 62, "OUT_SPREAD": 3,               # arrival arc (deg either side), output divergence (deg per line)
     "SEED": 20261121, "LABELS": True,
 }
 NARROW = {
@@ -46,7 +49,8 @@ NARROW = {
     "RINGS": [(46, 1.25), (34, 1), (23, 1), (11, 1)],
     "N_IN": 14, "Y0": (96, 226), "BAND": (44, 240),
     "WAVES": [((20, 30), (95, 150)), ((7, 12), (40, 62)), ((2, 4), (17, 26))],
-    "N_OUT": 5, "OUT_GAP": 11, "OUT_FAN": 9, "OUT_RUN": 56,
+    "N_OUT": 5, "OUT_GAP": 11, "OUT_FAN": 9, "OUT_RUN": 34, "OUT_HANDLES": (14, 16),
+    "ARC": 62, "OUT_SPREAD": 4,
     "SEED": 20261122, "LABELS": False,
 }
 
@@ -61,8 +65,32 @@ def fmt(v):
 
 
 def xc(c):
-    """Incoming lines meet at the outer ring's left edge."""
+    """The outer ring's left edge."""
     return c["CX"] - c["RINGS"][0][0]
+
+
+def round1(v):
+    return float(f"{v:.1f}")
+
+
+def targets(c):
+    """Where each incoming line meets the outer ring: evenly spread over its left arc, top line
+    to the top of the arc, so the lines arrive in their order and never cross. Rounded to the
+    precision written into data-tx/data-ty, which brand-motion.js computes from."""
+    CX, CY, r, n, arc = c["CX"], c["CY"], c["RINGS"][0][0], c["N_IN"], c["ARC"]
+    out = []
+    for i in range(n):
+        a = math.radians(180 + arc - i * 2 * arc / (n - 1))
+        out.append((round1(CX + r * math.cos(a)), round1(CY + r * math.sin(a))))
+    return out
+
+
+def line_xs(tx):
+    xs, x = [], 0
+    while x < tx:
+        xs.append(x)
+        x += STEP
+    return xs + [tx]
 
 
 def wave_set(rng, c):
@@ -70,15 +98,15 @@ def wave_set(rng, c):
 
 
 def incoming_paths(c):
-    """Each line as {d, y0, k, waves}; waves are (amplitude, wavelength, phase) triples."""
+    """Each line as {d, y0, k, waves, tx, ty}; waves are (amplitude, wavelength, phase) triples."""
     rng = random.Random(c["SEED"])
-    W, CY, XC = c["W"], c["CY"], xc(c)
+    W = c["W"]
     (top, bottom), (y_min, y_max) = c["Y0"], c["BAND"]
     paths = []
-    for i in range(c["N_IN"]):
+    for i, (tx, ty) in enumerate(targets(c)):
         y0 = top + i * (bottom - top) / (c["N_IN"] - 1)
         waves = wave_set(rng, c)
-        xs = list(range(0, XC, STEP)) + [XC]
+        xs = line_xs(tx)
         disp = []
         for x in xs:
             fade = 1 - smoothstep(x / (W * 2 / 3))
@@ -89,28 +117,50 @@ def incoming_paths(c):
         k = min(1.0, (y0 - y_min) / up if up else 1.0, (y_max - y0) / down if down else 1.0)
         pts = []
         for x, d in zip(xs, disp):
-            pull = (x / XC) ** 2.2
-            pts.append((x, (y0 + d * k) * (1 - pull) + CY * pull))
+            pull = (x / tx) ** 2.2
+            pts.append((x, (y0 + d * k) * (1 - pull) + ty * pull))
         paths.append({
             "d": "M" + " L".join(f"{fmt(x)} {fmt(y)}" for x, y in pts),
-            "y0": y0, "k": k, "waves": waves,
+            "y0": y0, "k": k, "waves": waves, "tx": tx, "ty": ty,
         })
     return paths
 
 
-def output_paths(c):
+def highest_reach(c, lines, x_from, x_to):
+    """The smallest y any incoming line can reach over [x_from, x_to] while it moves: every wave
+    at its trough (any phase can come round), plus the pointer parallax and the jitter."""
+    lowest = c["H"]
+    for line in lines:
+        amp = sum(a for a, _, _ in line["waves"]) * line["k"]
+        for x in line_xs(line["tx"]):
+            if x_from <= x <= x_to:
+                pull = (x / line["tx"]) ** 2.2
+                fade = 1 - smoothstep(x / (c["W"] * 2 / 3))
+                y = (line["y0"] - amp * fade - 6) * (1 - pull) + line["ty"] * pull
+                lowest = min(lowest, y)
+    return lowest
+
+
+def output_line(c, j):
+    """One output line: (start, control 1, control 2, settle point, end at the right edge)."""
     CX, CY, r, n = c["CX"], c["CY"], c["RINGS"][0][0], c["N_OUT"]
+    k = j - (n - 1) / 2
+    ang = math.radians(k * c["OUT_FAN"])           # leave the ring fanned out
+    sx, sy = CX + r * math.cos(ang), CY + r * math.sin(ang)
+    ty = CY + k * c["OUT_GAP"]                     # settle into even spacing...
+    ex = CX + r + c["OUT_RUN"]
+    slope = math.tan(math.radians(k * c["OUT_SPREAD"]))   # ...that keeps opening, gently
+    h1, h2 = c["OUT_HANDLES"]                      # curve handles, sized to the canvas's run
+    return ((sx, sy), (sx + h1, sy + (ty - sy) * 0.15), (ex - h2, ty - h2 * slope),
+            (ex, ty), (c["W"], ty + (c["W"] - ex) * slope))
+
+
+def output_paths(c):
     paths = []
-    for j in range(n):
-        k = j - (n - 1) / 2
-        ang = math.radians(k * c["OUT_FAN"])       # leave the ring fanned out
-        sx, sy = CX + r * math.cos(ang), CY + r * math.sin(ang)
-        ty = CY + k * c["OUT_GAP"]                 # then run parallel
-        ex = CX + r + c["OUT_RUN"]
-        paths.append(
-            f"M{fmt(sx)} {fmt(sy)} C{fmt(sx + 40)} {fmt(sy + (ty - sy) * 0.15)} "
-            f"{fmt(ex - 46)} {fmt(ty)} {fmt(ex)} {fmt(ty)} L{c['W']} {fmt(ty)}"
-        )
+    for j in range(c["N_OUT"]):
+        (sx, sy), (c1x, c1y), (c2x, c2y), (ex, ey), (wx, wy) = output_line(c, j)
+        paths.append(f"M{fmt(sx)} {fmt(sy)} C{fmt(c1x)} {fmt(c1y)} {fmt(c2x)} {fmt(c2y)} "
+                     f"{fmt(ex)} {fmt(ey)} L{fmt(wx)} {fmt(wy)}")
     return paths
 
 
@@ -127,8 +177,11 @@ def canvas_svg(c):
         f'<svg class="field field-{c["name"]}" viewBox="0 0 {W} {H}" preserveAspectRatio="xMaxYMid slice" '
         f'data-cx="{CX}" data-cy="{CY}" data-xc="{xc(c)}" data-ymin="{c["BAND"][0]}" data-ymax="{c["BAND"][1]}" '
         'aria-hidden="true" focusable="false">',
-        f'<defs><clipPath id="{clip}"><rect width="{W}" height="{H}"/></clipPath></defs>',
-        f'<g class="field-in" clip-path="url(#{clip})">',
+        f'<defs><clipPath id="{clip}"><rect width="{W}" height="{H}"/></clipPath>'
+        f'<clipPath id="{clip}-in"><path clip-rule="evenodd" d="M0 0H{W}V{H}H0Z'
+        f'M{xc(c)} {CY}a{c["RINGS"][0][0]} {c["RINGS"][0][0]} 0 1 0 {2 * c["RINGS"][0][0]} 0'
+        f'a{c["RINGS"][0][0]} {c["RINGS"][0][0]} 0 1 0 {-2 * c["RINGS"][0][0]} 0Z"/></clipPath></defs>',
+        f'<g class="field-in" clip-path="url(#{clip}-in)">',
     ]
     lines = incoming_paths(c)
     for depth in range(DEPTHS):   # interleaved, so every depth spans the whole band
@@ -136,7 +189,8 @@ def canvas_svg(c):
         for line in lines[depth::DEPTHS]:
             waves = ",".join(f"{v:.4f}" for wave in line["waves"] for v in wave)
             out.append(f'<path d="{line["d"]}" data-y0="{line["y0"]:.4f}" '
-                       f'data-k="{line["k"]:.6f}" data-w="{waves}"/>')
+                       f'data-k="{line["k"]:.6f}" data-tx="{fmt(line["tx"])}" data-ty="{fmt(line["ty"])}" '
+                       f'data-w="{waves}"/>')
         out.append("</g>")
     out += ["</g>", f'<g class="field-out" clip-path="url(#{clip})">']
     out += [f'<path d="{d}"/>' for d in output_paths(c)]
@@ -161,11 +215,14 @@ def labels(c):
 
     def pct(v, total):
         return f"{v / total * 100:.2f}%"
+    in_right = xc(c) - 30                          # the label's right edge; long phrases run ~500 units left
+    in_top = highest_reach(c, incoming_paths(c), in_right - 500, in_right) - 10 - 22
+    bottom = output_line(c, c["N_OUT"] - 1)[4][1]  # the lowest output line at the right edge
     spans = [
-        ("field-label-in", f"right:{pct(W - (xc(c) - 30), W)};top:{pct(CY - 44, H)}", '{% trans "Stakeholder inputs" %}'),
+        ("field-label-in", f"right:{pct(W - in_right, W)};top:{pct(in_top, H)}", '{% trans "Stakeholder inputs" %}'),
         ("field-label-vision", f"left:{pct(CX + 12, W)};top:{pct(CY - r - 30, H)}", '{% trans "Vision" %}'),
         ("field-label-machine", f"left:{pct(CX + 78, W)};top:{pct(CY - 86, H)}", '{% trans "The machine" %}'),
-        ("field-label-out", f"right:{pct(36, W)};top:{pct(CY + 3 * c['OUT_GAP'] + 14, H)}", '{% trans "Products · Services" %}'),
+        ("field-label-out", f"right:{pct(36, W)};top:{pct(bottom + 8, H)}", '{% trans "Products · Services" %}'),
     ]
     # Look-away phrases (brand-decode.js): each time the hero leaves the view and returns, the
     # input label decodes into the next one. Phrases from the brand guide's tested list.
