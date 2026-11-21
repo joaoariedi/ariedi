@@ -138,20 +138,6 @@ def incoming_paths(c):
     return paths
 
 
-def highest_reach(c, lines, x_from, x_to):
-    """The smallest y any incoming line can reach over [x_from, x_to] while it moves: every wave
-    at its trough (any phase can come round), plus the pointer parallax and the jitter."""
-    lowest = c["H"]
-    for line in lines:
-        amp = sum(a for a, _, _ in line["waves"]) * line["k"]
-        for x in line_xs(line["tx"]):
-            if x_from <= x <= x_to:
-                pull, fade = pull_at(c, x, line["tx"]), wave_fade(c, x, line["tx"])
-                y = (line["y0"] - amp * fade - 6) * (1 - pull) + line["ty"] * pull
-                lowest = min(lowest, y)
-    return lowest
-
-
 def output_line(c, j):
     """One output line: (start, control 1, control 2, settle point, end at the right edge)."""
     CX, CY, r, n = c["CX"], c["CY"], c["RINGS"][0][0], c["N_OUT"]
@@ -173,13 +159,6 @@ def output_paths(c):
         paths.append(f"M{fmt(sx)} {fmt(sy)} C{fmt(c1x)} {fmt(c1y)} {fmt(c2x)} {fmt(c2y)} "
                      f"{fmt(ex)} {fmt(ey)} L{fmt(wx)} {fmt(wy)}")
     return paths
-
-
-def leader(c):
-    r = c["RINGS"][0][0]
-    a = math.radians(-42)
-    x1, y1 = c["CX"] + (r + 4) * math.cos(a), c["CY"] + (r + 4) * math.sin(a)
-    return f"M{fmt(x1)} {fmt(y1)} L{fmt(x1 + 18)} {fmt(y1 - 20)}"
 
 
 def canvas_svg(c):
@@ -211,8 +190,6 @@ def canvas_svg(c):
         cls = ' class="core"' if idx == len(c["RINGS"]) - 1 else ""
         out.append(f'<circle{cls} cx="{CX}" cy="{CY}" r="{r}" style="stroke-width:{sw}px"/>')
     out.append("</g>")
-    if c["LABELS"]:
-        out.append(f'<path class="field-leader" d="{leader(c)}"/>')
     out += [
         f'<line class="decision" x1="{CX}" y1="-1200" x2="{CX}" y2="{CY}"/>',
         f'<circle class="decision-dot" cx="{CX}" cy="{CY}" r="4"/>',
@@ -222,21 +199,23 @@ def canvas_svg(c):
 
 
 def labels(c):
-    """Drawing labels (wide canvas only): HTML so they stay 12 px at every width; % of the canvas."""
-    W, H, CX, CY, r = c["W"], c["H"], c["CX"], c["CY"], c["RINGS"][0][0]
+    """Drawing labels (wide canvas only): HTML so they stay 12 px at every width; % of the canvas.
+
+    One row in the strip the band keeps clear at the top, each label over the part of the flow it
+    names, in reading order: the stakeholders' vision over the noise (aligned with the headline),
+    the divergent intelligence where the turbulence starts to converge, the machine over the ring
+    (left of the decision line), products and services over the output fan (right of it)."""
+    W, H, CX, r = c["W"], c["H"], c["CX"], c["RINGS"][0][0]
 
     def pct(v, total):
         return f"{v / total * 100:.2f}%"
-    in_right = xc(c) - 30                          # the label's right edge; long phrases run ~500 units left
-    # Above the highest the lines can reach, and never inside the band's soft edge (20 units).
-    in_top = min(highest_reach(c, incoming_paths(c), in_right - 500, in_right) - 10 - 22,
-                 c["BAND"][0] - 20 - 8 - 22)
-    bottom = output_line(c, c["N_OUT"] - 1)[4][1]  # the lowest output line at the right edge
+    # The band's soft edge reaches 20 units above it; the label (22 units) sits 8 above that.
+    row = f"top:{pct(c['BAND'][0] - 20 - 8 - 22, H)}"
     spans = [
-        ("field-label-in", f"right:{pct(W - in_right, W)};top:{pct(in_top, H)}", '{% trans "Stakeholder inputs" %}'),
-        ("field-label-vision", f"left:{pct(CX + 12, W)};top:{pct(CY - r - 30, H)}", '{% trans "Vision" %}'),
-        ("field-label-machine", f"left:{pct(CX + 78, W)};top:{pct(CY - 86, H)}", '{% trans "The machine" %}'),
-        ("field-label-out", f"right:{pct(36, W)};top:{pct(bottom + 8, H)}", '{% trans "Products · Services" %}'),
+        ("field-label-in", f"left:max(36px, calc((100% - 1152px) / 2));{row}", '{% trans "Stakeholders Vision" %}'),
+        ("field-label-divergent", f"left:{pct(c['FADE'] * xc(c), W)};{row}", '{% trans "Divergent Intelligence" %}'),
+        ("field-label-machine", f"right:{pct(W - (CX - 20), W)};{row}", '{% trans "The Machine" %}'),
+        ("field-label-out", f"left:{pct(CX + r + 12, W)};{row}", '{% trans "Products and Services" %}'),
     ]
     # Look-away phrases (brand-decode.js): each time the hero leaves the view and returns, the
     # input label decodes into the next one. Phrases from the brand guide's tested list.

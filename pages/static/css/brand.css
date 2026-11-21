@@ -317,11 +317,6 @@
 	fill: var(--panel);
 }
 
-.field .field-leader {
-	display: none;
-	stroke-width: 1px;
-}
-
 /* The decision line: the one 2 px stroke, with the guide's glow; rings stay still. */
 .field .decision {
 	stroke: var(--accent);
@@ -388,6 +383,29 @@
 	white-space: nowrap;
 }
 
+/* The labels glitch in once, in the order of the flow (brand-decode.js). Hidden only while the
+   script is about to bring them in: without JS, with reduced motion or Save-Data they just show. */
+.hero-field.labels-pending .field-label:not(.glitching):not(.arrived) {
+	visibility: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.field-label.glitching {
+		animation: field-glitch 460ms both;
+	}
+}
+
+/* Discrete jumps (each step holds until the next): torn slices, a split between violet and
+   orange, a twitch sideways, a flicker; it settles on the clean label. */
+@keyframes field-glitch {
+	0% { opacity: 0; transform: translateX(-5px); clip-path: inset(0 0 62% 0); text-shadow: 2px 0 var(--accent), -2px 0 var(--line); animation-timing-function: steps(1, end); }
+	14% { opacity: 1; transform: translateX(4px); clip-path: inset(48% 0 0 0); animation-timing-function: steps(1, end); }
+	28% { opacity: 0.35; transform: translateX(-2px); clip-path: inset(0 0 30% 0); text-shadow: -2px 0 var(--accent), 2px 0 var(--line); animation-timing-function: steps(1, end); }
+	44% { opacity: 1; transform: translateX(2px); clip-path: inset(22% 0 12% 0); animation-timing-function: steps(1, end); }
+	60% { opacity: 0.7; transform: translateX(-1px); clip-path: none; text-shadow: 1px 0 var(--accent), -1px 0 var(--line); animation-timing-function: steps(1, end); }
+	78%, 100% { opacity: 1; transform: none; clip-path: none; text-shadow: none; }
+}
+
 /* Desktop: the decision line drops from the top of the sheet past the headline, as on the
    cover. The headline is capped to end 40 px left of it (the ring sits at 79% of the width). */
 @media (min-width: 1200px) {
@@ -395,8 +413,7 @@
 		overflow: visible;
 	}
 
-	.field-label,
-	.field .field-leader {
+	.field-label {
 		display: block;
 	}
 
