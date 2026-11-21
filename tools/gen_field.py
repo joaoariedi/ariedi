@@ -201,8 +201,8 @@ def canvas_svg(c):
 def labels(c):
     """Drawing labels (wide canvas only): HTML so they stay 12 px at every width; % of the canvas.
 
-    Each label on the element it names: the stakeholders' vision on the noise (top left, in the
-    strip the band keeps clear, aligned with the headline); the divergent intelligence on the
+    Each label on the element it names: the stakeholders' vision on the noise as it nears the
+    target (in the strip the band keeps clear); the divergent intelligence on the
     orange decision line, beside it where it comes down; the machine on the target, by the ring's
     top right; products and services on the ordered output lines, below the fan at the edge. The
     last three share the decision line's right side, so they read down the line to the ring."""
@@ -215,7 +215,9 @@ def labels(c):
     beside_line = pct(CX + 14, W)
     fan_bottom = output_line(c, c["N_OUT"] - 1)[4][1]   # the lowest output line at the right edge
     spans = [
-        ("field-label-in", f"left:max(36px, calc((100% - 1152px) / 2));top:{strip}", '{% trans "Stakeholders Vision" %}'),
+        # right-anchored 200 units short of the ring: over the funnel, near the target but clear
+        # of it; the longer look-away phrases grow leftward, away from the ring
+        ("field-label-in", f"right:{pct(W - (xc(c) - 200), W)};top:{strip}", '{% trans "Stakeholders Vision" %}'),
         ("field-label-divergent", f"left:{beside_line};top:{strip}", '{% trans "Divergent Intelligence" %}'),
         ("field-label-machine", f"left:{beside_line};top:{pct(CY - r - 28, H)}", '{% trans "The Machine" %}'),
         ("field-label-out", f"right:{pct(36, W)};top:{pct(fan_bottom + 10, H)}", '{% trans "Products and Services" %}'),
