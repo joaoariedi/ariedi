@@ -182,11 +182,20 @@ class PublicPagesSmokeTest(TestCase):
         self.assertIn("js/brand-motion", body)
         for attr in ('data-cx="', 'data-cy="', 'data-xc="', 'data-ymin="', 'data-ymax="'):
             self.assertIn(attr, body)
-        self.assertEqual(body.count('class="field-depth"'), 3)
-        self.assertEqual(body.count("data-w="), 20)
+        # two canvases, wide (tablet, desktop) and narrow (phones): 20 and 14 incoming lines
+        self.assertEqual(body.count('class="field field-wide"'), 1)
+        self.assertEqual(body.count('class="field field-narrow"'), 1)
+        self.assertEqual(body.count('class="field-depth"'), 6)
+        self.assertEqual(body.count("data-w="), 34)
+        wide = body[body.index('field-wide'):body.index('field-narrow')]
+        self.assertEqual(wide.count("data-w="), 20)
+        self.assertIn('viewBox="0 0 440 248"', body)
+        # each canvas clips to itself: the ids must not collide
+        self.assertEqual(body.count('id="field-clip-wide"'), 1)
+        self.assertEqual(body.count('id="field-clip-narrow"'), 1)
         # rings, decision line and output lines carry no motion data: they stay still
-        self.assertEqual(body.count('class="field-out"'), 1)
-        self.assertEqual(body.count('class="decision"'), 1)
+        self.assertEqual(body.count('class="field-out"'), 2)
+        self.assertEqual(body.count('class="decision"'), 2)
 
     def test_signal_layer_is_wired(self):
         """Noise to signal: the decoder is loaded and the hero label carries its look-away phrases."""
