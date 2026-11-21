@@ -91,6 +91,13 @@ class PublicPagesSmokeTest(TestCase):
                 self.assertIn(f'hreflang="x-default" href="https://ariedi.com/presentations/{slug}"', head)
                 self.assertEqual(head.count('rel="canonical"'), 1, slug)
 
+    def test_every_deck_declares_its_language(self):
+        """Screen readers need <html lang>; each deck's setLang keeps it in step with its toggle."""
+        for slug in self.DECKS:
+            body = self.client.get(f"/presentations/{slug}").content.decode()
+            self.assertRegex(body, r"<html[^>]*\blang=\"(en|pt-BR)\"", slug)
+            self.assertIn("document.documentElement.lang", body, slug)
+
     def test_deck_urls_name_only_known_decks(self):
         for path in ("/presentations/unknown-deck", "/presentations/modern-engineering",
                      "/presentations/..%2Fviews.py", "/presentations/organizational-intelligence.html"):
