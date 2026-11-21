@@ -228,12 +228,6 @@
 	color: var(--label);
 }
 
-/* Presentations viewer: the theme's inline 5 px radius, squared to the sheet's 2 px. */
-#pdf-frame {
-	border: 1px solid var(--construction) !important;
-	border-radius: var(--radius) !important;
-}
-
 .service-item .links a {
 	text-decoration: none;
 }

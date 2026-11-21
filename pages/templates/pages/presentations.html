@@ -14,7 +14,7 @@
             <p class="hero-subline"><a href="{% url 'home' %}">{% trans "Home" %}</a> / {% trans "Presentations" %}</p>
         </div>
 
-        <!-- Presentations: one card per deck; the three HTML decks open as their own pages -->
+        <!-- Presentations: one card per deck; each opens on click (the HTML decks as pages, Modern Engineering as its PDF) -->
         <div class="section service" id="section-presentations">
             <div class="content">
 
@@ -57,9 +57,9 @@
                         <div class="service-item content-box">
                             <div class="fig-head"><span class="fig">FIG. 04</span><span class="fig">PDF</span></div>
                             <div class="name">{% trans "Modern Engineering" %}</div>
-                            <div class="text">{% blocktrans trimmed %}How engineering teams work now that AI writes much of the code. Slides in PDF, to read on this page, fullscreen or downloaded.{% endblocktrans %}</div>
+                            <div class="text">{% blocktrans trimmed %}How engineering teams work now that AI writes much of the code. Slides in PDF.{% endblocktrans %}</div>
                             <div class="links">
-                                <a href="#modern-engineering">{% trans "Read it here" %}</a> ·
+                                <a href="{% url 'serve_presentation' 'modern-engineering.pdf' %}">{% trans "Open the presentation" %}</a> ·
                                 <a href="{% url 'serve_presentation' 'modern-engineering.pdf' %}" download>{% trans "Download PDF" %}</a>
                             </div>
                         </div>
@@ -67,44 +67,6 @@
 
                 </div>
 
-                <div class="clear"></div>
-            </div>
-        </div>
-
-        <!-- Modern Engineering: the PDF viewer -->
-        <div class="section blog" id="modern-engineering">
-            <div class="content content-box">
-                <div class="single-post-text">
-
-                    <!-- title -->
-                    <div class="title">
-                        <div class="title_inner">{% trans "Modern Engineering" %}</div>
-                    </div>
-
-                    <!-- PDF Viewer -->
-                    <div class="pdf-viewer" style="width: 100%; margin-top: 20px;">
-                        <iframe
-                            id="pdf-frame"
-                            src="{% url 'serve_presentation' 'modern-engineering.pdf' %}"
-                            width="100%"
-                            height="800px"
-                            style="border: none; border-radius: 5px;"
-                            title="{% trans 'Modern Engineering Presentation' %}"
-                            allowfullscreen
-                        ></iframe>
-                        <div style="margin-top: 15px; display: flex; gap: 15px; align-items: center;">
-                            <a class="btn hover-animated" href="javascript:void(0)" onclick="document.getElementById('pdf-frame').requestFullscreen()">
-                                <span class="circle"></span>
-                                <span class="lnk">{% trans "Fullscreen" %}</span>
-                            </a>
-                            <a class="btn hover-animated" href="{% url 'serve_presentation' 'modern-engineering.pdf' %}" download>
-                                <span class="circle"></span>
-                                <span class="lnk">{% trans "Download PDF" %}</span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
                 <div class="clear"></div>
             </div>
         </div>

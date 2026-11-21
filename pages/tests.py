@@ -66,7 +66,8 @@ class PublicPagesSmokeTest(TestCase):
             body = self.client.get(prefix + "/presentations").content.decode()
             for slug in self.DECKS:
                 self.assertIn(f'href="{prefix}/presentations/{slug}"', body, prefix)
-            self.assertIn('id="modern-engineering"', body, prefix)
+            self.assertIn(f'href="{prefix}/presentations/pdf/modern-engineering.pdf">', body, prefix)
+            self.assertNotIn("<iframe", body, prefix)
 
     def test_each_deck_opens_in_the_site_language(self):
         """The deck page is the file as written plus one setLang call in the URL's language."""
