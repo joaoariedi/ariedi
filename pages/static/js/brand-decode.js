@@ -2,9 +2,12 @@
  *
  * - Section titles and FIG labels arrive as a brief scramble of glyphs that locks, left to right,
  *   into the real word the first time they enter the view (about 0.4 s, once per element).
+ * - The drawing's labels glitch in once, the first time the hero is seen, one after another in
+ *   the order of the flow: the stakeholders' vision on the noise, the divergent intelligence as
+ *   the orange decision line lands, the machine it lands on, then products and services.
  * - The hero's input label re-encodes when you look away: each time the hero leaves the view and
  *   comes back, it decodes into the next phrase in its data-variants (the brand guide's tested
- *   lines), then back to "Stakeholder inputs". Antichamber's rule: the room changes behind you.
+ *   lines), then back to "Stakeholders Vision". Antichamber's rule: the room changes behind you.
  *
  * The real text is never removed: it stays in the element, transparent, under an aria-hidden
  * overlay of the same box, so screen readers read the word and the layout never shifts. Nothing
@@ -86,12 +89,46 @@
 		arrivals.observe(el);
 	});
 
-	// Reduced motion switched on mid-visit: words land now, nothing decodes again.
+	// 2. The drawing's labels, once, in the order of the flow (they show only on desktop).
+	// The noise first; the divergent intelligence as the orange decision line lands (~1.2 s);
+	// then the machine it lands on, then what comes out.
+	var GLITCH_AT = [250, 1150, 1550, 1950], GLITCH_MS = 460;
+	var field = document.querySelector('.hero-field');
+	var fieldLabels = field ? Array.prototype.slice.call(field.querySelectorAll('.field-label')) : [];
+	var glitchTimers = [], firstSight = null;
+
+	function glitchIn(el) {
+		el.classList.add('glitching');
+		decode(el, el.textContent.trim());
+		glitchTimers.push(setTimeout(function () {
+			el.classList.remove('glitching');
+			el.classList.add('arrived');
+			if (el === fieldLabels[fieldLabels.length - 1]) field.classList.remove('labels-pending');
+		}, GLITCH_MS));
+	}
+
+	if (fieldLabels.length && fieldLabels[0].getClientRects().length) {
+		field.classList.add('labels-pending');
+		firstSight = new IntersectionObserver(function (entries) {
+			if (!entries[0].isIntersecting) return;
+			firstSight.disconnect();
+			fieldLabels.forEach(function (el, i) {
+				glitchTimers.push(setTimeout(function () { glitchIn(el); }, GLITCH_AT[Math.min(i, GLITCH_AT.length - 1)]));
+			});
+		});
+		firstSight.observe(field);
+	}
+
+	// Reduced motion switched on mid-visit: words land now, nothing decodes or glitches again.
 	var lookAway = null;
 	function stop() {
 		stopped = true;
 		arrivals.disconnect();
 		if (lookAway) lookAway.disconnect();
+		if (firstSight) firstSight.disconnect();
+		glitchTimers.forEach(clearTimeout);
+		fieldLabels.forEach(function (el) { el.classList.remove('glitching'); });
+		if (field) field.classList.remove('labels-pending');
 		running.slice().forEach(function (finish) { finish(); });
 	}
 	if (reduce) {
@@ -100,7 +137,7 @@
 		else if (reduce.addListener) reduce.addListener(onReduce);
 	}
 
-	// 2. The hero's input label, after each look-away.
+	// 3. The hero's input label, after each look-away.
 	var label = document.querySelector('.field-label[data-variants]');
 	var hero = label && label.closest('.section');
 	if (!hero) return;
