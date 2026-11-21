@@ -75,6 +75,28 @@
 	padding: 0 4px;
 }
 
+/* Flags stay by the owner's choice (the guide proposes plain mono text). Dimmed with the
+   label colour's weight, full strength on the current language. */
+.header .lang-switch a .flag {
+	width: 20px;
+	height: 15px;
+	margin-right: 6px;
+	vertical-align: -3px;
+	border-radius: 2px;
+	opacity: 0.65;
+}
+
+.header .lang-switch a:hover .flag,
+.header .lang-switch a.active .flag {
+	opacity: 1;
+}
+
+@media (max-width: 360px) {
+	.header .lang-switch a .flag {
+		margin-right: 4px;
+	}
+}
+
 /* Sheet switcher: an experiment affordance, three mono text buttons. */
 .sheet-switch-label {
 	color: var(--label);
@@ -126,6 +148,11 @@
 		width: auto;
 		margin-right: auto;
 		transform: none;
+		flex-shrink: 0; /* the name must never be the item that gives way */
+	}
+
+	.header .top-menu ul {
+		white-space: nowrap; /* one row; the band below makes room instead */
 	}
 
 	.header .top-menu {
@@ -381,3 +408,24 @@
 		padding-top: 120px;
 	}
 }
+
+/* 1200-1439 px: menu, EN · PT with flags and the sheet switcher share one row. The
+   Portuguese menu is the widest; reclaim space so it neither wraps nor squeezes the name. */
+@media (min-width: 1200px) and (max-width: 1439px) {
+	.header .head-top {
+		column-gap: 20px;
+	}
+
+	.header .top-menu ul li {
+		margin-left: 16px;
+	}
+
+	.header .sheet-switch {
+		padding-left: 16px;
+	}
+
+	.header .sheet-switch-label {
+		display: none;
+	}
+}
+
