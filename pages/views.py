@@ -7,7 +7,6 @@ from django.core.mail import send_mail
 from django.http import FileResponse, Http404, HttpResponse, JsonResponse
 from django.urls import reverse
 from django.utils import translation
-from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.gzip import gzip_page
 from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateView, View
@@ -99,7 +98,6 @@ def serve_deck(request, slug):
     return HttpResponse(open_deck_in(html, deck_language))
 
 
-@xframe_options_sameorigin
 def serve_presentation(request, filename):
     filepath = os.path.join(PRESENTATIONS_DIR, filename)
     # PDFs only: the HTML decks share the folder and have their own route (serve_deck)

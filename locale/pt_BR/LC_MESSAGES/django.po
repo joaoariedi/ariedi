@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 20:19+0000\n"
+"POT-Creation-Date: 2026-11-21 21:13+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -438,20 +438,11 @@ msgstr "Um plano de transformação cultural e operacional: como reorganizar uma
 msgid "Modern Engineering"
 msgstr "Engenharia Moderna"
 
-msgid "How engineering teams work now that AI writes much of the code. Slides in PDF, to read on this page, fullscreen or downloaded."
-msgstr "Como as equipes de engenharia trabalham agora que a IA escreve boa parte do código. Slides em PDF, para ler nesta página, em tela cheia ou baixar."
-
-msgid "Read it here"
-msgstr "Ler aqui"
+msgid "How engineering teams work now that AI writes much of the code. Slides in PDF."
+msgstr "Como as equipes de engenharia trabalham agora que a IA escreve boa parte do código. Slides em PDF."
 
 msgid "Download PDF"
 msgstr "Baixar PDF"
-
-msgid "Modern Engineering Presentation"
-msgstr "Apresentação Engenharia Moderna"
-
-msgid "Fullscreen"
-msgstr "Tela cheia"
 
 msgid "Research"
 msgstr "Pesquisa"
@@ -641,3 +632,4 @@ msgstr "Idioma"
 
 msgid "Engineering advisory · Ventures"
 msgstr "Assessoria de engenharia · Ventures"
+
