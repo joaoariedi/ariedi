@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 19:07+0000\n"
+"POT-Creation-Date: 2026-11-21 19:19+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -569,6 +569,15 @@ msgstr "Líder de engenharia, construtor de harnesses para agentes de IA, pesqui
 
 msgid "Personal website and portfolio of João Ariedi: engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work"
 msgstr "Site pessoal e portfólio de João Ariedi: líder de engenharia, construtor de harnesses para agentes de IA, pesquisador sobre IA e as competências do trabalho técnico"
+
+msgid "Known rules to the machine · unknown rules to the engineer"
+msgstr "Regras conhecidas para a máquina · regras desconhecidas para o engenheiro"
+
+msgid "AI is the activator · the engineer is the inhibitor"
+msgstr "A IA é o ativador · o engenheiro é o inibidor"
+
+msgid "Electricity is the new fire"
+msgstr "A eletricidade é o novo fogo"
 
 msgid "Stakeholder inputs"
 msgstr "Entradas dos stakeholders"

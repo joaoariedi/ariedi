@@ -138,8 +138,16 @@ def svg():
         ("field-label-machine", f"left:{pct(CX + 78, W)};top:{pct(CY - 86, H)}", '{% trans "The machine" %}'),
         ("field-label-out", f"right:{pct(36, W)};top:{pct(CY + 3 * OUT_GAP + 14, H)}", '{% trans "Products · Services" %}'),
     ]
+    # Look-away phrases (brand-decode.js): each time the hero leaves the view and returns, the
+    # input label decodes into the next one. Phrases from the brand guide's tested list.
+    variants = {"field-label-in": "|".join([
+        "{% trans 'Known rules to the machine · unknown rules to the engineer' %}",
+        "{% trans 'AI is the activator · the engineer is the inhibitor' %}",
+        "{% trans 'Electricity is the new fire' %}",
+    ])}
     for cls, style, text in labels:
-        out.append(f'<span class="field-label {cls}" style="{style}" aria-hidden="true">{text}</span>')
+        extra = f' data-variants="{variants[cls]}"' if cls in variants else ""
+        out.append(f'<span class="field-label {cls}" style="{style}"{extra} aria-hidden="true">{text}</span>')
     out.append("</div>")
     return "\n".join(out) + "\n"
 
