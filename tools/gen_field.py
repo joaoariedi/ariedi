@@ -201,21 +201,24 @@ def canvas_svg(c):
 def labels(c):
     """Drawing labels (wide canvas only): HTML so they stay 12 px at every width; % of the canvas.
 
-    One row in the strip the band keeps clear at the top, each label over the part of the flow it
-    names, in reading order: the stakeholders' vision over the noise (aligned with the headline),
-    the divergent intelligence where the turbulence starts to converge, the machine over the ring
-    (left of the decision line), products and services over the output fan (right of it)."""
-    W, H, CX, r = c["W"], c["H"], c["CX"], c["RINGS"][0][0]
+    Each label on the element it names: the stakeholders' vision on the noise (top left, in the
+    strip the band keeps clear, aligned with the headline); the divergent intelligence on the
+    orange decision line, beside it where it comes down; the machine on the target, by the ring's
+    top right; products and services on the ordered output lines, below the fan at the edge. The
+    last three share the decision line's right side, so they read down the line to the ring."""
+    W, H, CX, CY, r = c["W"], c["H"], c["CX"], c["CY"], c["RINGS"][0][0]
 
     def pct(v, total):
         return f"{v / total * 100:.2f}%"
-    # The band's soft edge reaches 20 units above it; the label (22 units) sits 8 above that.
-    row = f"top:{pct(c['BAND'][0] - 20 - 8 - 22, H)}"
+    # The band's soft edge reaches 20 units above it; a label (22 units) sits 8 above that.
+    strip = pct(c["BAND"][0] - 20 - 8 - 22, H)
+    beside_line = pct(CX + 14, W)
+    fan_bottom = output_line(c, c["N_OUT"] - 1)[4][1]   # the lowest output line at the right edge
     spans = [
-        ("field-label-in", f"left:max(36px, calc((100% - 1152px) / 2));{row}", '{% trans "Stakeholders Vision" %}'),
-        ("field-label-divergent", f"left:{pct(c['FADE'] * xc(c), W)};{row}", '{% trans "Divergent Intelligence" %}'),
-        ("field-label-machine", f"right:{pct(W - (CX - 20), W)};{row}", '{% trans "The Machine" %}'),
-        ("field-label-out", f"left:{pct(CX + r + 12, W)};{row}", '{% trans "Products and Services" %}'),
+        ("field-label-in", f"left:max(36px, calc((100% - 1152px) / 2));top:{strip}", '{% trans "Stakeholders Vision" %}'),
+        ("field-label-divergent", f"left:{beside_line};top:{strip}", '{% trans "Divergent Intelligence" %}'),
+        ("field-label-machine", f"left:{beside_line};top:{pct(CY - r - 28, H)}", '{% trans "The Machine" %}'),
+        ("field-label-out", f"right:{pct(36, W)};top:{pct(fan_bottom + 10, H)}", '{% trans "Products and Services" %}'),
     ]
     # Look-away phrases (brand-decode.js): each time the hero leaves the view and returns, the
     # input label decodes into the next one. Phrases from the brand guide's tested list.

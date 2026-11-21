@@ -221,13 +221,15 @@ class PublicPagesSmokeTest(TestCase):
         self.assertEqual(body.count('class="decision"'), 2)
 
     def test_hero_labels_name_the_flow_in_order(self):
-        """One row over the drawing, in the order the field flows, in the page's language."""
+        """Each label on its element, in the order the field flows, in the page's language."""
         for prefix, words in (("", ("Stakeholders Vision", "Divergent Intelligence", "The Machine", "Products and Services")),
                               ("/pt-br", ("Visão dos stakeholders", "Inteligência divergente", "A máquina", "Produtos e serviços"))):
             body = self.client.get(prefix + "/").content.decode()
             spots = [body.index(f'aria-hidden="true">{w}</span>') for w in words]
             self.assertEqual(spots, sorted(spots), prefix)
-            self.assertEqual(len(set(re.findall(r'class="field-label [^"]+" style="[^"]*;(top:[^"]+)"', body))), 1, prefix)
+            # the divergent intelligence and the machine share the decision line's right side
+            sides = re.findall(r'class="field-label field-label-(?:divergent|machine)" style="(left:[^;]+);', body)
+            self.assertEqual(len(set(sides)), 1, prefix)
 
     def test_signal_layer_is_wired(self):
         """Noise to signal: the decoder is loaded and the hero label carries its look-away phrases."""

@@ -3,8 +3,8 @@
  * - Section titles and FIG labels arrive as a brief scramble of glyphs that locks, left to right,
  *   into the real word the first time they enter the view (about 0.4 s, once per element).
  * - The drawing's labels glitch in once, the first time the hero is seen, one after another in
- *   the order of the flow: the stakeholders' vision, the divergent intelligence, the machine as
- *   the decision line lands, then products and services.
+ *   the order of the flow: the stakeholders' vision on the noise, the divergent intelligence as
+ *   the orange decision line lands, the machine it lands on, then products and services.
  * - The hero's input label re-encodes when you look away: each time the hero leaves the view and
  *   comes back, it decodes into the next phrase in its data-variants (the brand guide's tested
  *   lines), then back to "Stakeholder inputs". Antichamber's rule: the room changes behind you.
@@ -90,7 +90,9 @@
 	});
 
 	// 2. The drawing's labels, once, in the order of the flow (they show only on desktop).
-	var GLITCH_AT = [250, 650, 1150, 1550], GLITCH_MS = 460;   // the decision line lands at ~1.2 s
+	// The noise first; the divergent intelligence as the orange decision line lands (~1.2 s);
+	// then the machine it lands on, then what comes out.
+	var GLITCH_AT = [250, 1150, 1550, 1950], GLITCH_MS = 460;
 	var field = document.querySelector('.hero-field');
 	var fieldLabels = field ? Array.prototype.slice.call(field.querySelectorAll('.field-label')) : [];
 	var glitchTimers = [], firstSight = null;
