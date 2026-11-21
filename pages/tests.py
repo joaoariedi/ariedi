@@ -112,6 +112,28 @@ class PublicPagesSmokeTest(TestCase):
             self.assertIn(f"<title>{title}", head, slug)
             self.assertNotIn("<title", body, slug)
 
+    def test_every_deck_links_back_to_the_site(self):
+        cases = (("", "Presentations", "Home"), ("/pt-br", "Apresentações", "Início"))
+        for slug in self.DECKS:
+            for prefix, presentations, home in cases:
+                body = self.client.get(f"{prefix}/presentations/{slug}").content.decode()
+                self.assertIn(f'<a href="{prefix}/presentations"><span aria-hidden="true">&larr; </span>{presentations}</a>', body, slug)
+                self.assertIn(f'<a href="{prefix}/">{home}</a></nav>', body, slug)
+                self.assertEqual(body.count('id="site-return"'), 1, slug)
+
+    def test_menu_is_on_every_page_and_leads_back_to_home_sections(self):
+        for prefix in ("", "/pt-br"):
+            for path in ("/presentations", "/research"):
+                body = self.client.get(prefix + path).content.decode()
+                for section in ("services", "history", "research", "work", "skills", "contacts"):
+                    self.assertIn(f'href="{prefix}/#section-{section}"', body, prefix + path)
+                self.assertIn(f'href="{prefix}/presentations"', body, prefix + path)
+            here = self.client.get(prefix + "/presentations").content.decode()
+            self.assertIn(f'href="{prefix}/presentations" aria-current="page"', here, prefix)
+            home = self.client.get(prefix + "/").content.decode()
+            self.assertIn('href="#section-services"', home, prefix)
+            self.assertIn(f'<a href="{prefix}/presentations">', home, prefix)
+
     def test_deck_urls_name_only_known_decks(self):
         for path in ("/presentations/unknown-deck", "/presentations/modern-engineering",
                      "/presentations/..%2Fviews.py", "/presentations/organizational-intelligence.html"):

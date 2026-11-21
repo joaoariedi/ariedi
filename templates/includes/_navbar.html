@@ -19,31 +19,41 @@
         <div class="top-menu hover-masks">
             <div class="top-menu-nav">
                 <div class="menu-topmenu-container">
+                    {% comment %}
+                    The same menu on every page. On the home page the section links are bare
+                    anchors (scripts.js scrolls to them); elsewhere they carry the home URL, so
+                    they lead back to that section in the current language.
+                    {% endcomment %}
+                    {% url 'home' as home_url %}
+                    {% with page=request.resolver_match.url_name %}
+                    {% if page == 'home' %}{% firstof '' as sections %}{% else %}{% firstof home_url as sections %}{% endif %}
                     <ul class="menu">
-                        {% if request.resolver_match.url_name == 'home' %}
-                        <li class="menu-item current-menu-item">
-                            <a href="#section-started">{% trans "Home" %}</a>
+                        <li class="menu-item{% if page == 'home' %} current-menu-item{% endif %}">
+                            <a href="{% if page == 'home' %}#section-started{% else %}{{ home_url }}{% endif %}"{% if page == 'home' %} aria-current="page"{% endif %}>{% trans "Home" %}</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#section-services">{% trans "Services" %}</a>
+                            <a href="{{ sections }}#section-services">{% trans "Services" %}</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#section-history">{% trans "Resume" %}</a>
+                            <a href="{{ sections }}#section-history">{% trans "Resume" %}</a>
+                        </li>
+                        <li class="menu-item{% if page == 'research' %} current-menu-item{% endif %}">
+                            <a href="{{ sections }}#section-research">{% trans "Research" %}</a>
+                        </li>
+                        <li class="menu-item{% if page == 'presentations' %} current-menu-item{% endif %}">
+                            <a href="{% url 'presentations' %}"{% if page == 'presentations' %} aria-current="page"{% endif %}>{% trans "Presentations" %}</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#section-research">{% trans "Research" %}</a>
+                            <a href="{{ sections }}#section-work">{% trans "Work" %}</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#section-work">{% trans "Work" %}</a>
+                            <a href="{{ sections }}#section-skills">{% trans "Skills" %}</a>
                         </li>
                         <li class="menu-item">
-                            <a href="#section-skills">{% trans "Skills" %}</a>
+                            <a href="{{ sections }}#section-contacts">{% trans "Contact" %}</a>
                         </li>
-                        <li class="menu-item">
-                            <a href="#section-contacts">{% trans "Contact" %}</a>
-                        </li>
-                        {% endif %}
                     </ul>
+                    {% endwith %}
                 </div>
             </div>
         </div>
