@@ -1,11 +1,8 @@
-/* Brand tokens and base layer (brand-sheets experiment).
+/* Brand tokens and base layer: the night sheet of the brand style guide.
    Loaded after the theme and site.css; overrides the vendor theme without editing it.
-   Three sheets on <html data-sheet="...">: night (default), light, blueprint.
-   Values for night and light come from the brand style guide; blueprint is the earlier
-   navy direction, kept for comparison. Only tokens differ between sheets. */
+   The guide's light sheet is for print; the screen uses night only. */
 
-:root,
-html[data-sheet="night"] {
+:root {
 	color-scheme: dark;
 	--ground: #150826;
 	--panel: #21103A;
@@ -18,34 +15,6 @@ html[data-sheet="night"] {
 	--accent: #FF6A2A;
 	--grid: rgba(181, 107, 232, 0.07);
 	--scan: rgba(241, 233, 251, 0.03);
-}
-
-html[data-sheet="light"] {
-	color-scheme: light;
-	--ground: #F3EEF9;
-	--panel: #FAF7FD;
-	--line: #3A1463;
-	--link: #3A1463;
-	--focus: #3A1463;
-	--construction: #C9B8DE;
-	--label: #6B5A8C;
-	--text: #3A1463;
-	--grid: rgba(58, 20, 99, 0.07);
-	--scan: rgba(58, 20, 99, 0.03);
-}
-
-html[data-sheet="blueprint"] {
-	color-scheme: dark;
-	--ground: #0A1324;
-	--panel: #101C36;
-	--line: #3B82C4;
-	--link: #7FB0FF;
-	--focus: #7FB0FF;
-	--construction: #243B66;
-	--label: #9DB8F0;
-	--text: #E6EDF8;
-	--grid: rgba(59, 130, 196, 0.07);
-	--scan: rgba(230, 237, 248, 0.03);
 }
 
 :root {

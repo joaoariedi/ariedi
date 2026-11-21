@@ -55,14 +55,5 @@
             <a href="{% switch_lang_url 'pt-br' %}" hreflang="pt-BR" lang="pt-BR"{% if LANGUAGE_CODE == 'pt-br' %} class="active" aria-current="true"{% endif %}><img class="flag" src="{% static 'images/flags/br.svg' %}" alt="" width="20" height="15" />PT</a>
         </nav>
 
-        <!-- sheet switcher (brand experiment): outside .top-menu, whose theme handler
-             delays every link click for its page-transition animation -->
-        <div class="sheet-switch" role="group" aria-label="{% trans 'Sheet' %}">
-            <span class="sheet-switch-label" aria-hidden="true">{% trans "Sheet" %}</span>
-            <button type="button" data-sheet-set="night" aria-pressed="true">{% trans "Night" %}</button>
-            <button type="button" data-sheet-set="light" aria-pressed="false">{% trans "Light" %}</button>
-            <button type="button" data-sheet-set="blueprint" aria-pressed="false">{% trans "Blueprint" %}</button>
-        </div>
-
     </div>
 </header>

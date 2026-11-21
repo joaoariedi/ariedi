@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 17:31+0000\n"
+"POT-Creation-Date: 2026-11-21 17:48+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -590,18 +590,6 @@ msgstr "Contato"
 
 msgid "Language"
 msgstr "Idioma"
-
-msgid "Sheet"
-msgstr "Folha"
-
-msgid "Night"
-msgstr "Noite"
-
-msgid "Light"
-msgstr "Clara"
-
-msgid "Blueprint"
-msgstr "Planta"
 
 msgid "Engineering advisory · Ventures"
 msgstr "Assessoria de engenharia · Ventures"

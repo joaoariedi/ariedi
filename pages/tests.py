@@ -25,7 +25,7 @@ class PublicPagesSmokeTest(TestCase):
 
     REMOVED_FROM_HOME = ["John Ariedi", "15+ years", "CISSP", "CISO", "9107", "paradigm shift", "Led a FAPESP", "v9.1.3"]
 
-    # The hero headline of the brand-sheets design, in both languages.
+    # The hero headline of the brand design, in both languages.
     HEADLINE_EN = "I build the machine that turns vision into revenue"
     HEADLINE_PT = "Construo a máquina que transforma visão em receita"
 
@@ -65,7 +65,7 @@ class PublicPagesSmokeTest(TestCase):
         response = self.client.get("/pt-br/")
         self.assertEqual(response.status_code, 200)
         body = response.content.decode()
-        self.assertIn('<html lang="pt-BR" data-sheet="night">', body)
+        self.assertIn('<html lang="pt-BR">', body)
         self.assertIn(self.HEADLINE_PT, body)
         self.assertIn("Pesquisa e publicações", body)
         self.assertIn("Palestras e painéis", body)
@@ -76,7 +76,7 @@ class PublicPagesSmokeTest(TestCase):
 
     def test_english_is_default_and_unprefixed(self):
         body = self.client.get("/").content.decode()
-        self.assertIn('<html lang="en" data-sheet="night">', body)
+        self.assertIn('<html lang="en">', body)
         self.assertIn(self.HEADLINE_EN, body)
         self.assertNotIn(self.HEADLINE_PT, body)
         # the English page must not leak Portuguese prose (names and work titles excepted)
@@ -91,15 +91,13 @@ class PublicPagesSmokeTest(TestCase):
         self.assertIn("Síntese estendida", pt)
         self.assertIn('id="simpep-2026"', pt)
 
-    def test_sheet_switcher_offers_three_sheets_with_night_default(self):
+    def test_night_sheet_only_no_switcher(self):
+        """The brand ships one sheet (night); the experiment's switcher and its ?sheet= script are gone."""
         for path in ("/", "/pt-br/", "/research", "/presentations"):
             body = self.client.get(path).content.decode()
-            self.assertRegex(body, r'<html [^>]*data-sheet="night"', path)
-            for sheet in ("night", "light", "blueprint"):
-                self.assertIn(f'data-sheet-set="{sheet}"', body, path)
-            self.assertIn('data-sheet-set="night" aria-pressed="true"', body, path)
-            # the remembered sheet is applied in <head>, before any stylesheet, so no flash
-            self.assertLess(body.index("brand-sheet"), body.index("brand-tokens.css"), path)
+            self.assertIn("brand-tokens.css", body, path)
+            for leftover in ("data-sheet", "sheet-switch", "brand-sheet", "localStorage"):
+                self.assertNotIn(leftover, body, f"{leftover!r} on {path}")
 
 
 
