@@ -180,6 +180,7 @@
 	}
 
 	function play() {
+		if (hero) hero.classList.toggle('field-paused', !inView || document.hidden);
 		if (running || !inView || document.hidden || !lines.length) return;
 		running = true;
 		last = 0;
@@ -188,6 +189,7 @@
 
 	function pause() {
 		running = false;
+		if (hero) hero.classList.add('field-paused');   // the decision pulse rests with the field
 	}
 
 	var gridQueued = false, plane = null, lastShift = null;

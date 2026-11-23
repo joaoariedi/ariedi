@@ -37,6 +37,18 @@
 		return out;
 	}
 
+	// The word lights up as it locks (brand-glow.css), once per decode.
+	function lightUp(el) {
+		el.classList.remove('signal-lock');
+		void el.offsetWidth;   // restart the animation if the same element locks again
+		el.classList.add('signal-lock');
+		el.addEventListener('animationend', function done(e) {
+			if (e.animationName !== 'signal-lock') return;
+			el.classList.remove('signal-lock');
+			el.removeEventListener('animationend', done);
+		});
+	}
+
 	// Decodes el into text: a transparent copy of the final text holds the box, the overlay shows
 	// the noise. Returns false (and does nothing) while el is still decoding or the effect is stopped.
 	function decode(el, text) {
@@ -57,6 +69,7 @@
 			done = true;
 			el.textContent = text;
 			el.removeAttribute('data-decoding');
+			if (!stopped) lightUp(el);
 			running.splice(running.indexOf(finish), 1);
 		}
 		running.push(finish);

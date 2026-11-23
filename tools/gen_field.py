@@ -171,7 +171,17 @@ def canvas_svg(c):
         f'<defs><clipPath id="{clip}"><rect width="{W}" height="{H}"/></clipPath>'
         f'<clipPath id="{clip}-in"><path clip-rule="evenodd" d="M0 0H{W}V{H}H0Z'
         f'M{xc(c)} {CY}a{c["RINGS"][0][0]} {c["RINGS"][0][0]} 0 1 0 {2 * c["RINGS"][0][0]} 0'
-        f'a{c["RINGS"][0][0]} {c["RINGS"][0][0]} 0 1 0 {-2 * c["RINGS"][0][0]} 0Z"/></clipPath></defs>',
+        f'a{c["RINGS"][0][0]} {c["RINGS"][0][0]} 0 1 0 {-2 * c["RINGS"][0][0]} 0Z"/></clipPath>'
+        # Light means signal: a nebula around the target, and incoming lines that brighten as
+        # they leave the noise and land (colours and strengths live in brand-glow.css).
+        f'<radialGradient id="field-nebula-{c["name"]}" gradientUnits="userSpaceOnUse" cx="{CX}" cy="{CY}" '
+        f'r="{fmt(c["RINGS"][0][0] * 3.4)}"><stop class="nebula-core" offset="0"/>'
+        '<stop class="nebula-mid" offset="0.45"/><stop class="nebula-edge" offset="1"/></radialGradient>'
+        f'<linearGradient id="field-signal-{c["name"]}" gradientUnits="userSpaceOnUse" '
+        f'x1="{fmt(xc(c) * 0.45)}" y1="0" x2="{xc(c)}" y2="0">'
+        '<stop class="signal-dim" offset="0"/><stop class="signal-lit" offset="1"/></linearGradient></defs>',
+        f'<circle class="field-nebula" cx="{CX}" cy="{CY}" r="{fmt(c["RINGS"][0][0] * 3.4)}" '
+        f'fill="url(#field-nebula-{c["name"]})"/>',
         f'<g class="field-in" clip-path="url(#{clip}-in)">',
     ]
     lines = incoming_paths(c)
@@ -192,6 +202,8 @@ def canvas_svg(c):
     out.append("</g>")
     out += [
         f'<line class="decision" x1="{CX}" y1="-1200" x2="{CX}" y2="{CY}"/>',
+        # an energy pulse that runs down the decision line into the core now and then
+        f'<line class="decision-pulse" x1="{CX}" y1="-1200" x2="{CX}" y2="{CY}" pathLength="100"/>',
         f'<circle class="decision-dot" cx="{CX}" cy="{CY}" r="4"/>',
         "</svg>",
     ]
