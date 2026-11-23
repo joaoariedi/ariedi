@@ -25,11 +25,13 @@
 	var FRAME_MS = 1000 / 30;              // the field redraws at 30 fps
 	var WAVE_SPEED = [14, 22, 30];         // px/s each of a line's three waves travels rightward
 	var CALM = 0.75;                       // share of the turbulence a full scroll removes
-	var SCROLL_LAG = [0.08, 0.04, 0];      // back, middle, front: fraction of the scroll each lags
-	var POINTER = [2, 4, 7];               // back, middle, front: px of pointer parallax
+	var SCROLL_LAG = [0.16, 0.08, 0];      // back, middle, front: fraction of the scroll each lags
+	var POINTER = [6, 13, 22];             // back, middle, front: px of pointer parallax
 	var EDGE_TOP = 20, EDGE_BOTTOM = 10;   // soft overflow beyond the band (svg units; the clip
 	                                       // leaves 10 below YMAX), never inside it
-	var GRID = 18, GRID_RATE = 0.85;       // the page grid cell and its share of the scroll
+	var GRID = 18, GRID_RATE = 0.75;       // the page grid cell and its share of the scroll
+	var DEEP = 720, DEEP_RATE = 0.3;       // the deep plane's tile (dust, major grid) and its share
+	var PLANE_POINTER = [12, 5];           // deep, grid: px the planes shift with a fine pointer
 	var NOISE = 1.6;                       // svg units of high-frequency jitter at the far left
 	var NOISE_REACH = 0.36;                // share of the width over which the jitter fades out
 	var NOISE_RAMP = 1.0;                  // s for the jitter to fade in from frame zero
@@ -192,13 +194,20 @@
 		if (hero) hero.classList.add('field-paused');   // the decision pulse rests with the field
 	}
 
-	var gridQueued = false, plane = null, lastShift = null;
+	// Three speeds you can see: the deep plane (space dust, major grid) at 30 % of the scroll, the
+	// drafting grid at 75 %, the content at 100 %. Each plane moves within one tile, in whole px.
+	var gridQueued = false, plane = null, deep = null, lastShift = null, lastDeep = null;
 	function shiftGrid() {
 		gridQueued = false;
 		var shift = -Math.round((scrollY * GRID_RATE) % GRID);
+		var deepShift = -Math.round((scrollY * DEEP_RATE) % DEEP);
 		if (plane && shift !== lastShift) {
 			plane.style.transform = 'translate3d(0,' + shift + 'px,0)';
 			lastShift = shift;
+		}
+		if (deep && deepShift !== lastDeep) {
+			deep.style.transform = 'translate3d(0,' + deepShift + 'px,0)';
+			lastDeep = deepShift;
 		}
 	}
 
@@ -213,6 +222,10 @@
 	function onPointer(e) {
 		target.x = (e.clientX / window.innerWidth) * 2 - 1;
 		target.y = (e.clientY / window.innerHeight) * 2 - 1;
+		// the planes follow the pointer through the CSS translate property, eased by a transition,
+		// so the scroll (transform) stays instant
+		if (deep) deep.style.translate = (-target.x * PLANE_POINTER[0]) + 'px ' + (-target.y * PLANE_POINTER[0] * 0.6) + 'px';
+		if (plane) plane.style.translate = (-target.x * PLANE_POINTER[1]) + 'px ' + (-target.y * PLANE_POINTER[1] * 0.6) + 'px';
 	}
 
 	function onResize() {
@@ -227,6 +240,10 @@
 			plane.className = 'grid-plane';
 			plane.setAttribute('aria-hidden', 'true');
 			document.body.insertBefore(plane, document.body.firstChild);
+			deep = document.createElement('div');
+			deep.className = 'depth-plane';
+			deep.setAttribute('aria-hidden', 'true');
+			document.body.insertBefore(deep, plane);   // first in the DOM: painted furthest back
 		}
 		root.classList.add('motion-ok');
 		onScroll();
@@ -250,7 +267,8 @@
 	function disable() {
 		pause();
 		root.classList.remove('motion-ok');
-		if (plane) { plane.style.transform = ''; lastShift = null; }
+		if (plane) { plane.style.transform = ''; plane.style.translate = ''; lastShift = null; }
+		if (deep) { deep.style.transform = ''; deep.style.translate = ''; lastDeep = null; }
 		window.removeEventListener('scroll', onScroll);
 		window.removeEventListener('resize', onResize);
 		window.removeEventListener('pointermove', onPointer);

@@ -26,7 +26,7 @@
 
 	var sections = Array.prototype.slice.call(document.querySelectorAll('.section[id^="section-"]'))
 		.map(function (el) { return { el: el, name: sectionName(el) }; })
-		.filter(function (s) { return s.name; });
+		.filter(function (s) { return s.name && s.el.getClientRects().length; });
 
 	function pad(n) {
 		return n < 10 ? '0' + n : String(n);
@@ -41,6 +41,7 @@
 		}
 		var max = document.documentElement.scrollHeight - window.innerHeight;
 		var pct = max > 0 ? Math.round(window.pageYOffset / max * 100) : 0;
+		if (pct >= 100) current = sections.length - 1;   // the last sections never reach the probe
 		var text = pad(current + 1) + '/' + pad(sections.length) + '|' + sections[current].name + '|' + pct;
 		if (text === shown) return;
 		shown = text;

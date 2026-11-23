@@ -1,11 +1,70 @@
-{% load i18n %}
-<!-- Footer: the title block as the sheet's signature, in flow at the end of the page.
-     The home page carries it in its contacts section instead. -->
-{% if request.resolver_match.url_name != 'home' %}
-<div class="footer brand-footer">
-    {% include 'includes/_title_block.html' %}
+{% load i18n i18n_extras %}
+{% get_current_language as LANGUAGE_CODE %}
+{% url 'home' as home_url %}
+{% comment %}
+The sheet's footer, on every page: the title block (signature, sections, pages, elsewhere) and
+the sheet strip (copyright, languages, back to top). Section links are bare anchors on the home
+page and carry the home URL elsewhere, as in the navbar.
+{% endcomment %}
+{% with page=request.resolver_match.url_name %}
+{% if page == 'home' %}{% firstof '' as sections %}{% else %}{% firstof home_url as sections %}{% endif %}
+<div class="footer brand-footer sheet-footer">
+    <div class="sheet-grid">
+
+        <div class="sheet-cell sheet-sign">
+            <svg class="sheet-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                <circle cx="20" cy="22" r="15"/><circle cx="20" cy="22" r="10"/><circle cx="20" cy="22" r="5"/>
+                <line class="sheet-decision" x1="20" y1="0" x2="20" y2="22"/><circle class="sheet-dot" cx="20" cy="22" r="2"/>
+            </svg>
+            <div class="sheet-name">J. Ariedi</div>
+            <div class="sheet-row">{% trans "Engineering advisory · Ventures" %}</div>
+            <div class="sheet-row sheet-promise">{% trans "Vision in · Revenue out" %}</div>
+        </div>
+
+        <nav class="sheet-cell" aria-label="{% trans 'Sections' %}">
+            <div class="sheet-label">{% trans "Sections" %}</div>
+            <ul>
+                <li><a href="{{ sections }}#section-services">{% trans "Services" %}</a></li>
+                <li><a href="{{ sections }}#section-history">{% trans "Resume" %}</a></li>
+                <li><a href="{{ sections }}#section-research">{% trans "Research" %}</a></li>
+                <li><a href="{{ sections }}#section-work">{% trans "Work" %}</a></li>
+                <li><a href="{{ sections }}#section-skills">{% trans "Skills" %}</a></li>
+                <li><a href="{{ sections }}#section-contacts">{% trans "Contact" %}</a></li>
+            </ul>
+        </nav>
+
+        <nav class="sheet-cell" aria-label="{% trans 'Pages' %}">
+            <div class="sheet-label">{% trans "Pages" %}</div>
+            <ul>
+                <li><a href="{{ home_url }}"{% if page == 'home' %} aria-current="page"{% endif %}>{% trans "Home" %}</a></li>
+                <li><a href="{% url 'research' %}"{% if page == 'research' %} aria-current="page"{% endif %}>{% trans "Research and publications" %}</a></li>
+                <li><a href="{% url 'presentations' %}"{% if page == 'presentations' %} aria-current="page"{% endif %}>{% trans "Presentations" %}</a></li>
+            </ul>
+        </nav>
+
+        <div class="sheet-cell">
+            <div class="sheet-label">{% trans "Elsewhere" %}</div>
+            <ul>
+                <li><a class="email" href="mailto:joaoariedi@gmail.com">joaoariedi@gmail.com</a></li>
+                <li><a href="https://www.linkedin.com/in/joaoariedi/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="https://github.com/joaoariedi" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://orcid.org/0009-0002-1761-065X" target="_blank" rel="noopener">ORCID</a></li>
+                <li><a href="http://lattes.cnpq.br/5349307117993807" target="_blank" rel="noopener">Lattes</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="sheet-strip">
+        <span>© {% now "Y" %} João Ariedi · ariedi.com</span>
+        <nav class="sheet-langs" aria-label="{% trans 'Language' %}">
+            <a href="{% switch_lang_url 'en' %}" hreflang="en" lang="en"{% if LANGUAGE_CODE == 'en' %} aria-current="true"{% endif %}>EN</a>
+            <span aria-hidden="true">·</span>
+            <a href="{% switch_lang_url 'pt-br' %}" hreflang="pt-BR" lang="pt-BR"{% if LANGUAGE_CODE == 'pt-br' %} aria-current="true"{% endif %}>PT</a>
+        </nav>
+        <a class="sheet-top" href="#">{% trans "Back to top" %} <span aria-hidden="true">↑</span></a>
+    </div>
 </div>
-{% endif %}
+{% endwith %}
 
 {% include 'includes/_scripts.html' %}
 {% block extrascripts %}{% endblock extrascripts %}

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 22:10+0000\n"
+"POT-Creation-Date: 2026-11-23 16:32+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -573,6 +573,33 @@ msgstr "Um estudo de caso único, aplicado e qualitativo, de um laboratório cor
 msgid "<strong>Where it sits in this research line.</strong> The organizational side of the same question the MEISTUDIES article asks on the engineering side."
 msgstr "<strong>Onde se encaixa nesta linha de pesquisa.</strong> O lado organizacional da mesma pergunta que o artigo do MEISTUDIES faz do lado da engenharia."
 
+msgid "Engineering advisory · Ventures"
+msgstr "Assessoria de engenharia · Ventures"
+
+msgid "Vision in · Revenue out"
+msgstr "Visão entra · receita sai"
+
+msgid "Sections"
+msgstr "Seções"
+
+msgid "Resume"
+msgstr "Currículo"
+
+msgid "Contact"
+msgstr "Contato"
+
+msgid "Pages"
+msgstr "Páginas"
+
+msgid "Elsewhere"
+msgstr "Na rede"
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Back to top"
+msgstr "Voltar ao topo"
+
 msgid "João Ariedi - Engineering Leader | AI Agent Harnesses | Research on AI and Competence"
 msgstr "João Ariedi - Líder de Engenharia | Harnesses para Agentes de IA | Pesquisa sobre IA e Competência"
 
@@ -620,16 +647,3 @@ msgstr "A máquina"
 
 msgid "Products and Services"
 msgstr "Produtos e serviços"
-
-msgid "Resume"
-msgstr "Currículo"
-
-msgid "Contact"
-msgstr "Contato"
-
-msgid "Language"
-msgstr "Idioma"
-
-msgid "Engineering advisory · Ventures"
-msgstr "Assessoria de engenharia · Ventures"
-

@@ -469,7 +469,7 @@
 }
 
 /* The theme pins the footer to the viewport; on the sheet it is in flow, so it can never
-   cover content or the switcher. On home the contacts section carries the title block. */
+   cover content or the switcher. Its layout is in brand-footer.css. */
 .footer.brand-footer,
 .home .footer.brand-footer {
 	position: static;
@@ -479,8 +479,4 @@
 	right: auto;
 	bottom: auto;
 	top: auto;
-}
-
-.footer.brand-footer .title-block {
-	margin-left: auto;
 }
