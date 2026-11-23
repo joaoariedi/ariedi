@@ -1,0 +1,96 @@
+/* Experiment, second set: HUD details, neon ignition, cursor light. Desktop for the HUD and the
+ * light; everything that moves is off under reduced motion. */
+
+/* 9a. Drafting corner brackets on the panels: bright L marks inside the four corners of the border. */
+.service-items .content-box,
+.resume-items,
+.spec-table.content-box {
+	--hud-mark: rgba(214, 178, 250, 0.85);
+	--hud-len: 14px;
+	background-image:
+		linear-gradient(var(--hud-mark), var(--hud-mark)), linear-gradient(var(--hud-mark), var(--hud-mark)),
+		linear-gradient(var(--hud-mark), var(--hud-mark)), linear-gradient(var(--hud-mark), var(--hud-mark)),
+		linear-gradient(var(--hud-mark), var(--hud-mark)), linear-gradient(var(--hud-mark), var(--hud-mark)),
+		linear-gradient(var(--hud-mark), var(--hud-mark)), linear-gradient(var(--hud-mark), var(--hud-mark));
+	background-size:
+		var(--hud-len) 1px, 1px var(--hud-len), var(--hud-len) 1px, 1px var(--hud-len),
+		var(--hud-len) 1px, 1px var(--hud-len), var(--hud-len) 1px, 1px var(--hud-len);
+	background-position: 0 0, 0 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%;
+	background-repeat: no-repeat;
+	background-origin: padding-box;   /* just inside the border: a background never paints over it */
+}
+
+/* 9b. The readout (brand-hud.js): section number, its name, how far down the page. */
+.hud-readout {
+	display: none;
+}
+
+@media (min-width: 1200px) {
+	.hud-readout {
+		display: block;
+		position: fixed;
+		right: 16px;
+		bottom: 16px;
+		z-index: 900;
+		padding: 7px 12px;
+		background: rgba(21, 8, 38, 0.86);
+		border: 1px solid var(--construction);
+		border-radius: 2px;
+		font: 500 11px/16px var(--font-mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--label);
+		pointer-events: none;
+		white-space: nowrap;
+	}
+
+	.hud-readout b {
+		font-weight: 500;
+		color: var(--text);
+	}
+}
+
+/* 10. Neon ignition: the home headline flickers on once like a tube, then keeps a faint glow. */
+@media (prefers-reduced-motion: no-preference) {
+	.section.started.brand-hero .hero-title {
+		animation: neon-ignite 1600ms linear 200ms both;
+	}
+}
+
+@keyframes neon-ignite {
+	0% { opacity: 0.15; text-shadow: none; }
+	7% { opacity: 0.95; text-shadow: 0 0 6px rgba(200, 154, 245, 0.5), 0 0 22px rgba(181, 107, 232, 0.36); }
+	11% { opacity: 0.2; text-shadow: none; }
+	19% { opacity: 1; text-shadow: 0 0 6px rgba(200, 154, 245, 0.5), 0 0 22px rgba(181, 107, 232, 0.36); }
+	23% { opacity: 0.4; text-shadow: 0 0 2px rgba(200, 154, 245, 0.2); }
+	33%, 100% { opacity: 1; text-shadow: 0 0 4px rgba(200, 154, 245, 0.28), 0 0 18px rgba(181, 107, 232, 0.2); }
+}
+
+/* 11. Cursor light: a soft violet light follows a fine pointer and lifts the grid beneath it.
+ *     Behind the content, on the drafting plane (brand-hud.js moves it). */
+.cursor-light {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 560px;
+	height: 560px;
+	margin: -280px 0 0 -280px;
+	z-index: -1;
+	pointer-events: none;
+	background: radial-gradient(circle closest-side, rgba(181, 107, 232, 0.11), rgba(181, 107, 232, 0.04) 55%, transparent);
+	mix-blend-mode: screen;
+	opacity: 0;
+	transition: opacity 0.4s ease;
+	will-change: transform;
+}
+
+.cursor-light.on {
+	opacity: 1;
+}
+
+@media print {
+	.hud-readout,
+	.cursor-light {
+		display: none;
+	}
+}
