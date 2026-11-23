@@ -1,6 +1,7 @@
 /* Experiment: light means signal. Things glow only where order has come out of the noise: the
  * converging lines and the target, the decision line, what is active, what has just resolved.
- * Violet and orange only (no cyan, no magenta). Everything that moves is off under reduced motion. */
+ * Violet and orange only (no cyan, no magenta). Everything that moves is off under reduced motion.
+ * Intensities: the owner approved the first set at 80% of its starting strength. */
 
 /* 1. A nebula around the target: deep violet light behind the rings. */
 .field .field-nebula {
@@ -16,14 +17,14 @@
 	fill: url(#field-nebula-narrow);
 }
 
-.field .nebula-core { stop-color: #C89AF5; stop-opacity: 0.3; }
-.field .nebula-mid { stop-color: #8A4FD0; stop-opacity: 0.12; }
+.field .nebula-core { stop-color: #C89AF5; stop-opacity: 0.24; }
+.field .nebula-mid { stop-color: #8A4FD0; stop-opacity: 0.096; }
 .field .nebula-edge { stop-color: #150826; stop-opacity: 0; }
 
 /* 2. Signal: the incoming lines are dim in the noise and brighten as they land; the target and
  *    the outputs carry a faint halo. Halos sit on the still parts only (cheap to paint). */
 .field .signal-dim { stop-color: #7E51BC; }
-.field .signal-lit { stop-color: #EAD6FF; }
+.field .signal-lit { stop-color: #D4BBF2; }
 
 .field-wide .field-in path {
 	stroke: url(#field-signal-wide);
@@ -34,11 +35,11 @@
 }
 
 .field .field-rings circle {
-	filter: drop-shadow(0 0 3px rgba(200, 154, 245, 0.6));
+	filter: drop-shadow(0 0 3px rgba(200, 154, 245, 0.48));
 }
 
 .field .field-out path {
-	filter: drop-shadow(0 0 2px rgba(200, 154, 245, 0.45));
+	filter: drop-shadow(0 0 2px rgba(200, 154, 245, 0.36));
 }
 
 /* 3. Panels light up when you point at them or move focus into them; dark at rest. */
@@ -52,7 +53,7 @@
 .resume-items:focus-within,
 .spec-table.content-box:focus-within {
 	border-color: var(--line);
-	box-shadow: 0 0 0 1px rgba(181, 107, 232, 0.25), 0 0 22px rgba(181, 107, 232, 0.22), inset 0 0 28px rgba(181, 107, 232, 0.06);
+	box-shadow: 0 0 0 1px rgba(181, 107, 232, 0.2), 0 0 22px rgba(181, 107, 232, 0.176), inset 0 0 28px rgba(181, 107, 232, 0.048);
 }
 
 @media (hover: hover) {
@@ -60,7 +61,7 @@
 	.resume-items:hover,
 	.spec-table.content-box:hover {
 		border-color: var(--line);
-		box-shadow: 0 0 0 1px rgba(181, 107, 232, 0.25), 0 0 22px rgba(181, 107, 232, 0.22), inset 0 0 28px rgba(181, 107, 232, 0.06);
+		box-shadow: 0 0 0 1px rgba(181, 107, 232, 0.2), 0 0 22px rgba(181, 107, 232, 0.176), inset 0 0 28px rgba(181, 107, 232, 0.048);
 	}
 }
 
@@ -72,7 +73,7 @@
 }
 
 @keyframes signal-lock {
-	0% { text-shadow: 0 0 14px rgba(200, 154, 245, 0.9), 0 0 2px rgba(241, 233, 251, 0.8); }
+	0% { text-shadow: 0 0 14px rgba(200, 154, 245, 0.72), 0 0 2px rgba(241, 233, 251, 0.64); }
 	100% { text-shadow: 0 0 0 rgba(200, 154, 245, 0); }
 }
 
@@ -85,8 +86,8 @@ html::after {
 	z-index: 2147482000;
 	pointer-events: none;
 	background:
-		radial-gradient(ellipse 85% 75% at 50% 45%, transparent 55%, rgba(6, 2, 14, 0.5) 100%),
-		repeating-linear-gradient(0deg, rgba(6, 2, 14, 0.14) 0 1px, transparent 1px 3px);
+		radial-gradient(ellipse 85% 75% at 50% 45%, transparent 55%, rgba(6, 2, 14, 0.4) 100%),
+		repeating-linear-gradient(0deg, rgba(6, 2, 14, 0.112) 0 1px, transparent 1px 3px);
 }
 
 @media print {
@@ -105,7 +106,7 @@ html::after {
 	stroke-dasharray: 6 100;
 	stroke-dashoffset: 6;
 	opacity: 0;
-	filter: drop-shadow(0 0 6px rgba(255, 106, 42, 0.95));
+	filter: drop-shadow(0 0 6px rgba(255, 106, 42, 0.76));
 }
 
 @media (prefers-reduced-motion: no-preference) {
