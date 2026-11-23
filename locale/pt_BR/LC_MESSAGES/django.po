@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-23 16:32+0000\n"
+"POT-Creation-Date: 2026-11-23 17:25+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -414,9 +414,6 @@ msgstr "O engenheiro é o inibidor."
 msgid "AI moves the bottleneck of engineering from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds, improves and maintains it."
 msgstr "A IA desloca o gargalo da engenharia da execução para o julgamento. A engenharia deixa de construir o produto diretamente e passa a construir a máquina que o constrói, melhora e mantém."
 
-msgid "Contacts"
-msgstr "Contatos"
-
 msgid "Home"
 msgstr "Início"
 
@@ -585,9 +582,6 @@ msgstr "Seções"
 msgid "Resume"
 msgstr "Currículo"
 
-msgid "Contact"
-msgstr "Contato"
-
 msgid "Pages"
 msgstr "Páginas"
 
@@ -647,3 +641,7 @@ msgstr "A máquina"
 
 msgid "Products and Services"
 msgstr "Produtos e serviços"
+
+msgid "Contact"
+msgstr "Contato"
+

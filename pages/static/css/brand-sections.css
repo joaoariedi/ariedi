@@ -435,39 +435,6 @@
 	}
 }
 
-/* ============ Title block: contacts and footer signature ============ */
-.title-block.signature {
-	max-width: 480px;
-	margin: 0;
-	font: 400 12px/16px var(--font-mono);
-	letter-spacing: 0.02em;
-	text-transform: uppercase;
-	color: var(--label);
-}
-
-.signature .tb-row {
-	padding: 10px 12px;
-	border-top: 1px solid var(--line);
-}
-
-.signature .tb-row:first-child {
-	border-top: 0;
-	font-weight: 500;
-	color: var(--text);
-}
-
-.signature .tb-links a {
-	text-decoration: none;
-}
-
-.signature .tb-links a:hover {
-	text-decoration: underline;
-}
-
-.signature .tb-links .email {
-	text-transform: none;
-}
-
 /* The theme pins the footer to the viewport; on the sheet it is in flow, so it can never
    cover content or the switcher. Its layout is in brand-footer.css. */
 .footer.brand-footer,

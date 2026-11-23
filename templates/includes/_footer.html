@@ -2,13 +2,14 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% url 'home' as home_url %}
 {% comment %}
-The sheet's footer, on every page: the title block (signature, sections, pages, elsewhere) and
-the sheet strip (copyright, languages, back to top). Section links are bare anchors on the home
-page and carry the home URL elsewhere, as in the navbar.
+The sheet's footer, on every page, and the site's contact point (the menu's Contact scrolls
+here): the title block (signature, sections, pages, elsewhere) and the sheet strip (copyright,
+languages, back to top). Section links are bare anchors on the home page and carry the home URL
+elsewhere, as in the navbar.
 {% endcomment %}
 {% with page=request.resolver_match.url_name %}
 {% if page == 'home' %}{% firstof '' as sections %}{% else %}{% firstof home_url as sections %}{% endif %}
-<div class="footer brand-footer sheet-footer">
+<div class="footer brand-footer sheet-footer" id="section-contacts">
     <div class="sheet-grid">
 
         <div class="sheet-cell sheet-sign">
@@ -29,7 +30,6 @@ page and carry the home URL elsewhere, as in the navbar.
                 <li><a href="{{ sections }}#section-research">{% trans "Research" %}</a></li>
                 <li><a href="{{ sections }}#section-work">{% trans "Work" %}</a></li>
                 <li><a href="{{ sections }}#section-skills">{% trans "Skills" %}</a></li>
-                <li><a href="{{ sections }}#section-contacts">{% trans "Contact" %}</a></li>
             </ul>
         </nav>
 

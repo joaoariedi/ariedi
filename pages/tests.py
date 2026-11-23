@@ -126,8 +126,11 @@ class PublicPagesSmokeTest(TestCase):
         for prefix in ("", "/pt-br"):
             for path in ("/presentations", "/research"):
                 body = self.client.get(prefix + path).content.decode()
-                for section in ("services", "history", "research", "work", "skills", "contacts"):
+                for section in ("services", "history", "research", "work", "skills"):
                     self.assertIn(f'href="{prefix}/#section-{section}"', body, prefix + path)
+                # Contact is the footer, on the page you are on
+                self.assertIn('<a href="#section-contacts">', body, prefix + path)
+                self.assertIn('id="section-contacts"', body, prefix + path)
                 self.assertIn(f'href="{prefix}/presentations"', body, prefix + path)
             here = self.client.get(prefix + "/presentations").content.decode()
             self.assertIn(f'href="{prefix}/presentations" aria-current="page"', here, prefix)
