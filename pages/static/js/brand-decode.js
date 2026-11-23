@@ -42,11 +42,14 @@
 		el.classList.remove('signal-lock');
 		void el.offsetWidth;   // restart the animation if the same element locks again
 		el.classList.add('signal-lock');
-		el.addEventListener('animationend', function done(e) {
+		function done(e) {
 			if (e.animationName !== 'signal-lock') return;
 			el.classList.remove('signal-lock');
 			el.removeEventListener('animationend', done);
-		});
+			el.removeEventListener('animationcancel', done);
+		}
+		el.addEventListener('animationend', done);
+		el.addEventListener('animationcancel', done);   // reduced motion switched on mid-glow
 	}
 
 	// Decodes el into text: a transparent copy of the final text holds the box, the overlay shows

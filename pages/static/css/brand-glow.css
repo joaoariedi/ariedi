@@ -68,7 +68,7 @@
 /* 4. A title lights up as its decode locks into the word (brand-decode.js adds .signal-lock). */
 @media (prefers-reduced-motion: no-preference) {
 	.signal-lock {
-		animation: signal-lock 1400ms ease-out both;
+		animation: signal-lock 700ms ease-out both;   /* short: a text-shadow repaints every frame */
 	}
 }
 
@@ -77,13 +77,14 @@
 	100% { text-shadow: 0 0 0 rgba(200, 154, 245, 0); }
 }
 
-/* 5. Atmosphere: fine scanlines and a vignette over the whole sheet, like a screen in the dark.
- *    Still (nothing moves), above the content but never catching the pointer. */
-html::after {
+/* 5. Atmosphere: fine scanlines and a vignette on the sheet, like a screen in the dark. Behind
+ *    the content (on the drafting plane, which motion-ok brings in), never over text: darkening
+ *    behind a word only raises its contrast. */
+html.motion-ok body::before {
 	content: "";
 	position: fixed;
 	inset: 0;
-	z-index: 2147482000;
+	z-index: -1;
 	pointer-events: none;
 	background:
 		radial-gradient(ellipse 85% 75% at 50% 45%, transparent 55%, rgba(6, 2, 14, 0.4) 100%),
@@ -91,13 +92,14 @@ html::after {
 }
 
 @media print {
-	html::after {
+	html.motion-ok body::before {
 		display: none;
 	}
 }
 
 /* 8. An energy pulse runs down the decision line every few seconds and the core flashes as it
- *    lands. Paused while the hero is off screen (brand-motion.js sets .field-paused). */
+ *    lands. Only while the field's motion runs (motion-ok: not with Save-Data or without JS), and
+ *    paused while the hero is off screen (brand-motion.js sets .field-paused). */
 .field .decision-pulse {
 	stroke: #FFD9C7;
 	stroke-width: 3px;
@@ -110,11 +112,11 @@ html::after {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-	.field .decision-pulse {
+	html.motion-ok .field .decision-pulse {
 		animation: decision-pulse 6.5s cubic-bezier(0.55, 0, 0.9, 0.6) 2.6s infinite;
 	}
 
-	.field .field-rings .core {
+	html.motion-ok .field .field-rings .core {
 		animation: core-flash 6.5s linear 2.6s infinite;
 	}
 
