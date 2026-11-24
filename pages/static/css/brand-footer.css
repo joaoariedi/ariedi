@@ -130,6 +130,7 @@
 	padding: 8px 22px;
 	border: 1px solid var(--construction);
 	border-top: 0;
+	background-color: var(--panel);   /* the planes and the cursor light never sit under its small text */
 	font: 500 11px/16px var(--font-mono);
 	letter-spacing: 0.08em;
 	text-transform: uppercase;

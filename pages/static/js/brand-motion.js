@@ -9,7 +9,7 @@
  *   long before the rings. It ramps in over the first second, so frame zero stays the static
  *   drawing, and when the orange decision line lands (its CSS entrance, ~1.2 s) the field's
  *   noise and turbulence drop a notch: the decision is what filters noise into signal.
- * - The page grid becomes a fixed plane that slides at 85 % of the scroll, behind the content.
+ * - The page grid becomes a fixed plane that slides at 75 % of the scroll, behind the content.
  *   It is a real element whose transform is set directly: a custom property on <html> would
  *   restyle the whole document on every scroll frame (measured: 47 % main-thread on a slow phone).
  *
