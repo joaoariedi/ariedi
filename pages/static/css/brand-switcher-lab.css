@@ -58,7 +58,60 @@ html[data-switcher="tuner"] .need-count {
 	}
 }
 
-/* ---- 3. Branches: the answers branch off the orange decision line, beside the headline ---- */
+/* ---- 3. Branches: the answers branch off an orange line. From 1200 px that line is the
+ * drawing's decision line, beside the headline; below, the list carries its own short line. ---- */
+html[data-switcher="branches"] .hero-sheet .need {
+	display: block;
+}
+
+html[data-switcher="branches"] .hero-sheet .need::before {
+	content: "";
+	position: absolute;
+	left: var(--side);
+	top: 0;
+	bottom: 0;
+	width: 2px;
+	background: var(--accent);
+	box-shadow: 0 0 6px rgba(255, 106, 42, 0.55);
+}
+
+html[data-switcher="branches"] .hero-sheet .need-q {
+	display: block;
+	margin: 0 0 4px;
+	padding-left: 22px;
+}
+
+html[data-switcher="branches"] .hero-sheet .need-a {
+	position: relative;
+	display: block;
+	padding: 14px 0 14px 22px;   /* 44 px rows for touch */
+	border: 0;
+	background: none;
+	box-shadow: none;
+}
+
+/* the branch: a tick from the line to the answer */
+html[data-switcher="branches"] .hero-sheet .need-a::before {
+	content: "";
+	position: absolute;
+	left: 2px;
+	top: 50%;
+	width: 14px;
+	height: 1px;
+	background: var(--construction);
+	transition: background-color 0.2s ease;
+}
+
+html[data-switcher="branches"] .hero-sheet .need-a:hover::before,
+html[data-switcher="branches"] .hero-sheet .need-a:focus-visible::before {
+	background: var(--line);
+}
+
+html[data-switcher="branches"] .hero-sheet .need-a[aria-current="page"]::before {
+	background: var(--accent);
+	box-shadow: 0 0 6px rgba(255, 106, 42, 0.7);
+}
+
 @media (min-width: 1200px) {
 	html[data-switcher="branches"] .hero-sheet .need {
 		position: absolute;
@@ -66,52 +119,37 @@ html[data-switcher="tuner"] .need-count {
 		top: 30px;
 		left: 79cqw;                 /* the decision line: the ring sits at 79% of the sheet */
 		right: 36px;
-		display: block;
 		margin: 0;
 		padding: 0;
 	}
 
-	html[data-switcher="branches"] .need-q {
-		display: block;
-		margin: 0 0 4px;
+	html[data-switcher="branches"] .hero-sheet .need::before {
+		display: none;               /* the drawing's own line is the trunk here */
+	}
+
+	html[data-switcher="branches"] .hero-sheet .need-q {
 		padding-left: 20px;
 	}
 
-	html[data-switcher="branches"] .need-a {
-		position: relative;
-		display: block;
+	html[data-switcher="branches"] .hero-sheet .need-a {
 		padding: 5px 0 5px 20px;
-		border: 0;
-		background: none;
 		line-height: 14px;
-		box-shadow: none;
 	}
 
-	/* the branch: a tick from the decision line to the answer */
-	html[data-switcher="branches"] .need-a::before {
-		content: "";
-		position: absolute;
+	html[data-switcher="branches"] .hero-sheet .need-a::before {
 		left: 1px;
 		top: 12px;
 		width: 13px;
-		height: 1px;
-		background: var(--construction);
-		transition: background-color 0.2s ease, width 0.2s ease;
-	}
-
-	html[data-switcher="branches"] .need-a:hover::before,
-	html[data-switcher="branches"] .need-a:focus-visible::before {
-		background: var(--line);
-	}
-
-	html[data-switcher="branches"] .need-a[aria-current="page"]::before {
-		background: var(--accent);
-		box-shadow: 0 0 6px rgba(255, 106, 42, 0.7);
 	}
 }
 
-/* ---- 4. Dock: the answers stay within reach at the bottom once the hero has scrolled away ---- */
-html[data-switcher="dock"].dock-on .need-dock {
+/* ---- 4. Dock: the answers live in a bar fixed at the bottom, always within reach; it replaces
+ * the row in the hero. ---- */
+html[data-switcher="dock"] .hero-sheet .need {
+	display: none;
+}
+
+html[data-switcher="dock"] .need-dock {
 	display: flex;
 	position: fixed;
 	left: 0;
@@ -140,7 +178,7 @@ html[data-switcher="dock"].dock-on .need-dock {
 	padding: 9px 12px;
 }
 
-html[data-switcher="dock"].dock-on .hud-readout {
+html[data-switcher="dock"] .hud-readout {
 	bottom: 68px;
 }
 
@@ -183,7 +221,7 @@ html[data-switcher="dock"] .sheet-footer {
 	color: var(--text);
 }
 
-html[data-switcher="dock"].dock-on .lab-bar {
+html[data-switcher="dock"] .lab-bar {
 	bottom: 68px;
 }
 

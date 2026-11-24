@@ -94,13 +94,6 @@
 		Array.prototype.forEach.call(dock.querySelectorAll('.need-step, .need-count'), function (el) { el.remove(); });
 		Array.prototype.forEach.call(dock.querySelectorAll('.is-shown'), function (el) { el.classList.remove('is-shown'); });
 	}
-	var hero = document.getElementById('section-started');
-	if (hero && 'IntersectionObserver' in window) {
-		new IntersectionObserver(function (entries) {
-			root.classList.toggle('dock-on', !entries[0].isIntersecting);
-		}).observe(hero);
-	}
-
 	// ---- the lab bar ----
 	var bar = document.createElement('div');
 	bar.className = 'lab-bar';
