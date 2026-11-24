@@ -189,13 +189,14 @@
 	border-color: var(--line);
 }
 
-.fig-head {
+/* A card's head: its drafting icon (services) or its tag (the languages of a presentation), at the right. */
+.card-head {
 	display: flex;
 	align-items: flex-start;
-	justify-content: space-between;
+	justify-content: flex-end;
 }
 
-.fig {
+.card-tag {
 	font: 500 12px/16px var(--font-mono);
 	letter-spacing: 0.06em;
 	color: var(--label);
@@ -215,6 +216,11 @@
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
 	color: var(--text);
+}
+
+/* a card with no head (the work cards) starts at its name */
+.service-items .service-item .name:first-child {
+	margin-top: 0;
 }
 
 .service-items .service-item .text {

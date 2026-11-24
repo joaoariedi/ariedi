@@ -1,6 +1,6 @@
 /* Brand decode: words resolve from noise into signal.
  *
- * - Section titles and FIG labels arrive as a brief scramble of glyphs that locks, left to right,
+ * - Section titles and card tags arrive as a brief scramble of glyphs that locks, left to right,
  *   into the real word the first time they enter the view (about 0.4 s, once per element).
  * - The drawing's labels glitch in once, the first time the hero is seen, one after another in
  *   the order of the flow: the stakeholders' vision on the noise, the divergent intelligence as
@@ -102,7 +102,7 @@
 		running.slice().forEach(function (finish) { finish(); });
 	});
 
-	// 1. Titles and FIG labels, once each, as they come into view.
+	// 1. Titles and card tags, once each, as they come into view.
 	var arrivals = new IntersectionObserver(function (entries) {
 		entries.forEach(function (e) {
 			if (!e.isIntersecting) return;
@@ -110,7 +110,7 @@
 			decode(e.target, e.target.textContent.trim());
 		});
 	}, { rootMargin: '0px 0px -8% 0px' });
-	Array.prototype.forEach.call(document.querySelectorAll('.section .title .title_inner, .fig'), function (el) {
+	Array.prototype.forEach.call(document.querySelectorAll('.section .title .title_inner, .card-tag'), function (el) {
 		arrivals.observe(el);
 	});
 
