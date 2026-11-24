@@ -90,3 +90,18 @@
 	54% { opacity: 0.9; transform: translateX(1px); clip-path: none; animation-timing-function: steps(1, end); }
 	72%, 100% { opacity: 1; transform: none; clip-path: none; }
 }
+
+/* A version's experience (pages/experience.py): each job's roles, each role's bullets. */
+.resume-items .resume-item .text .role {
+	margin: 0 0 6px;
+}
+
+.resume-items .resume-item .text .role-list + .role {
+	margin-top: 16px;
+}
+
+/* the entry of a section this version does not have */
+.header .top-menu ul li[hidden],
+.sheet-cell li[hidden] {
+	display: none !important;   /* the theme sets the menu items' display with more weight */
+}

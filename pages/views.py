@@ -50,7 +50,6 @@ class Home(TemplateView):
         context['profiles'] = PROFILES.values()
         context['profile'] = profile
         context['featured'] = profile['featured'] if profile else 'hefesto'
-        context['education_first'] = bool(profile and profile.get('education_first'))
         context['section_templates'] = section_templates(profile['order']) if profile else section_templates()
         return context
 

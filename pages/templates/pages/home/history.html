@@ -2,12 +2,11 @@
         <!-- Section Resume -->
         <div class="section resume" id="section-history">
             <div class="content">
-                {% if education_first %}
-                {% include 'pages/home/_history_education.html' %}
-                {% include 'pages/home/_history_experience.html' %}
+                {% if profile %}
+                {% include 'pages/home/_history_experience_version.html' %}
                 {% else %}
                 {% include 'pages/home/_history_experience.html' %}
-                {% include 'pages/home/_history_education.html' %}
                 {% endif %}
+                {% include 'pages/home/_history_education.html' %}
             </div>
         </div>

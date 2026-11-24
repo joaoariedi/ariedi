@@ -3,14 +3,15 @@
  * Every answer in the hero is a real link (/engineering, /security, ...), so the page works
  * without this script. With it, a version is fetched only when the visitor asks for it (on
  * hover or focus, to have it ready, or on click), never with the default page: the sections that
- * change with the answer are swapped, all sections take the version's order, and the address,
+ * change with the answer are swapped, sections are added, dropped and ordered as the version has
+ * them, the menu entry of a dropped section hides, and the address,
  * the language links and the canonical follow. The hero stays as it is, so its drawing keeps
  * running. Any failure falls back to following the link.
  */
 (function () {
 	'use strict';
 
-	var VARY = ['section-about', 'section-services', 'section-history', 'section-work'];
+	var VARY = ['section-about', 'section-skills', 'section-history', 'section-work'];
 	var wrapper = document.querySelector('.wrapper[data-profile]');
 	if (!wrapper || !window.fetch || !window.DOMParser || !window.history.pushState) return;
 
@@ -43,16 +44,25 @@
 	function show(doc) {
 		var next = doc.querySelector('.wrapper[data-profile]');
 		if (!next) return false;
+		var kept = {};
 		Array.prototype.forEach.call(next.children, function (incoming) {
-			var current = incoming.id && document.getElementById(incoming.id);
-			if (!current) return;
-			if (VARY.indexOf(incoming.id) !== -1) {
+			if (!incoming.id) return;
+			var current = document.getElementById(incoming.id);
+			if (!current || VARY.indexOf(incoming.id) !== -1) {
 				var arrived = document.importNode(incoming, true);
 				arrived.classList.add('version-arrive');
-				current.parentNode.replaceChild(arrived, current);
+				if (current) current.parentNode.replaceChild(arrived, current);
 				current = arrived;
 			}
 			wrapper.appendChild(current);   // the version's order
+			kept[incoming.id] = true;
+		});
+		// a section this version does not have (the Services cards belong to the blend)
+		Array.prototype.slice.call(wrapper.children).forEach(function (section) {
+			if (section.id && !kept[section.id]) wrapper.removeChild(section);
+		});
+		Array.prototype.forEach.call(document.querySelectorAll('[data-section]'), function (item) {
+			item.hidden = !kept[item.getAttribute('data-section')];
 		});
 		wrapper.setAttribute('data-profile', next.getAttribute('data-profile'));
 		copyInner('.need', doc);
@@ -76,7 +86,7 @@
 		return target && target.closest ? target.closest('a.need-a') : null;
 	}
 
-	wrapper.addEventListener('click', function (e) {
+	document.addEventListener('click', function (e) {
 		var link = answer(e.target);
 		if (!link || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 		e.preventDefault();
@@ -90,8 +100,8 @@
 		var link = answer(e.target);
 		if (link && link.getAttribute('aria-current') !== 'page') load(link.getAttribute('href')).catch(function () {});
 	}
-	wrapper.addEventListener('pointerover', warm, { passive: true });
-	wrapper.addEventListener('focusin', warm);
+	document.addEventListener('pointerover', warm, { passive: true });
+	document.addEventListener('focusin', warm);
 
 	window.addEventListener('popstate', function () {
 		go(window.location.pathname, false);

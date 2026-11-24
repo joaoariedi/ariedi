@@ -25,7 +25,7 @@ elsewhere, as in the navbar.
         <nav class="sheet-cell" aria-label="{% trans 'Sections' %}">
             <div class="sheet-label">{% trans "Sections" %}</div>
             <ul>
-                <li><a href="{{ sections }}#section-services">{% trans "Services" %}</a></li>
+                <li data-section="section-services"{% if profile %} hidden{% endif %}><a href="{{ sections }}#section-services">{% trans "Services" %}</a></li>
                 <li><a href="{{ sections }}#section-history">{% trans "Resume" %}</a></li>
                 <li><a href="{{ sections }}#section-research">{% trans "Research" %}</a></li>
                 <li><a href="{{ sections }}#section-work">{% trans "Work" %}</a></li>
