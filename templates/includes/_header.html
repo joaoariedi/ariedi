@@ -27,7 +27,10 @@
 	<meta property="og:url" content="https://ariedi.com{{ request.path }}" />
 	<meta property="og:title" content="{% trans 'João Ariedi - Engineering Leader | AI Agent Harnesses | Research' %}" />
 	<meta property="og:description" content="{% trans 'Engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work. 16 years in technology, 9+ leading engineering teams.' %}" />
-	<meta property="og:image" content="{% static 'images/profile.jpeg' %}" />
+	{% comment %}The share card in the page's language (tools/gen_share_image.py renders both); absolute, as the crawlers need.{% endcomment %}
+	{% if LANGUAGE_CODE == 'pt-br' %}{% static 'images/brand/share-pt-br.png' as share_image %}{% else %}{% static 'images/brand/share-en.png' as share_image %}{% endif %}
+	<meta property="og:image" content="https://ariedi.com{{ share_image }}" />
+	<meta property="og:image:type" content="image/png" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta property="og:locale" content="{% if LANGUAGE_CODE == 'pt-br' %}pt_BR{% else %}en_US{% endif %}" />
@@ -38,10 +41,11 @@
 	<meta name="twitter:url" content="https://ariedi.com{{ request.path }}" />
 	<meta name="twitter:title" content="{% trans 'João Ariedi - Engineering Leader | AI Agent Harnesses | Research' %}" />
 	<meta name="twitter:description" content="{% trans 'Engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work. 16 years in technology, 9+ leading engineering teams.' %}" />
-	<meta name="twitter:image" content="{% static 'images/profile.jpeg' %}" />
+	<meta name="twitter:image" content="https://ariedi.com{{ share_image }}" />
 
 	<!-- LinkedIn specific -->
-	<meta property="og:image:alt" content="{% trans 'João Ariedi - Engineering Leader' %}" />
+	<meta property="og:image:alt" content="{% trans 'João Ariedi: I build the machine that turns vision into revenue' %}" />
+	<meta name="twitter:image:alt" content="{% trans 'João Ariedi: I build the machine that turns vision into revenue' %}" />
 	<meta name="linkedin:owner" content="joaoariedi" />
 
 	<!-- Structured Data - Person Schema -->

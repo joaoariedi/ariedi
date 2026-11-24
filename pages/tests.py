@@ -150,6 +150,20 @@ class PublicPagesSmokeTest(TestCase):
             for font in ("family=Sora", '"Sora"', "family=Manrope", '"Manrope"'):
                 self.assertNotIn(font, body, f"{font} left in {slug}")
 
+    def test_share_card_in_the_page_language(self):
+        """Open Graph and Twitter point, with absolute URLs, at a 1200x630 card in the page's language."""
+        from pathlib import Path
+        from django.conf import settings
+        from PIL import Image
+        for prefix, code in (("", "en"), ("/pt-br", "pt-br")):
+            head = self.client.get(prefix + "/").content.decode().split("</head>")[0]
+            url = f"https://ariedi.com/static/images/brand/share-{code}.png"
+            self.assertIn(f'<meta property="og:image" content="{url}" />', head, prefix)
+            self.assertIn(f'<meta name="twitter:image" content="{url}" />', head, prefix)
+            card = Path(settings.BASE_DIR) / "pages" / "static" / "images" / "brand" / f"share-{code}.png"
+            with Image.open(card) as im:
+                self.assertEqual(im.size, (1200, 630), code)
+
     def test_deck_urls_name_only_known_decks(self):
         for path in ("/presentations/unknown-deck", "/presentations/modern-engineering",
                      "/presentations/..%2Fviews.py", "/presentations/organizational-intelligence.html"):

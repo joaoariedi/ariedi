@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 10:15+0000\n"
+"POT-Creation-Date: 2026-11-24 10:20+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -609,14 +609,17 @@ msgstr "João Ariedi - Líder de Engenharia | Harnesses para Agentes de IA | Pes
 msgid "Engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work. 16 years in technology, 9+ leading engineering teams."
 msgstr "Líder de engenharia, construtor de harnesses para agentes de IA, pesquisador sobre IA e as competências do trabalho técnico. 16 anos em tecnologia, 9+ liderando equipes de engenharia."
 
-msgid "João Ariedi - Engineering Leader"
-msgstr "João Ariedi - Líder de Engenharia"
+msgid "João Ariedi: I build the machine that turns vision into revenue"
+msgstr "João Ariedi: construo a máquina que transforma visão em receita"
 
 msgid "Engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work. 16 years in technology, 9+ leading engineering teams, the last decade spanning organizational intelligence and cyber defense."
 msgstr "Líder de engenharia, construtor de harnesses para agentes de IA, pesquisador sobre IA e as competências do trabalho técnico. 16 anos em tecnologia, 9+ liderando equipes de engenharia, a última década entre inteligência organizacional e defesa cibernética."
 
 msgid "Production Engineering and Physics teaching degree, coursework; PPGMIT master, pre-admission"
 msgstr "Engenharia de Produção e Licenciatura em Física, disciplinas cursadas; mestrado no PPGMIT, em pré-admissão"
+
+msgid "João Ariedi - Engineering Leader"
+msgstr "João Ariedi - Líder de Engenharia"
 
 msgid "Personal website and portfolio of João Ariedi: engineering leader, builder of AI agent harnesses, researcher on AI and the competences of technical work"
 msgstr "Site pessoal e portfólio de João Ariedi: líder de engenharia, construtor de harnesses para agentes de IA, pesquisador sobre IA e as competências do trabalho técnico"
@@ -644,4 +647,3 @@ msgstr "Produtos e serviços"
 
 msgid "Contact"
 msgstr "Contato"
-
