@@ -208,6 +208,7 @@ class PublicPagesSmokeTest(TestCase):
                 self.assertIn(f'href="{prefix}/{slug}" aria-current="page"', body)
                 # the blend is the canonical; the language switch stays on the version
                 self.assertIn(f'<link rel="canonical" href="https://ariedi.com{prefix}/" />', body, slug)
+                self.assertIn('<link rel="alternate" hreflang="pt-BR" href="https://ariedi.com/pt-br/" />', body, slug)
                 self.assertIn(f'href="/pt-br/{slug}" hreflang="pt-BR"', body, slug)
             english = self.client.get(f"/{slug}").content.decode()
             for own in words[2:]:

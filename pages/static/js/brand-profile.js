@@ -223,12 +223,17 @@
 		return true;
 	}
 
+	// The last answer asked for wins: a slower, earlier request that lands afterwards is dropped.
+	var turn = 0, shown = window.location.pathname;
 	function go(url, push) {
+		var mine = ++turn;
 		return load(url).then(function (doc) {
+			if (mine !== turn) return;
 			if (!show(doc)) throw new Error('not a home page: ' + url);
+			shown = url;
 			if (push) window.history.pushState({ version: true }, '', url);
 		}).catch(function () {
-			window.location.href = url;
+			if (mine === turn) window.location.href = url;
 		});
 	}
 
@@ -255,6 +260,7 @@
 	dock.addEventListener('focusin', warm);
 
 	window.addEventListener('popstate', function () {
-		go(window.location.pathname, false);
+		// a fragment link (a menu section, "Back to top") also fires popstate: same page, nothing to do
+		if (window.location.pathname !== shown) go(window.location.pathname, false);
 	});
 })();
