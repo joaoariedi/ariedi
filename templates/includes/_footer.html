@@ -7,7 +7,7 @@ here): the title block (signature, sections, pages, elsewhere) and the sheet str
 languages, back to top). Section links are bare anchors on the home page and carry the home URL
 elsewhere, as in the navbar.
 {% endcomment %}
-{% with page=request.resolver_match.url_name %}
+{% if request.resolver_match.url_name == 'profile' %}{% firstof 'home' as page %}{% else %}{% firstof request.resolver_match.url_name as page %}{% endif %}
 {% if page == 'home' %}{% firstof '' as sections %}{% else %}{% firstof home_url as sections %}{% endif %}
 <div class="footer brand-footer sheet-footer" id="section-contacts">
     <div class="sheet-grid">
@@ -64,7 +64,6 @@ elsewhere, as in the navbar.
         <a class="sheet-top" href="#">{% trans "Back to top" %} <span aria-hidden="true">↑</span></a>
     </div>
 </div>
-{% endwith %}
 
 {% include 'includes/_scripts.html' %}
 {% block extrascripts %}{% endblock extrascripts %}

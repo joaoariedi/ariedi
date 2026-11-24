@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 10:20+0000\n"
+"POT-Creation-Date: 2026-11-24 22:58+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -15,75 +15,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-msgid "I build the machine that turns vision into revenue"
-msgstr "Construo a máquina que transforma visão em receita"
-
-msgid "Business opportunities in"
-msgstr "Oportunidades de negócio entram"
-
-msgid "products and services out"
-msgstr "produtos e serviços saem"
-
-msgid "About"
-msgstr "Sobre"
-
-msgid "João Ariedi - Engineering leader, builder of AI agent harnesses, researcher"
-msgstr "João Ariedi - Líder de engenharia, construtor de harnesses para agentes de IA, pesquisador"
-
-msgid "I lead engineering where scale, security and AI meet: turning business intent into systems that hold under load, and building the teams behind them."
-msgstr "Lidero engenharia onde escala, segurança e IA se encontram: transformo a intenção do negócio em sistemas que aguentam carga e construo as equipes por trás deles."
-
-msgid "16 years in technology, 9+ leading engineering teams, the last decade spanning organizational intelligence and cyber defense. Today I lead engineering for a US cybersecurity company, advise technology companies as a partner and fractional CTO, and teach in MBA programs."
-msgstr "16 anos em tecnologia, 9+ liderando equipes de engenharia, a última década entre inteligência organizacional e defesa cibernética. Hoje lidero a engenharia de uma empresa norte-americana de cibersegurança, assessoro empresas de tecnologia como sócio e CTO fracionado e dou aulas em programas de MBA."
-
-msgid "How I see the shift: AI moves the bottleneck from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds it: the harness and orchestration that develop, improve and maintain the product 24/7. As in Turing's morphogenesis, AI is the activator and the engineer the inhibitor; the value lives in the tension."
-msgstr "Como vejo a mudança: a IA desloca o gargalo da execução para o julgamento. A engenharia deixa de construir o produto diretamente e passa a construir a máquina que o constrói: o harness e a orquestração que desenvolvem, melhoram e mantêm o produto 24/7. Como na morfogênese de Turing, a IA é o ativador e o engenheiro, o inibidor; o valor vive na tensão."
-
-msgid "Technologist in Cyber Defense (FIAP) with five professional qualifications. Security by design: mTLS, certificate-based device authentication, post-quantum readiness."
-msgstr "Tecnólogo em Defesa Cibernética (FIAP) com cinco qualificações profissionais. Segurança por design: mTLS, autenticação de dispositivos por certificado, prontidão pós-quântica."
-
-msgid "<strong>Experience:</strong> 16 years in technology, 9+ leading engineering teams"
-msgstr "<strong>Experiência:</strong> 16 anos em tecnologia, 9+ liderando equipes de engenharia"
-
-msgid "E-mail:"
-msgstr "E-mail:"
-
-msgid "<strong>Location:</strong> Remote from Brazil · PT/EN"
-msgstr "<strong>Localização:</strong> Remoto, a partir do Brasil · PT/EN"
-
-msgid "Services"
-msgstr "Serviços"
-
-msgid "Engineering leadership"
-msgstr "Liderança de engenharia"
-
-#, python-format
-msgid "Teams at scale, 90%%+ retention, engineers grown into leaders on a test-first culture. Security by design in every architectural decision."
-msgstr "Equipes em escala, retenção acima de 90%%, engenheiros formados em líderes numa cultura test-first. Segurança por design em cada decisão de arquitetura."
-
-msgid "Advisory and board work"
-msgstr "Conselho e assessoria"
-
-msgid "Partner and advisor to Brazilian technology companies on strategy, architecture governance and AI adoption. Co-founder and former COO of an edtech."
-msgstr "Sócio e conselheiro de empresas brasileiras de tecnologia em estratégia, governança de arquitetura e adoção de IA. Cofundador e ex-COO de uma edtech."
-
-msgid "Consulting and fractional CTO"
-msgstr "Consultoria e CTO fracionado"
-
-msgid "Architecture governance, engineering org design, AI harnesses for legacy modernization, productivity metrics, infrastructure cost efficiency."
-msgstr "Governança de arquitetura, desenho de organizações de engenharia, harnesses de IA para modernização de legados, métricas de produtividade, eficiência de custos de infraestrutura."
-
-msgid "Teaching and research"
-msgstr "Ensino e pesquisa"
-
-msgid "MBA guest professor. Research on AI agents and engineering competence; paper accepted at MEISTUDIES 2026."
-msgstr "Professor convidado em MBA. Pesquisa sobre agentes de IA e competência em engenharia; artigo aceito no MEISTUDIES 2026."
-
-msgid "Leadership, advisory and teaching"
-msgstr "Liderança, conselho e ensino"
-
 msgid "Present"
 msgstr "atual"
+
+msgid "Lead the engineering team behind the next-generation endpoint management platform, a distributed system designed to securely manage 1M+ devices per enterprise customer."
+msgstr "Lidero o time de engenharia por trás da plataforma de gestão de endpoints de nova geração, um sistema distribuído projetado para gerenciar com segurança 1M+ dispositivos por cliente corporativo."
+
+msgid "Led the ground-up redesign of the endpoint agent platform, replacing a legacy monolith with event-driven microservices in Go on AWS."
+msgstr "Liderei o redesenho completo da plataforma de agentes de endpoint, substituindo um monólito legado por microsserviços orientados a eventos em Go na AWS."
+
+msgid "Designed a security-first architecture: certificate-based device authentication (mTLS), short-lived token issuance and post-quantum cryptography readiness."
+msgstr "Desenhei uma arquitetura security-first: autenticação de dispositivos por certificado (mTLS), emissão de tokens de curta duração e prontidão para criptografia pós-quântica."
+
+msgid "Own engineering operations end to end: sprint planning, technical roadmaps, stakeholder alignment and incident response."
+msgstr "Respondo pelas operações de engenharia de ponta a ponta: planejamento de sprints, roadmaps técnicos, alinhamento com stakeholders e resposta a incidentes."
+
+msgid "Led the technical architecture of the EDR solution: React, Python (FastAPI), Go, PostgreSQL, RabbitMQ, Kafka, Redis, Kubernetes on AWS."
+msgstr "Liderei a arquitetura técnica da solução de EDR: React, Python (FastAPI), Go, PostgreSQL, RabbitMQ, Kafka, Redis, Kubernetes na AWS."
+
+msgid "Built the end-to-end CI/CD pipeline with Terraform, GitHub Actions, Docker, Kubernetes, ArgoCD and Helm."
+msgstr "Construí o pipeline de CI/CD de ponta a ponta com Terraform, GitHub Actions, Docker, Kubernetes, ArgoCD e Helm."
+
+msgid "Diagnosed and resolved critical production incidents: Go async code analysis, networking bottlenecks, CPU and memory optimization, OS-level debugging."
+msgstr "Diagnostiquei e resolvi incidentes críticos em produção: análise de código assíncrono em Go, gargalos de rede, otimização de CPU e memória, depuração no nível do sistema operacional."
+
+msgid "Deployed Vectra security appliances across enterprise datacenters, strengthening detection capabilities for key accounts."
+msgstr "Implantei appliances de segurança Vectra em datacenters corporativos, reforçando a capacidade de detecção de contas-chave."
+
+msgid "Led the complete rebuild of Cloudways, a hosting company acquired by DigitalOcean, supporting 2M+ WordPress and WooCommerce deployments, delivered on schedule with a zero-downtime migration."
+msgstr "Liderei a reconstrução completa do Cloudways, empresa de hospedagem adquirida pela DigitalOcean, com 2M+ instalações de WordPress e WooCommerce, entregue no prazo e com migração sem indisponibilidade."
+
+msgid "Architected its service-oriented Python backend on Django, PostgreSQL, FastAPI and Google Cloud (Cloud Run, Cloud Functions, Pub/Sub)."
+msgstr "Arquitetei seu backend Python orientado a serviços em Django, PostgreSQL, FastAPI e Google Cloud (Cloud Run, Cloud Functions, Pub/Sub)."
+
+msgid "90%+ team retention; mentored 3+ engineers into leadership roles."
+msgstr "Retenção de time acima de 90%; mentoria de 3+ engenheiros até posições de liderança."
+
+msgid "External security advisor to a client during a data-extortion incident."
+msgstr "Consultor externo de segurança de um cliente durante um incidente de extorsão de dados."
+
+msgid "Pentest vendor selection, rules of engagement and report quality review for client engagements."
+msgstr "Seleção de fornecedores de pentest, regras de engajamento e revisão da qualidade dos relatórios em projetos de clientes."
+
+msgid "Founded the data intelligence team and scaled it from zero to full operation; two analysts promoted to senior roles."
+msgstr "Fundei o time de inteligência de dados e o levei do zero à operação plena; dois analistas promovidos a sênior."
+
+msgid "Built an adaptive learning platform serving 5,000+ students."
+msgstr "Construí uma plataforma de aprendizagem adaptativa que atendeu 5.000+ alunos."
+
+msgid "Delivered a learning-object migration project for Pearson on time and under budget."
+msgstr "Entreguei um projeto de migração de objetos de aprendizagem para a Pearson no prazo e abaixo do orçamento."
+
+msgid "Member of the research team of a FAPESP-funded (PIPE) innovation project: a distributed network of environmental data-collection probes."
+msgstr "Integrante da equipe de um projeto de inovação financiado pela FAPESP (PIPE): uma rede distribuída de sondas de coleta de dados ambientais."
+
+msgid "MBA professor (Data Analysis and AI for Strategic Decisions); designated faculty for a new Technology degree in Artificial Intelligence, in its authorization process: Computer Architecture and Operating Systems; MLOps, Edge and Model Deployment."
+msgstr "Professor de MBA (Análise de Dados e IA para Decisões Estratégicas); docente designado de um novo curso superior de Tecnologia em Inteligência Artificial, em processo de autorização: Arquitetura de Computadores e Sistemas Operacionais; MLOps, Edge e Deploy de Modelos."
 
 msgid "San Francisco, cybersecurity (Remote)"
 msgstr "San Francisco, cibersegurança (remoto)"
@@ -91,58 +78,17 @@ msgstr "San Francisco, cibersegurança (remoto)"
 msgid "Software Engineering Manager"
 msgstr "Gerente de Engenharia de Software"
 
-#, python-format
-msgid "Leads the team behind Batuta's next-generation endpoint management platform, a distributed system that securely manages 1M+ devices per enterprise customer. Led the ground-up redesign of the endpoint agent platform, replacing a monolithic legacy system with an event-driven microservices architecture in Go on AWS; security-first design with certificate-based device authentication (mTLS), short-lived tokens and post-quantum readiness. Owns engineering operations end to end on an Extreme Programming, test-first discipline; 90%%+ team retention by growing engineers into leaders."
-msgstr "Lidera a equipe por trás da plataforma de gestão de endpoints de nova geração da Batuta, um sistema distribuído que gerencia com segurança 1M+ dispositivos por cliente corporativo. Liderou o redesenho completo da plataforma de agentes de endpoint, substituindo um sistema legado monolítico por uma arquitetura de microsserviços orientada a eventos em Go na AWS; desenho security-first com autenticação de dispositivos por certificado (mTLS), tokens de curta duração e prontidão pós-quântica. Responsável pelas operações de engenharia de ponta a ponta, com disciplina de Extreme Programming e test-first; retenção da equipe acima de 90%%, formando engenheiros em líderes."
-
 msgid "Principal Software Engineer"
 msgstr "Engenheiro de Software Principal"
-
-msgid "Technical architecture of the EDR solution (Go, Python/FastAPI, React, PostgreSQL, RabbitMQ, Kafka, Redis, Kubernetes on AWS); high-throughput asynchronous backends; CI/CD with Terraform, GitHub Actions, Kubernetes, ArgoCD and Helm; diagnosis of critical production incidents; architecture standards; Vectra security appliances deployed across enterprise datacenters."
-msgstr "Arquitetura técnica da solução de EDR (Go, Python/FastAPI, React, PostgreSQL, RabbitMQ, Kafka, Redis, Kubernetes na AWS); backends assíncronos de alto throughput; CI/CD com Terraform, GitHub Actions, Kubernetes, ArgoCD e Helm; diagnóstico de incidentes críticos em produção; padrões de arquitetura; appliances de segurança Vectra implantados em datacenters corporativos."
-
-msgid "Advisory and consulting"
-msgstr "Conselho e consultoria"
-
-msgid "Brazil"
-msgstr "Brasil"
-
-msgid "Software Engineering Advisor at Lecom and Ikatec (since Feb 2026): engineering modernization, AI harnesses to refactor legacy codebases, an Agile adaptation to the AI moment, engineering productivity metrics, architectural validation and cloud cost efficiency. Fractional CTO at IEV (since Jun 2026): AI engineering harnesses, architecture governance, engineering org design and hiring. Consultant to AltynLabs, an AI-first lab; partner and advisor to Brazilian technology companies."
-msgstr "Consultor de Engenharia de Software na Lecom e na Ikatec (desde fev. 2026): modernização de engenharia, harnesses de IA para refatorar bases de código legadas, uma adaptação do Agile ao momento da IA, métricas de produtividade de engenharia, validação arquitetural e eficiência de custos de nuvem. CTO fracionado na IEV (desde jun. 2026): harnesses de engenharia de IA, governança de arquitetura, desenho da organização de engenharia e contratação. Consultor da AltynLabs, um laboratório AI-first; sócio e conselheiro de empresas brasileiras de tecnologia."
-
-msgid "Board member and technology advisor"
-msgstr "Membro do conselho e conselheiro de tecnologia"
-
-msgid "xCube is a proprietary quantitative research and execution firm that selects algorithmic trading strategies by real broker execution rather than backtests. On the board since May 2023: the technology roadmap from a proprietary desk to a go-to-market company, the capabilities that build investor trust (reproducible and auditable scoring, data protection, observability, access controls), architecture and stack review, and the first engineering hires."
-msgstr "A xCube é uma empresa proprietária de pesquisa e execução quantitativa que seleciona estratégias algorítmicas de trading pela execução real na corretora, e não por backtests. No conselho desde maio de 2023: o roadmap de tecnologia da mesa proprietária para uma empresa de go-to-market, as capacidades que constroem a confiança do investidor (scoring reproduzível e auditável, proteção de dados, observabilidade, controles de acesso), revisão de arquitetura e stack e as primeiras contratações de engenharia."
-
-msgid "Professor, MBA"
-msgstr "Professor, MBA"
-
-msgid "MBA in Strategic Management, Operational Excellence and Agile Methods: Data Analysis and AI for Strategic Decisions, each student applying it to a case from their own job; 50+ students per class. Designated faculty for Frons's new Technology degree in Artificial Intelligence (Computer Architecture and Operating Systems; MLOps, Edge and Model Deployment), currently in its authorization process. Mentored data science and engineering teams at Kodus (2021 - 2023)."
-msgstr "MBA em Gestão Estratégica, Excelência Operacional e Métodos Ágeis: Análise de Dados e IA para Decisões Estratégicas, com cada aluno aplicando o conteúdo a um caso do próprio trabalho; turmas de 50+ alunos. Docente indicado para o novo Curso Superior de Tecnologia em Inteligência Artificial da Frons (Arquiteturas Computacionais e Sistemas Operacionais; MLOps, Edge e Deploy de Modelos), em processo de autorização. Mentor de equipes de ciência de dados e engenharia na Kodus (2021 - 2023)."
-
-msgid "Engineering, intelligence and founding"
-msgstr "Engenharia, inteligência e empreendedorismo"
 
 msgid "Senior Software Engineer"
 msgstr "Engenheiro de Software Sênior"
 
-#, python-format
-msgid "Led the full rebuild of Cloudways (DigitalOcean), which runs 2M+ WordPress and WooCommerce installations, migrated with zero downtime; service-oriented Python backend (Django, FastAPI, PostgreSQL) on Google Cloud (Cloud Run, Cloud Functions, Pub/Sub); microservices for WordPress orchestration on Kubernetes. Hired and retained the team (90%%+ retention) and mentored 3+ engineers into leadership roles."
-msgstr "Liderou a reconstrução completa do Cloudways (DigitalOcean), que roda 2M+ instalações de WordPress e WooCommerce, migradas sem indisponibilidade; backend orientado a serviços em Python (Django, FastAPI, PostgreSQL) no Google Cloud (Cloud Run, Cloud Functions, Pub/Sub); microsserviços para orquestração de WordPress em Kubernetes. Contratou e reteve a equipe (retenção acima de 90%%) e foi mentor de 3+ engenheiros até cargos de liderança."
-
 msgid "Intelligence Manager · Senior Market Intelligence Analyst · IT consultant"
 msgstr "Gerente de Inteligência · Analista Sênior de Inteligência de Mercado · Consultor de TI"
 
-msgid "Built and led the data intelligence team from zero: end-to-end collection and integration pipelines across the transactional systems, business and market intelligence, performance management with OKRs, KPIs and KRIs, weekly competitive-intelligence reporting to leadership; later advisory in BI and data engineering. Organizational intelligence: turning information into decision."
-msgstr "Montou e liderou do zero a equipe de inteligência de dados: pipelines de coleta e integração de ponta a ponta sobre os sistemas transacionais, inteligência de negócios e de mercado, gestão de desempenho com OKRs, KPIs e KRIs, relatórios semanais de inteligência competitiva para a liderança; depois, assessoria em BI e engenharia de dados. Inteligência organizacional: transformar informação em decisão."
-
-msgid "Co-founder"
-msgstr "Cofundador"
-
-msgid "Digital fabrication lab founded by ten people from programming, physics, design, carpentry and biology; Fab Charter member. BruHack 2017 workshop. The experience that became the research question."
-msgstr "Laboratório de fabricação digital fundado por dez pessoas vindas de programação, física, design, marcenaria e biologia; membro do Fab Charter. Oficina no BruHack 2017. A experiência que virou a pergunta de pesquisa."
+msgid "Board member and technology advisor"
+msgstr "Membro do conselho e conselheiro de tecnologia"
 
 msgid "São Paulo Research Foundation (FAPESP)"
 msgstr "Fundação de Amparo à Pesquisa do Estado de São Paulo (FAPESP)"
@@ -150,14 +96,404 @@ msgstr "Fundação de Amparo à Pesquisa do Estado de São Paulo (FAPESP)"
 msgid "Technology and Innovation Researcher"
 msgstr "Pesquisador de Tecnologia e Inovação"
 
-msgid "Member of the research team of a FAPESP-funded (PIPE) innovation project: a distributed network of environmental data-collection probes."
-msgstr "Integrante da equipe de um projeto de inovação financiado pela FAPESP (PIPE): uma rede distribuída de sondas de coleta de dados ambientais."
+msgid "Professor, MBA"
+msgstr "Professor, MBA"
 
 msgid "Co-founder and COO"
 msgstr "Cofundador e COO"
 
-msgid "Co-founded an edtech serving 5,000+ students: an adaptive learning platform on item response theory, with gamification, for college-entrance preparation; statistical models powering the adaptive engine; learning-object migration delivered to Pearson Brasil on time and under budget. Led strategy, product roadmap and operations from inception to growth stage."
-msgstr "Cofundou uma edtech que atendeu 5.000+ alunos: uma plataforma de aprendizagem adaptativa baseada na teoria de resposta ao item, com gamificação, para a preparação ao vestibular; modelos estatísticos por trás do motor adaptativo; migração de objetos de aprendizagem entregue à Pearson Brasil no prazo e abaixo do orçamento. Liderou estratégia, roadmap de produto e operações da fundação à fase de crescimento."
+msgid "Engineering leadership"
+msgstr "Liderança de engenharia"
+
+msgid "Drive delivery with Extreme Programming and test-first discipline; every architectural decision is backed by documented tests."
+msgstr "Conduzo a entrega com Extreme Programming e disciplina test-first; toda decisão de arquitetura é sustentada por testes documentados."
+
+msgid "Recruit and mentor engineers who own features end to end, with 90%+ team retention."
+msgstr "Recruto e oriento engenheiros que assumem funcionalidades de ponta a ponta, com retenção de time acima de 90%."
+
+msgid "Architected high-throughput asynchronous Go and Python backends handling thousands of concurrent connections."
+msgstr "Arquitetei backends assíncronos de alto throughput em Go e Python, que atendem milhares de conexões simultâneas."
+
+msgid "Designed a microservices architecture for WordPress application orchestration on Kubernetes, enabling horizontal scaling."
+msgstr "Desenhei uma arquitetura de microsserviços para orquestração de aplicações WordPress em Kubernetes, permitindo escala horizontal."
+
+msgid "Established Python best practices and code review processes adopted across the engineering team."
+msgstr "Estabeleci boas práticas de Python e processos de code review adotados por todo o time de engenharia."
+
+msgid "Mentored 3+ engineers into leadership roles; engineers I recruited advanced to senior roles."
+msgstr "Mentoria de 3+ engenheiros até posições de liderança; engenheiros que recrutei avançaram para posições sênior."
+
+msgid "Advisory, data and founding"
+msgstr "Assessoria, dados e empreendedorismo"
+
+msgid "Advisory and consulting"
+msgstr "Conselho e consultoria"
+
+msgid "Software Engineering Advisor to Lecom, Ikatec and IEV (acting as fractional CTO at IEV); consultant to AltynLabs, an AI-first lab."
+msgstr "Consultor de Engenharia de Software da Lecom, da Ikatec e da IEV (atuando como CTO fracionado na IEV); consultor da AltynLabs, um laboratório AI first."
+
+msgid "Define AI harnesses to refactor legacy codebases and reduce technical debt; review and validate system architectures; set engineering productivity metrics."
+msgstr "Defino harnesses de IA para refatorar bases de código legadas e reduzir dívida técnica; reviso e valido arquiteturas de sistemas; estabeleço métricas de produtividade de engenharia."
+
+msgid "Review architecture and stack decisions across the analytics backend, web platform, data layer and self-hosted infrastructure."
+msgstr "Reviso decisões de arquitetura e de stack no backend de analytics, na plataforma web, na camada de dados e na infraestrutura auto-hospedada."
+
+msgid "Engineered data collection, monitoring and integration pipelines across all transactional systems."
+msgstr "Construí pipelines de coleta, monitoramento e integração de dados em todos os sistemas transacionais."
+
+msgid "Data science and software engineering mentor"
+msgstr "Mentor de ciência de dados e engenharia de software"
+
+msgid "Trained the team in data mining, regression and NLP; guided data warehouse design; 4+ mentees launched production data products."
+msgstr "Treinei o time em mineração de dados, regressão e NLP; orientei o desenho do data warehouse; 4+ mentorados lançaram produtos de dados em produção."
+
+msgid "Security engineering"
+msgstr "Engenharia de segurança"
+
+msgid "Own engineering operations end to end, including incident response, compliance, and SOC automation and implementation."
+msgstr "Respondo pelas operações de engenharia de ponta a ponta, incluindo resposta a incidentes, compliance e automação e implantação de SOC."
+
+msgid "Maintain 90%+ team retention with a test-first culture where every architectural decision is backed by evidence."
+msgstr "Mantenho a retenção do time acima de 90%, com uma cultura test-first em que toda decisão de arquitetura é sustentada por evidências."
+
+msgid "Security advisory"
+msgstr "Consultoria de segurança"
+
+msgid "Advisor and builder of a digital-security service for families."
+msgstr "Consultor e construtor de um serviço de segurança digital para famílias."
+
+msgid "Advisory and earlier"
+msgstr "Assessoria e experiências anteriores"
+
+msgid "Advise on security posture and the controls needed before outside users are onboarded: auditable scoring, data protection, observability and access controls."
+msgstr "Assessoro a postura de segurança e os controles necessários antes da entrada de usuários externos: scoring auditável, proteção de dados, observabilidade e controles de acesso."
+
+msgid "Architecture governance and validation, AI harnesses for legacy modernization, engineering metrics."
+msgstr "Governança e validação de arquitetura, harnesses de IA para modernização de legado, métricas de engenharia."
+
+msgid "Built data monitoring pipelines and risk indicators (KRIs)."
+msgstr "Construí pipelines de monitoramento de dados e indicadores de risco (KRIs)."
+
+msgid "Advisory and board experience"
+msgstr "Experiência em assessoria e conselho"
+
+msgid "Software Engineering Advisor"
+msgstr "Consultor de Engenharia de Software"
+
+msgid "Lead engineering modernization: AI harnesses built to refactor legacy codebases and reduce technical debt."
+msgstr "Lidero a modernização da engenharia: harnesses de IA construídos para refatorar bases de código legadas e reduzir dívida técnica."
+
+msgid "Adapt legacy engineering workflows and Agile practice to AI-assisted delivery."
+msgstr "Adapto fluxos de engenharia legados e a prática ágil à entrega assistida por IA."
+
+msgid "Implement metric frameworks to measure developer velocity and baseline organizational output."
+msgstr "Implanto frameworks de métricas para medir a velocidade de desenvolvimento e estabelecer a linha de base de entrega da organização."
+
+msgid "Advise on technical governance, project management and infrastructure cost efficiency."
+msgstr "Assessoro governança técnica, gestão de projetos e eficiência de custos de infraestrutura."
+
+msgid "Audit and validate system designs for scalability while optimizing cloud and operational costs."
+msgstr "Audito e valido desenhos de sistemas quanto à escalabilidade, otimizando custos de nuvem e de operação."
+
+msgid "Set engineering productivity goals for predictable, high-quality delivery."
+msgstr "Defino metas de produtividade de engenharia para uma entrega previsível e de alta qualidade."
+
+msgid "Consultant to an AI-first lab"
+msgstr "Consultor de um laboratório AI first"
+
+msgid "Advise on AI maturity and company-wide AI adoption."
+msgstr "Assessoro a maturidade em IA e a adoção de IA em toda a empresa."
+
+msgid "Guide teams in automating their processes and in the secure use of AI."
+msgstr "Oriento os times na automação de seus processos e no uso seguro de IA."
+
+msgid "Define the new skills and competences the current working paradigm requires."
+msgstr "Defino as novas habilidades e competências que o paradigma de trabalho atual exige."
+
+msgid "Hire managers, engineers and interns for the company's teams."
+msgstr "Contrato gestores, engenheiros e estagiários para os times da empresa."
+
+msgid "Advise on the technology roadmap for moving from a proprietary desk to a go-to-market company: order of investments, phase gates, readiness for institutional due diligence."
+msgstr "Assessoro o roadmap de tecnologia da passagem de uma mesa proprietária para uma empresa go-to-market: ordem dos investimentos, marcos entre fases, prontidão para due diligence institucional."
+
+msgid "Prioritize the capabilities that build investor trust: reproducible, auditable scoring, data protection, observability and access controls."
+msgstr "Priorizo as capacidades que constroem a confiança do investidor: scoring reprodutível e auditável, proteção de dados, observabilidade e controles de acesso."
+
+msgid "Define the first engineering roles, the profiles to look for and the hiring sequence."
+msgstr "Defino os primeiros cargos de engenharia, os perfis a buscar e a sequência de contratações."
+
+msgid "Software Engineering Advisor, acting as fractional CTO"
+msgstr "Consultor de Engenharia de Software, atuando como CTO fracionado"
+
+msgid "Bridge executive vision and engineering strategy to future-proof core technology and organizational growth."
+msgstr "Conecto a visão executiva à estratégia de engenharia para preparar a tecnologia central e o crescimento da organização para o futuro."
+
+msgid "Review, validate and approve core system architectures for long-term scalability and alignment with business objectives."
+msgstr "Reviso, valido e aprovo as arquiteturas centrais dos sistemas quanto à escalabilidade de longo prazo e ao alinhamento com os objetivos do negócio."
+
+msgid "Advise on engineering org design, interview frameworks and vetting of leadership talent."
+msgstr "Assessoro o desenho da organização de engenharia, os roteiros de entrevista e a avaliação de lideranças."
+
+msgid "Define AI engineering harnesses that automate development workflows."
+msgstr "Defino harnesses de engenharia com IA que automatizam os fluxos de desenvolvimento."
+
+msgid "Executive and leadership experience"
+msgstr "Experiência executiva e de liderança"
+
+msgid "Built a centralized information pipeline giving every management level actionable insight."
+msgstr "Construí um pipeline centralizado de informação que leva insight acionável a todos os níveis de gestão."
+
+msgid "Implemented the performance management framework (OKRs, KPIs, KRIs)."
+msgstr "Implantei o framework de gestão de desempenho (OKRs, KPIs, KRIs)."
+
+msgid "Automated competitive intelligence, delivering weekly market positioning reports to executive leadership."
+msgstr "Automatizei a inteligência competitiva, entregando relatórios semanais de posicionamento de mercado à liderança executiva."
+
+msgid "Co-founded an edtech serving 5,000+ students with an adaptive learning platform for college entrance exam preparation."
+msgstr "Cofundei uma edtech que atendeu 5.000+ alunos com uma plataforma de aprendizagem adaptativa de preparação para o vestibular."
+
+msgid "Led strategic planning, product roadmap and administrative operations from inception to growth stage."
+msgstr "Liderei o planejamento estratégico, o roadmap de produto e as operações administrativas, da concepção à fase de crescimento."
+
+msgid "Professor in the MBA in Strategic Management, Operational Excellence and Agile Methods, teaching Data Analysis and AI for Strategic Decisions."
+msgstr "Professor do MBA em Gestão Estratégica, Excelência Operacional e Métodos Ágeis, na disciplina Análise de Dados e IA para Decisões Estratégicas."
+
+msgid "Earlier"
+msgstr "Antes"
+
+msgid "Mentor, Kodus (2021 - 2023) · Co-founder, AEON Fablab (2016 - 2018) · research team member, FAPESP-funded innovation project (2016)."
+msgstr "Mentor, Kodus (2021 - 2023) · Cofundador, AEON Fablab (2016 - 2018) · integrante da equipe de pesquisa de um projeto de inovação financiado pela FAPESP (2016)."
+
+msgid "Customer deployments"
+msgstr "Implantações em clientes"
+
+msgid "Embedded engineering advisor · Brazil"
+msgstr "Consultor de engenharia dentro do cliente · Brasil"
+
+msgid "Lecom: define and tune AI harnesses that refactor a legacy codebase and reduce technical debt; set the metrics that measure developer velocity."
+msgstr "Lecom: defino e ajusto harnesses de IA que refatoram uma base de código legada e reduzem dívida técnica; estabeleço as métricas que medem a velocidade de desenvolvimento."
+
+msgid "Ikatec: audit and validate system designs for scalability while optimizing cloud and operating costs."
+msgstr "Ikatec: audito e valido desenhos de sistemas quanto à escalabilidade, otimizando custos de nuvem e de operação."
+
+msgid "IEV: act as fractional CTO; review and approve core architectures and structure the interview framework for engineering hires."
+msgstr "IEV: atuo como CTO fracionado; reviso e aprovo as arquiteturas centrais e estruturo o roteiro de entrevistas para contratações de engenharia."
+
+msgid "AltynLabs: guide teams in automating their processes with AI and in using it securely."
+msgstr "AltynLabs: oriento os times a automatizar seus processos com IA e a usá-la com segurança."
+
+msgid "Delivered through flugel.it"
+msgstr "Entregue por meio da flugel.it"
+
+msgid "Translated technical constraints into roadmap changes with product stakeholders."
+msgstr "Traduzi restrições técnicas em mudanças de roadmap com os stakeholders de produto."
+
+msgid "Batuta enterprise accounts"
+msgstr "Contas corporativas da Batuta"
+
+msgid "In customer environments"
+msgstr "Nos ambientes dos clientes"
+
+msgid "Diagnosed and resolved critical production incidents down to OS, network and runtime level."
+msgstr "Diagnostiquei e resolvi incidentes críticos em produção até o nível de sistema operacional, rede e runtime."
+
+msgid "Shape the technology roadmap for moving from a proprietary desk to a go-to-market company, including readiness for institutional due diligence."
+msgstr "Moldo o roadmap de tecnologia da passagem de uma mesa proprietária para uma empresa go-to-market, incluindo a prontidão para due diligence institucional."
+
+msgid "Safesphere clients"
+msgstr "Clientes da Safesphere"
+
+msgid "Product engineering"
+msgstr "Engenharia de produto"
+
+msgid "Architected the EDR solution and built the CI/CD pipeline it ships through."
+msgstr "Arquitetei a solução de EDR e construí o pipeline de CI/CD pelo qual ela é entregue."
+
+msgid "Built the data intelligence team from zero; engineered data pipelines across all transactional systems and the OKR, KPI and KRI framework management ran on."
+msgstr "Construí o time de inteligência de dados do zero; desenvolvi pipelines de dados em todos os sistemas transacionais e o framework de OKRs, KPIs e KRIs usado pela gestão."
+
+msgid "Core skills"
+msgstr "Competências centrais"
+
+msgid "Languages and frameworks"
+msgstr "Linguagens e frameworks"
+
+msgid "Architecture"
+msgstr "Arquitetura"
+
+msgid "Event-driven microservices · High-throughput async backends · Legacy decomposition · Zero-downtime migration"
+msgstr "Microsserviços orientados a eventos · Backends assíncronos de alto throughput · Decomposição de legado · Migração sem indisponibilidade"
+
+msgid "Data and messaging"
+msgstr "Dados e mensageria"
+
+msgid "Cloud and delivery"
+msgstr "Nuvem e entrega"
+
+msgid "Security by design"
+msgstr "Segurança por design"
+
+msgid "mTLS · Certificate-based device authentication · Short-lived tokens · Post-quantum readiness"
+msgstr "mTLS · Autenticação de dispositivos por certificado · Tokens de curta duração · Prontidão pós-quântica"
+
+msgid "Engineering practice"
+msgstr "Prática de engenharia"
+
+msgid "Extreme Programming · Test-first delivery · Spec-driven development · AI agent harnesses"
+msgstr "Extreme Programming · Entrega test-first · Desenvolvimento orientado a especificação · Harnesses de agentes de IA"
+
+msgid "Focus areas"
+msgstr "Áreas de foco"
+
+msgid "Incident response"
+msgstr "Resposta a incidentes"
+
+msgid "Incident response for a production security platform; critical incidents diagnosed down to OS, network and runtime level; external advisor during a client data-extortion incident."
+msgstr "Resposta a incidentes de uma plataforma de segurança em produção; incidentes críticos diagnosticados até o nível de sistema operacional, rede e runtime; consultor externo durante um incidente de extorsão de dados de um cliente."
+
+msgid "Blue team engineering operations"
+msgstr "Operações de engenharia de blue team"
+
+msgid "EDR architecture, endpoint management at scale, network detection (Vectra) deployed in enterprise datacenters."
+msgstr "Arquitetura de EDR, gestão de endpoints em escala, detecção de rede (Vectra) implantada em datacenters corporativos."
+
+msgid "SOC automation and implementation"
+msgstr "Automação e implantação de SOC"
+
+msgid "Day to day across detection and response, log analytics, case management and response automation, cloud posture, code security and AI-driven security testing."
+msgstr "No dia a dia: detecção e resposta, análise de logs, gestão de casos e automação de resposta, postura de nuvem, segurança de código e testes de segurança com IA."
+
+msgid "Compliance"
+msgstr "Compliance"
+
+msgid "Day-to-day compliance work, including cloud compliance checks; auditability, data protection and access-control readiness for due diligence."
+msgstr "Trabalho diário de compliance, incluindo verificações de conformidade em nuvem; auditabilidade, proteção de dados e controles de acesso prontos para due diligence."
+
+msgid "Certificate-based device authentication (mTLS), PKI, short-lived tokens, post-quantum cryptography readiness."
+msgstr "Autenticação de dispositivos por certificado (mTLS), PKI, tokens de curta duração, prontidão para criptografia pós-quântica."
+
+msgid "Assessment"
+msgstr "Avaliação"
+
+msgid "Penetration testing, digital forensics, pentest vendor selection and report review."
+msgstr "Testes de intrusão, forense digital, seleção de fornecedores de pentest e revisão de relatórios."
+
+msgid "Engineering base"
+msgstr "Base de engenharia"
+
+msgid "What I bring"
+msgstr "O que eu entrego"
+
+msgid "Strategy and roadmaps"
+msgstr "Estratégia e roadmaps"
+
+msgid "Order of investments, phase gates, readiness for institutional due diligence."
+msgstr "Ordem dos investimentos, marcos entre fases, prontidão para due diligence institucional."
+
+msgid "Architecture governance"
+msgstr "Governança de arquitetura"
+
+msgid "Reviewing and approving core architectures for scalability and business fit; cloud cost efficiency."
+msgstr "Revisão e aprovação das arquiteturas centrais quanto à escalabilidade e à aderência ao negócio; eficiência de custos de nuvem."
+
+msgid "Engineering organization"
+msgstr "Organização de engenharia"
+
+msgid "Org design, hiring sequence, interview frameworks, leadership vetting; 90%+ retention in my own teams."
+msgstr "Desenho organizacional, sequência de contratações, roteiros de entrevista, avaliação de lideranças; retenção acima de 90% nos meus próprios times."
+
+msgid "AI adoption"
+msgstr "Adoção de IA"
+
+msgid "AI harnesses for legacy modernization, Agile adapted to AI-assisted delivery, productivity metrics."
+msgstr "Harnesses de IA para modernização de legado, Agile adaptado à entrega assistida por IA, métricas de produtividade."
+
+msgid "Security posture"
+msgstr "Postura de segurança"
+
+msgid "Security by design, data protection, access controls, incident response."
+msgstr "Segurança por design, proteção de dados, controles de acesso, resposta a incidentes."
+
+msgid "Performance management"
+msgstr "Gestão de desempenho"
+
+msgid "OKRs, KPIs, KRIs and the data pipelines behind them."
+msgstr "OKRs, KPIs, KRIs e os pipelines de dados por trás deles."
+
+msgid "What I deploy"
+msgstr "O que eu implanto"
+
+msgid "AI in production"
+msgstr "IA em produção"
+
+msgid "Agent harnesses · Multi-agent orchestration · Spec-driven development · Agent evaluation · Quality gates"
+msgstr "Harnesses de agentes · Orquestração multiagente · Desenvolvimento orientado a especificação · Avaliação de agentes · Quality gates"
+
+msgid "Software"
+msgstr "Software"
+
+msgid "Go · Python (FastAPI, Django) · React · Event-driven microservices · PostgreSQL · Kafka · RabbitMQ · Redis"
+msgstr "Go · Python (FastAPI, Django) · React · Microsserviços orientados a eventos · PostgreSQL · Kafka · RabbitMQ · Redis"
+
+msgid "Data and BI"
+msgstr "Dados e BI"
+
+msgid "Data pipelines · Data warehouses · OKR, KPI and KRI frameworks"
+msgstr "Pipelines de dados · Data warehouses · Frameworks de OKRs, KPIs e KRIs"
+
+msgid "Into the customer's environment"
+msgstr "No ambiente do cliente"
+
+msgid "AWS · Google Cloud · Kubernetes · Terraform · CI/CD · mTLS · Access controls · Compliance requirements"
+msgstr "AWS · Google Cloud · Kubernetes · Terraform · CI/CD · mTLS · Controles de acesso · Requisitos de compliance"
+
+msgid "Domains I speak"
+msgstr "Domínios em que transito"
+
+msgid "Cybersecurity · Quantitative finance · Education · Enterprise software"
+msgstr "Cibersegurança · Finanças quantitativas · Educação · Software corporativo"
+
+msgid "Scale an engineering team"
+msgstr "Escalar um time de engenharia"
+
+msgid "Engineering leader with 16 years in technology and 9+ leading teams. I lead engineering for a US cybersecurity company, where my team builds an endpoint management platform designed for 1M+ devices per enterprise customer."
+msgstr "Líder de engenharia com 16 anos em tecnologia e mais de 9 liderando times. Lidero a engenharia de uma empresa americana de cibersegurança, onde meu time constrói uma plataforma de gestão de endpoints projetada para 1M+ dispositivos por cliente corporativo."
+
+msgid "I led its redesign from a monolith to event-driven microservices in Go on AWS, architected the EDR backend, and earlier led the zero-downtime rebuild of Cloudways (2M+ WordPress installations). I run test-first teams with 90%+ retention and build the harnesses that make AI-assisted development reliable."
+msgstr "Liderei o redesenho dela, de um monólito para microsserviços orientados a eventos em Go na AWS, arquitetei o backend de EDR e, antes, liderei a reconstrução do Cloudways sem indisponibilidade (2M+ instalações de WordPress). Conduzo times test-first com retenção acima de 90% e construo os harnesses que tornam confiável o desenvolvimento assistido por IA."
+
+msgid "Secure a product"
+msgstr "Proteger um produto"
+
+msgid "Security engineering on the defensive side: compliance, incident response, blue team engineering operations, and SOC automation and implementation. At a US cybersecurity company I led the architecture of its EDR solution and now lead the team behind an endpoint management platform designed for 1M+ devices per enterprise customer."
+msgstr "Engenharia de segurança do lado defensivo: compliance, resposta a incidentes, operações de engenharia de blue team e automação e implantação de SOC. Em uma empresa americana de cibersegurança, liderei a arquitetura da solução de EDR e hoje lidero o time por trás de uma plataforma de gestão de endpoints projetada para 1M+ dispositivos por cliente corporativo."
+
+msgid "16 years in technology, 9+ leading engineering teams, with a degree in Cyber Defense. I bring an engineer's toolset to security operations: automation, tested pipelines and security designed into the architecture."
+msgstr "16 anos em tecnologia, mais de 9 liderando times de engenharia, com graduação em Defesa Cibernética. Levo o ferramental de engenheiro para as operações de segurança: automação, pipelines testados e segurança desenhada na arquitetura."
+
+msgid "Advise my company"
+msgstr "Assessorar minha empresa"
+
+msgid "I lead engineering where scale, security and AI meet, turning business intent into systems that hold under load and building the teams behind them. 16 years in technology, 9+ leading engineering teams."
+msgstr "Lidero engenharia onde escala, segurança e IA se encontram, transformando intenção de negócio em sistemas que aguentam carga e construindo os times por trás deles. 16 anos em tecnologia, mais de 9 liderando times de engenharia."
+
+msgid "Today I lead engineering for a US cybersecurity company, advise Brazilian technology companies as a partner and fractional CTO, sit on the board of a quantitative trading firm, and teach in MBA programs. AI moves the bottleneck from execution to judgment: I build the harness and the organization that keep that judgment in the right place."
+msgstr "Hoje lidero a engenharia de uma empresa americana de cibersegurança, assessoro empresas brasileiras de tecnologia como sócio e CTO fracionado, integro o conselho de uma empresa de trading quantitativo e leciono em programas de MBA. A IA desloca o gargalo da execução para o julgamento: construo o harness e a organização que mantêm esse julgamento no lugar certo."
+
+msgid "Put AI agents into production"
+msgstr "Colocar agentes de IA em produção"
+
+msgid "I embed with a team, find the real problem and ship the production system that solves it. 16 years across software engineering, security, data, business intelligence and management let me talk to the CFO, the security lead and the engineers in their own terms."
+msgstr "Entro no time, encontro o problema real e entrego o sistema em produção que o resolve. 16 anos entre engenharia de software, segurança, dados, business intelligence e gestão me permitem conversar com o CFO, com o líder de segurança e com os engenheiros nos termos de cada um."
+
+msgid "Today I lead engineering at a US cybersecurity company and work inside Brazilian companies on AI adoption, including harnesses that refactor a legacy codebase. Author of Hefesto, an open-source harness for AI coding agents."
+msgstr "Hoje lidero a engenharia de uma empresa americana de cibersegurança e trabalho dentro de empresas brasileiras na adoção de IA, incluindo harnesses que refatoram uma base de código legada. Autor do Hefesto, um harness open source para agentes de programação com IA."
+
+msgid "What do you need?"
+msgstr "Do que você precisa?"
+
+msgid "Just exploring"
+msgstr "Só explorando"
 
 msgid "Education"
 msgstr "Formação"
@@ -222,6 +558,113 @@ msgstr "Espanhol"
 msgid "Reading"
 msgstr "Leitura"
 
+msgid "Leadership, advisory and teaching"
+msgstr "Liderança, conselho e ensino"
+
+#, python-format
+msgid "Leads the team behind Batuta's next-generation endpoint management platform, a distributed system that securely manages 1M+ devices per enterprise customer. Led the ground-up redesign of the endpoint agent platform, replacing a monolithic legacy system with an event-driven microservices architecture in Go on AWS; security-first design with certificate-based device authentication (mTLS), short-lived tokens and post-quantum readiness. Owns engineering operations end to end on an Extreme Programming, test-first discipline; 90%%+ team retention by growing engineers into leaders."
+msgstr "Lidera a equipe por trás da plataforma de gestão de endpoints de nova geração da Batuta, um sistema distribuído que gerencia com segurança 1M+ dispositivos por cliente corporativo. Liderou o redesenho completo da plataforma de agentes de endpoint, substituindo um sistema legado monolítico por uma arquitetura de microsserviços orientada a eventos em Go na AWS; desenho security-first com autenticação de dispositivos por certificado (mTLS), tokens de curta duração e prontidão pós-quântica. Responsável pelas operações de engenharia de ponta a ponta, com disciplina de Extreme Programming e test-first; retenção da equipe acima de 90%%, formando engenheiros em líderes."
+
+msgid "Technical architecture of the EDR solution (Go, Python/FastAPI, React, PostgreSQL, RabbitMQ, Kafka, Redis, Kubernetes on AWS); high-throughput asynchronous backends; CI/CD with Terraform, GitHub Actions, Kubernetes, ArgoCD and Helm; diagnosis of critical production incidents; architecture standards; Vectra security appliances deployed across enterprise datacenters."
+msgstr "Arquitetura técnica da solução de EDR (Go, Python/FastAPI, React, PostgreSQL, RabbitMQ, Kafka, Redis, Kubernetes na AWS); backends assíncronos de alto throughput; CI/CD com Terraform, GitHub Actions, Kubernetes, ArgoCD e Helm; diagnóstico de incidentes críticos em produção; padrões de arquitetura; appliances de segurança Vectra implantados em datacenters corporativos."
+
+msgid "Brazil"
+msgstr "Brasil"
+
+msgid "Software Engineering Advisor at Lecom and Ikatec (since Feb 2026): engineering modernization, AI harnesses to refactor legacy codebases, an Agile adaptation to the AI moment, engineering productivity metrics, architectural validation and cloud cost efficiency. Fractional CTO at IEV (since Jun 2026): AI engineering harnesses, architecture governance, engineering org design and hiring. Consultant to AltynLabs, an AI-first lab; partner and advisor to Brazilian technology companies."
+msgstr "Consultor de Engenharia de Software na Lecom e na Ikatec (desde fev. 2026): modernização de engenharia, harnesses de IA para refatorar bases de código legadas, uma adaptação do Agile ao momento da IA, métricas de produtividade de engenharia, validação arquitetural e eficiência de custos de nuvem. CTO fracionado na IEV (desde jun. 2026): harnesses de engenharia de IA, governança de arquitetura, desenho da organização de engenharia e contratação. Consultor da AltynLabs, um laboratório AI-first; sócio e conselheiro de empresas brasileiras de tecnologia."
+
+msgid "xCube is a proprietary quantitative research and execution firm that selects algorithmic trading strategies by real broker execution rather than backtests. On the board since May 2023: the technology roadmap from a proprietary desk to a go-to-market company, the capabilities that build investor trust (reproducible and auditable scoring, data protection, observability, access controls), architecture and stack review, and the first engineering hires."
+msgstr "A xCube é uma empresa proprietária de pesquisa e execução quantitativa que seleciona estratégias algorítmicas de trading pela execução real na corretora, e não por backtests. No conselho desde maio de 2023: o roadmap de tecnologia da mesa proprietária para uma empresa de go-to-market, as capacidades que constroem a confiança do investidor (scoring reproduzível e auditável, proteção de dados, observabilidade, controles de acesso), revisão de arquitetura e stack e as primeiras contratações de engenharia."
+
+msgid "MBA in Strategic Management, Operational Excellence and Agile Methods: Data Analysis and AI for Strategic Decisions, each student applying it to a case from their own job; 50+ students per class. Designated faculty for Frons's new Technology degree in Artificial Intelligence (Computer Architecture and Operating Systems; MLOps, Edge and Model Deployment), currently in its authorization process. Mentored data science and engineering teams at Kodus (2021 - 2023)."
+msgstr "MBA em Gestão Estratégica, Excelência Operacional e Métodos Ágeis: Análise de Dados e IA para Decisões Estratégicas, com cada aluno aplicando o conteúdo a um caso do próprio trabalho; turmas de 50+ alunos. Docente indicado para o novo Curso Superior de Tecnologia em Inteligência Artificial da Frons (Arquiteturas Computacionais e Sistemas Operacionais; MLOps, Edge e Deploy de Modelos), em processo de autorização. Mentor de equipes de ciência de dados e engenharia na Kodus (2021 - 2023)."
+
+msgid "Engineering, intelligence and founding"
+msgstr "Engenharia, inteligência e empreendedorismo"
+
+#, python-format
+msgid "Led the full rebuild of Cloudways (DigitalOcean), which runs 2M+ WordPress and WooCommerce installations, migrated with zero downtime; service-oriented Python backend (Django, FastAPI, PostgreSQL) on Google Cloud (Cloud Run, Cloud Functions, Pub/Sub); microservices for WordPress orchestration on Kubernetes. Hired and retained the team (90%%+ retention) and mentored 3+ engineers into leadership roles."
+msgstr "Liderou a reconstrução completa do Cloudways (DigitalOcean), que roda 2M+ instalações de WordPress e WooCommerce, migradas sem indisponibilidade; backend orientado a serviços em Python (Django, FastAPI, PostgreSQL) no Google Cloud (Cloud Run, Cloud Functions, Pub/Sub); microsserviços para orquestração de WordPress em Kubernetes. Contratou e reteve a equipe (retenção acima de 90%%) e foi mentor de 3+ engenheiros até cargos de liderança."
+
+msgid "Built and led the data intelligence team from zero: end-to-end collection and integration pipelines across the transactional systems, business and market intelligence, performance management with OKRs, KPIs and KRIs, weekly competitive-intelligence reporting to leadership; later advisory in BI and data engineering. Organizational intelligence: turning information into decision."
+msgstr "Montou e liderou do zero a equipe de inteligência de dados: pipelines de coleta e integração de ponta a ponta sobre os sistemas transacionais, inteligência de negócios e de mercado, gestão de desempenho com OKRs, KPIs e KRIs, relatórios semanais de inteligência competitiva para a liderança; depois, assessoria em BI e engenharia de dados. Inteligência organizacional: transformar informação em decisão."
+
+msgid "Co-founder"
+msgstr "Cofundador"
+
+msgid "Digital fabrication lab founded by ten people from programming, physics, design, carpentry and biology; Fab Charter member. BruHack 2017 workshop. The experience that became the research question."
+msgstr "Laboratório de fabricação digital fundado por dez pessoas vindas de programação, física, design, marcenaria e biologia; membro do Fab Charter. Oficina no BruHack 2017. A experiência que virou a pergunta de pesquisa."
+
+msgid "Co-founded an edtech serving 5,000+ students: an adaptive learning platform on item response theory, with gamification, for college-entrance preparation; statistical models powering the adaptive engine; learning-object migration delivered to Pearson Brasil on time and under budget. Led strategy, product roadmap and operations from inception to growth stage."
+msgstr "Cofundou uma edtech que atendeu 5.000+ alunos: uma plataforma de aprendizagem adaptativa baseada na teoria de resposta ao item, com gamificação, para a preparação ao vestibular; modelos estatísticos por trás do motor adaptativo; migração de objetos de aprendizagem entregue à Pearson Brasil no prazo e abaixo do orçamento. Liderou estratégia, roadmap de produto e operações da fundação à fase de crescimento."
+
+msgid "About"
+msgstr "Sobre"
+
+msgid "João Ariedi - Engineering leader, builder of AI agent harnesses, researcher"
+msgstr "João Ariedi - Líder de engenharia, construtor de harnesses para agentes de IA, pesquisador"
+
+msgid "I lead engineering where scale, security and AI meet: turning business intent into systems that hold under load, and building the teams behind them."
+msgstr "Lidero engenharia onde escala, segurança e IA se encontram: transformo a intenção do negócio em sistemas que aguentam carga e construo as equipes por trás deles."
+
+msgid "16 years in technology, 9+ leading engineering teams, the last decade spanning organizational intelligence and cyber defense. Today I lead engineering for a US cybersecurity company, advise technology companies as a partner and fractional CTO, and teach in MBA programs."
+msgstr "16 anos em tecnologia, 9+ liderando equipes de engenharia, a última década entre inteligência organizacional e defesa cibernética. Hoje lidero a engenharia de uma empresa norte-americana de cibersegurança, assessoro empresas de tecnologia como sócio e CTO fracionado e dou aulas em programas de MBA."
+
+msgid "How I see the shift: AI moves the bottleneck from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds it: the harness and orchestration that develop, improve and maintain the product 24/7. As in Turing's morphogenesis, AI is the activator and the engineer the inhibitor; the value lives in the tension."
+msgstr "Como vejo a mudança: a IA desloca o gargalo da execução para o julgamento. A engenharia deixa de construir o produto diretamente e passa a construir a máquina que o constrói: o harness e a orquestração que desenvolvem, melhoram e mantêm o produto 24/7. Como na morfogênese de Turing, a IA é o ativador e o engenheiro, o inibidor; o valor vive na tensão."
+
+msgid "Technologist in Cyber Defense (FIAP) with five professional qualifications. Security by design: mTLS, certificate-based device authentication, post-quantum readiness."
+msgstr "Tecnólogo em Defesa Cibernética (FIAP) com cinco qualificações profissionais. Segurança por design: mTLS, autenticação de dispositivos por certificado, prontidão pós-quântica."
+
+msgid "<strong>Experience:</strong> 16 years in technology, 9+ leading engineering teams"
+msgstr "<strong>Experiência:</strong> 16 anos em tecnologia, 9+ liderando equipes de engenharia"
+
+msgid "E-mail:"
+msgstr "E-mail:"
+
+msgid "<strong>Location:</strong> Remote from Brazil · PT/EN"
+msgstr "<strong>Localização:</strong> Remoto, a partir do Brasil · PT/EN"
+
+msgid "Interests"
+msgstr "Interesses"
+
+msgid "Home Lab"
+msgstr "Home lab"
+
+msgid "Running 2 Proxmox nodes that host most of my daily apps. Continuous hands-on learning with infrastructure."
+msgstr "Dois nós Proxmox hospedando a maior parte dos meus aplicativos do dia a dia. Aprendizado contínuo, com a mão na infraestrutura."
+
+msgid "Digital fabrication"
+msgstr "Fabricação digital"
+
+msgid "Laser cutting and 3D printing. Co-founded a Fab Lab; now researching how agentic interfaces change who gets to make things."
+msgstr "Corte a laser e impressão 3D. Cofundei um Fab Lab; hoje pesquiso como as interfaces agênticas mudam quem consegue fabricar."
+
+msgid "Games"
+msgstr "Jogos"
+
+msgid "Real-time strategy enthusiast. Problem-solving mindset extends to gaming and creative challenges."
+msgstr "Entusiasta de estratégia em tempo real. A mentalidade de resolver problemas se estende aos jogos e aos desafios criativos."
+
+msgid "Music"
+msgstr "Música"
+
+msgid "Classical guitar student. Creative outlet that complements analytical work."
+msgstr "Estudante de violão clássico. Uma saída criativa que complementa o trabalho analítico."
+
+msgid "Motivation"
+msgstr "Motivação"
+
+msgid "AI is the activator."
+msgstr "A IA é o ativador."
+
+msgid "The engineer is the inhibitor."
+msgstr "O engenheiro é o inibidor."
+
+msgid "AI moves the bottleneck of engineering from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds, improves and maintains it."
+msgstr "A IA desloca o gargalo da engenharia da execução para o julgamento. A engenharia deixa de construir o produto diretamente e passa a construir a máquina que o constrói, melhora e mantém."
+
 msgid "Research and publications"
 msgstr "Pesquisa e publicações"
 
@@ -272,6 +715,73 @@ msgstr "Uma interface agêntica para um Fab Lab universitário"
 
 msgid "An LLM-based agentic interface for a university Fab Lab's laser cutter, measuring access, artifact quality, knowledge retention and which competence profiles become productive."
 msgstr "Uma interface agêntica baseada em LLM para a cortadora a laser de um Fab Lab universitário, medindo acesso, qualidade dos artefatos, retenção de conhecimento e quais perfis de competência se tornam produtivos."
+
+msgid "Services"
+msgstr "Serviços"
+
+#, python-format
+msgid "Teams at scale, 90%%+ retention, engineers grown into leaders on a test-first culture. Security by design in every architectural decision."
+msgstr "Equipes em escala, retenção acima de 90%%, engenheiros formados em líderes numa cultura test-first. Segurança por design em cada decisão de arquitetura."
+
+msgid "Advisory and board work"
+msgstr "Conselho e assessoria"
+
+msgid "Partner and advisor to Brazilian technology companies on strategy, architecture governance and AI adoption. Co-founder and former COO of an edtech."
+msgstr "Sócio e conselheiro de empresas brasileiras de tecnologia em estratégia, governança de arquitetura e adoção de IA. Cofundador e ex-COO de uma edtech."
+
+msgid "Consulting and fractional CTO"
+msgstr "Consultoria e CTO fracionado"
+
+msgid "Architecture governance, engineering org design, AI harnesses for legacy modernization, productivity metrics, infrastructure cost efficiency."
+msgstr "Governança de arquitetura, desenho de organizações de engenharia, harnesses de IA para modernização de legados, métricas de produtividade, eficiência de custos de infraestrutura."
+
+msgid "Teaching and research"
+msgstr "Ensino e pesquisa"
+
+msgid "MBA guest professor. Research on AI agents and engineering competence; paper accepted at MEISTUDIES 2026."
+msgstr "Professor convidado em MBA. Pesquisa sobre agentes de IA e competência em engenharia; artigo aceito no MEISTUDIES 2026."
+
+msgid "Skills"
+msgstr "Competências"
+
+msgid "Engineering"
+msgstr "Engenharia"
+
+msgid "Go, Python (Django, FastAPI), JavaScript/Node, React · PostgreSQL, Redis · Kafka, RabbitMQ · Kubernetes, AWS, Google Cloud, Terraform · event-driven and service-oriented architecture, CI/CD, test-first."
+msgstr "Go, Python (Django, FastAPI), JavaScript/Node, React · PostgreSQL, Redis · Kafka, RabbitMQ · Kubernetes, AWS, Google Cloud, Terraform · arquitetura orientada a eventos e a serviços, CI/CD, test-first."
+
+msgid "Security"
+msgstr "Segurança"
+
+msgid "EDR architecture, mTLS and PKI, certificate-based device authentication, post-quantum readiness, penetration testing, forensics."
+msgstr "Arquitetura de EDR, mTLS e PKI, autenticação de dispositivos por certificado, prontidão pós-quântica, testes de intrusão, forense."
+
+msgid "AI engineering"
+msgstr "Engenharia de IA"
+
+msgid "Claude Code harness design, spec-driven development, multi-agent orchestration, hook-enforced quality gates, agent evaluation."
+msgstr "Desenho de harnesses para o Claude Code, desenvolvimento orientado por especificação, orquestração multiagente, portões de qualidade impostos por hooks, avaliação de agentes."
+
+msgid "Intelligence"
+msgstr "Inteligência"
+
+msgid "Business and market intelligence, data pipelines, BI, knowledge management, OKRs."
+msgstr "Inteligência de negócios e de mercado, pipelines de dados, BI, gestão do conhecimento, OKRs."
+
+msgid "Fabrication"
+msgstr "Fabricação"
+
+msgid "Laser cutting, 3D printing, Fab Lab operation."
+msgstr "Corte a laser, impressão 3D, operação de Fab Lab."
+
+msgid "I build the machine that turns vision into revenue"
+msgstr "Construo a máquina que transforma visão em receita"
+
+msgid "Business opportunities in"
+msgstr "Oportunidades de negócio entram"
+
+msgid "products and services out"
+msgstr "produtos e serviços saem"
 
 msgid "Talks and panels"
 msgstr "Palestras e painéis"
@@ -341,78 +851,6 @@ msgstr "Quatro apresentações: Harness Software Engineering, Inteligência Orga
 
 msgid "View presentations"
 msgstr "Ver apresentações"
-
-msgid "Skills"
-msgstr "Competências"
-
-msgid "Engineering"
-msgstr "Engenharia"
-
-msgid "Go, Python (Django, FastAPI), JavaScript/Node, React · PostgreSQL, Redis · Kafka, RabbitMQ · Kubernetes, AWS, Google Cloud, Terraform · event-driven and service-oriented architecture, CI/CD, test-first."
-msgstr "Go, Python (Django, FastAPI), JavaScript/Node, React · PostgreSQL, Redis · Kafka, RabbitMQ · Kubernetes, AWS, Google Cloud, Terraform · arquitetura orientada a eventos e a serviços, CI/CD, test-first."
-
-msgid "Security"
-msgstr "Segurança"
-
-msgid "EDR architecture, mTLS and PKI, certificate-based device authentication, post-quantum readiness, penetration testing, forensics."
-msgstr "Arquitetura de EDR, mTLS e PKI, autenticação de dispositivos por certificado, prontidão pós-quântica, testes de intrusão, forense."
-
-msgid "AI engineering"
-msgstr "Engenharia de IA"
-
-msgid "Claude Code harness design, spec-driven development, multi-agent orchestration, hook-enforced quality gates, agent evaluation."
-msgstr "Desenho de harnesses para o Claude Code, desenvolvimento orientado por especificação, orquestração multiagente, portões de qualidade impostos por hooks, avaliação de agentes."
-
-msgid "Intelligence"
-msgstr "Inteligência"
-
-msgid "Business and market intelligence, data pipelines, BI, knowledge management, OKRs."
-msgstr "Inteligência de negócios e de mercado, pipelines de dados, BI, gestão do conhecimento, OKRs."
-
-msgid "Fabrication"
-msgstr "Fabricação"
-
-msgid "Laser cutting, 3D printing, Fab Lab operation."
-msgstr "Corte a laser, impressão 3D, operação de Fab Lab."
-
-msgid "Interests"
-msgstr "Interesses"
-
-msgid "Home Lab"
-msgstr "Home lab"
-
-msgid "Running 2 Proxmox nodes that host most of my daily apps. Continuous hands-on learning with infrastructure."
-msgstr "Dois nós Proxmox hospedando a maior parte dos meus aplicativos do dia a dia. Aprendizado contínuo, com a mão na infraestrutura."
-
-msgid "Digital fabrication"
-msgstr "Fabricação digital"
-
-msgid "Laser cutting and 3D printing. Co-founded a Fab Lab; now researching how agentic interfaces change who gets to make things."
-msgstr "Corte a laser e impressão 3D. Cofundei um Fab Lab; hoje pesquiso como as interfaces agênticas mudam quem consegue fabricar."
-
-msgid "Games"
-msgstr "Jogos"
-
-msgid "Real-time strategy enthusiast. Problem-solving mindset extends to gaming and creative challenges."
-msgstr "Entusiasta de estratégia em tempo real. A mentalidade de resolver problemas se estende aos jogos e aos desafios criativos."
-
-msgid "Music"
-msgstr "Música"
-
-msgid "Classical guitar student. Creative outlet that complements analytical work."
-msgstr "Estudante de violão clássico. Uma saída criativa que complementa o trabalho analítico."
-
-msgid "Motivation"
-msgstr "Motivação"
-
-msgid "AI is the activator."
-msgstr "A IA é o ativador."
-
-msgid "The engineer is the inhibitor."
-msgstr "O engenheiro é o inibidor."
-
-msgid "AI moves the bottleneck of engineering from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds, improves and maintains it."
-msgstr "A IA desloca o gargalo da engenharia da execução para o julgamento. A engenharia deixa de construir o produto diretamente e passa a construir a máquina que o constrói, melhora e mantém."
 
 msgid "Home"
 msgstr "Início"

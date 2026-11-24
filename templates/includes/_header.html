@@ -12,10 +12,17 @@
 	<meta name="keywords" content="{% trans 'engineering leader, software engineering manager, AI agent harness, Claude Code, spec-driven development, fractional CTO, board advisory, cyber defense, EDR, Go, Python, Kubernetes, AWS, research, digital fabrication, Fab Lab, remote, Brazil' %}" />
 	<meta name="author" content="João Ariedi" />
 	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-	<link rel="canonical" href="https://ariedi.com{{ request.path }}" />
+	{% comment %}A version of the home page (pages/profiles.py) is the same page read for one need: canonical is the blend.{% endcomment %}
+	<link rel="canonical" href="https://ariedi.com{% if profile %}{% url 'home' %}{% else %}{{ request.path }}{% endif %}" />
+	{% if profile %}{% comment %}a version shares the blend's canonical, so its alternates are the blend's too{% endcomment %}
+	<link rel="alternate" hreflang="en" href="https://ariedi.com/" />
+	<link rel="alternate" hreflang="pt-BR" href="https://ariedi.com/pt-br/" />
+	<link rel="alternate" hreflang="x-default" href="https://ariedi.com/" />
+	{% else %}
 	<link rel="alternate" hreflang="en" href="https://ariedi.com{% switch_lang_url 'en' %}" />
 	<link rel="alternate" hreflang="pt-BR" href="https://ariedi.com{% switch_lang_url 'pt-br' %}" />
 	<link rel="alternate" hreflang="x-default" href="https://ariedi.com{% switch_lang_url 'en' %}" />
+	{% endif %}
 
 	<!-- Language & Locale -->
 	<meta name="language" content="{% if LANGUAGE_CODE == 'pt-br' %}Portuguese{% else %}English{% endif %}" />

@@ -164,6 +164,76 @@ class PublicPagesSmokeTest(TestCase):
             with Image.open(card) as im:
                 self.assertEqual(im.size, (1200, 630), code)
 
+    VERSIONS = {
+        # slug: (answer EN, answer PT, profile text, focus title, a group of its experience, a bullet only it has)
+        "engineering": ("Scale an engineering team", "Escalar um time de engenharia", "Engineering leader with 16 years",
+                        "Core skills", "Advisory, data and founding", "thousands of concurrent connections"),
+        "security": ("Secure a product", "Proteger um produto", "Security engineering on the defensive side",
+                     "Focus areas", "Security engineering", "SOC automation and implementation"),
+        "advisory": ("Advise my company", "Assessorar minha empresa", "sit on the board of a quantitative trading firm",
+                     "What I bring", "Advisory and board experience", "Bridge executive vision and engineering strategy"),
+        "ai-agents": ("Put AI agents into production", "Colocar agentes de IA em produção", "I embed with a team",
+                      "What I deploy", "Customer deployments", "Translated technical constraints into roadmap changes"),
+    }
+
+    def section_order(self, body):
+        return re.findall(r'<div class="section [^"]*" id="(section-[a-z-]+)"', body)
+
+    def test_the_default_page_asks_what_the_visitor_needs_and_loads_no_version(self):
+        """The blend ("Just exploring" selected): a dock with a link per answer, none of the versions' own text."""
+        for prefix, column in (("", 0), ("/pt-br", 1)):
+            body = self.client.get(prefix + "/").content.decode()
+            for slug, words in self.VERSIONS.items():
+                self.assertIn(f'<a class="need-a" href="{prefix}/{slug}">{words[column]}</a>', body, prefix)
+            self.assertIn(f'<a class="need-a" href="{prefix}/" aria-current="page">', body, prefix)
+            self.assertIn('data-profile="all"', body)
+            self.assertEqual(body.count('<nav class="need need-dock"'), 1, prefix)
+            self.assertEqual(body.count('class="need-a"'), 5, prefix)
+        blend = self.client.get("/").content.decode()
+        for slug, words in self.VERSIONS.items():
+            for own in (words[2], words[4], words[5]):
+                self.assertNotIn(own, blend, f"{slug} text is in the default page")
+        self.assertIn("js/brand-profile", blend)
+        self.assertIn("Leadership, advisory and teaching", blend)
+
+    def test_each_version_follows_its_resume(self):
+        """Profile, focus table and experience change; headline, education and the rest do not."""
+        blend = self.client.get("/").content.decode()
+        for slug, words in self.VERSIONS.items():
+            for prefix in ("", "/pt-br"):
+                response = self.client.get(f"{prefix}/{slug}")
+                self.assertEqual(response.status_code, 200, slug)
+                body = response.content.decode()
+                self.assertIn(f'data-profile="{slug}"', body)
+                self.assertIn(f'href="{prefix}/{slug}" aria-current="page"', body)
+                # the blend is the canonical; the language switch stays on the version
+                self.assertIn(f'<link rel="canonical" href="https://ariedi.com{prefix}/" />', body, slug)
+                self.assertIn('<link rel="alternate" hreflang="pt-BR" href="https://ariedi.com/pt-br/" />', body, slug)
+                self.assertIn(f'href="/pt-br/{slug}" hreflang="pt-BR"', body, slug)
+            english = self.client.get(f"/{slug}").content.decode()
+            for own in words[2:]:
+                self.assertIn(own, english, slug)
+            self.assertIn(f'<h2 class="title_inner">{words[3]}</h2>', english, slug)
+            self.assertNotIn("Leadership, advisory and teaching", english, slug)
+            # one order for every version, so choosing another moves nothing
+            self.assertEqual(self.section_order(english)[:5],
+                             ["section-started", "section-about", "section-skills", "section-history", "section-services"], slug)
+            self.assertEqual(sorted(self.section_order(english)), sorted(self.section_order(blend)), slug)
+            self.assertEqual(self.section_order(english), self.section_order(self.client.get("/engineering").content.decode()), slug)
+            # one identity: same headline, same education, same facts
+            self.assertEqual(english.count(self.HEADLINE_EN), blend.count(self.HEADLINE_EN), slug)
+            for fact in ("Technologist in Cyber Defense", "flugel.it", "1M+ devices per enterprise customer"):
+                self.assertIn(fact, english, slug)
+            for banned in ("Led a FAPESP", "Main researcher", "CrowdStrike", "Forward Deployed Engineer"):
+                self.assertNotIn(banned, english, slug)
+        self.assertEqual(self.client.get("/marketing").status_code, 404)
+
+    def test_a_version_features_the_work_its_need_calls_for(self):
+        featured = r'content-box featured">\s*<div class="fig-head"><span class="fig">FIG. (\d\d)</span></div>\s*<div class="name">([^<]+)<'
+        self.assertEqual(re.search(featured, self.client.get("/security").content.decode()).groups(), ("06", "Safesphere"))
+        self.assertEqual(re.search(featured, self.client.get("/advisory").content.decode()).groups(), ("07", "xCube"))
+        self.assertEqual(re.search(featured, self.client.get("/").content.decode()).group(1), "05")
+
     def test_deck_urls_name_only_known_decks(self):
         for path in ("/presentations/unknown-deck", "/presentations/modern-engineering",
                      "/presentations/..%2Fviews.py", "/presentations/organizational-intelligence.html"):

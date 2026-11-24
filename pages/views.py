@@ -17,6 +17,8 @@ from django.views.generic.base import TemplateView, View
 from category.models import Category
 from projects.models import Project
 
+from .profiles import PROFILES, VERSION_ORDER, section_templates
+
 logger = logging.getLogger(__name__)
 
 PRESENTATIONS_DIR = os.path.join(
@@ -36,14 +38,19 @@ SITE_ORIGIN = 'https://ariedi.com'
 
 
 class Home(TemplateView):
+    """The home page: the blend, or one version of it when the URL names a need (pages/profiles.py)."""
 
     template_name = "pages/home.html"
 
     def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
+        profile = PROFILES.get(kwargs.get('profile'))
         context['projects'] = Project.objects.filter(active=True)
         context['categories'] = Category.objects.all()
+        context['profiles'] = PROFILES.values()
+        context['profile'] = profile
+        context['featured'] = profile['featured'] if profile else 'hefesto'
+        context['section_templates'] = section_templates(VERSION_ORDER) if profile else section_templates()
         return context
 
 

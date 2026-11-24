@@ -1,0 +1,36 @@
+{% load static i18n %}
+        <!-- Section About -->
+        <div class="section about" id="section-about">
+
+            <!-- title -->
+            <div class="title">
+                <h2 class="title_inner">{% trans "About" %}</h2>
+            </div>
+
+            <div class="content about-sheet">
+
+                <!-- portrait: cut out on the violet ground -->
+                <figure class="portrait">
+                    <img src={% static "images/brand/joao-ariedi-portrait-600.jpg" %} alt="{% trans 'João Ariedi - Engineering leader, builder of AI agent harnesses, researcher' %}" loading="lazy" width="600" height="600" />
+                </figure>
+
+                <!-- desc -->
+                <div class="desc">
+                    {% if profile %}{% for paragraph in profile.about %}<p>{{ paragraph }}</p>
+                    {% endfor %}{% else %}
+                    <p>{% blocktrans trimmed %}I lead engineering where scale, security and AI meet: turning business intent into systems that hold under load, and building the teams behind them.{% endblocktrans %}</p>
+                    <p>{% blocktrans trimmed %}16 years in technology, 9+ leading engineering teams, the last decade spanning organizational intelligence and cyber defense. Today I lead engineering for a US cybersecurity company, advise technology companies as a partner and fractional CTO, and teach in MBA programs.{% endblocktrans %}</p>
+                    <p>{% blocktrans trimmed %}How I see the shift: AI moves the bottleneck from execution to judgment. Engineering is no longer building the product directly, but building the machine that builds it: the harness and orchestration that develop, improve and maintain the product 24/7. As in Turing's morphogenesis, AI is the activator and the engineer the inhibitor; the value lives in the tension.{% endblocktrans %}</p>
+                    <p>{% blocktrans trimmed %}Technologist in Cyber Defense (FIAP) with five professional qualifications. Security by design: mTLS, certificate-based device authentication, post-quantum readiness.{% endblocktrans %}</p>
+                    {% endif %}
+                    <div class="info-list title-block">
+                        <ul>
+                            <li>{% blocktrans trimmed %}<strong>Experience:</strong> 16 years in technology, 9+ leading engineering teams{% endblocktrans %}</li>
+                            <li><strong>{% trans "E-mail:" %}</strong> joaoariedi@gmail.com</li>
+                            <li>{% blocktrans trimmed %}<strong>Location:</strong> Remote from Brazil · PT/EN{% endblocktrans %}</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>

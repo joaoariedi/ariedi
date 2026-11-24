@@ -504,26 +504,36 @@
 	}
 
 	/*
-		One Page Menu Nav
+		One Page Menu Nav: the menu marks the section the reader is in, which is the one whose top
+		is nearest above the header line. (Taking the last match in menu order assumed the sections
+		come in that order; a version of the home page orders them its own way.)
 	*/
 	if($('.section').length && $('.top-menu li a').length) {
+		var ownEntry = $('.top-menu ul li.current-menu-item');   // what the server marked: this page
 		$(window).on('scroll', function(){
 			var scrollPos = $(window).scrollTop();
+			var nearest = null, nearestTop = -1, sectionLinks = 0;
 			$('.top-menu ul li a').each(function () {
 				if($(this).attr('href').indexOf('#section-') == 0){
-					var currLink = $(this);
-					var refElement = $(currLink.attr("href"));
-					if(refElement.length){
-						if (refElement.offset().top <= scrollPos + 70) {
-							$('.top-menu ul li').removeClass("current-menu-item");
-							currLink.closest('li').addClass("current-menu-item");
-						}
-					}
-					if(scrollPos == 0) {
-						$('.top-menu ul li').removeClass("current-menu-item");
+					var refElement = $($(this).attr("href"));
+					sectionLinks++;
+					if(refElement.length && refElement.offset().top <= scrollPos + 70 && refElement.offset().top > nearestTop){
+						nearest = $(this);
+						nearestTop = refElement.offset().top;
 					}
 				}
 			});
+			if(nearest){
+				$('.top-menu ul li').removeClass("current-menu-item");
+				nearest.closest('li').addClass("current-menu-item");
+			} else if(sectionLinks == 1) {
+				/* a subpage above its footer: back on its own entry */
+				$('.top-menu ul li').removeClass("current-menu-item");
+				ownEntry.addClass("current-menu-item");
+			}
+			if(sectionLinks > 1 && scrollPos == 0) {
+				$('.top-menu ul li').removeClass("current-menu-item");
+			}
 		});
 	}
 

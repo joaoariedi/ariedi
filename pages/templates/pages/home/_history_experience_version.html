@@ -1,0 +1,35 @@
+{% load i18n %}
+                {% comment %}A version's experience (pages/experience.py): the resume's two groups, each job
+                with its roles and bullets.{% endcomment %}
+                <div class="cols">
+                    {% for group in profile.experience %}
+                    <div class="col col-md">
+
+                        <div class="title">
+                            <h2 class="title_inner">{{ group.title }}</h2>
+                        </div>
+
+                        <div class="resume-items">
+                            {% for job in group.entries %}
+                            <div class="resume-item content-box{% if forloop.first and forloop.parentloop.first %} active{% endif %}">
+                                <div class="date">{{ job.date }}</div>
+                                <div class="name">
+                                    {{ job.name }}{% if job.small %}<br>
+                                    <small>{{ job.small }}</small>{% endif %}
+                                </div>
+                                <div class="text">
+                                    {% for role in job.roles %}
+                                    {% if role.title %}<p class="role"><strong>{{ role.title }}</strong>{% if role.period %} ({{ role.period }}){% endif %}</p>{% endif %}
+                                    <ul class="cert-list role-list">
+                                        {% for bullet in role.bullets %}<li>{{ bullet }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                </div>

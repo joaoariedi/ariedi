@@ -1,0 +1,15 @@
+{% load static i18n %}
+        <!-- Section Started -->
+        <div class="section started brand-hero" id="section-started">
+
+            <!-- the sheet: headline, hazard stripe, subline, then the field drawing -->
+            <div class="hero-sheet">
+                <div class="hero-copy">
+                    <h1 class="hero-title">{% trans "I build the machine that turns vision into revenue" %}</h1>
+                    <span class="hazard" aria-hidden="true"></span>
+                    <p class="hero-subline"><span class="nowrap">{% trans "Business opportunities in" %}</span><span class="sub-dot"> · </span><span class="nowrap">{% trans "products and services out" %}</span></p>
+                </div>
+                {% include 'includes/_hero_field.html' %}
+            </div>
+
+        </div>
