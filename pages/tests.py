@@ -229,10 +229,12 @@ class PublicPagesSmokeTest(TestCase):
         self.assertEqual(self.client.get("/marketing").status_code, 404)
 
     def test_a_version_features_the_work_its_need_calls_for(self):
-        featured = r'content-box featured">\s*<div class="fig-head"><span class="fig">FIG. (\d\d)</span></div>\s*<div class="name">([^<]+)<'
-        self.assertEqual(re.search(featured, self.client.get("/security").content.decode()).groups(), ("06", "Safesphere"))
-        self.assertEqual(re.search(featured, self.client.get("/advisory").content.decode()).groups(), ("07", "xCube"))
-        self.assertEqual(re.search(featured, self.client.get("/").content.decode()).group(1), "05")
+        featured = r'content-box featured">\s*<div class="name">([^<]+)<'
+        self.assertEqual(re.search(featured, self.client.get("/security").content.decode()).group(1), "Safesphere")
+        self.assertEqual(re.search(featured, self.client.get("/advisory").content.decode()).group(1), "xCube")
+        self.assertIn("Hefesto", re.search(featured, self.client.get("/").content.decode()).group(1))
+        for path in ("/", "/security", "/presentations", "/pt-br/"):
+            self.assertNotRegex(self.client.get(path).content.decode(), r"FIG\. \d", path)
 
     def test_deck_urls_name_only_known_decks(self):
         for path in ("/presentations/unknown-deck", "/presentations/modern-engineering",
