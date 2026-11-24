@@ -17,7 +17,7 @@ from django.views.generic.base import TemplateView, View
 from category.models import Category
 from projects.models import Project
 
-from .profiles import PROFILES, section_templates
+from .profiles import PROFILES, VERSION_ORDER, section_templates
 
 logger = logging.getLogger(__name__)
 
@@ -50,7 +50,7 @@ class Home(TemplateView):
         context['profiles'] = PROFILES.values()
         context['profile'] = profile
         context['featured'] = profile['featured'] if profile else 'hefesto'
-        context['section_templates'] = section_templates(profile['order']) if profile else section_templates()
+        context['section_templates'] = section_templates(VERSION_ORDER) if profile else section_templates()
         return context
 
 

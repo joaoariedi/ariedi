@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ariedi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 22:34+0000\n"
+"POT-Creation-Date: 2026-11-24 22:58+0000\n"
 "PO-Revision-Date: 2026-11-03 20:20-0300\n"
 "Last-Translator: João Ariedi <joaoariedi@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -489,6 +489,12 @@ msgstr "Entro no time, encontro o problema real e entrego o sistema em produçã
 msgid "Today I lead engineering at a US cybersecurity company and work inside Brazilian companies on AI adoption, including harnesses that refactor a legacy codebase. Author of Hefesto, an open-source harness for AI coding agents."
 msgstr "Hoje lidero a engenharia de uma empresa americana de cibersegurança e trabalho dentro de empresas brasileiras na adoção de IA, incluindo harnesses que refatoram uma base de código legada. Autor do Hefesto, um harness open source para agentes de programação com IA."
 
+msgid "What do you need?"
+msgstr "Do que você precisa?"
+
+msgid "Just exploring"
+msgstr "Só explorando"
+
 msgid "Education"
 msgstr "Formação"
 
@@ -776,12 +782,6 @@ msgstr "Oportunidades de negócio entram"
 
 msgid "products and services out"
 msgstr "produtos e serviços saem"
-
-msgid "What do you need?"
-msgstr "Do que você precisa?"
-
-msgid "Just exploring"
-msgstr "Só explorando"
 
 msgid "Talks and panels"
 msgstr "Palestras e painéis"
@@ -1085,4 +1085,3 @@ msgstr "Produtos e serviços"
 
 msgid "Contact"
 msgstr "Contato"
-

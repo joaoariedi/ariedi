@@ -31,7 +31,7 @@
                         <li class="menu-item{% if page == 'home' %} current-menu-item{% endif %}">
                             <a href="{% if page == 'home' %}#section-started{% else %}{{ home_url }}{% endif %}"{% if page == 'home' %} aria-current="page"{% endif %}>{% trans "Home" %}</a>
                         </li>
-                        <li class="menu-item" data-section="section-services"{% if profile %} hidden{% endif %}>
+                        <li class="menu-item">
                             <a href="{{ sections }}#section-services">{% trans "Services" %}</a>
                         </li>
                         <li class="menu-item">

@@ -180,13 +180,15 @@ class PublicPagesSmokeTest(TestCase):
         return re.findall(r'<div class="section [^"]*" id="(section-[a-z-]+)"', body)
 
     def test_the_default_page_asks_what_the_visitor_needs_and_loads_no_version(self):
-        """The blend ("Just exploring" selected): a link per answer, none of the versions' own text."""
+        """The blend ("Just exploring" selected): a dock with a link per answer, none of the versions' own text."""
         for prefix, column in (("", 0), ("/pt-br", 1)):
             body = self.client.get(prefix + "/").content.decode()
             for slug, words in self.VERSIONS.items():
                 self.assertIn(f'<a class="need-a" href="{prefix}/{slug}">{words[column]}</a>', body, prefix)
             self.assertIn(f'<a class="need-a" href="{prefix}/" aria-current="page">', body, prefix)
             self.assertIn('data-profile="all"', body)
+            self.assertEqual(body.count('<nav class="need need-dock"'), 1, prefix)
+            self.assertEqual(body.count('class="need-a"'), 5, prefix)
         blend = self.client.get("/").content.decode()
         for slug, words in self.VERSIONS.items():
             for own in (words[2], words[4], words[5]):
@@ -212,10 +214,11 @@ class PublicPagesSmokeTest(TestCase):
                 self.assertIn(own, english, slug)
             self.assertIn(f'<h2 class="title_inner">{words[3]}</h2>', english, slug)
             self.assertNotIn("Leadership, advisory and teaching", english, slug)
-            self.assertEqual(self.section_order(english)[:4],
-                             ["section-started", "section-about", "section-skills", "section-history"], slug)
-            self.assertNotIn('id="section-services"', english, slug)
-            self.assertIn('data-section="section-services" hidden', english, slug)
+            # one order for every version, so choosing another moves nothing
+            self.assertEqual(self.section_order(english)[:5],
+                             ["section-started", "section-about", "section-skills", "section-history", "section-services"], slug)
+            self.assertEqual(sorted(self.section_order(english)), sorted(self.section_order(blend)), slug)
+            self.assertEqual(self.section_order(english), self.section_order(self.client.get("/engineering").content.decode()), slug)
             # one identity: same headline, same education, same facts
             self.assertEqual(english.count(self.HEADLINE_EN), blend.count(self.HEADLINE_EN), slug)
             for fact in ("Technologist in Cyber Defense", "flugel.it", "1M+ devices per enterprise customer"):
@@ -226,8 +229,8 @@ class PublicPagesSmokeTest(TestCase):
 
     def test_a_version_features_the_work_its_need_calls_for(self):
         featured = r'content-box featured">\s*<div class="fig-head"><span class="fig">FIG. (\d\d)</span></div>\s*<div class="name">([^<]+)<'
-        self.assertEqual(re.search(featured, self.client.get("/security").content.decode()).groups(), ("02", "Safesphere"))
-        self.assertEqual(re.search(featured, self.client.get("/advisory").content.decode()).groups(), ("03", "xCube"))
+        self.assertEqual(re.search(featured, self.client.get("/security").content.decode()).groups(), ("06", "Safesphere"))
+        self.assertEqual(re.search(featured, self.client.get("/advisory").content.decode()).groups(), ("07", "xCube"))
         self.assertEqual(re.search(featured, self.client.get("/").content.decode()).group(1), "05")
 
     def test_deck_urls_name_only_known_decks(self):

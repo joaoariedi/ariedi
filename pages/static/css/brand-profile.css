@@ -1,50 +1,55 @@
-/* The opening question in the hero ("What do you need?") and the arrival of a chosen version.
- * Each answer is a link to that version's URL; brand-profile.js loads it in place. */
-/* In the markup the question follows the drawing (phones read it there, with the drawing kept
-   in the first screen); from 721 px it sits between the subline and the drawing. */
-@media (min-width: 721px) {
-	.hero-sheet {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.hero-sheet .need {
-		order: 1;
-	}
-
-	.hero-sheet .hero-field {
-		order: 2;
-	}
-}
-
-.need {
-	position: relative;
-	z-index: 1;
+/* The opening question ("What do you need?") as a dock at the bottom of the home page, and the
+ * arrival of a chosen version. Each answer is a link to that version's URL; brand-profile.js
+ * brings it in place, changing only what differs. */
+.need-dock {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 950;
 	display: flex;
-	flex-wrap: wrap;
 	align-items: center;
-	gap: 8px 10px;
-	margin-top: 24px;
-	padding: 0 var(--side);
+	justify-content: flex-start;
+	justify-content: safe center;
+	gap: 8px;
+	padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 0px));
+	overflow-x: auto;
+	scrollbar-width: none;
+	background: rgba(21, 8, 38, 0.95);
+	border-top: 1px solid var(--line);
+	box-shadow: 0 -6px 24px rgba(181, 107, 232, 0.18);
 	font: 500 12px/16px var(--font-mono);
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.need-dock::-webkit-scrollbar {
+	display: none;
 }
 
 .need-q {
+	flex: none;
 	margin-right: 6px;
 	color: var(--text);
 }
 
 .need-a {
+	flex: none;
 	display: inline-block;
-	padding: 13px 12px;   /* 44 px tall */
+	padding: 9px 12px;
 	border: 1px solid var(--construction);
 	border-radius: var(--radius);
-	background-color: var(--panel);   /* solid: the decision line passes behind an answer, not through it */
+	background-color: var(--panel);
 	color: var(--label);
 	text-decoration: none;
 	transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.need-a:hover,
+.need-a:focus,
+.need-a:focus-visible {
+	text-decoration: none;   /* the theme underlines links on hover */
 }
 
 .need-a:hover,
@@ -65,30 +70,53 @@
 	color: var(--text);
 }
 
+/* announced to screen readers when the answer changes; not drawn */
+.need-status {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+}
+
+/* the dock takes the bottom edge: the readout sits above it, the footer ends above it */
+html:has(.need-dock) .hud-readout {
+	bottom: 68px;
+}
+
+html:has(.need-dock) .sheet-footer {
+	padding-bottom: 96px;
+}
+
 @media (max-width: 720px) {
-	.need {
-		gap: 8px;
-		margin-top: 20px;
-	}
-
-	.need-q {
-		flex-basis: 100%;
+	/* the bar scrolls sideways; its right edge fades to say so */
+	.need-dock {
+		padding-right: 36px;
+		-webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent);
+		mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent);
 	}
 }
 
-/* A section that changed with the answer resolves into place, once. */
+@media print {
+	.need-dock {
+		display: none;
+	}
+}
+
+/* What changed with the answer glitches once, in place: a twitch and a violet/orange split.
+ * It is never hidden; what did not change does not move. */
 @media (prefers-reduced-motion: no-preference) {
-	.section.version-arrive {
-		animation: version-arrive 520ms both;
+	.version-glitch {
+		animation: version-glitch 340ms both;
 	}
 }
 
-@keyframes version-arrive {
-	0% { opacity: 0; transform: translateX(-6px); clip-path: inset(0 0 70% 0); animation-timing-function: steps(1, end); }
-	18% { opacity: 0.6; transform: translateX(4px); clip-path: inset(30% 0 20% 0); animation-timing-function: steps(1, end); }
-	36% { opacity: 0.35; transform: translateX(-2px); clip-path: inset(0 0 35% 0); animation-timing-function: steps(1, end); }
-	54% { opacity: 0.9; transform: translateX(1px); clip-path: none; animation-timing-function: steps(1, end); }
-	72%, 100% { opacity: 1; transform: none; clip-path: none; }
+@keyframes version-glitch {
+	0% { transform: translateX(-4px); text-shadow: 2px 0 var(--accent), -2px 0 var(--line); animation-timing-function: steps(1, end); }
+	22% { transform: translateX(3px); text-shadow: -2px 0 var(--accent), 2px 0 var(--line); animation-timing-function: steps(1, end); }
+	44% { transform: translateX(-2px); text-shadow: 1px 0 var(--accent), -1px 0 var(--line); animation-timing-function: steps(1, end); }
+	66% { transform: translateX(1px); text-shadow: none; animation-timing-function: steps(1, end); }
+	84%, 100% { transform: none; text-shadow: none; }
 }
 
 /* A version's experience (pages/experience.py): each job's roles, each role's bullets. */
@@ -98,10 +126,4 @@
 
 .resume-items .resume-item .text .role-list + .role {
 	margin-top: 16px;
-}
-
-/* the entry of a section this version does not have */
-.header .top-menu ul li[hidden],
-.sheet-cell li[hidden] {
-	display: none !important;   /* the theme sets the menu items' display with more weight */
 }

@@ -6,6 +6,16 @@
 {% url 'research' as research_url %}
 {% url 'presentations' as presentations_url %}
 
+    {% comment %}The opening question, docked at the bottom of the screen on every scroll position.
+    Each answer is a real link to that version's URL; brand-profile.js brings the version in place,
+    only when asked. "Just exploring" (the blend) is the default.{% endcomment %}
+    <nav class="need need-dock" aria-label="{% trans 'What do you need?' %}">
+        <span class="need-q">{% trans "What do you need?" %}</span>
+        {% for option in profiles %}<a class="need-a" href="{% url 'profile' option.slug %}"{% if profile.slug == option.slug %} aria-current="page"{% endif %}>{{ option.need }}</a>
+        {% endfor %}<a class="need-a" href="{% url 'home' %}"{% if not profile %} aria-current="page"{% endif %}>{% trans "Just exploring" %}</a>
+        <span class="need-status" role="status"></span>
+    </nav>
+
     <!-- Wrapper -->
     <!--suppress ALL -->
     <div class="wrapper" data-profile="{{ profile.slug|default:'all' }}">

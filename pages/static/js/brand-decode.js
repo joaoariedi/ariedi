@@ -93,6 +93,15 @@
 		return true;
 	}
 
+	// On request (brand-profile.js): a text that changed with the chosen version decodes into
+	// place, and a decode still running lands at once before the page is compared.
+	document.addEventListener('signal:decode', function (e) {
+		decode(e.target, e.target.textContent.trim());
+	});
+	document.addEventListener('signal:settle', function () {
+		running.slice().forEach(function (finish) { finish(); });
+	});
+
 	// 1. Titles and FIG labels, once each, as they come into view.
 	var arrivals = new IntersectionObserver(function (entries) {
 		entries.forEach(function (e) {
