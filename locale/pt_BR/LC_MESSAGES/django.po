@@ -19,7 +19,7 @@ msgid "Present"
 msgstr "atual"
 
 msgid "Lead the engineering team behind the next-generation endpoint management platform, a distributed system designed to securely manage 1M+ devices per enterprise customer."
-msgstr "Lidero o time de engenharia por trás da plataforma de gestão de endpoints de nova geração, um sistema distribuído projetado para gerenciar com segurança 1M+ dispositivos por cliente corporativo."
+msgstr "Lidero a equipe de engenharia por trás da plataforma de gestão de endpoints de nova geração, um sistema distribuído projetado para gerenciar com segurança 1M+ dispositivos por cliente corporativo."
 
 msgid "Led the ground-up redesign of the endpoint agent platform, replacing a legacy monolith with event-driven microservices in Go on AWS."
 msgstr "Liderei o redesenho completo da plataforma de agentes de endpoint, substituindo um monólito legado por microsserviços orientados a eventos em Go na AWS."
@@ -49,7 +49,7 @@ msgid "Architected its service-oriented Python backend on Django, PostgreSQL, Fa
 msgstr "Arquitetei seu backend Python orientado a serviços em Django, PostgreSQL, FastAPI e Google Cloud (Cloud Run, Cloud Functions, Pub/Sub)."
 
 msgid "90%+ team retention; mentored 3+ engineers into leadership roles."
-msgstr "Retenção de time acima de 90%; mentoria de 3+ engenheiros até posições de liderança."
+msgstr "Retenção da equipe acima de 90%; mentoria de 3+ engenheiros até posições de liderança."
 
 msgid "External security advisor to a client during a data-extortion incident."
 msgstr "Consultor externo de segurança de um cliente durante um incidente de extorsão de dados."
@@ -58,7 +58,7 @@ msgid "Pentest vendor selection, rules of engagement and report quality review f
 msgstr "Seleção de fornecedores de pentest, regras de engajamento e revisão da qualidade dos relatórios em projetos de clientes."
 
 msgid "Founded the data intelligence team and scaled it from zero to full operation; two analysts promoted to senior roles."
-msgstr "Fundei o time de inteligência de dados e o levei do zero à operação plena; dois analistas promovidos a sênior."
+msgstr "Fundei a equipe de inteligência de dados e a levei do zero à operação plena; dois analistas promovidos a sênior."
 
 msgid "Built an adaptive learning platform serving 5,000+ students."
 msgstr "Construí uma plataforma de aprendizagem adaptativa que atendeu 5.000+ alunos."
@@ -109,7 +109,7 @@ msgid "Drive delivery with Extreme Programming and test-first discipline; every 
 msgstr "Conduzo a entrega com Extreme Programming e disciplina test-first; toda decisão de arquitetura é sustentada por testes documentados."
 
 msgid "Recruit and mentor engineers who own features end to end, with 90%+ team retention."
-msgstr "Recruto e oriento engenheiros que assumem funcionalidades de ponta a ponta, com retenção de time acima de 90%."
+msgstr "Recruto e oriento engenheiros que assumem funcionalidades de ponta a ponta, com retenção da equipe acima de 90%."
 
 msgid "Architected high-throughput asynchronous Go and Python backends handling thousands of concurrent connections."
 msgstr "Arquitetei backends assíncronos de alto throughput em Go e Python, que atendem milhares de conexões simultâneas."
@@ -118,7 +118,7 @@ msgid "Designed a microservices architecture for WordPress application orchestra
 msgstr "Desenhei uma arquitetura de microsserviços para orquestração de aplicações WordPress em Kubernetes, permitindo escala horizontal."
 
 msgid "Established Python best practices and code review processes adopted across the engineering team."
-msgstr "Estabeleci boas práticas de Python e processos de code review adotados por todo o time de engenharia."
+msgstr "Estabeleci boas práticas de Python e processos de code review adotados por toda a equipe de engenharia."
 
 msgid "Mentored 3+ engineers into leadership roles; engineers I recruited advanced to senior roles."
 msgstr "Mentoria de 3+ engenheiros até posições de liderança; engenheiros que recrutei avançaram para posições sênior."
@@ -145,7 +145,7 @@ msgid "Data science and software engineering mentor"
 msgstr "Mentor de ciência de dados e engenharia de software"
 
 msgid "Trained the team in data mining, regression and NLP; guided data warehouse design; 4+ mentees launched production data products."
-msgstr "Treinei o time em mineração de dados, regressão e NLP; orientei o desenho do data warehouse; 4+ mentorados lançaram produtos de dados em produção."
+msgstr "Treinei a equipe em mineração de dados, regressão e NLP; orientei o desenho do data warehouse; 4+ mentorados lançaram produtos de dados em produção."
 
 msgid "Security engineering"
 msgstr "Engenharia de segurança"
@@ -154,7 +154,7 @@ msgid "Own engineering operations end to end, including incident response, compl
 msgstr "Respondo pelas operações de engenharia de ponta a ponta, incluindo resposta a incidentes, compliance e automação e implantação de SOC."
 
 msgid "Maintain 90%+ team retention with a test-first culture where every architectural decision is backed by evidence."
-msgstr "Mantenho a retenção do time acima de 90%, com uma cultura test-first em que toda decisão de arquitetura é sustentada por evidências."
+msgstr "Mantenho a retenção da equipe acima de 90%, com uma cultura test-first em que toda decisão de arquitetura é sustentada por evidências."
 
 msgid "Security advisory"
 msgstr "Consultoria de segurança"
@@ -205,13 +205,13 @@ msgid "Advise on AI maturity and company-wide AI adoption."
 msgstr "Assessoro a maturidade em IA e a adoção de IA em toda a empresa."
 
 msgid "Guide teams in automating their processes and in the secure use of AI."
-msgstr "Oriento os times na automação de seus processos e no uso seguro de IA."
+msgstr "Oriento as equipes na automação de seus processos e no uso seguro de IA."
 
 msgid "Define the new skills and competences the current working paradigm requires."
 msgstr "Defino as novas habilidades e competências que o paradigma de trabalho atual exige."
 
 msgid "Hire managers, engineers and interns for the company's teams."
-msgstr "Contrato gestores, engenheiros e estagiários para os times da empresa."
+msgstr "Contrato gestores, engenheiros e estagiários para as equipes da empresa."
 
 msgid "Advise on the technology roadmap for moving from a proprietary desk to a go-to-market company: order of investments, phase gates, readiness for institutional due diligence."
 msgstr "Assessoro o roadmap de tecnologia da passagem de uma mesa proprietária para uma empresa go-to-market: ordem dos investimentos, marcos entre fases, prontidão para due diligence institucional."
@@ -280,7 +280,7 @@ msgid "IEV: act as fractional CTO; review and approve core architectures and str
 msgstr "IEV: atuo como CTO fracionado; reviso e aprovo as arquiteturas centrais e estruturo o roteiro de entrevistas para contratações de engenharia."
 
 msgid "AltynLabs: guide teams in automating their processes with AI and in using it securely."
-msgstr "AltynLabs: oriento os times a automatizar seus processos com IA e a usá-la com segurança."
+msgstr "AltynLabs: oriento as equipes a automatizar seus processos com IA e a usá-la com segurança."
 
 msgid "Delivered through flugel.it"
 msgstr "Entregue por meio da flugel.it"
@@ -310,7 +310,7 @@ msgid "Architected the EDR solution and built the CI/CD pipeline it ships throug
 msgstr "Arquitetei a solução de EDR e construí o pipeline de CI/CD pelo qual ela é entregue."
 
 msgid "Built the data intelligence team from zero; engineered data pipelines across all transactional systems and the OKR, KPI and KRI framework management ran on."
-msgstr "Construí o time de inteligência de dados do zero; desenvolvi pipelines de dados em todos os sistemas transacionais e o framework de OKRs, KPIs e KRIs usado pela gestão."
+msgstr "Construí a equipe de inteligência de dados do zero; desenvolvi pipelines de dados em todos os sistemas transacionais e o framework de OKRs, KPIs e KRIs usado pela gestão."
 
 msgid "Core skills"
 msgstr "Competências centrais"
@@ -400,7 +400,7 @@ msgid "Engineering organization"
 msgstr "Organização de engenharia"
 
 msgid "Org design, hiring sequence, interview frameworks, leadership vetting; 90%+ retention in my own teams."
-msgstr "Desenho organizacional, sequência de contratações, roteiros de entrevista, avaliação de lideranças; retenção acima de 90% nos meus próprios times."
+msgstr "Desenho organizacional, sequência de contratações, roteiros de entrevista, avaliação de lideranças; retenção acima de 90% nas minhas próprias equipes."
 
 msgid "AI adoption"
 msgstr "Adoção de IA"
@@ -454,28 +454,28 @@ msgid "Cybersecurity · Quantitative finance · Education · Enterprise software
 msgstr "Cibersegurança · Finanças quantitativas · Educação · Software corporativo"
 
 msgid "Scale an engineering team"
-msgstr "Escalar um time de engenharia"
+msgstr "Escalar uma equipe de engenharia"
 
 msgid "Engineering leader with 16 years in technology and 9+ leading teams. I lead engineering for a US cybersecurity company, where my team builds an endpoint management platform designed for 1M+ devices per enterprise customer."
-msgstr "Líder de engenharia com 16 anos em tecnologia e mais de 9 liderando times. Lidero a engenharia de uma empresa americana de cibersegurança, onde meu time constrói uma plataforma de gestão de endpoints projetada para 1M+ dispositivos por cliente corporativo."
+msgstr "Líder de engenharia com 16 anos em tecnologia e mais de 9 liderando equipes. Lidero a engenharia de uma empresa americana de cibersegurança, onde minha equipe constrói uma plataforma de gestão de endpoints projetada para 1M+ dispositivos por cliente corporativo."
 
 msgid "I led its redesign from a monolith to event-driven microservices in Go on AWS, architected the EDR backend, and earlier led the zero-downtime rebuild of Cloudways (2M+ WordPress installations). I run test-first teams with 90%+ retention and build the harnesses that make AI-assisted development reliable."
-msgstr "Liderei o redesenho dela, de um monólito para microsserviços orientados a eventos em Go na AWS, arquitetei o backend de EDR e, antes, liderei a reconstrução do Cloudways sem indisponibilidade (2M+ instalações de WordPress). Conduzo times test-first com retenção acima de 90% e construo os harnesses que tornam confiável o desenvolvimento assistido por IA."
+msgstr "Liderei o redesenho dela, de um monólito para microsserviços orientados a eventos em Go na AWS, arquitetei o backend de EDR e, antes, liderei a reconstrução do Cloudways sem indisponibilidade (2M+ instalações de WordPress). Conduzo equipes test-first com retenção acima de 90% e construo os harnesses que tornam confiável o desenvolvimento assistido por IA."
 
 msgid "Secure a product"
 msgstr "Proteger um produto"
 
 msgid "Security engineering on the defensive side: compliance, incident response, blue team engineering operations, and SOC automation and implementation. At a US cybersecurity company I led the architecture of its EDR solution and now lead the team behind an endpoint management platform designed for 1M+ devices per enterprise customer."
-msgstr "Engenharia de segurança do lado defensivo: compliance, resposta a incidentes, operações de engenharia de blue team e automação e implantação de SOC. Em uma empresa americana de cibersegurança, liderei a arquitetura da solução de EDR e hoje lidero o time por trás de uma plataforma de gestão de endpoints projetada para 1M+ dispositivos por cliente corporativo."
+msgstr "Engenharia de segurança do lado defensivo: compliance, resposta a incidentes, operações de engenharia de blue team e automação e implantação de SOC. Em uma empresa americana de cibersegurança, liderei a arquitetura da solução de EDR e hoje lidero a equipe por trás de uma plataforma de gestão de endpoints projetada para 1M+ dispositivos por cliente corporativo."
 
 msgid "16 years in technology, 9+ leading engineering teams, with a degree in Cyber Defense. I bring an engineer's toolset to security operations: automation, tested pipelines and security designed into the architecture."
-msgstr "16 anos em tecnologia, mais de 9 liderando times de engenharia, com graduação em Defesa Cibernética. Levo o ferramental de engenheiro para as operações de segurança: automação, pipelines testados e segurança desenhada na arquitetura."
+msgstr "16 anos em tecnologia, mais de 9 liderando equipes de engenharia, com graduação em Defesa Cibernética. Levo o ferramental de engenheiro para as operações de segurança: automação, pipelines testados e segurança desenhada na arquitetura."
 
 msgid "Advise my company"
 msgstr "Assessorar minha empresa"
 
 msgid "I lead engineering where scale, security and AI meet, turning business intent into systems that hold under load and building the teams behind them. 16 years in technology, 9+ leading engineering teams."
-msgstr "Lidero engenharia onde escala, segurança e IA se encontram, transformando intenção de negócio em sistemas que aguentam carga e construindo os times por trás deles. 16 anos em tecnologia, mais de 9 liderando times de engenharia."
+msgstr "Lidero engenharia onde escala, segurança e IA se encontram, transformando intenção de negócio em sistemas que aguentam carga e construindo as equipes por trás deles. 16 anos em tecnologia, mais de 9 liderando equipes de engenharia."
 
 msgid "Today I lead engineering for a US cybersecurity company, advise Brazilian technology companies as a partner and fractional CTO, sit on the board of a quantitative trading firm, and teach in MBA programs. AI moves the bottleneck from execution to judgment: I build the harness and the organization that keep that judgment in the right place."
 msgstr "Hoje lidero a engenharia de uma empresa americana de cibersegurança, assessoro empresas brasileiras de tecnologia como sócio e CTO fracionado, integro o conselho de uma empresa de trading quantitativo e leciono em programas de MBA. A IA desloca o gargalo da execução para o julgamento: construo o harness e a organização que mantêm esse julgamento no lugar certo."
@@ -484,7 +484,7 @@ msgid "Put AI agents into production"
 msgstr "Colocar agentes de IA em produção"
 
 msgid "I embed with a team, find the real problem and ship the production system that solves it. 16 years across software engineering, security, data, business intelligence and management let me talk to the CFO, the security lead and the engineers in their own terms."
-msgstr "Entro no time, encontro o problema real e entrego o sistema em produção que o resolve. 16 anos entre engenharia de software, segurança, dados, business intelligence e gestão me permitem conversar com o CFO, com o líder de segurança e com os engenheiros nos termos de cada um."
+msgstr "Entro na equipe, encontro o problema real e entrego o sistema em produção que o resolve. 16 anos entre engenharia de software, segurança, dados, business intelligence e gestão me permitem conversar com o CFO, com o líder de segurança e com os engenheiros nos termos de cada um."
 
 msgid "Today I lead engineering at a US cybersecurity company and work inside Brazilian companies on AI adoption, including harnesses that refactor a legacy codebase. Author of Hefesto, an open-source harness for AI coding agents."
 msgstr "Hoje lidero a engenharia de uma empresa americana de cibersegurança e trabalho dentro de empresas brasileiras na adoção de IA, incluindo harnesses que refatoram uma base de código legada. Autor do Hefesto, um harness open source para agentes de programação com IA."
