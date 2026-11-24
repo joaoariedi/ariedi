@@ -426,15 +426,26 @@
 
 /* Phone: the narrow canvas, whole, at its own shape, below a 32 px headline. */
 @media (max-width: 720px) {
+	/* The first screen runs from the header (64 px) to the dock (53 px, brand-profile.css): the
+	   headline, subline and drawing are centred in that space and all of them show on arrival. */
 	.section.started.brand-hero {
-		padding: 84px 0 36px;
+		min-height: 100svh;       /* the visible height, not the one behind the browser's bars */
+		padding: 76px 0 129px;    /* 60 px more below than the dock needs: the block sits above centre */
+	}
+
+	.hero-sheet {
+		padding-top: 12px;
+	}
+
+	.hazard {
+		margin: 14px 0;
 	}
 
 	.hero-field {
 		width: 100%;          /* with the cap below, keep the full width and let the drawing crop */
 		aspect-ratio: 440 / 248;
 		max-height: 260px;    /* small tablets in portrait: crop from the left, don't grow */
-		margin-top: 36px;
+		margin-top: 24px;
 	}
 
 	.hero-field .field-wide {
@@ -443,6 +454,24 @@
 
 	.hero-field .field-narrow {
 		display: block;
+	}
+}
+
+@media (max-width: 720px) and (max-height: 700px) {
+	.section.started.brand-hero {
+		padding: 68px 0 57px;
+	}
+
+	.hero-sheet {
+		padding-top: 8px;
+	}
+
+	.hazard {
+		margin: 10px 0;
+	}
+
+	.hero-field {
+		margin-top: 14px;
 	}
 }
 

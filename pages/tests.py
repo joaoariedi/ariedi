@@ -166,7 +166,7 @@ class PublicPagesSmokeTest(TestCase):
 
     VERSIONS = {
         # slug: (answer EN, answer PT, profile text, focus title, a group of its experience, a bullet only it has)
-        "engineering": ("Scale an engineering team", "Escalar um time de engenharia", "Engineering leader with 16 years",
+        "engineering": ("Scale an engineering team", "Escalar uma equipe de engenharia", "Engineering leader with 16 years",
                         "Core skills", "Advisory, data and founding", "thousands of concurrent connections"),
         "security": ("Secure a product", "Proteger um produto", "Security engineering on the defensive side",
                      "Focus areas", "Security engineering", "SOC automation and implementation"),
