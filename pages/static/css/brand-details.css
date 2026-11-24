@@ -76,9 +76,8 @@
 	}
 }
 
-/* Standalone links (card footers, the signature row, ORCID/Lattes, the breadcrumb) get 24 px of height without changing the line */
+/* Standalone links (card footers, ORCID/Lattes, the breadcrumb) get 24 px of height without changing the line */
 .service-item .links a,
-.signature .tb-links a,
 .id-links a,
 .hero-subline a {
 	display: inline-block;

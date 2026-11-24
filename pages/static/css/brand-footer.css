@@ -1,0 +1,191 @@
+/* The sheet's footer, on every page: a drafting title block (signature, sections, pages,
+ * elsewhere) over a thin sheet strip. A lit violet top edge, the panels' corner marks. */
+.footer.brand-footer.sheet-footer {
+	margin-top: 36px;
+}
+
+.sheet-grid,
+.sheet-strip {
+	max-width: 1152px;
+	margin: 0 auto;
+}
+
+.sheet-grid {
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
+	border: 1px solid var(--construction);
+	background-color: var(--panel);
+}
+
+/* the lit top edge: the field's light reaching the end of the sheet */
+.sheet-grid::before {
+	content: "";
+	position: absolute;
+	left: -1px;
+	right: -1px;
+	top: -1px;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, var(--line) 18%, var(--line) 82%, transparent);
+	box-shadow: 0 0 10px rgba(181, 107, 232, 0.36);
+}
+
+.sheet-cell {
+	padding: 20px 22px 22px;
+	border-left: 1px solid var(--construction);
+}
+
+.sheet-cell:first-child {
+	border-left: 0;
+}
+
+.sheet-label {
+	margin-bottom: 12px;
+	font: 500 11px/16px var(--font-mono);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--label);
+}
+
+.sheet-cell ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sheet-cell li a {
+	display: inline-block;
+	padding: 4px 0;
+	font: 400 15px/20px var(--font-body);
+	color: var(--text);
+	text-decoration: none;
+}
+
+.sheet-cell li a.email {
+	font: 400 13px/20px var(--font-mono);
+}
+
+.sheet-cell li a:hover,
+.sheet-cell li a:focus-visible,
+.sheet-strip a:hover,
+.sheet-strip a:focus-visible {
+	color: var(--line);
+	text-decoration: underline;
+}
+
+.sheet-cell li a[aria-current="page"] {
+	color: var(--line);
+}
+
+/* the signature: the ring mark with its decision line, the name, the practice, the promise */
+.sheet-mark {
+	display: block;
+	width: 40px;
+	height: 40px;
+	margin-bottom: 14px;
+	fill: none;
+	stroke: var(--line);
+	stroke-width: 1px;
+	overflow: visible;
+}
+
+.sheet-mark .sheet-decision {
+	stroke: var(--accent);
+	stroke-width: 1.5px;
+	filter: var(--glow);
+}
+
+.sheet-mark .sheet-dot {
+	fill: var(--accent);
+	stroke: none;
+	filter: var(--glow);
+}
+
+.sheet-name {
+	font: 700 18px/24px var(--font-display);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--text);
+}
+
+.sheet-row {
+	margin-top: 6px;
+	font: 500 12px/16px var(--font-mono);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--label);
+}
+
+.sheet-promise {
+	color: var(--text);
+}
+
+/* the strip: copyright, languages, back to top */
+.sheet-strip {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 4px 24px;
+	padding: 8px 22px;
+	border: 1px solid var(--construction);
+	border-top: 0;
+	background-color: var(--panel);   /* the planes and the cursor light never sit under its small text */
+	font: 500 11px/16px var(--font-mono);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--label);
+}
+
+.sheet-strip a {
+	display: inline-block;
+	padding: 6px 0;
+	color: var(--text);
+	text-decoration: none;
+}
+
+.sheet-langs a[aria-current="true"] {
+	color: var(--line);
+}
+
+.sheet-langs span {
+	margin: 0 6px;
+}
+
+/* tablets and phones: the signature on top, sections and pages side by side, elsewhere below */
+@media (max-width: 900px) {
+	.sheet-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.sheet-sign {
+		grid-column: 1 / -1;
+		border-bottom: 1px solid var(--construction);
+	}
+
+	.sheet-cell:nth-child(2) {
+		border-left: 0;
+	}
+
+	.sheet-cell:nth-child(4) {
+		grid-column: 1 / -1;
+		border-left: 0;
+		border-top: 1px solid var(--construction);
+	}
+
+	.sheet-cell:nth-child(4) ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0 20px;
+	}
+}
+
+@media (max-width: 720px) {
+	.footer.brand-footer.sheet-footer {
+		padding: 24px var(--side) 48px;
+	}
+
+	.sheet-cell {
+		padding: 18px 16px 20px;
+	}
+}

@@ -54,7 +54,7 @@ body {
 }
 
 /* With motion allowed (brand-motion.js sets .motion-ok and inserts .grid-plane), the grid and
-   scanlines move to a fixed layer that the script slides at 85 % of the scroll, in whole pixels
+   scanlines move to a fixed layer that the script slides at 75 % of the scroll, in whole pixels
    with one cell of slack below, so the drafting sheet reads as a plane behind the content.
    Without motion the plane stays hidden and the grid scrolls with the page as before. */
 .grid-plane {
