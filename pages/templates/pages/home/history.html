@@ -1,0 +1,13 @@
+{% load static i18n %}
+        <!-- Section Resume -->
+        <div class="section resume" id="section-history">
+            <div class="content">
+                {% if education_first %}
+                {% include 'pages/home/_history_education.html' %}
+                {% include 'pages/home/_history_experience.html' %}
+                {% else %}
+                {% include 'pages/home/_history_experience.html' %}
+                {% include 'pages/home/_history_education.html' %}
+                {% endif %}
+            </div>
+        </div>

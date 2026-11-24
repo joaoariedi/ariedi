@@ -1,0 +1,40 @@
+{% load static i18n %}
+        <!-- Section Skills -->
+        <div class="section skills" id="section-skills">
+            <div class="content">
+
+                <!-- title -->
+                <div class="title">
+                    <h2 class="title_inner">{% trans "Skills" %}</h2>
+                </div>
+
+                <!-- skills: a spec table, mono labels at the left -->
+                <div class="spec-table content-box">
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "Engineering" %}</h4>
+                        <p class="spec-text">{% blocktrans trimmed %}Go, Python (Django, FastAPI), JavaScript/Node, React · PostgreSQL, Redis · Kafka, RabbitMQ · Kubernetes, AWS, Google Cloud, Terraform · event-driven and service-oriented architecture, CI/CD, test-first.{% endblocktrans %}</p>
+                    </div>
+
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "Security" %}</h4>
+                        <p class="spec-text">{% blocktrans trimmed %}EDR architecture, mTLS and PKI, certificate-based device authentication, post-quantum readiness, penetration testing, forensics.{% endblocktrans %}</p>
+                    </div>
+
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "AI engineering" %}</h4>
+                        <p class="spec-text">{% blocktrans trimmed %}Claude Code harness design, spec-driven development, multi-agent orchestration, hook-enforced quality gates, agent evaluation.{% endblocktrans %}</p>
+                    </div>
+
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "Intelligence" %}</h4>
+                        <p class="spec-text">{% blocktrans trimmed %}Business and market intelligence, data pipelines, BI, knowledge management, OKRs.{% endblocktrans %}</p>
+                    </div>
+
+                    <div class="spec-row">
+                        <h4 class="spec-label">{% trans "Fabrication" %}</h4>
+                        <p class="spec-text">{% trans "Laser cutting, 3D printing, Fab Lab operation." %}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>

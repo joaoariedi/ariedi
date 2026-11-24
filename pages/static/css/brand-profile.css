@@ -1,0 +1,92 @@
+/* The opening question in the hero ("What do you need?") and the arrival of a chosen version.
+ * Each answer is a link to that version's URL; brand-profile.js loads it in place. */
+/* In the markup the question follows the drawing (phones read it there, with the drawing kept
+   in the first screen); from 721 px it sits between the subline and the drawing. */
+@media (min-width: 721px) {
+	.hero-sheet {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.hero-sheet .need {
+		order: 1;
+	}
+
+	.hero-sheet .hero-field {
+		order: 2;
+	}
+}
+
+.need {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 10px;
+	margin-top: 24px;
+	padding: 0 var(--side);
+	font: 500 12px/16px var(--font-mono);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.need-q {
+	margin-right: 6px;
+	color: var(--text);
+}
+
+.need-a {
+	display: inline-block;
+	padding: 13px 12px;   /* 44 px tall */
+	border: 1px solid var(--construction);
+	border-radius: var(--radius);
+	background-color: var(--panel);   /* solid: the decision line passes behind an answer, not through it */
+	color: var(--label);
+	text-decoration: none;
+	transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.need-a:hover,
+.need-a:focus-visible {
+	border-color: var(--line);
+	color: var(--text);
+	box-shadow: 0 0 14px rgba(181, 107, 232, 0.2);
+}
+
+/* the answer in force: the decision's orange */
+.need-a[aria-current="page"] {
+	border-color: var(--accent);
+	color: var(--text);
+}
+
+.need-a[aria-busy="true"] {
+	border-color: var(--line);
+	color: var(--text);
+}
+
+@media (max-width: 720px) {
+	.need {
+		gap: 8px;
+		margin-top: 20px;
+	}
+
+	.need-q {
+		flex-basis: 100%;
+	}
+}
+
+/* A section that changed with the answer resolves into place, once. */
+@media (prefers-reduced-motion: no-preference) {
+	.section.version-arrive {
+		animation: version-arrive 520ms both;
+	}
+}
+
+@keyframes version-arrive {
+	0% { opacity: 0; transform: translateX(-6px); clip-path: inset(0 0 70% 0); animation-timing-function: steps(1, end); }
+	18% { opacity: 0.6; transform: translateX(4px); clip-path: inset(30% 0 20% 0); animation-timing-function: steps(1, end); }
+	36% { opacity: 0.35; transform: translateX(-2px); clip-path: inset(0 0 35% 0); animation-timing-function: steps(1, end); }
+	54% { opacity: 0.9; transform: translateX(1px); clip-path: none; animation-timing-function: steps(1, end); }
+	72%, 100% { opacity: 1; transform: none; clip-path: none; }
+}

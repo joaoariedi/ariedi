@@ -1,0 +1,22 @@
+{% load static i18n %}
+        <!-- Section Started -->
+        <div class="section started brand-hero" id="section-started">
+
+            <!-- the sheet: headline, hazard stripe, subline, then the field drawing -->
+            <div class="hero-sheet">
+                <div class="hero-copy">
+                    <h1 class="hero-title">{% trans "I build the machine that turns vision into revenue" %}</h1>
+                    <span class="hazard" aria-hidden="true"></span>
+                    <p class="hero-subline"><span class="nowrap">{% trans "Business opportunities in" %}</span><span class="sub-dot"> · </span><span class="nowrap">{% trans "products and services out" %}</span></p>
+                </div>
+                {% include 'includes/_hero_field.html' %}
+                {% comment %}The opening question: each answer is a real link to that version's URL;
+                brand-profile.js loads the version in place, only when asked.{% endcomment %}
+                <nav class="need" aria-label="{% trans 'What do you need?' %}">
+                    <span class="need-q">{% trans "What do you need?" %}</span>
+                    {% for option in profiles %}<a class="need-a" href="{% url 'profile' option.slug %}"{% if profile.slug == option.slug %} aria-current="page"{% endif %}>{{ option.need }}</a>
+                    {% endfor %}<a class="need-a" href="{% url 'home' %}"{% if not profile %} aria-current="page"{% endif %}>{% trans "Just exploring" %}</a>
+                </nav>
+            </div>
+
+        </div>
