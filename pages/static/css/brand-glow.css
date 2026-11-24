@@ -120,8 +120,9 @@ html.motion-ok body::before {
 		animation: core-flash 6.5s linear 2.6s infinite;
 	}
 
-	.field-paused .decision-pulse,
-	.field-paused .field-rings .core {
+	/* as specific as the rules above, or their animation shorthand resets the play state */
+	html.motion-ok .field-paused .decision-pulse,
+	html.motion-ok .field-paused .field-rings .core {
 		animation-play-state: paused;
 	}
 }
